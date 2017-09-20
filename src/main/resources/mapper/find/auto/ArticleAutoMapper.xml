@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.ArticleAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.find.model.auto.ArticleAuto">
+		<id column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="article_group_id" property="articleGroupId" jdbcType="BIGINT" />
+		<result column="article_name" property="articleName" jdbcType="VARCHAR" />
+		<result column="main_path" property="mainPath" jdbcType="VARCHAR" />
+		<result column="readcount" property="readcount" jdbcType="BIGINT" />
+		<result column="thumbnail_path" property="thumbnailPath" jdbcType="VARCHAR" />
+		<result column="article_abstract" property="articleAbstract" jdbcType="VARCHAR" />
+		<result column="article_content" property="articleContent" jdbcType="VARCHAR" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="relation_product_count" property="relationProductCount" jdbcType="INTEGER" />
+		<result column="relation_user_count" property="relationUserCount" jdbcType="INTEGER" />
+		<result column="send_time" property="sendTime" jdbcType="VARCHAR" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="author_icon" property="authorIcon" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		article_id, article_group_id, article_name, main_path, readcount, thumbnail_path,relation_product_count,relation_user_count,
+		article_abstract, article_content, create_user_id, create_time, modify_user_id, modify_time,
+		is_delete, send_time,author,author_icon
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_find_article
+		where article_id = #{articleId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_find_article
+		where article_id = #{articleId,jdbcType=BIGINT}
+	</delete>
+
+	<insert id="insert" parameterType="com.essential.find.model.auto.ArticleAuto" useGeneratedKeys="true" keyProperty="articleId">
+		insert into t_find_article (article_group_id, article_name,
+		main_path, readcount, thumbnail_path,relation_product_count,relation_user_count,
+		article_abstract, article_content, create_user_id,
+		create_time, modify_user_id, modify_time,
+		is_delete, send_time,author,author_icon)
+		values (#{articleGroupId,jdbcType=BIGINT}, #{articleName,jdbcType=VARCHAR},
+		#{mainPath,jdbcType=VARCHAR}, #{readcount,jdbcType=BIGINT}, #{thumbnailPath,jdbcType=VARCHAR},#{relationProductCount,jdbcType=INTEGER},#{relationUserCount,jdbcType=INTEGER},
+		#{articleAbstract,jdbcType=VARCHAR}, #{articleContent,jdbcType=VARCHAR}, #{createUserId,jdbcType=BIGINT},
+		#{createTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR},
+		#{isDelete,jdbcType=INTEGER}, #{sendTime,jdbcType=VARCHAR},#{author,jdbcType=VARCHAR}, #{authorIcon,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.essential.find.model.auto.ArticleAuto" useGeneratedKeys="true" keyProperty="articleId">
+		insert into t_find_article
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="articleId != null">
+				article_id,
+			</if>
+			<if test="articleGroupId != null">
+				article_group_id,
+			</if>
+			<if test="articleName != null">
+				article_name,
+			</if>
+			<if test="mainPath != null">
+				main_path,
+			</if>
+			<if test="readcount != null">
+				readcount,
+			</if>
+			<if test="thumbnailPath != null">
+				thumbnail_path,
+			</if>
+			<if test="relationProductCount!=null">
+				relation_product_count,
+			</if>
+			<if test="relationUserCount!=null">
+				relation_user_count,
+			</if>
+			<if test="articleAbstract != null">
+				article_abstract,
+			</if>
+			<if test="articleContent != null">
+				article_content,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="sendTime != null">
+				send_time,
+			</if>
+			<if test="author != null">
+				author,
+			</if>
+			<if test="authorIcon != null">
+				author_icon
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="articleId != null">
+				#{articleId,jdbcType=BIGINT},
+			</if>
+			<if test="articleGroupId != null">
+				#{articleGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="articleName != null">
+				#{articleName,jdbcType=VARCHAR},
+			</if>
+			<if test="mainPath != null">
+				#{mainPath,jdbcType=VARCHAR},
+			</if>
+			<if test="readcount != null">
+				#{readcount,jdbcType=BIGINT},
+			</if>
+			<if test="thumbnailPath != null">
+				#{thumbnailPath,jdbcType=VARCHAR},
+			</if>
+			<if test="relationProductCount!=null">
+				#{relationProductCount,jdbcType=INTEGER},
+			</if>
+			<if test="relationUserCount!=null">
+				#{relationUserCount,jdbcType=INTEGER},
+			</if>
+			<if test="articleAbstract != null">
+				#{articleAbstract,jdbcType=VARCHAR},
+			</if>
+			<if test="articleContent != null">
+				#{articleContent,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="sendTime != null">
+				#{sendTime,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				#{author,jdbcType=VARCHAR},
+			</if>
+			<if test="authorIcon != null">
+				#{authorIcon,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.ArticleAuto">
+		update t_find_article
+		<set>
+			<if test="articleGroupId != null">
+				article_group_id = #{articleGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="articleName != null">
+				article_name = #{articleName,jdbcType=VARCHAR},
+			</if>
+			<if test="mainPath != null">
+				main_path = #{mainPath,jdbcType=VARCHAR},
+			</if>
+			<if test="readcount != null">
+				readcount = #{readcount,jdbcType=BIGINT},
+			</if>
+			<if test="thumbnailPath != null">
+				thumbnail_path = #{thumbnailPath,jdbcType=VARCHAR},
+			</if>
+			<if test="relationProductCount!=null">
+				relation_product_count=#{relationProductCount,jdbcType=INTEGER},
+			</if>
+			<if test="relationUserCount!=null">
+				relation_user_count=#{relationUserCount,jdbcType=INTEGER},
+			</if>
+			<if test="articleAbstract != null">
+				article_abstract = #{articleAbstract,jdbcType=VARCHAR},
+			</if>
+			<if test="articleContent != null">
+				article_content = #{articleContent,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="sendTime != null">
+				send_time = #{sendTime,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				author=#{author,jdbcType=VARCHAR},
+			</if>
+			<if test="authorIcon != null">
+				author_icon=#{authorIcon,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where article_id = #{articleId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.ArticleAuto">
+		update t_find_article
+		set article_group_id = #{articleGroupId,jdbcType=BIGINT},
+		article_name = #{articleName,jdbcType=VARCHAR},
+		main_path = #{mainPath,jdbcType=VARCHAR},
+		readcount = #{readcount,jdbcType=BIGINT},
+		thumbnail_path = #{thumbnailPath,jdbcType=VARCHAR},
+		relation_product_count=#{relationProductCount,jdbcType=INTEGER},
+		relation_user_count=#{relationUserCount,jdbcType=INTEGER},
+		article_abstract = #{articleAbstract,jdbcType=VARCHAR},
+		article_content = #{articleContent,jdbcType=VARCHAR},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		send_time = #{sendTime,jdbcType=VARCHAR},
+		author=#{author,jdbcType=VARCHAR},
+		author_icon=#{authorIcon,jdbcType=VARCHAR}
+		where article_id = #{articleId,jdbcType=BIGINT}
+	</update>
+
+	<resultMap id="ArticleMap" type="com.essential.find.model.vo.ArticleVo">
+		<id column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="article_name" property="articleName" jdbcType="VARCHAR" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+		<result column="main_path" property="mainPath" jdbcType="VARCHAR" />
+		<result column="readcount" property="readcount" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="send_time" property="sendTime" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="author_icon" property="authorIcon" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 按照分组查询 -->
+	<select id="queryArticleList" resultMap="ArticleMap" parameterType="com.essential.find.model.auto.ArticleAuto">
+		select
+		<!-- <include refid="Base_Column_List" /> -->
+		article.article_id,
+		article.article_name,
+		article.main_path,
+		article.readcount,
+		article.create_time,
+		article.send_time,
+		article.author,
+		article.author_icon,
+		g.group_name
+
+		from t_find_article article
+		left join t_find_article_group g
+		on article.article_group_id = g.article_group_id
+		<where>
+			<!-- 第一次请求 -->
+			<if test="requestType == '0'.toString()">
+			</if>
+			<!-- 刷新 -->
+			<if test="createTime != null and requestType == '1'.toString()">
+    		<![CDATA[and article.create_time > #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="createTime != null and requestType == '2'.toString()">
+    		<![CDATA[and article.create_time < #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="isDelete != null">
+				and article.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="articleGroupId != null and articleGroupId != '0'.toString()">
+				and article.article_group_id = #{articleGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="articleContent != null">
+				and article.article_name Like "%"#{articleContent,jdbcType=VARCHAR}"%"
+			</if>
+		</where>
+		ORDER BY article.create_time DESC
+		<choose>
+			<when test="pageIndex==null">
+				<if test="pageSize != null">
+					limit #{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit 10
+				</if>
+			</when>
+			<otherwise>
+				<if test="pageSize != null">
+					limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit #{pageIndex,jdbcType=INTEGER},10
+				</if>
+			</otherwise>
+		</choose>
+	</select>
+
+
+
+	<!-- 获取文章详情 -->
+	<select id="queryArticleDetailById" resultMap="BaseResultMap" parameterType="com.essential.find.model.auto.ArticleAuto">
+		select article.article_id, article_name, thumbnail_path,
+		article_abstract, article.create_user_id, article.create_time,
+		relation_product_count,relation_user_count,author,author_icon,readcount,article_content,
+		article.is_delete,g.group_name
+		FROM t_find_article article
+		LEFT JOIN t_find_article_group g
+		ON article.article_group_id = g.article_group_id
+		<where>
+			<if test="isDelete != null">
+				and article.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="articleId!=null">
+				and article.article_id = #{articleId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<resultMap id="SearchResultMap" type="com.essential.find.model.vo.ArticleSearchVo">
+		<id column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="article_name" property="articleName" jdbcType="VARCHAR" />
+		<result column="thumbnail_path" property="thumbnailPath" jdbcType="VARCHAR" />
+		<result column="article_abstract" property="articleAbstract" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 发现的搜索查询 -->
+	<select id="queryArticleSearchList" resultMap="SearchResultMap" parameterType="com.essential.find.model.auto.ArticleAuto">
+		SELECT
+		article.article_id,
+		article.article_name,
+		article.thumbnail_path,
+		article.article_abstract,
+		article.create_time,
+		g.group_name
+
+		FROM t_find_article article
+		LEFT JOIN t_find_article_group g
+		ON article.article_group_id = g.article_group_id
+		<where>
+			<!-- 第一次请求 -->
+			<if test="requestType == '0'.toString()">
+			</if>
+			<!-- 刷新 -->
+			<if test="createTime != null and requestType == '1'.toString()">
+    		<![CDATA[and article.create_time > #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="createTime != null and requestType == '2'.toString()">
+    		<![CDATA[and article.create_time < #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="isDelete != null">
+				and article.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="articleContent != null">
+				and (article.article_name Like "%"#{articleContent,jdbcType=VARCHAR}"%" or article.article_abstract Like "%"#{articleContent,jdbcType=VARCHAR}"%" or g.group_name Like "%"#{articleContent,jdbcType=VARCHAR}"%")
+			</if>
+		</where>
+		ORDER BY article.create_time DESC
+		<choose>
+			<when test="pageSize == null">
+				limit 10
+			</when>
+			<otherwise>
+				limit #{pageSize,jdbcType=INTEGER}
+			</otherwise>
+		</choose>
+	</select>
+
+	<!-- 查找符合条件的总个数 -->
+	<select id="queryTotleCount" parameterType="com.essential.find.model.auto.ArticleAuto" resultType="java.lang.Integer">
+		select count(1) from t_find_article
+		<where>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="articleGroupId != null and articleGroupId != '0'.toString()">
+				and article_group_id = #{articleGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="articleContent != null">
+				and article_name Like "%"#{articleContent,jdbcType=VARCHAR}"%"
+			</if>
+		</where>
+
+	</select>
+	
+	<!-- 查询文章数据（富文本格式转换使用） -->
+	<select id="queryArticalEditor" resultMap="BaseResultMap" parameterType="com.essential.find.model.auto.ArticleAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_find_article
+	</select>
+	
+</mapper>

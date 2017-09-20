@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.product.dao.ProductCommentPicAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		<id column="pic_id" property="picId" jdbcType="BIGINT" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="commit_id" property="commitId" jdbcType="BIGINT" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		pic_id, path, commit_id, product_id, is_delete, modify_time, create_time, create_user,
+		modify_user
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_product_commentpic
+		where pic_id = #{picId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_bussiness_product_commentpic
+		where pic_id = #{picId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		insert into t_bussiness_product_commentpic (pic_id, path, commit_id,
+		product_id, is_delete, modify_time,
+		create_time, create_user, modify_user
+		)
+		values (#{picId,jdbcType=BIGINT}, #{path,jdbcType=VARCHAR}, #{commitId,jdbcType=BIGINT},
+		#{productId,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, #{modifyTime,jdbcType=VARCHAR},
+		#{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyUser,jdbcType=BIGINT}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		insert into t_bussiness_product_commentpic
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="picId != null">
+				pic_id,
+			</if>
+			<if test="path != null">
+				path,
+			</if>
+			<if test="commitId != null">
+				commit_id,
+			</if>
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="picId != null">
+				#{picId,jdbcType=BIGINT},
+			</if>
+			<if test="path != null">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="commitId != null">
+				#{commitId,jdbcType=BIGINT},
+			</if>
+			<if test="productId != null">
+				#{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		update t_bussiness_product_commentpic
+		<set>
+			<if test="path != null">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="commitId != null">
+				commit_id = #{commitId,jdbcType=BIGINT},
+			</if>
+			<if test="productId != null">
+				product_id = #{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+		</set>
+		where pic_id = #{picId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		update t_bussiness_product_commentpic
+		set path = #{path,jdbcType=VARCHAR},
+		commit_id = #{commitId,jdbcType=BIGINT},
+		product_id = #{productId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_user = #{modifyUser,jdbcType=BIGINT}
+		where pic_id = #{picId,jdbcType=BIGINT}
+	</update>
+
+	<select id="queryCommentPicByCommentId" resultMap="BaseResultMap" parameterType="com.essential.bussiness.product.model.auto.ProductCommentPicAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_product_commentpic
+		<where>
+			<if test="commitId != null">
+				and commit_id = #{commitId,jdbcType=BIGINT}
+			</if>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertProductCommentPicList" parameterType="java.util.List">
+		insert into t_bussiness_product_commentpic (path, commit_id,
+		product_id, is_delete, modify_time,
+		create_time, create_user, modify_user)
+		values
+		<foreach collection="list" item="item" index="" separator="," open="" close="">
+			( #{item.path,jdbcType=VARCHAR}, #{item.commitId,jdbcType=BIGINT},
+			#{item.productId,jdbcType=BIGINT}, #{item.isDelete,jdbcType=INTEGER}, #{item.modifyTime,jdbcType=VARCHAR},
+			#{item.createTime,jdbcType=VARCHAR}, #{item.createUser,jdbcType=BIGINT}, #{item.modifyUser,jdbcType=BIGINT}
+			)
+		</foreach>
+	</insert>
+</mapper>

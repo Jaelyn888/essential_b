@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.coupon.dao.CouponAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.coupon.model.auto.CouponAuto" >
+    <id column="coupon_id" property="couponId" jdbcType="BIGINT" />
+    <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+    <result column="coupon_is_display" property="couponIsDisplay" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="coupon_type" property="couponType" jdbcType="INTEGER" />
+    <result column="minimum_amount" property="minimumAmount" jdbcType="DECIMAL" />
+    <result column="coupon_amount" property="couponAmount" jdbcType="DECIMAL" />
+    <result column="issuing_scope" property="issuingScope" jdbcType="INTEGER" />
+    <result column="redeem_code" property="redeemCode" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="source_type" property="sourceType" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="attr7" property="attr7" jdbcType="VARCHAR" />
+    <result column="attr8" property="attr8" jdbcType="VARCHAR" />
+    <result column="attr9" property="attr9" jdbcType="VARCHAR" />
+    <result column="attr10" property="attr10" jdbcType="VARCHAR" />
+    <result column="attr11" property="attr11" jdbcType="VARCHAR" />
+    <result column="attr12" property="attr12" jdbcType="VARCHAR" />
+    <result column="attr13" property="attr13" jdbcType="VARCHAR" />
+    <result column="attr14" property="attr14" jdbcType="VARCHAR" />
+    <result column="attr15" property="attr15" jdbcType="VARCHAR" />
+    <result column="attr16" property="attr16" jdbcType="VARCHAR" />
+    <result column="attr17" property="attr17" jdbcType="VARCHAR" />
+    <result column="attr18" property="attr18" jdbcType="VARCHAR" />
+    <result column="attr19" property="attr19" jdbcType="VARCHAR" />
+    <result column="attr20" property="attr20" jdbcType="VARCHAR" />
+    <result column="attr21" property="attr21" jdbcType="VARCHAR" />
+    <result column="attr22" property="attr22" jdbcType="VARCHAR" />
+    <result column="attr23" property="attr23" jdbcType="VARCHAR" />
+    <result column="attr24" property="attr24" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coupon_id, coupon_name, coupon_is_display, start_time, end_time, coupon_type, minimum_amount, 
+    coupon_amount, issuing_scope, redeem_code, is_delete, create_time, modify_time, create_user, 
+    modify_user, shop_id, source_type, attr1, attr2, attr3, attr4, attr5, attr6, attr7, 
+    attr8, attr9, attr10, attr11, attr12, attr13, attr14, attr15, attr16, attr17, attr18, 
+    attr19, attr20, attr21, attr22, attr23, attr24
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.auto.CouponAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.coupon.model.auto.CouponAutoExample" >
+    delete from t_coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.essential.coupon.model.auto.CouponAuto" >
+    insert into t_coupon (coupon_id, coupon_name, coupon_is_display, 
+      start_time, end_time, coupon_type, 
+      minimum_amount, coupon_amount, issuing_scope, 
+      redeem_code, is_delete, create_time, 
+      modify_time, create_user, modify_user, 
+      shop_id, source_type, attr1, 
+      attr2, attr3, attr4, 
+      attr5, attr6, attr7, 
+      attr8, attr9, attr10, 
+      attr11, attr12, attr13, 
+      attr14, attr15, attr16, 
+      attr17, attr18, attr19, 
+      attr20, attr21, attr22, 
+      attr23, attr24)
+    values (#{couponId,jdbcType=BIGINT}, #{couponName,jdbcType=VARCHAR}, #{couponIsDisplay,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{couponType,jdbcType=INTEGER}, 
+      #{minimumAmount,jdbcType=DECIMAL}, #{couponAmount,jdbcType=DECIMAL}, #{issuingScope,jdbcType=INTEGER}, 
+      #{redeemCode,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyUser,jdbcType=BIGINT}, 
+      #{shopId,jdbcType=BIGINT}, #{sourceType,jdbcType=INTEGER}, #{attr1,jdbcType=VARCHAR}, 
+      #{attr2,jdbcType=VARCHAR}, #{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, 
+      #{attr5,jdbcType=VARCHAR}, #{attr6,jdbcType=VARCHAR}, #{attr7,jdbcType=VARCHAR}, 
+      #{attr8,jdbcType=VARCHAR}, #{attr9,jdbcType=VARCHAR}, #{attr10,jdbcType=VARCHAR}, 
+      #{attr11,jdbcType=VARCHAR}, #{attr12,jdbcType=VARCHAR}, #{attr13,jdbcType=VARCHAR}, 
+      #{attr14,jdbcType=VARCHAR}, #{attr15,jdbcType=VARCHAR}, #{attr16,jdbcType=VARCHAR}, 
+      #{attr17,jdbcType=VARCHAR}, #{attr18,jdbcType=VARCHAR}, #{attr19,jdbcType=VARCHAR}, 
+      #{attr20,jdbcType=VARCHAR}, #{attr21,jdbcType=VARCHAR}, #{attr22,jdbcType=VARCHAR}, 
+      #{attr23,jdbcType=VARCHAR}, #{attr24,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.coupon.model.auto.CouponAuto" >
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="couponName != null" >
+        coupon_name,
+      </if>
+      <if test="couponIsDisplay != null" >
+        coupon_is_display,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="couponType != null" >
+        coupon_type,
+      </if>
+      <if test="minimumAmount != null" >
+        minimum_amount,
+      </if>
+      <if test="couponAmount != null" >
+        coupon_amount,
+      </if>
+      <if test="issuingScope != null" >
+        issuing_scope,
+      </if>
+      <if test="redeemCode != null" >
+        redeem_code,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+      <if test="attr3 != null" >
+        attr3,
+      </if>
+      <if test="attr4 != null" >
+        attr4,
+      </if>
+      <if test="attr5 != null" >
+        attr5,
+      </if>
+      <if test="attr6 != null" >
+        attr6,
+      </if>
+      <if test="attr7 != null" >
+        attr7,
+      </if>
+      <if test="attr8 != null" >
+        attr8,
+      </if>
+      <if test="attr9 != null" >
+        attr9,
+      </if>
+      <if test="attr10 != null" >
+        attr10,
+      </if>
+      <if test="attr11 != null" >
+        attr11,
+      </if>
+      <if test="attr12 != null" >
+        attr12,
+      </if>
+      <if test="attr13 != null" >
+        attr13,
+      </if>
+      <if test="attr14 != null" >
+        attr14,
+      </if>
+      <if test="attr15 != null" >
+        attr15,
+      </if>
+      <if test="attr16 != null" >
+        attr16,
+      </if>
+      <if test="attr17 != null" >
+        attr17,
+      </if>
+      <if test="attr18 != null" >
+        attr18,
+      </if>
+      <if test="attr19 != null" >
+        attr19,
+      </if>
+      <if test="attr20 != null" >
+        attr20,
+      </if>
+      <if test="attr21 != null" >
+        attr21,
+      </if>
+      <if test="attr22 != null" >
+        attr22,
+      </if>
+      <if test="attr23 != null" >
+        attr23,
+      </if>
+      <if test="attr24 != null" >
+        attr24,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="couponName != null" >
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponIsDisplay != null" >
+        #{couponIsDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="minimumAmount != null" >
+        #{minimumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount != null" >
+        #{couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="issuingScope != null" >
+        #{issuingScope,jdbcType=INTEGER},
+      </if>
+      <if test="redeemCode != null" >
+        #{redeemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="attr7 != null" >
+        #{attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="attr8 != null" >
+        #{attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="attr9 != null" >
+        #{attr9,jdbcType=VARCHAR},
+      </if>
+      <if test="attr10 != null" >
+        #{attr10,jdbcType=VARCHAR},
+      </if>
+      <if test="attr11 != null" >
+        #{attr11,jdbcType=VARCHAR},
+      </if>
+      <if test="attr12 != null" >
+        #{attr12,jdbcType=VARCHAR},
+      </if>
+      <if test="attr13 != null" >
+        #{attr13,jdbcType=VARCHAR},
+      </if>
+      <if test="attr14 != null" >
+        #{attr14,jdbcType=VARCHAR},
+      </if>
+      <if test="attr15 != null" >
+        #{attr15,jdbcType=VARCHAR},
+      </if>
+      <if test="attr16 != null" >
+        #{attr16,jdbcType=VARCHAR},
+      </if>
+      <if test="attr17 != null" >
+        #{attr17,jdbcType=VARCHAR},
+      </if>
+      <if test="attr18 != null" >
+        #{attr18,jdbcType=VARCHAR},
+      </if>
+      <if test="attr19 != null" >
+        #{attr19,jdbcType=VARCHAR},
+      </if>
+      <if test="attr20 != null" >
+        #{attr20,jdbcType=VARCHAR},
+      </if>
+      <if test="attr21 != null" >
+        #{attr21,jdbcType=VARCHAR},
+      </if>
+      <if test="attr22 != null" >
+        #{attr22,jdbcType=VARCHAR},
+      </if>
+      <if test="attr23 != null" >
+        #{attr23,jdbcType=VARCHAR},
+      </if>
+      <if test="attr24 != null" >
+        #{attr24,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.coupon.model.auto.CouponAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_coupon
+    <set >
+      <if test="record.couponId != null" >
+        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      </if>
+      <if test="record.couponName != null" >
+        coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponIsDisplay != null" >
+        coupon_is_display = #{record.couponIsDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponType != null" >
+        coupon_type = #{record.couponType,jdbcType=INTEGER},
+      </if>
+      <if test="record.minimumAmount != null" >
+        minimum_amount = #{record.minimumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponAmount != null" >
+        coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issuingScope != null" >
+        issuing_scope = #{record.issuingScope,jdbcType=INTEGER},
+      </if>
+      <if test="record.redeemCode != null" >
+        redeem_code = #{record.redeemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.modifyUser != null" >
+        modify_user = #{record.modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sourceType != null" >
+        source_type = #{record.sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null" >
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null" >
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr5 != null" >
+        attr5 = #{record.attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr6 != null" >
+        attr6 = #{record.attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr7 != null" >
+        attr7 = #{record.attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr8 != null" >
+        attr8 = #{record.attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr9 != null" >
+        attr9 = #{record.attr9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr10 != null" >
+        attr10 = #{record.attr10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr11 != null" >
+        attr11 = #{record.attr11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr12 != null" >
+        attr12 = #{record.attr12,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr13 != null" >
+        attr13 = #{record.attr13,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr14 != null" >
+        attr14 = #{record.attr14,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr15 != null" >
+        attr15 = #{record.attr15,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr16 != null" >
+        attr16 = #{record.attr16,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr17 != null" >
+        attr17 = #{record.attr17,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr18 != null" >
+        attr18 = #{record.attr18,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr19 != null" >
+        attr19 = #{record.attr19,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr20 != null" >
+        attr20 = #{record.attr20,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr21 != null" >
+        attr21 = #{record.attr21,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr22 != null" >
+        attr22 = #{record.attr22,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr23 != null" >
+        attr23 = #{record.attr23,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr24 != null" >
+        attr24 = #{record.attr24,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_coupon
+    set coupon_id = #{record.couponId,jdbcType=BIGINT},
+      coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      coupon_is_display = #{record.couponIsDisplay,jdbcType=INTEGER},
+      start_time = #{record.startTime,jdbcType=VARCHAR},
+      end_time = #{record.endTime,jdbcType=VARCHAR},
+      coupon_type = #{record.couponType,jdbcType=INTEGER},
+      minimum_amount = #{record.minimumAmount,jdbcType=DECIMAL},
+      coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      issuing_scope = #{record.issuingScope,jdbcType=INTEGER},
+      redeem_code = #{record.redeemCode,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=BIGINT},
+      modify_user = #{record.modifyUser,jdbcType=BIGINT},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      source_type = #{record.sourceType,jdbcType=INTEGER},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      attr5 = #{record.attr5,jdbcType=VARCHAR},
+      attr6 = #{record.attr6,jdbcType=VARCHAR},
+      attr7 = #{record.attr7,jdbcType=VARCHAR},
+      attr8 = #{record.attr8,jdbcType=VARCHAR},
+      attr9 = #{record.attr9,jdbcType=VARCHAR},
+      attr10 = #{record.attr10,jdbcType=VARCHAR},
+      attr11 = #{record.attr11,jdbcType=VARCHAR},
+      attr12 = #{record.attr12,jdbcType=VARCHAR},
+      attr13 = #{record.attr13,jdbcType=VARCHAR},
+      attr14 = #{record.attr14,jdbcType=VARCHAR},
+      attr15 = #{record.attr15,jdbcType=VARCHAR},
+      attr16 = #{record.attr16,jdbcType=VARCHAR},
+      attr17 = #{record.attr17,jdbcType=VARCHAR},
+      attr18 = #{record.attr18,jdbcType=VARCHAR},
+      attr19 = #{record.attr19,jdbcType=VARCHAR},
+      attr20 = #{record.attr20,jdbcType=VARCHAR},
+      attr21 = #{record.attr21,jdbcType=VARCHAR},
+      attr22 = #{record.attr22,jdbcType=VARCHAR},
+      attr23 = #{record.attr23,jdbcType=VARCHAR},
+      attr24 = #{record.attr24,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.coupon.model.auto.CouponAuto" >
+    update t_coupon
+    <set >
+      <if test="couponName != null" >
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponIsDisplay != null" >
+        coupon_is_display = #{couponIsDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        coupon_type = #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="minimumAmount != null" >
+        minimum_amount = #{minimumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount != null" >
+        coupon_amount = #{couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="issuingScope != null" >
+        issuing_scope = #{issuingScope,jdbcType=INTEGER},
+      </if>
+      <if test="redeemCode != null" >
+        redeem_code = #{redeemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="sourceType != null" >
+        source_type = #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        attr3 = #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        attr4 = #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        attr5 = #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        attr6 = #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="attr7 != null" >
+        attr7 = #{attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="attr8 != null" >
+        attr8 = #{attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="attr9 != null" >
+        attr9 = #{attr9,jdbcType=VARCHAR},
+      </if>
+      <if test="attr10 != null" >
+        attr10 = #{attr10,jdbcType=VARCHAR},
+      </if>
+      <if test="attr11 != null" >
+        attr11 = #{attr11,jdbcType=VARCHAR},
+      </if>
+      <if test="attr12 != null" >
+        attr12 = #{attr12,jdbcType=VARCHAR},
+      </if>
+      <if test="attr13 != null" >
+        attr13 = #{attr13,jdbcType=VARCHAR},
+      </if>
+      <if test="attr14 != null" >
+        attr14 = #{attr14,jdbcType=VARCHAR},
+      </if>
+      <if test="attr15 != null" >
+        attr15 = #{attr15,jdbcType=VARCHAR},
+      </if>
+      <if test="attr16 != null" >
+        attr16 = #{attr16,jdbcType=VARCHAR},
+      </if>
+      <if test="attr17 != null" >
+        attr17 = #{attr17,jdbcType=VARCHAR},
+      </if>
+      <if test="attr18 != null" >
+        attr18 = #{attr18,jdbcType=VARCHAR},
+      </if>
+      <if test="attr19 != null" >
+        attr19 = #{attr19,jdbcType=VARCHAR},
+      </if>
+      <if test="attr20 != null" >
+        attr20 = #{attr20,jdbcType=VARCHAR},
+      </if>
+      <if test="attr21 != null" >
+        attr21 = #{attr21,jdbcType=VARCHAR},
+      </if>
+      <if test="attr22 != null" >
+        attr22 = #{attr22,jdbcType=VARCHAR},
+      </if>
+      <if test="attr23 != null" >
+        attr23 = #{attr23,jdbcType=VARCHAR},
+      </if>
+      <if test="attr24 != null" >
+        attr24 = #{attr24,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.coupon.model.auto.CouponAuto" >
+    update t_coupon
+    set coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_is_display = #{couponIsDisplay,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      coupon_type = #{couponType,jdbcType=INTEGER},
+      minimum_amount = #{minimumAmount,jdbcType=DECIMAL},
+      coupon_amount = #{couponAmount,jdbcType=DECIMAL},
+      issuing_scope = #{issuingScope,jdbcType=INTEGER},
+      redeem_code = #{redeemCode,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      source_type = #{sourceType,jdbcType=INTEGER},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR},
+      attr3 = #{attr3,jdbcType=VARCHAR},
+      attr4 = #{attr4,jdbcType=VARCHAR},
+      attr5 = #{attr5,jdbcType=VARCHAR},
+      attr6 = #{attr6,jdbcType=VARCHAR},
+      attr7 = #{attr7,jdbcType=VARCHAR},
+      attr8 = #{attr8,jdbcType=VARCHAR},
+      attr9 = #{attr9,jdbcType=VARCHAR},
+      attr10 = #{attr10,jdbcType=VARCHAR},
+      attr11 = #{attr11,jdbcType=VARCHAR},
+      attr12 = #{attr12,jdbcType=VARCHAR},
+      attr13 = #{attr13,jdbcType=VARCHAR},
+      attr14 = #{attr14,jdbcType=VARCHAR},
+      attr15 = #{attr15,jdbcType=VARCHAR},
+      attr16 = #{attr16,jdbcType=VARCHAR},
+      attr17 = #{attr17,jdbcType=VARCHAR},
+      attr18 = #{attr18,jdbcType=VARCHAR},
+      attr19 = #{attr19,jdbcType=VARCHAR},
+      attr20 = #{attr20,jdbcType=VARCHAR},
+      attr21 = #{attr21,jdbcType=VARCHAR},
+      attr22 = #{attr22,jdbcType=VARCHAR},
+      attr23 = #{attr23,jdbcType=VARCHAR},
+      attr24 = #{attr24,jdbcType=VARCHAR}
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 查询未使用的优惠券 -->
+  <!-- 全用户 -->
+  <select id="queryCouponNotUsedAllUser" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+    SELECT tp.*
+ 	FROM t_coupon tp , t_user_userbaseinfo u
+	WHERE u.user_id=#{userId,jdbcType=BIGINT} and tp.is_delete = 0
+	 and tp.issuing_scope = 1 AND UNIX_TIMESTAMP(tp.create_time) >= UNIX_TIMESTAMP(u.create_time) 
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	<if test="isAvailable != null">
+		<![CDATA[ and UNIX_TIMESTAMP(tp.start_time) <= UNIX_TIMESTAMP(NOW()) 
+					and ((tp.coupon_type=1 and tp.minimum_amount < #{orderMoney,jdbcType=DECIMAL})
+					    	or tp.coupon_type=2
+					    )
+		]]>
+	</if>
+	<if test="queryCouponType == 1">
+		and tp.source_type=1
+	</if>
+	AND UNIX_TIMESTAMP(tp.end_time) > UNIX_TIMESTAMP(NOW())
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER} 
+  </select>
+  <!-- 新用户 -->
+  <select id="queryCouponNotUsedNewUser" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+	SELECT tp.*
+ 	FROM t_coupon tp , t_user_userbaseinfo u
+	WHERE u.user_id=#{userId,jdbcType=BIGINT} and tp.is_delete = 0
+	and tp.issuing_scope = 2 AND <![CDATA[UNIX_TIMESTAMP(tp.create_time) < UNIX_TIMESTAMP(u.create_time)]]>  
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	<if test="isAvailable != null">
+		<![CDATA[ and UNIX_TIMESTAMP(tp.start_time) <= UNIX_TIMESTAMP(NOW()) 
+					and ((tp.coupon_type=1 and tp.minimum_amount < #{orderMoney,jdbcType=DECIMAL})
+					    	or tp.coupon_type=2
+					    )
+		]]>
+	</if>
+	<if test="queryCouponType == 1">
+		and tp.source_type=1
+	</if>
+	AND UNIX_TIMESTAMP(tp.end_time) > UNIX_TIMESTAMP(NOW())
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <!-- 兑换 -->
+  <select id="queryCouponNotUsedReceive" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+	SELECT tp.*
+ 	FROM t_coupon_user_receive tpr , t_coupon tp
+	WHERE tpr.user_id = #{userId,jdbcType=BIGINT} and tpr.is_delete = 0 and tp.is_delete = 0 AND tp.issuing_scope =3 AND tp.coupon_id = tpr.coupon_id
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	<if test="isAvailable != null">
+		<![CDATA[ and UNIX_TIMESTAMP(tp.start_time) <= UNIX_TIMESTAMP(NOW()) 
+					and ((tp.coupon_type=1 and tp.minimum_amount < #{orderMoney,jdbcType=DECIMAL})
+					    	or tp.coupon_type=2
+					    )
+		]]>
+	</if>
+	<if test="queryCouponType == 1">
+		and tp.source_type=1
+	</if>
+	AND UNIX_TIMESTAMP(tp.end_time) > UNIX_TIMESTAMP(NOW())
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 查询已过期的优惠券 -->
+  <!-- 全用户 -->
+  <select id="queryCouponHasFailedAllUser" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+    SELECT tp.*
+ 	FROM t_coupon tp , t_user_userbaseinfo u
+	WHERE u.user_id=#{userId,jdbcType=BIGINT} and tp.is_delete = 0
+	 and tp.issuing_scope = 1 AND UNIX_TIMESTAMP(tp.create_time) >= UNIX_TIMESTAMP(u.create_time) 
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	AND <![CDATA[UNIX_TIMESTAMP(tp.end_time) < UNIX_TIMESTAMP(NOW())]]>
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER} 
+  </select>
+  <!-- 新用户 -->
+  <select id="queryCouponHasFailedNewUser" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+	SELECT tp.*
+ 	FROM t_coupon tp , t_user_userbaseinfo u
+	WHERE u.user_id=#{userId,jdbcType=BIGINT} and tp.is_delete = 0 and tp.issuing_scope = 2 AND <![CDATA[UNIX_TIMESTAMP(tp.create_time) < UNIX_TIMESTAMP(u.create_time)]]>  
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	AND <![CDATA[UNIX_TIMESTAMP(tp.end_time) < UNIX_TIMESTAMP(NOW())]]>
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <!-- 兑换 -->
+  <select id="queryCouponHasFailedReceive" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+	SELECT tp.*
+ 	FROM t_coupon_user_receive tpr , t_coupon tp
+	WHERE tpr.user_id = #{userId,jdbcType=BIGINT} and tpr.is_delete = 0 and tp.is_delete = 0 AND tp.issuing_scope =3 AND tp.coupon_id = tpr.coupon_id
+	AND tp.coupon_id NOT IN ( SELECT tu.coupon_id FROM t_coupon_used tu WHERE tu.create_user = #{userId,jdbcType=BIGINT} and tu.is_delete = 0)
+	AND <![CDATA[UNIX_TIMESTAMP(tp.end_time) < UNIX_TIMESTAMP(NOW())]]>
+	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 删除优惠券 -->
+  <update id="updateIsdelete" parameterType="com.essential.coupon.model.auto.CouponAuto" >
+    update t_coupon
+    <set >
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 优惠券列表（平台） -->
+  <select id="querycouponList" resultMap="BaseResultMap" parameterType="com.essential.coupon.model.vo.CouponAutoVo" >
+	SELECT tp.coupon_id,
+		tp.coupon_name,
+		tp.coupon_is_display,
+		tp.start_time,
+		tp.end_time,
+		tp.coupon_type,
+		(CASE WHEN tp.coupon_type=1 THEN '满减' 
+ 			WHEN tp.coupon_type=2 THEN '代金券' END ) AS coupon_type_name,
+		tp.minimum_amount,
+		tp.coupon_amount,
+		tp.issuing_scope,
+		(CASE WHEN tp.issuing_scope=1 THEN '全部用户' 
+ 			WHEN tp.issuing_scope=2 THEN '新注册用户' 
+				WHEN tp.issuing_scope=3 THEN '兑换' END ) AS issuing_scope_name,
+		(CASE WHEN UNIX_TIMESTAMP(tp.start_time) > UNIX_TIMESTAMP(NOW()) THEN '未开始'
+			WHEN <![CDATA[UNIX_TIMESTAMP(tp.start_time) < UNIX_TIMESTAMP(NOW())]]> AND UNIX_TIMESTAMP(tp.end_time) > UNIX_TIMESTAMP(NOW()) THEN '进行中'
+				WHEN <![CDATA[UNIX_TIMESTAMP(tp.end_time) < UNIX_TIMESTAMP(NOW())]]> THEN '已结束' END ) AS coupon_state_name
+		FROM t_coupon tp 
+		<where>
+			and tp.source_type=1 AND tp.is_delete=0
+			<if test="type == 1" >
+      		</if>
+			<if test="type == 2" >
+				and UNIX_TIMESTAMP(tp.start_time) > UNIX_TIMESTAMP(NOW())
+      		</if>
+      		<if test="type == 3" >
+      			and <![CDATA[UNIX_TIMESTAMP(tp.start_time) < UNIX_TIMESTAMP(NOW())]]> AND UNIX_TIMESTAMP(tp.end_time) > UNIX_TIMESTAMP(NOW())
+      		</if>
+      		<if test="type == 4" >
+      			and <![CDATA[UNIX_TIMESTAMP(tp.end_time) < UNIX_TIMESTAMP(NOW())]]>
+      		</if>
+      		<if test="couponName != null" >
+        		and coupon_name LIKE "%"#{couponName,jdbcType=VARCHAR}"%"
+      		</if>
+		</where>
+  </select>
+  
+  <select id="querycouponisexist" resultMap="BaseResultMap" parameterType="String">
+  
+  select a.coupon_id  from t_coupon a where a.is_delete=0 and UNIX_TIMESTAMP(a.start_time)&lt;UNIX_TIMESTAMP(now()) and UNIX_TIMESTAMP
+
+(a.end_time)&gt;UNIX_TIMESTAMP(NOW()) and a.redeem_code=#{redeemCode,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="selectCouponId"  resultMap="BaseResultMap" parameterType="String">
+  
+  select b.coupon_id  from t_coupon b  where b.redeem_code=#{redeemCode,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

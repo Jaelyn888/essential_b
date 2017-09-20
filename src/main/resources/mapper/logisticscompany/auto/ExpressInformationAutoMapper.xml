@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.logisticscompany.dao.ExpressInformationAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.logisticscompany.model.auto.ExpressInformationAuto" >
+    <id column="express_id" property="expressId" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="company_describe" property="companyDescribe" jdbcType="VARCHAR" />
+    <result column="express_type" property="expressType" jdbcType="INTEGER" />
+    <result column="express_type_name" property="expressTypeName" jdbcType="VARCHAR" />
+    <result column="national_code" property="nationalCode" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+    <result column="remark7" property="remark7" jdbcType="VARCHAR" />
+    <result column="remark8" property="remark8" jdbcType="VARCHAR" />
+    <result column="remark9" property="remark9" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    express_id, company_name, company_code, company_describe, express_type, express_type_name, 
+    national_code, create_user, create_time, modify_user, modify_time, is_delete, remark1, 
+    remark2, remark3, remark4, remark5, remark6, remark7, remark8, remark9
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_express_information
+    where express_id = #{expressId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_express_information
+    where express_id = #{expressId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.logisticscompany.model.auto.ExpressInformationAuto" >
+    insert into t_express_information (express_id, company_name, company_code, 
+      company_describe, express_type, express_type_name, 
+      national_code, create_user, create_time, 
+      modify_user, modify_time, is_delete, 
+      remark1, remark2, remark3, 
+      remark4, remark5, remark6, 
+      remark7, remark8, remark9
+      )
+    values (#{expressId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+      #{companyDescribe,jdbcType=VARCHAR}, #{expressType,jdbcType=INTEGER}, #{expressTypeName,jdbcType=VARCHAR}, 
+      #{nationalCode,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR}, 
+      #{modifyUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, 
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, 
+      #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, #{remark6,jdbcType=VARCHAR}, 
+      #{remark7,jdbcType=VARCHAR}, #{remark8,jdbcType=VARCHAR}, #{remark9,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.logisticscompany.model.auto.ExpressInformationAuto" >
+    insert into t_express_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="expressId != null" >
+        express_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyCode != null" >
+        company_code,
+      </if>
+      <if test="companyDescribe != null" >
+        company_describe,
+      </if>
+      <if test="expressType != null" >
+        express_type,
+      </if>
+      <if test="expressTypeName != null" >
+        express_type_name,
+      </if>
+      <if test="nationalCode != null" >
+        national_code,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+      <if test="remark7 != null" >
+        remark7,
+      </if>
+      <if test="remark8 != null" >
+        remark8,
+      </if>
+      <if test="remark9 != null" >
+        remark9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="expressId != null" >
+        #{expressId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDescribe != null" >
+        #{companyDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="expressType != null" >
+        #{expressType,jdbcType=INTEGER},
+      </if>
+      <if test="expressTypeName != null" >
+        #{expressTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nationalCode != null" >
+        #{nationalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        #{remark9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.logisticscompany.model.auto.ExpressInformationAuto" >
+    update t_express_information
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDescribe != null" >
+        company_describe = #{companyDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="expressType != null" >
+        express_type = #{expressType,jdbcType=INTEGER},
+      </if>
+      <if test="expressTypeName != null" >
+        express_type_name = #{expressTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nationalCode != null" >
+        national_code = #{nationalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where express_id = #{expressId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.logisticscompany.model.auto.ExpressInformationAuto" >
+    update t_express_information
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_code = #{companyCode,jdbcType=VARCHAR},
+      company_describe = #{companyDescribe,jdbcType=VARCHAR},
+      express_type = #{expressType,jdbcType=INTEGER},
+      express_type_name = #{expressTypeName,jdbcType=VARCHAR},
+      national_code = #{nationalCode,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR},
+      remark7 = #{remark7,jdbcType=VARCHAR},
+      remark8 = #{remark8,jdbcType=VARCHAR},
+      remark9 = #{remark9,jdbcType=VARCHAR}
+    where express_id = #{expressId,jdbcType=BIGINT}
+  </update>
+  
+    <!-- 查询快递信息列表 -->
+  <select id="queryExpressInfo" resultMap="BaseResultMap" parameterType="com.essential.logisticscompany.model.vo.ExpressInformationVo" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_express_information
+    <where>
+      <if test="expressId != null" >
+       	and express_id = #{expressId,jdbcType=BIGINT}
+      </if>
+      <if test="companyName != null" >
+        and company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyCode != null" >
+        and company_code = #{companyCode,jdbcType=VARCHAR}
+      </if>
+      <if test="companyDescribe != null" >
+        and company_describe = #{companyDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="expressType != null" >
+        and express_type = #{expressType,jdbcType=INTEGER}
+      </if>
+      <if test="expressTypeName != null" >
+        and express_type_name = #{expressTypeName,jdbcType=VARCHAR}
+      </if>
+      <if test="nationalCode != null" >
+        and national_code = #{nationalCode,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null" >
+        and is_delete = #{isDelete,jdbcType=INTEGER}
+      </if>
+      <if test="remark1 != null" >
+        and remark1 = #{remark1,jdbcType=VARCHAR}
+      </if>
+      <if test="remark2 != null" >
+        and remark2 = #{remark2,jdbcType=VARCHAR}
+      </if>
+      <if test="remark3 != null" >
+        and remark3 = #{remark3,jdbcType=VARCHAR}
+      </if>
+      <if test="remark4 != null" >
+        and remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        and remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        and remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        and remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        and remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        and remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </where>
+    <if test="pageIndex != null">
+    	LIMIT  #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

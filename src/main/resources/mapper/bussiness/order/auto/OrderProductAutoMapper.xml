@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.order.dao.OrderProductAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    <id column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="product_count" property="productCount" jdbcType="INTEGER" />
+    <result column="product_price" property="productPrice" jdbcType="DECIMAL" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_pic" property="productPic" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="order_promotion_id" property="orderPromotionId" jdbcType="INTEGER" />
+    <result column="product_specification" property="productSpecification" jdbcType="VARCHAR" />
+    <result column="user_conpon_id" property="userConponId" jdbcType="BIGINT" />
+    <result column="return_refund_status" property="returnRefundStatus" jdbcType="INTEGER" />
+    <result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="productsku_id" property="productskuId" jdbcType="BIGINT" />
+    <result column="product_activity_price" property="productActivityPrice" jdbcType="DECIMAL" />
+    <result column="category_id" property="categoryId" jdbcType="BIGINT" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+    <result column="product_type_name" property="productTypeName" jdbcType="VARCHAR" />
+    <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="product_refund_price" property="productRefundPrice" jdbcType="DECIMAL" />
+    <result column="coupon_flag" property="couponFlag" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="ProductInfoResultMap" type="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    <result column="product_price" property="productPrice" jdbcType="DECIMAL" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_pic" property="productPic" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="productsku_id" property="productskuId" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <resultMap id="SearchOrderVoResultMap" type="com.essential.bussiness.order.model.vo.SearchOrderVo" >
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_product_id, order_id, product_count, product_price, product_name, product_pic, 
+    product_id, order_promotion_id, product_specification, user_conpon_id,return_refund_status,
+    article_number, attr1, attr2, attr3, attr4,productsku_id,product_activity_price,
+    category_id,category_name,product_type_id,product_type_name,brand_id,brand_name,coupon_flag,product_refund_price
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.order.model.auto.OrderProductAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_product
+    where order_product_id = #{orderProductId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_order_product
+    where order_product_id = #{orderProductId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.bussiness.order.model.auto.OrderProductAutoExample" >
+    delete from t_bussiness_order_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="orderProductId" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    insert into t_bussiness_order_product (order_product_id, order_id, product_count, 
+      product_price, product_name, product_pic, 
+      product_id, order_promotion_id, product_specification, 
+      user_conpon_id, return_refund_status, article_number, attr1, attr2, attr3, attr4,
+      productsku_id, product_activity_price,category_id,category_name,product_type_id,
+      product_type_name,brand_id,brand_name,coupon_flag,product_refund_price)
+    values (#{orderProductId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{productCount,jdbcType=INTEGER}, 
+      #{productPrice,jdbcType=DECIMAL}, #{productName,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=BIGINT}, #{orderPromotionId,jdbcType=INTEGER}, #{productSpecification,jdbcType=VARCHAR}, 
+      #{userConponId,jdbcType=BIGINT},#{returnRefundStatus,jdbcType=INTEGER}, #{articleNumber,jdbcType=VARCHAR},
+      #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR}, #{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR},
+      #{productskuId,jdbcType=BIGINT}, #{productActivityPrice,jdbcType=DECIMAL}, #{categoryId,jdbcType=BIGINT}, 
+      #{categoryName,jdbcType=VARCHAR}, #{productTypeId,jdbcType=BIGINT}, #{productTypeName,jdbcType=VARCHAR},
+      #{brandId,jdbcType=BIGINT}, #{brandName,jdbcType=VARCHAR}, #{couponFlag,jdbcType=INTEGER}, #{productRefundPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    insert into t_bussiness_order_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderProductId != null" >
+        order_product_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="productCount != null" >
+        product_count,
+      </if>
+      <if test="productPrice != null" >
+        product_price,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productPic != null" >
+        product_pic,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="orderPromotionId != null" >
+        order_promotion_id,
+      </if>
+      <if test="productSpecification != null" >
+        product_specification,
+      </if>
+      <if test="userConponId != null" >
+        user_conpon_id,
+      </if>
+      <if test="returnRefundStatus != null" >
+        return_refund_status,
+      </if>
+      <if test="articleNumber != null" >
+        article_number,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+      <if test="attr3 != null" >
+        attr3,
+      </if>
+      <if test="attr4 != null" >
+        attr4,
+      </if>
+      <if test="productskuId != null" >
+        productsku_id,
+      </if>
+      <if test="productActivityPrice != null" >
+        product_activity_price,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="productTypeId != null" >
+        product_type_id,
+      </if>
+      <if test="productTypeName != null" >
+        product_type_name,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="couponFlag != null" >
+        coupon_flag,
+      </if>
+      <if test="productRefundPrice != null" >
+        product_refund_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderProductId != null" >
+        #{orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="productCount != null" >
+        #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null" >
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null" >
+        #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPromotionId != null" >
+        #{orderPromotionId,jdbcType=INTEGER},
+      </if>
+      <if test="productSpecification != null" >
+        #{productSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="userConponId != null" >
+        #{userConponId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundStatus != null" >
+        #{returnRefundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="articleNumber != null" >
+        #{articleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuId != null" >
+        #{productskuId,jdbcType=BIGINT},
+      </if>
+      <if test="productActivityPrice != null" >
+         #{productActivityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTypeId != null" >
+        #{productTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="productTypeName != null" >
+        #{productTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFlag != null" >
+        #{couponFlag,jdbcType=INTEGER},
+      </if>
+      <if test="productRefundPrice != null" >
+        #{productRefundPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.bussiness.order.model.auto.OrderProductAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_bussiness_order_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_bussiness_order_product
+    <set >
+      <if test="record.orderProductId != null" >
+        order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productCount != null" >
+        product_count = #{record.productCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.productPrice != null" >
+        product_price = #{record.productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productName != null" >
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPic != null" >
+        product_pic = #{record.productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productId != null" >
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderPromotionId != null" >
+        order_promotion_id = #{record.orderPromotionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productSpecification != null" >
+        product_specification = #{record.productSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userConponId != null" >
+        user_conpon_id = #{record.userConponId,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnRefundStatus != null" >
+        return_refund_status = #{record.returnRefundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleNumber != null" >
+        article_number = #{record.articleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null" >
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null" >
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productskuId != null" >
+        productsku_id = #{record.productskuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productActivityPrice != null" >
+        product_activity_price = #{record.productActivityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.categoryId != null" >
+        category_id = #{record.categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="record.categoryName != null" >
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productTypeId != null" >
+        product_type_id = #{record.productTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productTypeName != null" >
+        product_type_name = #{record.productTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandId != null" >
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponFlag != null" >
+        coupon_flag = #{record.couponFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.productRefundPrice != null" >
+        product_refund_price = #{record.productRefundPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_bussiness_order_product
+    set order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      product_count = #{record.productCount,jdbcType=INTEGER},
+      product_price = #{record.productPrice,jdbcType=DECIMAL},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_pic = #{record.productPic,jdbcType=VARCHAR},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      order_promotion_id = #{record.orderPromotionId,jdbcType=INTEGER},
+      product_specification = #{record.productSpecification,jdbcType=VARCHAR},
+      user_conpon_id = #{record.userConponId,jdbcType=BIGINT},
+      return_refund_status = #{record.returnRefundStatus,jdbcType=INTEGER},
+      article_number = #{record.articleNumber,jdbcType=VARCHAR},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      productsku_id = #{record.productskuId,jdbcType=BIGINT},
+      product_activity_price = #{record.productActivityPrice,jdbcType=DECIMAL},
+      category_id = #{record.categoryId,jdbcType=BIGINT},
+      category_name = #{record.categoryName,jdbcType=VARCHAR},
+      product_type_id = #{record.productTypeId,jdbcType=BIGINT},
+      product_type_name = #{record.productTypeName,jdbcType=VARCHAR},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      coupon_flag = #{record.couponFlag,jdbcType=INTEGER},
+      product_refund_price = #{record.productRefundPrice,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    update t_bussiness_order_product
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="productCount != null" >
+        product_count = #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null" >
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null" >
+        product_pic = #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPromotionId != null" >
+        order_promotion_id = #{orderPromotionId,jdbcType=INTEGER},
+      </if>
+      <if test="productSpecification != null" >
+        product_specification = #{productSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="userConponId != null" >
+        user_conpon_id = #{userConponId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundStatus != null" >
+        return_refund_status = #{returnRefundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="articleNumber != null" >
+        article_number = #{articleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        attr3 = #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        attr4 = #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuId != null" >
+        productsku_id = #{productskuId,jdbcType=BIGINT},
+      </if>
+      <if test="productActivityPrice != null" >
+        product_activity_price = #{productActivityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTypeId != null" >
+        product_type_id = #{productTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="productTypeName != null" >
+        product_type_name = #{productTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFlag != null" >
+        coupon_flag = #{couponFlag,jdbcType=INTEGER},
+      </if>
+      <if test="productRefundPrice != null" >
+        product_refund_price = #{productRefundPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where order_product_id = #{orderProductId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto" >
+    update t_bussiness_order_product
+    set order_id = #{orderId,jdbcType=BIGINT},
+      product_count = #{productCount,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_pic = #{productPic,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      order_promotion_id = #{orderPromotionId,jdbcType=INTEGER},
+      product_specification = #{productSpecification,jdbcType=VARCHAR},
+      user_conpon_id = #{userConponId,jdbcType=BIGINT},
+      return_refund_status = #{returnRefundStatus,jdbcType=INTEGER},
+      article_number = #{articleNumber,jdbcType=VARCHAR},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR},
+      attr3 = #{attr3,jdbcType=VARCHAR},
+      attr4 = #{attr4,jdbcType=VARCHAR},
+      productsku_id = #{productskuId,jdbcType=BIGINT},
+      product_activity_price = #{productActivityPrice,jdbcType=DECIMAL},
+      category_id = #{categoryId,jdbcType=BIGINT},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      product_type_id = #{productTypeId,jdbcType=BIGINT},
+      product_type_name = #{productTypeName,jdbcType=VARCHAR},
+      brand_id = #{brandId,jdbcType=BIGINT},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      coupon_flag = #{couponFlag,jdbcType=INTEGER},
+      product_refund_price = #{productRefundPrice,jdbcType=DECIMAL}
+    where order_product_id = #{orderProductId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectProductInfoByProductSkuId" resultMap="ProductInfoResultMap" parameterType="java.lang.Long">
+  	SELECT a.productsku_id,a.prices as product_price,b.product_name AS product_name,
+  		   c.path AS product_pic,a.product_id AS product_id 
+  		FROM t_bussiness_productsku a
+				LEFT JOIN t_bussiness_product b
+				ON	a.product_id = b.product_id
+				LEFT JOIN t_bussiness_productpic c
+				ON	b.product_id = c.product_id
+		WHERE a.productsku_id = #{productSkuId,jdbcType=BIGINT}
+				and a.is_delete = '0'
+    			and c.status = '0'
+    			and c.mainpic = '1'
+  </select>
+  
+  <select id="selectForList" resultMap="BaseResultMap" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto">
+  	select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_product
+    <where>
+    	<if test="orderId != null" >
+        	and order_id = #{orderId,jdbcType=BIGINT}
+	     </if>
+	     <if test="productCount != null" >
+	       and product_count = #{productCount,jdbcType=INTEGER}
+	     </if>
+	     <if test="productPrice != null" >
+	       and product_price = #{productPrice,jdbcType=DECIMAL}
+	     </if>
+	     <if test="productName != null" >
+	       and product_name like "%"#{productName,jdbcType=VARCHAR}"%"
+	     </if>
+	     <if test="productPic != null" >
+	       and product_pic = #{productPic,jdbcType=VARCHAR}
+	     </if>
+	     <if test="productId != null" >
+	       and product_id = #{productId,jdbcType=BIGINT}
+	     </if>
+	     <if test="orderPromotionId != null" >
+	       and order_promotion_id = #{orderPromotionId,jdbcType=INTEGER}
+	     </if>
+	     <if test="productSpecification != null" >
+	       and product_specification = #{productSpecification,jdbcType=VARCHAR}
+	     </if>
+	     <if test="userConponId != null" >
+	       and user_conpon_id = #{userConponId,jdbcType=BIGINT}
+	     </if>
+	     <if test="returnRefundStatus != null" >
+	       and return_refund_status = #{returnRefundStatus,jdbcType=INTEGER}
+	     </if>
+	     <if test="articleNumber != null" >
+	       and article_number = #{articleNumber,jdbcType=VARCHAR}
+	     </if>
+	     <if test="attr1 != null" >
+	       and attr1 = #{attr1,jdbcType=VARCHAR}
+	     </if>
+	     <if test="attr2 != null" >
+	       and attr2 = #{attr2,jdbcType=VARCHAR}
+	     </if>
+	     <if test="attr3 != null" >
+	       and attr3 = #{attr3,jdbcType=VARCHAR}
+	     </if>
+	     <if test="attr4 != null" >
+	       and attr4 = #{attr4,jdbcType=VARCHAR}
+	     </if>
+	     <if test="productskuId != null" >
+	        and productsku_id = #{productskuId,jdbcType=BIGINT}
+      	 </if>
+      	 <if test="productActivityPrice != null" >
+        	and product_activity_price = #{productActivityPrice,jdbcType=DECIMAL}
+      	</if>
+    </where>
+  </select>
+  <select id="searchOrderByProductName" resultMap="SearchOrderVoResultMap" parameterType="com.essential.bussiness.order.model.auto.OrderProductAuto">
+  	select order_id,product_name
+  			from t_bussiness_order_product 
+  			where product_name like #{productName,jdbcType=VARCHAR}"%"
+  </select>
+</mapper>

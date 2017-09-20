@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.ArticleCommentsAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.find.model.auto.ArticleCommentsAuto">
+		<id column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="to_user_id" property="toUserId" jdbcType="BIGINT" />
+		<result column="to_comment_id" property="toCommentId" jdbcType="BIGINT" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		comment_id, user_id, comment_content, to_user_id, to_comment_id, article_id,
+		create_user_id,
+		create_time, modify_user_id, modify_time, is_delete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_find_article_comments
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_find_article_comments
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.find.model.auto.ArticleCommentsAuto">
+		insert into t_find_article_comments (comment_id, user_id,
+		comment_content,
+		to_user_id, to_comment_id, article_id,
+		create_user_id, create_time, modify_user_id,
+		modify_time, is_delete
+		)
+		values (#{commentId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+		#{commentContent,jdbcType=VARCHAR},
+		#{toUserId,jdbcType=BIGINT}, #{toCommentId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT},
+		#{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR},
+		#{modifyUserId,jdbcType=BIGINT},
+		#{modifyTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.find.model.auto.ArticleCommentsAuto">
+		insert into t_find_article_comments
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="commentId != null">
+				comment_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="commentContent != null">
+				comment_content,
+			</if>
+			<if test="toUserId != null">
+				to_user_id,
+			</if>
+			<if test="toCommentId != null">
+				to_comment_id,
+			</if>
+			<if test="articleId != null">
+				article_id,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="commentId != null">
+				#{commentId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="commentContent != null">
+				#{commentContent,jdbcType=VARCHAR},
+			</if>
+			<if test="toUserId != null">
+				#{toUserId,jdbcType=BIGINT},
+			</if>
+			<if test="toCommentId != null">
+				#{toCommentId,jdbcType=BIGINT},
+			</if>
+			<if test="articleId != null">
+				#{articleId,jdbcType=BIGINT},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.ArticleCommentsAuto">
+		update t_find_article_comments
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="commentContent != null">
+				comment_content = #{commentContent,jdbcType=VARCHAR},
+			</if>
+			<if test="toUserId != null">
+				to_user_id = #{toUserId,jdbcType=BIGINT},
+			</if>
+			<if test="toCommentId != null">
+				to_comment_id = #{toCommentId,jdbcType=BIGINT},
+			</if>
+			<if test="articleId != null">
+				article_id = #{articleId,jdbcType=BIGINT},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+
+		</set>
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.ArticleCommentsAuto">
+		update t_find_article_comments
+		set user_id = #{userId,jdbcType=BIGINT},
+		comment_content = #{commentContent,jdbcType=VARCHAR},
+		to_user_id = #{toUserId,jdbcType=BIGINT},
+		to_comment_id = #{toCommentId,jdbcType=BIGINT},
+		article_id = #{articleId,jdbcType=BIGINT},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER}
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
+
+	<resultMap type="com.essential.find.model.vo.ArticleCommentVo" id="ArticleCommentVoMap">
+		<id column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_icon" property="userIcon" jdbcType="VARCHAR" />
+		<result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+		<result column="user_level_id" property="userLevelId" jdbcType="BIGINT" />
+
+
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="to_user_id" property="toUserId" jdbcType="BIGINT" />
+		<result column="to_user_nickname" property="toUserNickname" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 根据文章id 分页请求相关文章 -->
+	<select id="queryCommentsByArticleId" parameterType="com.essential.find.model.auto.ArticleCommentsAuto" resultMap="ArticleCommentVoMap">
+		select comm.comment_id,comm.comment_content,comm.to_user_id,comm.create_time,
+		userinfo.user_id, userinfo.user_name, userinfo.user_icon, userinfo.user_nickname,userinfo.user_level_id ,
+		userinfo1.user_nickname as to_user_nickname
+		from t_find_article_comments comm
+		LEFT JOIN t_user_userbaseinfo userinfo ON comm.create_user_id=userinfo.user_id
+		LEFT JOIN t_user_userbaseinfo userinfo1 ON comm.to_user_id=userinfo1.user_id
+		<where>
+
+			<!-- 第一次请求 -->
+			<!-- <if test="requestType == '0'.toString()"> </if> -->
+			<!-- 刷新 -->
+			<if test="requestType == '1'.toString() and createTime != null">
+				<![CDATA[and comm.create_time > #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="requestType == '2'.toString() and createTime != null">
+			<![CDATA[and comm.create_time < #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+
+			<if test="userId != null">
+				and comm.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="commentContent != null">
+				and comm.comment_content like "%"#{commentContent,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="toUserId != null">
+				and comm.to_user_id = #{toUserId,jdbcType=BIGINT}
+			</if>
+			<if test="toCommentId != null">
+				and comm.to_comment_id = #{toCommentId,jdbcType=BIGINT}
+			</if>
+			<if test="articleId != null">
+				and comm.article_id = #{articleId,jdbcType=BIGINT}
+			</if>
+			<if test="createUserId != null">
+				and comm.create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+
+			<if test="modifyUserId != null">
+				and comm.modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+
+			<if test="isDelete != null">
+				and comm.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+
+		</where>
+		ORDER BY comm.modify_time DESC
+		<choose>
+			<when test="pageIndex==null">
+				<if test="pageSize != null">
+					limit #{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit 10
+				</if>
+			</when>
+			<otherwise>
+				<if test="pageSize != null">
+					limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit #{pageIndex,jdbcType=INTEGER},10
+				</if>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 文章评论数量 -->
+	<select id="queryCommentCount" parameterType="com.essential.find.model.auto.ArticleCommentsAuto" resultMap="ArticleCommentVoMap">
+	select COUNT(1) from t_find_article_comments
+			<where>
+
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="commentContent != null">
+				and comment_content like "%"#{commentContent,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="toUserId != null">
+				and to_user_id = #{toUserId,jdbcType=BIGINT}
+			</if>
+			<if test="toCommentId != null">
+				and to_comment_id = #{toCommentId,jdbcType=BIGINT}
+			</if>
+			<if test="articleId != null">
+				and article_id = #{articleId,jdbcType=BIGINT}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+
+		</where>
+	</select>
+	
+</mapper>

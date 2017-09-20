@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.recommend.dao.RecommendAutoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.essential.bussiness.recommend.model.auto.RecommendAuto">
+		<id column="recommend_id" property="recommendId" jdbcType="BIGINT" />
+		<result column="recommend_name" property="recommendName"
+			jdbcType="VARCHAR" />
+		<result column="recommend_type" property="recommendType"
+			jdbcType="INTEGER" />
+		<result column="recommend_introduction" property="recommendIntroduction"
+			jdbcType="VARCHAR" />
+		<result column="recommend_description" property="recommendDescription"
+			jdbcType="VARCHAR" />
+		<result column="recommend_title" property="recommendTitle"
+			jdbcType="VARCHAR" />
+		<result column="recommend_number" property="recommendNumber"
+			jdbcType="VARCHAR" />
+		<result column="recommend_sort" property="recommendSort"
+			jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="status_time" property="statusTime" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="create_user_name" property="createUserName"
+			jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_user_name" property="modifyUserName"
+			jdbcType="VARCHAR" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="main_pic_path" property="mainPicPath" jdbcType="VARCHAR" />
+		<result column="cover_pic" property="coverPic" jdbcType="VARCHAR" />
+		<result column="advertising_position_flag" property="advertisingPositionFlag"
+			jdbcType="INTEGER" />
+		<result column="advertising_position_sort" property="advertisingPositionSort"
+			jdbcType="INTEGER" />
+		<result column="attr1" property="attr1" jdbcType="VARCHAR" />
+		<result column="attr2" property="attr2" jdbcType="VARCHAR" />
+		<result column="attr3" property="attr3" jdbcType="VARCHAR" />
+		<result column="attr4" property="attr4" jdbcType="VARCHAR" />
+		<result column="attr5" property="attr5" jdbcType="VARCHAR" />
+		<result column="attr6" property="attr6" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapForCarousel"
+		type="com.essential.bussiness.recommend.model.vo.QueryRecommendCarouselVo">
+		<id column="recommend_id" property="recommendId" jdbcType="BIGINT" />
+		<result column="recommend_name" property="recommendName"
+			jdbcType="VARCHAR" />
+		<result column="recommend_type" property="recommendType"
+			jdbcType="INTEGER" />
+		<result column="recommend_introduction" property="recommendIntroduction"
+			jdbcType="VARCHAR" />
+		<result column="recommend_description" property="recommendDescription"
+			jdbcType="VARCHAR" />
+		<result column="recommend_title" property="recommendTitle"
+			jdbcType="VARCHAR" />
+		<result column="recommend_number" property="recommendNumber"
+			jdbcType="VARCHAR" />
+		<result column="recommend_sort" property="recommendSort"
+			jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="status_time" property="statusTime" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="create_user_name" property="createUserName"
+			jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_user_name" property="modifyUserName"
+			jdbcType="VARCHAR" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="main_pic_path" property="mainPicPath" jdbcType="VARCHAR" />
+		<result column="cover_pic" property="coverPic" jdbcType="VARCHAR" />
+		<result column="advertising_position_flag" property="advertisingPositionFlag"
+			jdbcType="INTEGER" />
+		<result column="advertising_position_sort" property="advertisingPositionSort"
+			jdbcType="INTEGER" />
+		<result column="attr1" property="attr1" jdbcType="VARCHAR" />
+		<result column="attr2" property="attr2" jdbcType="VARCHAR" />
+		<result column="attr3" property="attr3" jdbcType="VARCHAR" />
+		<result column="attr4" property="attr4" jdbcType="VARCHAR" />
+		<result column="attr5" property="attr5" jdbcType="VARCHAR" />
+		<result column="attr6" property="attr6" jdbcType="VARCHAR" />
+		<result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+		<result column="pic_sort" property="picSort" jdbcType="VARCHAR" />
+
+
+	</resultMap>
+
+	<resultMap
+		type="com.essential.bussiness.recommend.model.vo.RelatedProductVo" id="selectProductListToAppResultMap">
+
+        <result column="product_id" property="productId" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="cost_price" property="costPrice" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		
+
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		recommend_id, recommend_name, recommend_type,
+		recommend_introduction,
+		recommend_description,
+		recommend_title,
+		recommend_number, recommend_sort, status, status_time, is_delete,
+		create_time, modify_time, create_user_name, create_user,
+		modify_user_name, modify_user,
+		main_pic_path, cover_pic,
+		advertising_position_flag, advertising_position_sort,
+		attr1,
+		attr2,
+		attr3, attr4, attr5, attr6
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAutoExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		'true' as QUERYID,
+		<include refid="Base_Column_List" />
+		from t_bussiness_recommend
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_recommend
+		where recommend_id =
+		#{recommendId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		t_bussiness_recommend
+		where recommend_id =
+		#{recommendId,jdbcType=BIGINT}
+	</delete>
+	<delete id="deleteByExample"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAutoExample">
+		delete from t_bussiness_recommend
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="recommendId"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAuto">
+		insert into t_bussiness_recommend (recommend_id,
+		recommend_name,
+		recommend_type,
+		recommend_introduction,
+		recommend_description,
+		recommend_title, recommend_number,
+		recommend_sort,
+		status, status_time, is_delete,
+		create_time,
+		modify_time, create_user_name,
+		create_user, modify_user_name,
+		modify_user,
+		main_pic_path, cover_pic, advertising_position_flag,
+		advertising_position_sort, attr1, attr2,
+		attr3, attr4, attr5,
+		attr6)
+		values (#{recommendId,jdbcType=BIGINT},
+		#{recommendName,jdbcType=VARCHAR},
+		#{recommendType,jdbcType=INTEGER},
+		#{recommendIntroduction,jdbcType=VARCHAR},
+		#{recommendDescription,jdbcType=VARCHAR},
+		#{recommendTitle,jdbcType=VARCHAR},
+		#{recommendNumber,jdbcType=VARCHAR},
+		#{recommendSort,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER},
+		#{statusTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER},
+		#{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR},
+		#{createUserName,jdbcType=VARCHAR},
+		#{createUser,jdbcType=BIGINT},
+		#{modifyUserName,jdbcType=VARCHAR}, #{modifyUser,jdbcType=BIGINT},
+		#{mainPicPath,jdbcType=VARCHAR}, #{coverPic,jdbcType=VARCHAR},
+		#{advertisingPositionFlag,jdbcType=INTEGER},
+		#{advertisingPositionSort,jdbcType=INTEGER},
+		#{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR},
+		#{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR},
+		#{attr5,jdbcType=VARCHAR},
+		#{attr6,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAuto">
+		insert into t_bussiness_recommend
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="recommendId != null">
+				recommend_id,
+			</if>
+			<if test="recommendName != null">
+				recommend_name,
+			</if>
+			<if test="recommendType != null">
+				recommend_type,
+			</if>
+			<if test="recommendIntroduction != null">
+				recommend_introduction,
+			</if>
+			<if test="recommendDescription != null">
+				recommend_description,
+			</if>
+			<if test="recommendTitle != null">
+				recommend_title,
+			</if>
+			<if test="recommendNumber != null">
+				recommend_number,
+			</if>
+			<if test="recommendSort != null">
+				recommend_sort,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="statusTime != null">
+				status_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="createUserName != null">
+				create_user_name,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyUserName != null">
+				modify_user_name,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="mainPicPath != null">
+				main_pic_path,
+			</if>
+			<if test="coverPic != null">
+				cover_pic,
+			</if>
+			<if test="advertisingPositionFlag != null">
+				advertising_position_flag,
+			</if>
+			<if test="advertisingPositionSort != null">
+				advertising_position_sort,
+			</if>
+			<if test="attr1 != null">
+				attr1,
+			</if>
+			<if test="attr2 != null">
+				attr2,
+			</if>
+			<if test="attr3 != null">
+				attr3,
+			</if>
+			<if test="attr4 != null">
+				attr4,
+			</if>
+			<if test="attr5 != null">
+				attr5,
+			</if>
+			<if test="attr6 != null">
+				attr6,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="recommendId != null">
+				#{recommendId,jdbcType=BIGINT},
+			</if>
+			<if test="recommendName != null">
+				#{recommendName,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendType != null">
+				#{recommendType,jdbcType=INTEGER},
+			</if>
+			<if test="recommendIntroduction != null">
+				#{recommendIntroduction,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendDescription != null">
+				#{recommendDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendTitle != null">
+				#{recommendTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendNumber != null">
+				#{recommendNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendSort != null">
+				#{recommendSort,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="statusTime != null">
+				#{statusTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserName != null">
+				#{createUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUserName != null">
+				#{modifyUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="mainPicPath != null">
+				#{mainPicPath,jdbcType=VARCHAR},
+			</if>
+			<if test="coverPic != null">
+				#{coverPic,jdbcType=VARCHAR},
+			</if>
+			<if test="advertisingPositionFlag != null">
+				#{advertisingPositionFlag,jdbcType=INTEGER},
+			</if>
+			<if test="advertisingPositionSort != null">
+				#{advertisingPositionSort,jdbcType=INTEGER},
+			</if>
+			<if test="attr1 != null">
+				#{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				#{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				#{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				#{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				#{attr5,jdbcType=VARCHAR},
+			</if>
+			<if test="attr6 != null">
+				#{attr6,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAutoExample"
+		resultType="java.lang.Integer">
+		select count(*) from t_bussiness_recommend
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update t_bussiness_recommend
+		<set>
+			<if test="record.recommendId != null">
+				recommend_id = #{record.recommendId,jdbcType=BIGINT},
+			</if>
+			<if test="record.recommendName != null">
+				recommend_name =
+				#{record.recommendName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.recommendType != null">
+				recommend_type =
+				#{record.recommendType,jdbcType=INTEGER},
+			</if>
+			<if test="record.recommendIntroduction != null">
+				recommend_introduction =
+				#{record.recommendIntroduction,jdbcType=VARCHAR},
+			</if>
+			<if test="record.recommendDescription != null">
+				recommend_description =
+				#{record.recommendDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="record.recommendTitle != null">
+				recommend_title =
+				#{record.recommendTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="record.recommendNumber != null">
+				recommend_number =
+				#{record.recommendNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="record.recommendSort != null">
+				recommend_sort =
+				#{record.recommendSort,jdbcType=INTEGER},
+			</if>
+			<if test="record.status != null">
+				status = #{record.status,jdbcType=INTEGER},
+			</if>
+			<if test="record.statusTime != null">
+				status_time = #{record.statusTime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.isDelete != null">
+				is_delete = #{record.isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="record.createTime != null">
+				create_time = #{record.createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.modifyTime != null">
+				modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.createUserName != null">
+				create_user_name =
+				#{record.createUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.createUser != null">
+				create_user = #{record.createUser,jdbcType=BIGINT},
+			</if>
+			<if test="record.modifyUserName != null">
+				modify_user_name =
+				#{record.modifyUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.modifyUser != null">
+				modify_user = #{record.modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="record.mainPicPath != null">
+				main_pic_path = #{record.mainPicPath,jdbcType=VARCHAR},
+			</if>
+			<if test="record.coverPic != null">
+				cover_pic = #{record.coverPic,jdbcType=VARCHAR},
+			</if>
+			<if test="record.advertisingPositionFlag != null">
+				advertising_position_flag =
+				#{record.advertisingPositionFlag,jdbcType=INTEGER},
+			</if>
+			<if test="record.advertisingPositionSort != null">
+				advertising_position_sort =
+				#{record.advertisingPositionSort,jdbcType=INTEGER},
+			</if>
+			<if test="record.attr1 != null">
+				attr1 = #{record.attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.attr2 != null">
+				attr2 = #{record.attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.attr3 != null">
+				attr3 = #{record.attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="record.attr4 != null">
+				attr4 = #{record.attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="record.attr5 != null">
+				attr5 = #{record.attr5,jdbcType=VARCHAR},
+			</if>
+			<if test="record.attr6 != null">
+				attr6 = #{record.attr6,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update t_bussiness_recommend
+		set recommend_id =
+		#{record.recommendId,jdbcType=BIGINT},
+		recommend_name =
+		#{record.recommendName,jdbcType=VARCHAR},
+		recommend_type =
+		#{record.recommendType,jdbcType=INTEGER},
+		recommend_introduction =
+		#{record.recommendIntroduction,jdbcType=VARCHAR},
+		recommend_description =
+		#{record.recommendDescription,jdbcType=VARCHAR},
+		recommend_title =
+		#{record.recommendTitle,jdbcType=VARCHAR},
+		recommend_number =
+		#{record.recommendNumber,jdbcType=VARCHAR},
+		recommend_sort =
+		#{record.recommendSort,jdbcType=INTEGER},
+		status =
+		#{record.status,jdbcType=INTEGER},
+		status_time =
+		#{record.statusTime,jdbcType=VARCHAR},
+		is_delete =
+		#{record.isDelete,jdbcType=INTEGER},
+		create_time =
+		#{record.createTime,jdbcType=VARCHAR},
+		modify_time =
+		#{record.modifyTime,jdbcType=VARCHAR},
+		create_user_name =
+		#{record.createUserName,jdbcType=VARCHAR},
+		create_user =
+		#{record.createUser,jdbcType=BIGINT},
+		modify_user_name =
+		#{record.modifyUserName,jdbcType=VARCHAR},
+		modify_user =
+		#{record.modifyUser,jdbcType=BIGINT},
+		main_pic_path =
+		#{record.mainPicPath,jdbcType=VARCHAR},
+		cover_pic =
+		#{record.coverPic,jdbcType=VARCHAR},
+		advertising_position_flag =
+		#{record.advertisingPositionFlag,jdbcType=INTEGER},
+		advertising_position_sort =
+		#{record.advertisingPositionSort,jdbcType=INTEGER},
+		attr1 =
+		#{record.attr1,jdbcType=VARCHAR},
+		attr2 =
+		#{record.attr2,jdbcType=VARCHAR},
+		attr3 =
+		#{record.attr3,jdbcType=VARCHAR},
+		attr4 =
+		#{record.attr4,jdbcType=VARCHAR},
+		attr5 =
+		#{record.attr5,jdbcType=VARCHAR},
+		attr6 =
+		#{record.attr6,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAuto">
+		update t_bussiness_recommend
+		<set>
+			<if test="recommendName != null and recommendName != ''">
+				recommend_name = #{recommendName,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendType != null">
+				recommend_type = #{recommendType,jdbcType=INTEGER},
+			</if>
+			<if test="recommendIntroduction != null and recommendIntroduction != ''">
+				recommend_introduction =
+				#{recommendIntroduction,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendDescription != null and recommendDescription != ''">
+				recommend_description =
+				#{recommendDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendTitle != null and recommendTitle != ''">
+				recommend_title = #{recommendTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendNumber != null and recommendNumber != ''">
+				recommend_number = #{recommendNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendSort != null">
+				recommend_sort = #{recommendSort,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="statusTime != null and statusTime != ''">
+				status_time = #{statusTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null and createTime != ''">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null and modifyTime != ''">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserName != null and createUserName != ''">
+				create_user_name = #{createUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUserName != null and modifyUserName != ''">
+				modify_user_name = #{modifyUserName,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="mainPicPath != null and mainPicPath != ''">
+				main_pic_path = #{mainPicPath,jdbcType=VARCHAR},
+			</if>
+			<if test="coverPic != null and coverPic != ''">
+				cover_pic = #{coverPic,jdbcType=VARCHAR},
+			</if>
+			<if test="advertisingPositionFlag != null">
+				advertising_position_flag =
+				#{advertisingPositionFlag,jdbcType=INTEGER},
+			</if>
+			<if test="advertisingPositionSort != null">
+				advertising_position_sort =
+				#{advertisingPositionSort,jdbcType=INTEGER},
+			</if>
+			<if test="attr1 != null">
+				attr1 = #{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				attr2 = #{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				attr3 = #{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				attr4 = #{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				attr5 = #{attr5,jdbcType=VARCHAR},
+			</if>
+			<if test="attr6 != null">
+				attr6 = #{attr6,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where recommend_id = #{recommendId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.essential.bussiness.recommend.model.auto.RecommendAuto">
+		update t_bussiness_recommend
+		set recommend_name =
+		#{recommendName,jdbcType=VARCHAR},
+		recommend_type =
+		#{recommendType,jdbcType=INTEGER},
+		recommend_introduction =
+		#{recommendIntroduction,jdbcType=VARCHAR},
+		recommend_description =
+		#{recommendDescription,jdbcType=VARCHAR},
+		recommend_title =
+		#{recommendTitle,jdbcType=VARCHAR},
+		recommend_number =
+		#{recommendNumber,jdbcType=VARCHAR},
+		recommend_sort =
+		#{recommendSort,jdbcType=INTEGER},
+		status = #{status,jdbcType=INTEGER},
+		status_time = #{statusTime,jdbcType=VARCHAR},
+		is_delete =
+		#{isDelete,jdbcType=INTEGER},
+		create_time =
+		#{createTime,jdbcType=VARCHAR},
+		modify_time =
+		#{modifyTime,jdbcType=VARCHAR},
+		create_user_name =
+		#{createUserName,jdbcType=VARCHAR},
+		create_user =
+		#{createUser,jdbcType=BIGINT},
+		modify_user_name =
+		#{modifyUserName,jdbcType=VARCHAR},
+		modify_user =
+		#{modifyUser,jdbcType=BIGINT},
+		main_pic_path =
+		#{mainPicPath,jdbcType=VARCHAR},
+		cover_pic =
+		#{coverPic,jdbcType=VARCHAR},
+		advertising_position_flag =
+		#{advertisingPositionFlag,jdbcType=INTEGER},
+		advertising_position_sort
+		=
+		#{advertisingPositionSort,jdbcType=INTEGER},
+		attr1 =
+		#{attr1,jdbcType=VARCHAR},
+		attr2 = #{attr2,jdbcType=VARCHAR},
+		attr3 =
+		#{attr3,jdbcType=VARCHAR},
+		attr4 = #{attr4,jdbcType=VARCHAR},
+		attr5 =
+		#{attr5,jdbcType=VARCHAR},
+		attr6 = #{attr6,jdbcType=VARCHAR}
+		where
+		recommend_id = #{recommendId,jdbcType=BIGINT}
+	</update>
+
+
+	<!--start 查询推荐轮播图 -->
+
+	<select id="selectRecommendCarousel" resultMap="BaseResultMapForCarousel">
+		select *  from t_bussiness_recommend 
+	where	`status`=1 and is_delete=0 and advertising_position_flag=1
+		ORDER by
+		recommend_sort DESC
+	</select>
+
+	<!-- end 查询推荐轮播图 -->
+
+
+	<!-- start查询推荐列表 -->
+	<select id="selectRecommendListForAPP" resultMap="BaseResultMapForCarousel"
+		parameterType="com.essential.bussiness.recommend.model.vo.RecommendInputParamVo">
+		select
+		a.*,b.pic_path,b.pic_sort from t_bussiness_recommend a LEFT JOIN
+		t_bussiness_recommend_pic b ON
+		a.recommend_id=b.recommend_id
+
+
+		<where>
+			and a.status=1 and a.is_delete=0  and advertising_position_flag=0
+			<!-- 第一次请求 -->
+			<if test="requestType == '0'.toString()">
+				order by a.status_time desc
+			</if>
+			<!-- 刷新 -->
+			<if test="statusTime != null and requestType == '1'.toString()">
+    		<![CDATA[and a.status_time > #{statusTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="statusTime != null and requestType == '2'.toString()">
+    		<![CDATA[and a.status_time < #{statusTime,jdbcType=VARCHAR}]]>
+			</if>
+		</where>
+
+		<choose>
+			<when test="pageSize == null">
+				limit 12
+			</when>
+		</choose>
+
+
+	</select>
+	<!-- end查询推荐列表 -->
+	<!-- start查询推荐相关商品的列表 -->
+	<select id="selectRcommendProduct" resultType="map"
+		parameterType="map">
+
+		select a.product_id,b.product_name,b.cost_price,c.path,d.brand_name
+		from
+		t_bussiness_recommend_related_product a LEFT JOIN
+
+		t_bussiness_product b
+		on a.product_id=b.product_id LEFT JOIN
+
+		t_bussiness_productpic c on
+		a.product_id=c.product_id LEFT JOIN
+		t_bussiness_brand d on
+		b.brand_id=d.brand_id
+
+		<where>
+
+			and a.is_delete=0 and b.is_delete=0 and b.sale_status=1 and
+			c.mainpic=1
+			and c.`status`=0
+			<if test="recommendId != null">
+				and a.recommend_id=#{recommendId,jdbcType=INTEGER}
+			</if>
+
+		</where>
+
+
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+
+	</select>
+	<!-- end查询推荐相关商品的列表 -->
+	<select id="selectBySelective" resultMap="BaseResultMap"
+		parameterType="com.essential.bussiness.recommend.model.vo.QueryRecommendVo">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_recommend
+		<where>
+			<if test="recommendId != null">
+				and recommend_id = #{recommendId,jdbcType=BIGINT}
+			</if>
+			<if test="recommendName != null and recommendName != ''">
+				and recommend_name = #{recommendName,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendType != null">
+				and recommend_type = #{recommendType,jdbcType=INTEGER}
+			</if>
+			<if test="recommendIntroduction != null and recommendIntroduction != ''">
+				and recommend_introduction =
+				#{recommendIntroduction,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendDescription != null and recommendDescription != ''">
+				and recommend_description =
+				#{recommendDescription,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendTitle != null and recommendTitle != ''">
+				and recommend_title = #{recommendTitle,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendNumber != null and recommendNumber != ''">
+				and recommend_number = #{recommendNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendSort != null">
+				and recommend_sort = #{recommendSort,jdbcType=INTEGER}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="statusTime != null and statusTime != ''">
+				and status_time = #{statusTime,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createTime != null and createTime != ''">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyTime != null and modifyTime != ''">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserName != null and createUserName != ''">
+				and create_user_name = #{createUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="createUser != null">
+				and create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUserName != null and modifyUserName != ''">
+				and modify_user_name = #{modifyUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUser != null">
+				and modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="mainPicPath != null and mainPicPath != ''">
+				and main_pic_path = #{mainPicPath,jdbcType=VARCHAR}
+			</if>
+			<if test="coverPic != null and coverPic != ''">
+				and cover_pic = #{coverPic,jdbcType=VARCHAR}
+			</if>
+			<if test="advertisingPositionFlag != null">
+				and advertising_position_flag =
+				#{advertisingPositionFlag,jdbcType=INTEGER}
+			</if>
+			<if test="advertisingPositionSort != null">
+				and advertising_position_sort =
+				#{advertisingPositionSort,jdbcType=INTEGER}
+			</if>
+			<if test="attr1 != null">
+				and attr1 = #{attr1,jdbcType=VARCHAR}
+			</if>
+			<if test="attr2 != null">
+				and attr2 = #{attr2,jdbcType=VARCHAR}
+			</if>
+			<if test="attr3 != null">
+				and attr3 = #{attr3,jdbcType=VARCHAR}
+			</if>
+			<if test="attr4 != null">
+				and attr4 = #{attr4,jdbcType=VARCHAR}
+			</if>
+			<if test="attr5 != null">
+				and attr5 = #{attr5,jdbcType=VARCHAR}
+			</if>
+			<if test="attr6 != null">
+				and attr6 = #{attr6,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY modify_time DESC
+		<if test="pageNo != null and pageCount != null">
+			LIMIT #{pageNo},#{pageCount}
+		</if>
+	</select>
+
+	<select id="selectBySelectiveCount" resultType="java.lang.Integer"
+		parameterType="com.essential.bussiness.recommend.model.vo.QueryRecommendVo">
+		select
+		count(1)
+		from t_bussiness_recommend
+		<where>
+			<if test="recommendId != null">
+				and recommend_id = #{recommendId,jdbcType=BIGINT}
+			</if>
+			<if test="recommendName != null and recommendName != ''">
+				and recommend_name = #{recommendName,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendType != null">
+				and recommend_type = #{recommendType,jdbcType=INTEGER}
+			</if>
+			<if test="recommendIntroduction != null and recommendIntroduction != ''">
+				and recommend_introduction =
+				#{recommendIntroduction,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendDescription != null and recommendDescription != ''">
+				and recommend_description =
+				#{recommendDescription,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendTitle != null and recommendTitle != ''">
+				and recommend_title = #{recommendTitle,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendNumber != null and recommendNumber != ''">
+				and recommend_number =
+				#{recommendNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="recommendSort != null">
+				and recommend_sort = #{recommendSort,jdbcType=INTEGER}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="statusTime != null and statusTime != ''">
+				and status_time = #{statusTime,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createTime != null and createTime != ''">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyTime != null and modifyTime != ''">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+			<if test="createUserName != null and createUserName != ''">
+				and create_user_name = #{createUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="createUser != null">
+				and create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUserName != null and modifyUserName != ''">
+				and modify_user_name = #{modifyUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUser != null">
+				and modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="mainPicPath != null and mainPicPath != ''">
+				and main_pic_path = #{mainPicPath,jdbcType=VARCHAR}
+			</if>
+			<if test="coverPic != null and coverPic != ''">
+				and cover_pic = #{coverPic,jdbcType=VARCHAR}
+			</if>
+			<if test="advertisingPositionFlag != null">
+				and advertising_position_flag =
+				#{advertisingPositionFlag,jdbcType=INTEGER}
+			</if>
+			<if test="advertisingPositionSort != null">
+				and advertising_position_sort =
+				#{advertisingPositionSort,jdbcType=INTEGER}
+			</if>
+			<if test="attr1 != null">
+				and attr1 = #{attr1,jdbcType=VARCHAR}
+			</if>
+			<if test="attr2 != null">
+				and attr2 = #{attr2,jdbcType=VARCHAR}
+			</if>
+			<if test="attr3 != null">
+				and attr3 = #{attr3,jdbcType=VARCHAR}
+			</if>
+			<if test="attr4 != null">
+				and attr4 = #{attr4,jdbcType=VARCHAR}
+			</if>
+			<if test="attr5 != null">
+				and attr5 = #{attr5,jdbcType=VARCHAR}
+			</if>
+			<if test="attr6 != null">
+				and attr6 = #{attr6,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+
+
+	<!-- start查询推荐列表 中的商品列表(推荐类型为带商品的推荐) -->
+	<select id="selectProductListToApp" resultMap="selectProductListToAppResultMap"
+		parameterType="map">
+		
+		select a.product_id,b.product_name,b.cost_price,c.path,d.brand_name
+		from
+		t_bussiness_recommend_related_product a LEFT JOIN
+
+		t_bussiness_product b
+		on a.product_id=b.product_id LEFT JOIN
+
+		t_bussiness_productpic c on
+		a.product_id=c.product_id LEFT JOIN
+		t_bussiness_brand d on
+		b.brand_id=d.brand_id
+
+		<where>
+
+			and a.is_delete=0 and b.is_delete=0 and b.sale_status=1 and
+			c.mainpic=1
+			and c.`status`=0
+			<if test="recommendId != null">
+				and a.recommend_id=#{recommendId,jdbcType=INTEGER}
+			</if>
+
+		</where>
+
+		limit 6
+		
+	</select>
+	<!-- end查询推荐列表 中的商品列表(推荐类型为带商品的推荐) -->
+
+</mapper>

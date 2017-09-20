@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.shop.dao.ShopAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    <id column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="shoptype_id" property="shoptypeId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="BIGINT" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
+    <result column="district_id" property="districtId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="logo_path" property="logoPath" jdbcType="VARCHAR" />
+    <result column="shop_features" property="shopFeatures" jdbcType="VARCHAR" />
+    <result column="wapLogo_path" property="waplogoPath" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="DECIMAL" />
+    <result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="legal_adress" property="legalAdress" jdbcType="VARCHAR" />
+    <result column="legal_number" property="legalNumber" jdbcType="VARCHAR" />
+    <result column="legal_fex" property="legalFex" jdbcType="VARCHAR" />
+    <result column="registered_amount" property="registeredAmount" jdbcType="VARCHAR" />
+    <result column="is_pay" property="isPay" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="pay_money" property="payMoney" jdbcType="DECIMAL" />
+    <result column="ispaytime" property="ispaytime" jdbcType="VARCHAR" />
+    <result column="companywebseit" property="companywebseit" jdbcType="VARCHAR" />
+    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="background_image" property="backgroundImage" jdbcType="VARCHAR" />
+    <result column="check_time" property="checkTime" jdbcType="VARCHAR" />
+    <result column="shop_describe" property="shopDescribe" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="bussiness_licence" property="bussinessLicence" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_valid_time" property="bussinessLicenceValidTime" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_address" property="bussinessLicenceAddress" jdbcType="VARCHAR" />
+    <result column="business_scope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_scan" property="bussinessLicenceScan" jdbcType="VARCHAR" />
+    <result column="organization_code_scan" property="organizationCodeScan" jdbcType="VARCHAR" />
+    <result column="tax_registration_certificate_scan" property="taxRegistrationCertificateScan" jdbcType="VARCHAR" />
+    <result column="legalid_scan" property="legalidScan" jdbcType="VARCHAR" />
+    <result column="words" property="words" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="tax_registration_number" property="taxRegistrationNumber" jdbcType="VARCHAR" />
+    <result column="legalid_back_scan" property="legalidBackScan" jdbcType="VARCHAR" />
+    <result column="detail_address" property="detailAddress" jdbcType="VARCHAR" />
+    <result column="fixed_telephone" property="fixedTelephone" jdbcType="VARCHAR" />
+    <result column="account_opening_license_scan" property="accountOpeningLicenseScan" jdbcType="VARCHAR" />
+    <result column="is_same" property="isSame" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <resultMap id="ShopCartShopVoResultMap" type="com.essential.bussiness.shopcart.model.vo.ShopCartShopVo" >
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="shoptype_id" property="shoptypeId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="BIGINT" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
+    <result column="district_id" property="districtId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="logo_path" property="logoPath" jdbcType="VARCHAR" />
+    <result column="shop_features" property="shopFeatures" jdbcType="VARCHAR" />
+    <result column="wapLogo_path" property="waplogoPath" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="DECIMAL" />
+    <result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="legal_adress" property="legalAdress" jdbcType="VARCHAR" />
+    <result column="legal_number" property="legalNumber" jdbcType="VARCHAR" />
+    <result column="legal_fex" property="legalFex" jdbcType="VARCHAR" />
+    <result column="registered_amount" property="registeredAmount" jdbcType="VARCHAR" />
+    <result column="is_pay" property="isPay" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="pay_money" property="payMoney" jdbcType="DECIMAL" />
+    <result column="ispaytime" property="ispaytime" jdbcType="VARCHAR" />
+    <result column="companywebseit" property="companywebseit" jdbcType="VARCHAR" />
+    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="background_image" property="backgroundImage" jdbcType="VARCHAR" />
+    <result column="check_time" property="checkTime" jdbcType="VARCHAR" />
+    <result column="shop_describe" property="shopDescribe" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="bussiness_licence" property="bussinessLicence" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_valid_time" property="bussinessLicenceValidTime" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_address" property="bussinessLicenceAddress" jdbcType="VARCHAR" />
+    <result column="business_scope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="bussiness_licence_scan" property="bussinessLicenceScan" jdbcType="VARCHAR" />
+    <result column="organization_code_scan" property="organizationCodeScan" jdbcType="VARCHAR" />
+    <result column="tax_registration_certificate_scan" property="taxRegistrationCertificateScan" jdbcType="VARCHAR" />
+    <result column="legalid_scan" property="legalidScan" jdbcType="VARCHAR" />
+    <result column="words" property="words" jdbcType="VARCHAR" />
+    <result column="shoptype_name" property="shoptypeName" jdbcType="VARCHAR" />
+    <result column="account_opening_license_scan" property="accountOpeningLicenseScan" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    shop_id, name, shoptype_id, status, email, province_id, city_id, district_id, user_id, 
+    logo_path, shop_features, wapLogo_path, registered_capital, legal_person, legal_adress, 
+    legal_number, legal_fex, registered_amount, is_pay, pay_type, pay_money, ispaytime, 
+    companywebseit, weibo, wechat, background_image, check_time, shop_describe, create_time, 
+    create_user, modify_time, modify_user, bussiness_licence, bussiness_licence_valid_time, 
+    bussiness_licence_address, business_scope, bussiness_licence_scan, organization_code_scan, 
+    tax_registration_certificate_scan,words,legalid_scan,company_name,tax_registration_number,
+    legalid_back_scan,detail_address,fixed_telephone,account_opening_license_scan,is_same
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_shop
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_shop
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    insert into t_bussiness_shop (shop_id, name, shoptype_id, 
+      status, email, province_id, 
+      city_id, district_id, user_id, 
+      logo_path, shop_features, wapLogo_path, 
+      registered_capital, legal_person, legal_adress, 
+      legal_number, legal_fex, registered_amount, 
+      is_pay, pay_type, pay_money, 
+      ispaytime, companywebseit, weibo, 
+      wechat, background_image, check_time, 
+      shop_describe, create_time, create_user, 
+      modify_time, modify_user, bussiness_licence, 
+      bussiness_licence_valid_time, bussiness_licence_address, 
+      business_scope, bussiness_licence_scan, organization_code_scan, 
+      tax_registration_certificate_scan, legalid_scan,company_name,
+      tax_registration_number,legalid_back_scan,detail_address,fixedTelephone,account_opening_license_scan,is_same
+      )
+    values (#{shopId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{shoptypeId,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{provinceId,jdbcType=BIGINT}, 
+      #{cityId,jdbcType=BIGINT}, #{districtId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{logoPath,jdbcType=VARCHAR}, #{shopFeatures,jdbcType=VARCHAR}, #{waplogoPath,jdbcType=VARCHAR}, 
+      #{registeredCapital,jdbcType=DECIMAL}, #{legalPerson,jdbcType=VARCHAR}, #{legalAdress,jdbcType=VARCHAR}, 
+      #{legalNumber,jdbcType=VARCHAR}, #{legalFex,jdbcType=VARCHAR}, #{registeredAmount,jdbcType=VARCHAR}, 
+      #{isPay,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{payMoney,jdbcType=DECIMAL}, 
+      #{ispaytime,jdbcType=VARCHAR}, #{companywebseit,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{backgroundImage,jdbcType=VARCHAR}, #{checkTime,jdbcType=VARCHAR}, 
+      #{shopDescribe,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{modifyUser,jdbcType=BIGINT}, #{bussinessLicence,jdbcType=VARCHAR}, 
+      #{bussinessLicenceValidTime,jdbcType=VARCHAR}, #{bussinessLicenceAddress,jdbcType=VARCHAR}, 
+      #{businessScope,jdbcType=VARCHAR}, #{bussinessLicenceScan,jdbcType=VARCHAR}, #{organizationCodeScan,jdbcType=VARCHAR}, 
+      #{taxRegistrationCertificateScan,jdbcType=VARCHAR}, #{legalidScan,jdbcType=VARCHAR},
+      #{companyName,jdbcType=VARCHAR},
+      #{taxRegistrationNumber,jdbcType=VARCHAR},
+      #{legalidBackScan,jdbcType=VARCHAR},
+      #{detailAddress,jdbcType=VARCHAR},
+      #{fixedTelephone,jdbcType=VARCHAR},
+      #{accountOpeningLicenseScan,jdbcType=VARCHAR},
+      #{isSame,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="shopId" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    insert into t_bussiness_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="shoptypeId != null" >
+        shoptype_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="logoPath != null" >
+        logo_path,
+      </if>
+      <if test="shopFeatures != null" >
+        shop_features,
+      </if>
+      <if test="waplogoPath != null" >
+        wapLogo_path,
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital,
+      </if>
+      <if test="legalPerson != null" >
+        legal_person,
+      </if>
+      <if test="legalAdress != null" >
+        legal_adress,
+      </if>
+      <if test="legalNumber != null" >
+        legal_number,
+      </if>
+      <if test="legalFex != null" >
+        legal_fex,
+      </if>
+      <if test="registeredAmount != null" >
+        registered_amount,
+      </if>
+      <if test="isPay != null" >
+        is_pay,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="payMoney != null" >
+        pay_money,
+      </if>
+      <if test="ispaytime != null" >
+        ispaytime,
+      </if>
+      <if test="companywebseit != null" >
+        companywebseit,
+      </if>
+      <if test="weibo != null" >
+        weibo,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="backgroundImage != null" >
+        background_image,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+      <if test="shopDescribe != null" >
+        shop_describe,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="bussinessLicence != null" >
+        bussiness_licence,
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        bussiness_licence_valid_time,
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        bussiness_licence_address,
+      </if>
+      <if test="businessScope != null" >
+        business_scope,
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        bussiness_licence_scan,
+      </if>
+      <if test="organizationCodeScan != null" >
+        organization_code_scan,
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        tax_registration_certificate_scan,
+      </if>
+      <if test="legalidScan != null" >
+        legalid_scan,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        tax_registration_number,
+      </if>
+      <if test="legalidBackScan != null" >
+        legalid_back_scan,
+      </if>
+      <if test="detailAddress != null" >
+        detail_address,
+      </if>
+      <if test="fixedTelephone != null" >
+        fixed_telephone,
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+        account_opening_license_scan,
+      </if>
+      <if test="isSame != null" >
+        is_same,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shoptypeId != null" >
+        #{shoptypeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=BIGINT},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="logoPath != null" >
+        #{logoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="shopFeatures != null" >
+        #{shopFeatures,jdbcType=VARCHAR},
+      </if>
+      <if test="waplogoPath != null" >
+        #{waplogoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="legalPerson != null" >
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalAdress != null" >
+        #{legalAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalNumber != null" >
+        #{legalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalFex != null" >
+        #{legalFex,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAmount != null" >
+        #{registeredAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="isPay != null" >
+        #{isPay,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null" >
+        #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="ispaytime != null" >
+        #{ispaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="companywebseit != null" >
+        #{companywebseit,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImage != null" >
+        #{backgroundImage,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDescribe != null" >
+        #{shopDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="bussinessLicence != null" >
+        #{bussinessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        #{bussinessLicenceValidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        #{bussinessLicenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        #{bussinessLicenceScan,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCodeScan != null" >
+        #{organizationCodeScan,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        #{taxRegistrationCertificateScan,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidScan != null" >
+        #{legalidScan,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        #{taxRegistrationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidBackScan != null" >
+        #{legalidBackScan,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null" >
+      	#{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedTelephone != null" >
+     	#{fixedTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	#{accountOpeningLicenseScan,jdbcType=VARCHAR},
+      </if>
+      <if test="isSame != null" >
+      	#{isSame,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    update t_bussiness_shop
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shoptypeId != null" >
+        shoptype_id = #{shoptypeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=BIGINT},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="logoPath != null" >
+        logo_path = #{logoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="shopFeatures != null" >
+        shop_features = #{shopFeatures,jdbcType=VARCHAR},
+      </if>
+      <if test="waplogoPath != null" >
+        wapLogo_path = #{waplogoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital = #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="legalPerson != null" >
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalAdress != null" >
+        legal_adress = #{legalAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalNumber != null" >
+        legal_number = #{legalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalFex != null" >
+        legal_fex = #{legalFex,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAmount != null" >
+        registered_amount = #{registeredAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="isPay != null" >
+        is_pay = #{isPay,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null" >
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="ispaytime != null" >
+        ispaytime = #{ispaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="companywebseit != null" >
+        companywebseit = #{companywebseit,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImage != null" >
+        background_image = #{backgroundImage,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDescribe != null" >
+        shop_describe = #{shopDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="bussinessLicence != null" >
+        bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        business_scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCodeScan != null" >
+        organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidScan != null" >
+        legalid_scan = #{legalidScan,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidBackScan != null" >
+        legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null" >
+      	detail_address = #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedTelephone != null" >
+      	fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR},
+      </if>
+      <if test="isSame != null" >
+      	is_same = #{isSame,jdbcType=BIGINT},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    update t_bussiness_shop
+    set name = #{name,jdbcType=VARCHAR},
+      shoptype_id = #{shoptypeId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=BIGINT},
+      city_id = #{cityId,jdbcType=BIGINT},
+      district_id = #{districtId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      logo_path = #{logoPath,jdbcType=VARCHAR},
+      shop_features = #{shopFeatures,jdbcType=VARCHAR},
+      wapLogo_path = #{waplogoPath,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=DECIMAL},
+      legal_person = #{legalPerson,jdbcType=VARCHAR},
+      legal_adress = #{legalAdress,jdbcType=VARCHAR},
+      legal_number = #{legalNumber,jdbcType=VARCHAR},
+      legal_fex = #{legalFex,jdbcType=VARCHAR},
+      registered_amount = #{registeredAmount,jdbcType=VARCHAR},
+      is_pay = #{isPay,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=INTEGER},
+      pay_money = #{payMoney,jdbcType=DECIMAL},
+      ispaytime = #{ispaytime,jdbcType=VARCHAR},
+      companywebseit = #{companywebseit,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      background_image = #{backgroundImage,jdbcType=VARCHAR},
+      check_time = #{checkTime,jdbcType=VARCHAR},
+      shop_describe = #{shopDescribe,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR},
+      bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR},
+      bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR},
+      business_scope = #{businessScope,jdbcType=VARCHAR},
+      bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR},
+      organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR},
+      tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR},
+      legalid_scan = #{legalidScan,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR},
+      legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR},
+      detail_address = #{detailAddress,jdbcType=VARCHAR},
+      fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR},
+      account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR},
+      is_same = #{isSame,jdbcType=BIGINT}
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectShopCartShopVoByPrimaryKey" resultMap="ShopCartShopVoResultMap" parameterType="java.lang.Long" >
+    select a.shop_id, a.name, a.shoptype_id, a.status, a.email, a.province_id, a.city_id, a.district_id,
+    		a.user_id, a.logo_path, a.shop_features, a.wapLogo_path, a.registered_capital, a.legal_person,
+    		a.legal_adress, a.legal_number, a.legal_fex, a.registered_amount, a.is_pay, a.pay_type, a.pay_money,
+    		a.ispaytime, a.companywebseit, a.weibo, a.wechat, a.background_image, a.check_time, a.shop_describe,
+    		a.create_time, a.create_user, a.modify_time, a.modify_user, a.bussiness_licence, a.bussiness_licence_valid_time, 
+    		a.bussiness_licence_address, a.business_scope, a.bussiness_licence_scan, a.organization_code_scan, 
+    		a.tax_registration_certificate_scan, a.words, a.legalid_scan, b.shoptype_name
+    from t_bussiness_shop a
+ 			LEFT JOIN t_bussiness_shoptype b
+				 ON a.shoptype_id = b.shop_typeid
+    where shop_id = #{shopId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="queryShopInfo" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_shop
+    <where>
+      <if test="shopId != null" >
+        and shop_id = #{shopId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="shoptypeId != null" >
+        and shoptype_id = #{shoptypeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+        and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="email != null" >
+        and email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null" >
+        and province_id = #{provinceId,jdbcType=BIGINT}
+      </if>
+      <if test="cityId != null" >
+        and city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="districtId != null" >
+        and district_id = #{districtId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+        and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="logoPath != null" >
+        and logo_path = #{logoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="shopFeatures != null" >
+        and shop_features = #{shopFeatures,jdbcType=VARCHAR}
+      </if>
+      <if test="waplogoPath != null" >
+        and wapLogo_path = #{waplogoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredCapital != null" >
+        and registered_capital = #{registeredCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="legalPerson != null" >
+        and legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="legalAdress != null" >
+        and legal_adress = #{legalAdress,jdbcType=VARCHAR}
+      </if>
+      <if test="legalNumber != null" >
+        and legal_number = #{legalNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalFex != null" >
+        and legal_fex = #{legalFex,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAmount != null" >
+        and registered_amount = #{registeredAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="isPay != null" >
+        and is_pay = #{isPay,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null" >
+        and pay_type = #{payType,jdbcType=INTEGER}
+      </if>
+      <if test="payMoney != null" >
+        and pay_money = #{payMoney,jdbcType=DECIMAL}
+      </if>
+      <if test="ispaytime != null" >
+        and ispaytime = #{ispaytime,jdbcType=VARCHAR}
+      </if>
+      <if test="companywebseit != null" >
+        and companywebseit = #{companywebseit,jdbcType=VARCHAR}
+      </if>
+      <if test="weibo != null" >
+        and weibo = #{weibo,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat != null" >
+        and wechat = #{wechat,jdbcType=VARCHAR}
+      </if>
+      <if test="backgroundImage != null" >
+        and background_image = #{backgroundImage,jdbcType=VARCHAR}
+      </if>
+      <if test="checkTime != null" >
+        and check_time = #{checkTime,jdbcType=VARCHAR}
+      </if>
+      <if test="shopDescribe != null" >
+        and shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="bussinessLicence != null" >
+        and bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        and bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        and bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessScope != null" >
+        and business_scope = #{businessScope,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        and bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR}
+      </if>
+      <if test="organizationCodeScan != null" >
+        and organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        and tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidScan != null" >
+        and legalid_scan = #{legalidScan,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null" >
+        and company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        and tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidBackScan != null" >
+        and legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR}
+      </if>
+      <if test="detailAddress != null" >
+      	and detail_address = #{detailAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="fixedTelephone != null" >
+      	and fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	and account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR}
+      </if>
+      <if test="isSame != null" >
+      	and is_same = #{isSame,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  
+  <!-- 商家统计 -->
+   <resultMap id="ProductOrShopCountMap" type="com.essential.bussiness.product.model.vo.ProductOrShopCountVo" >
+     <result column="productInSaleCount" property="productInSaleCount" jdbcType="INTEGER" />
+     <result column="productInStorehouseCount" property="productInStorehouseCount" jdbcType="INTEGER" />
+     <result column="productSaleOutCount" property="productSaleOutCount" jdbcType="INTEGER" />
+  	 <result column="shopCount" property="shopCount" jdbcType="INTEGER" />
+  	 <result column="userCount" property="userCount" jdbcType="INTEGER" />
+   </resultMap>
+  <select id="shopCount" resultMap="ProductOrShopCountMap" >
+	select	count(CASE WHEN status = 0 THEN status END) as shopCount
+	from t_bussiness_shop
+  </select>
+  
+  <!-- 查询店铺 -->
+  <select id="queryShop" resultMap="BaseResultMap" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    select DISTINCT name
+    from t_bussiness_shop
+    where status = #{status,jdbcType=INTEGER} AND name IS NOT NULL
+  </select>
+  
+  
+  <!-- 商家列表（平台） -->
+  <resultMap id="QueryShopListMap" type="com.essential.bussiness.shop.model.vo.ShopInformationPlatformVo" extends="BaseResultMap">
+   <result column="shop_status" property="shopStatus" jdbcType="INTEGER" />
+   <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+   <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR" />
+   <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="CountMap" type="com.essential.bussiness.product.model.vo.Count" >
+  	<result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="queryShopListCount" resultMap="CountMap" parameterType="com.essential.bussiness.shop.model.vo.ShopInformationPlatformVo" >
+  	SELECT COUNT(*) AS count
+	FROM t_bussiness_shop a
+	LEFT JOIN t_bussiness_shop_addinformation b ON a.shop_id = b.shop_id AND a.status = b.is_delelte
+	LEFT JOIN t_bussiness_shop_tocontact c ON a.shop_id = c.shop_id AND a.status = c.status
+	<where>
+	  <if test="shopId != null" >
+        and a.shop_id = #{shopId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+        and a.name LIKE #{name,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="shoptypeId != null" >
+        and a.shoptype_id = #{shoptypeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+        and a.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="email != null" >
+        and a.email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null" >
+        and a.province_id = #{provinceId,jdbcType=BIGINT}
+      </if>
+      <if test="cityId != null" >
+        and a.city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="districtId != null" >
+        and a.district_id = #{districtId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+        and a.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="logoPath != null" >
+        and a.logo_path = #{logoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="shopFeatures != null" >
+        and a.shop_features = #{shopFeatures,jdbcType=VARCHAR}
+      </if>
+      <if test="waplogoPath != null" >
+        and a.wapLogo_path = #{waplogoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredCapital != null" >
+        and a.registered_capital = #{registeredCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="legalPerson != null" >
+        and a.legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="legalAdress != null" >
+        and a.legal_adress = #{legalAdress,jdbcType=VARCHAR}
+      </if>
+      <if test="legalNumber != null" >
+        and a.legal_number = #{legalNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalFex != null" >
+        and a.legal_fex = #{legalFex,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAmount != null" >
+        and a.registered_amount = #{registeredAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="isPay != null" >
+        and a.is_pay = #{isPay,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null" >
+        and a.pay_type = #{payType,jdbcType=INTEGER}
+      </if>
+      <if test="payMoney != null" >
+        and a.pay_money = #{payMoney,jdbcType=DECIMAL}
+      </if>
+      <if test="ispaytime != null" >
+        and a.ispaytime = #{ispaytime,jdbcType=VARCHAR}
+      </if>
+      <if test="companywebseit != null" >
+        and a.companywebseit = #{companywebseit,jdbcType=VARCHAR}
+      </if>
+      <if test="weibo != null" >
+        and a.weibo = #{weibo,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat != null" >
+        and a.wechat = #{wechat,jdbcType=VARCHAR}
+      </if>
+      <if test="backgroundImage != null" >
+        and a.background_image = #{backgroundImage,jdbcType=VARCHAR}
+      </if>
+      <if test="checkTime != null" >
+        and a.check_time = #{checkTime,jdbcType=VARCHAR}
+      </if>
+      <if test="shopDescribe != null" >
+        and a.shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and a.create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and a.create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and a.modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="bussinessLicence != null" >
+        and a.bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        and a.bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        and a.bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessScope != null" >
+        and a.business_scope = #{businessScope,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        and a.bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR}
+      </if>
+      <if test="organizationCodeScan != null" >
+        and a.organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        and a.tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidScan != null" >
+        and a.legalid_scan = #{legalidScan,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null" >
+        and a.company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        and a.tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidBackScan != null" >
+        and a.legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR}
+      </if>
+      <if test="detailAddress != null" >
+      	and a.detail_address = #{detailAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="fixedTelephone != null" >
+      	and a.fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	and a.account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR}
+      </if>
+      <if test="isSame != null" >
+      	and a.is_same = #{isSame,jdbcType=BIGINT}
+      </if>
+      <if test="checkStatus != null" >
+      	and b.check_status = #{checkStatus,jdbcType=INTEGER}
+      </if>
+      <if test="shopStatus != null" >
+      	and b.shop_status = #{shopStatus,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  <select id="queryShopList" resultMap="QueryShopListMap" parameterType="com.essential.bussiness.shop.model.vo.ShopInformationPlatformVo" >
+	SELECT a.*,b.shop_status,b.check_status,b.reject_reason,c.contact_phone
+	FROM t_bussiness_shop a
+	LEFT JOIN t_bussiness_shop_addinformation b ON a.shop_id = b.shop_id AND a.status = b.is_delelte
+	LEFT JOIN t_bussiness_shop_tocontact c ON a.shop_id = c.shop_id AND a.status = c.status
+	<where>
+	  <if test="shopId != null" >
+        and a.shop_id = #{shopId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+        and a.name LIKE #{name,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="shoptypeId != null" >
+        and a.shoptype_id = #{shoptypeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+        and a.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="email != null" >
+        and a.email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null" >
+        and a.province_id = #{provinceId,jdbcType=BIGINT}
+      </if>
+      <if test="cityId != null" >
+        and a.city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="districtId != null" >
+        and a.district_id = #{districtId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+        and a.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="logoPath != null" >
+        and a.logo_path = #{logoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="shopFeatures != null" >
+        and a.shop_features = #{shopFeatures,jdbcType=VARCHAR}
+      </if>
+      <if test="waplogoPath != null" >
+        and a.wapLogo_path = #{waplogoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredCapital != null" >
+        and a.registered_capital = #{registeredCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="legalPerson != null" >
+        and a.legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="legalAdress != null" >
+        and a.legal_adress = #{legalAdress,jdbcType=VARCHAR}
+      </if>
+      <if test="legalNumber != null" >
+        and a.legal_number = #{legalNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalFex != null" >
+        and a.legal_fex = #{legalFex,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAmount != null" >
+        and a.registered_amount = #{registeredAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="isPay != null" >
+        and a.is_pay = #{isPay,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null" >
+        and a.pay_type = #{payType,jdbcType=INTEGER}
+      </if>
+      <if test="payMoney != null" >
+        and a.pay_money = #{payMoney,jdbcType=DECIMAL}
+      </if>
+      <if test="ispaytime != null" >
+        and a.ispaytime = #{ispaytime,jdbcType=VARCHAR}
+      </if>
+      <if test="companywebseit != null" >
+        and a.companywebseit = #{companywebseit,jdbcType=VARCHAR}
+      </if>
+      <if test="weibo != null" >
+        and a.weibo = #{weibo,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat != null" >
+        and a.wechat = #{wechat,jdbcType=VARCHAR}
+      </if>
+      <if test="backgroundImage != null" >
+        and a.background_image = #{backgroundImage,jdbcType=VARCHAR}
+      </if>
+      <if test="checkTime != null" >
+        and a.check_time = #{checkTime,jdbcType=VARCHAR}
+      </if>
+      <if test="shopDescribe != null" >
+        and a.shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and a.create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and a.create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and a.modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="bussinessLicence != null" >
+        and a.bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        and a.bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        and a.bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessScope != null" >
+        and a.business_scope = #{businessScope,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        and a.bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR}
+      </if>
+      <if test="organizationCodeScan != null" >
+        and a.organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        and a.tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidScan != null" >
+        and a.legalid_scan = #{legalidScan,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null" >
+        and a.company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        and a.tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidBackScan != null" >
+        and a.legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR}
+      </if>
+      <if test="detailAddress != null" >
+      	and a.detail_address = #{detailAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="fixedTelephone != null" >
+      	and a.fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	and a.account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR}
+      </if>
+      <if test="isSame != null" >
+      	and a.is_same = #{isSame,jdbcType=BIGINT}
+      </if>
+      <if test="checkStatus != null" >
+      	and b.check_status = #{checkStatus,jdbcType=INTEGER}
+      </if>
+      <if test="shopStatus != null" >
+      	and b.shop_status = #{shopStatus,jdbcType=INTEGER}
+      </if>
+	</where>
+	ORDER BY  create_time  DESC LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 审核商家列表 -->
+  <select id="queryAuditingShopListCount" resultMap="CountMap" parameterType="com.essential.bussiness.shop.model.vo.ShopInformationPlatformVo" >
+  	SELECT COUNT(*) AS count
+	FROM t_bussiness_shop a
+	LEFT JOIN t_bussiness_shop_addinformation b ON a.shop_id = b.shop_id AND a.status = b.is_delelte
+	LEFT JOIN t_bussiness_shop_tocontact c ON a.shop_id = c.shop_id AND a.status = c.status
+	<where>
+	  <if test="shopId != null" >
+        and a.shop_id = #{shopId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+        and a.name LIKE #{name,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="shoptypeId != null" >
+        and a.shoptype_id = #{shoptypeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+        and a.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="email != null" >
+        and a.email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null" >
+        and a.province_id = #{provinceId,jdbcType=BIGINT}
+      </if>
+      <if test="cityId != null" >
+        and a.city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="districtId != null" >
+        and a.district_id = #{districtId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+        and a.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="logoPath != null" >
+        and a.logo_path = #{logoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="shopFeatures != null" >
+        and a.shop_features = #{shopFeatures,jdbcType=VARCHAR}
+      </if>
+      <if test="waplogoPath != null" >
+        and a.wapLogo_path = #{waplogoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredCapital != null" >
+        and a.registered_capital = #{registeredCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="legalPerson != null" >
+        and a.legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="legalAdress != null" >
+        and a.legal_adress = #{legalAdress,jdbcType=VARCHAR}
+      </if>
+      <if test="legalNumber != null" >
+        and a.legal_number = #{legalNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalFex != null" >
+        and a.legal_fex = #{legalFex,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAmount != null" >
+        and a.registered_amount = #{registeredAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="isPay != null" >
+        and a.is_pay = #{isPay,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null" >
+        and a.pay_type = #{payType,jdbcType=INTEGER}
+      </if>
+      <if test="payMoney != null" >
+        and a.pay_money = #{payMoney,jdbcType=DECIMAL}
+      </if>
+      <if test="ispaytime != null" >
+        and a.ispaytime = #{ispaytime,jdbcType=VARCHAR}
+      </if>
+      <if test="companywebseit != null" >
+        and a.companywebseit = #{companywebseit,jdbcType=VARCHAR}
+      </if>
+      <if test="weibo != null" >
+        and a.weibo = #{weibo,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat != null" >
+        and a.wechat = #{wechat,jdbcType=VARCHAR}
+      </if>
+      <if test="backgroundImage != null" >
+        and a.background_image = #{backgroundImage,jdbcType=VARCHAR}
+      </if>
+      <if test="checkTime != null" >
+        and a.check_time = #{checkTime,jdbcType=VARCHAR}
+      </if>
+      <if test="shopDescribe != null" >
+        and a.shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and a.create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and a.create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and a.modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="bussinessLicence != null" >
+        and a.bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        and a.bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        and a.bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessScope != null" >
+        and a.business_scope = #{businessScope,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        and a.bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR}
+      </if>
+      <if test="organizationCodeScan != null" >
+        and a.organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        and a.tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidScan != null" >
+        and a.legalid_scan = #{legalidScan,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null" >
+        and a.company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        and a.tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidBackScan != null" >
+        and a.legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR}
+      </if>
+      <if test="detailAddress != null" >
+      	and a.detail_address = #{detailAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="fixedTelephone != null" >
+      	and a.fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	and a.account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR}
+      </if>
+      <if test="isSame != null" >
+      	and a.is_same = #{isSame,jdbcType=BIGINT}
+      </if>
+      <if test="checkStatus != null" >
+      	and b.check_status = #{checkStatus,jdbcType=INTEGER}
+      </if>
+      <if test="shopStatus != null" >
+      	and b.shop_status = #{shopStatus,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  <select id="queryAuditingShopList" resultMap="QueryShopListMap" parameterType="com.essential.bussiness.shop.model.vo.ShopInformationPlatformVo" >
+	SELECT a.*,b.shop_status,b.check_status,b.reject_reason,c.contact_phone
+	FROM t_bussiness_shop a
+	LEFT JOIN t_bussiness_shop_addinformation b ON a.shop_id = b.shop_id AND a.status = b.is_delelte
+	LEFT JOIN t_bussiness_shop_tocontact c ON a.shop_id = c.shop_id AND a.status = c.status
+	<where>
+	  <if test="shopId != null" >
+        and a.shop_id = #{shopId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+        and a.name LIKE #{name,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="shoptypeId != null" >
+        and a.shoptype_id = #{shoptypeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+        and a.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="email != null" >
+        and a.email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null" >
+        and a.province_id = #{provinceId,jdbcType=BIGINT}
+      </if>
+      <if test="cityId != null" >
+        and a.city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="districtId != null" >
+        and a.district_id = #{districtId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+        and a.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="logoPath != null" >
+        and a.logo_path = #{logoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="shopFeatures != null" >
+        and a.shop_features = #{shopFeatures,jdbcType=VARCHAR}
+      </if>
+      <if test="waplogoPath != null" >
+        and a.wapLogo_path = #{waplogoPath,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredCapital != null" >
+        and a.registered_capital = #{registeredCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="legalPerson != null" >
+        and a.legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="legalAdress != null" >
+        and a.legal_adress = #{legalAdress,jdbcType=VARCHAR}
+      </if>
+      <if test="legalNumber != null" >
+        and a.legal_number = #{legalNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalFex != null" >
+        and a.legal_fex = #{legalFex,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAmount != null" >
+        and a.registered_amount = #{registeredAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="isPay != null" >
+        and a.is_pay = #{isPay,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null" >
+        and a.pay_type = #{payType,jdbcType=INTEGER}
+      </if>
+      <if test="payMoney != null" >
+        and a.pay_money = #{payMoney,jdbcType=DECIMAL}
+      </if>
+      <if test="ispaytime != null" >
+        and a.ispaytime = #{ispaytime,jdbcType=VARCHAR}
+      </if>
+      <if test="companywebseit != null" >
+        and a.companywebseit = #{companywebseit,jdbcType=VARCHAR}
+      </if>
+      <if test="weibo != null" >
+        and a.weibo = #{weibo,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat != null" >
+        and a.wechat = #{wechat,jdbcType=VARCHAR}
+      </if>
+      <if test="backgroundImage != null" >
+        and a.background_image = #{backgroundImage,jdbcType=VARCHAR}
+      </if>
+      <if test="checkTime != null" >
+        and a.check_time = #{checkTime,jdbcType=VARCHAR}
+      </if>
+      <if test="shopDescribe != null" >
+        and a.shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and a.create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and a.create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and a.modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="bussinessLicence != null" >
+        and a.bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        and a.bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        and a.bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessScope != null" >
+        and a.business_scope = #{businessScope,jdbcType=VARCHAR}
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        and a.bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR}
+      </if>
+      <if test="organizationCodeScan != null" >
+        and a.organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        and a.tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidScan != null" >
+        and a.legalid_scan = #{legalidScan,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null" >
+        and a.company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        and a.tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalidBackScan != null" >
+        and a.legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR}
+      </if>
+      <if test="detailAddress != null" >
+      	and a.detail_address = #{detailAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="fixedTelephone != null" >
+      	and a.fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	and a.account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR}
+      </if>
+      <if test="isSame != null" >
+      	and a.is_same = #{isSame,jdbcType=BIGINT}
+      </if>
+      <if test="checkStatus != null" >
+      	and b.check_status = #{checkStatus,jdbcType=INTEGER}
+      </if>
+      <if test="shopStatus != null" >
+      	and b.shop_status = #{shopStatus,jdbcType=INTEGER}
+      </if>
+	</where>
+	ORDER BY  create_time  DESC LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 通过shopId更新（平台） -->
+  <update id="updateByShopId" parameterType="com.essential.bussiness.shop.model.auto.ShopAuto" >
+    update t_bussiness_shop
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shoptypeId != null" >
+        shoptype_id = #{shoptypeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=BIGINT},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="logoPath != null" >
+        logo_path = #{logoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="shopFeatures != null" >
+        shop_features = #{shopFeatures,jdbcType=VARCHAR},
+      </if>
+      <if test="waplogoPath != null" >
+        wapLogo_path = #{waplogoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital = #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="legalPerson != null" >
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalAdress != null" >
+        legal_adress = #{legalAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalNumber != null" >
+        legal_number = #{legalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalFex != null" >
+        legal_fex = #{legalFex,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAmount != null" >
+        registered_amount = #{registeredAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="isPay != null" >
+        is_pay = #{isPay,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null" >
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="ispaytime != null" >
+        ispaytime = #{ispaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="companywebseit != null" >
+        companywebseit = #{companywebseit,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImage != null" >
+        background_image = #{backgroundImage,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDescribe != null" >
+        shop_describe = #{shopDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="bussinessLicence != null" >
+        bussiness_licence = #{bussinessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceValidTime != null" >
+        bussiness_licence_valid_time = #{bussinessLicenceValidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceAddress != null" >
+        bussiness_licence_address = #{bussinessLicenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        business_scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicenceScan != null" >
+        bussiness_licence_scan = #{bussinessLicenceScan,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCodeScan != null" >
+        organization_code_scan = #{organizationCodeScan,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationCertificateScan != null" >
+        tax_registration_certificate_scan = #{taxRegistrationCertificateScan,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidScan != null" >
+        legalid_scan = #{legalidScan,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistrationNumber != null" >
+        tax_registration_number = #{taxRegistrationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidBackScan != null" >
+        legalid_back_scan = #{legalidBackScan,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null" >
+      	detail_address = #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedTelephone != null" >
+      	fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOpeningLicenseScan != null" >
+      	account_opening_license_scan = #{accountOpeningLicenseScan,jdbcType=VARCHAR},
+      </if>
+      <if test="isSame != null" >
+      	is_same = #{isSame,jdbcType=BIGINT},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=BIGINT} and status = 0
+  </update>
+
+
+</mapper>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.management.opinon.dao.OpinonAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.management.opinon.model.auto.OpinonAuto" >
+    <id column="opinion_id" property="opinionId" jdbcType="BIGINT" />
+    <result column="opinion_content" property="opinionContent" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+    <result column="remark7" property="remark7" jdbcType="VARCHAR" />
+    <result column="remark8" property="remark8" jdbcType="VARCHAR" />
+    <result column="remark9" property="remark9" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    opinion_id, opinion_content, phone, create_user, create_time, modify_user, modify_time, 
+    is_delete, remark1, remark2, remark3, remark4, remark5, remark6, remark7, remark8, 
+    remark9
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_opinon
+    where opinion_id = #{opinionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_opinon
+    where opinion_id = #{opinionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.management.opinon.model.auto.OpinonAuto" >
+    insert into t_opinon (opinion_id, opinion_content, phone, 
+      create_user, create_time, modify_user, 
+      modify_time, is_delete, remark1, 
+      remark2, remark3, remark4, 
+      remark5, remark6, remark7, 
+      remark8, remark9)
+    values (#{opinionId,jdbcType=BIGINT}, #{opinionContent,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR}, #{modifyUser,jdbcType=BIGINT}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, 
+      #{remark5,jdbcType=VARCHAR}, #{remark6,jdbcType=VARCHAR}, #{remark7,jdbcType=VARCHAR}, 
+      #{remark8,jdbcType=VARCHAR}, #{remark9,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.management.opinon.model.auto.OpinonAuto" >
+    insert into t_opinon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="opinionId != null" >
+        opinion_id,
+      </if>
+      <if test="opinionContent != null" >
+        opinion_content,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+      <if test="remark7 != null" >
+        remark7,
+      </if>
+      <if test="remark8 != null" >
+        remark8,
+      </if>
+      <if test="remark9 != null" >
+        remark9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="opinionId != null" >
+        #{opinionId,jdbcType=BIGINT},
+      </if>
+      <if test="opinionContent != null" >
+        #{opinionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        #{remark9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.management.opinon.model.auto.OpinonAuto" >
+    update t_opinon
+    <set >
+      <if test="opinionContent != null" >
+        opinion_content = #{opinionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where opinion_id = #{opinionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.management.opinon.model.auto.OpinonAuto" >
+    update t_opinon
+    set opinion_content = #{opinionContent,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR},
+      remark7 = #{remark7,jdbcType=VARCHAR},
+      remark8 = #{remark8,jdbcType=VARCHAR},
+      remark9 = #{remark9,jdbcType=VARCHAR}
+    where opinion_id = #{opinionId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 查询意见信息  -->
+  <resultMap id="queryByPrimaryMap" type="com.essential.management.opinon.model.vo.OpinonAutoVo" >
+    <id column="opinion_id" property="opinionId" jdbcType="BIGINT" />
+    <result column="opinion_content" property="opinionContent" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryByPrimaryKey" resultMap="queryByPrimaryMap" parameterType="map" >
+    select 
+    <!-- <include refid="Base_Column_List" /> -->
+    o.opinion_id, 
+    o.opinion_content, 
+    o.phone,
+    o.create_user,
+    o.create_time,
+    o.is_delete,
+    u.user_nickname AS user_name
+    from t_opinon o left join t_user_userbaseinfo u on o.create_user = u.user_id
+    <where>
+      <if test="opinionId != null" >
+        and o.opinion_id = #{opinionId,jdbcType=BIGINT}
+      </if>
+      <if test="opinionContent != null" >
+        and o.opinion_content = #{opinionContent,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+        and o.phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and o.create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null" >
+        and o.create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and o.modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and o.modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null" >
+        and o.is_delete = #{isDelete,jdbcType=INTEGER}
+      </if>
+      <if test="remark1 != null" >
+        and o.remark1 = #{remark1,jdbcType=VARCHAR}
+      </if>
+      <if test="remark2 != null" >
+        and o.remark2 = #{remark2,jdbcType=VARCHAR}
+      </if>
+      <if test="remark3 != null" >
+        and o.remark3 = #{remark3,jdbcType=VARCHAR}
+      </if>
+      <if test="remark4 != null" >
+        and o.remark4 = #{remark4,jdbcType=VARCHAR}
+      </if>
+      <if test="remark5 != null" >
+        and o.remark5 = #{remark5,jdbcType=VARCHAR}
+      </if>
+      <if test="remark6 != null" >
+        and o.remark6 = #{remark6,jdbcType=VARCHAR}
+      </if>
+      <if test="remark7 != null" >
+        and o.remark7 = #{remark7,jdbcType=VARCHAR}
+      </if>
+      <if test="remark8 != null" >
+        and o.remark8 = #{remark8,jdbcType=VARCHAR}
+      </if>
+      <if test="remark9 != null" >
+        and o.remark9 = #{remark9,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY create_time DESC LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 统计总数 -->
+  <resultMap id="OpinionCountMap" type="com.essential.management.opinon.model.vo.CountVo" >
+  	<result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="opinonCount" resultMap="OpinionCountMap" >
+	select	count(CASE WHEN is_delete = 0 THEN is_delete END) as count
+	from t_opinon
+  </select>
+  
+</mapper>

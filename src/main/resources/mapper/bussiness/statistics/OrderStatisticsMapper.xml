@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.statistics.dao.OrderStatisticsMapper" >
+    
+  <select id="businessPendingProccessOrders" resultType="map" parameterType="java.lang.Long" >
+  	select	count(CASE WHEN order_status = 2 THEN order_status END) as goodsCount,
+				count(CASE WHEN order_status = 1 THEN order_status END) as moneyCount
+	 	from t_bussiness_order where shop_id = #{shopId,jdbcType=BIGINT}
+	UNION ALL
+	select	count(CASE WHEN return_refund_type = 1 THEN return_refund_type END) as goodsCount,
+					count(CASE WHEN return_refund_type = 2 THEN return_refund_type END) as moneyCount
+	 	from t_bussiness_return_refund_order where shop_id = #{shopId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="businessOperationData" resultType="map" parameterType="java.lang.Long" >
+  	<![CDATA[ select	count(CASE WHEN  create_time like Concat(curdate(),'%') THEN create_time END) todayOrderNumber,
+				sum(CASE WHEN  create_time like Concat(curdate(),'%') THEN total_price  ELSE 0 END) todayTransactionAmount,
+				sum(CASE WHEN  create_time >= DATE_SUB(CURDATE() , INTERVAL 7 DAY) AND create_time < DATE_ADD(CURDATE() , INTERVAL 1 DAY)
+							THEN total_price  ELSE 0 END) nearlySevenDaysTransactionAmount,
+				sum(CASE WHEN  create_time >= DATE_SUB(CURDATE() , INTERVAL 30 DAY) AND create_time < DATE_ADD(CURDATE() , INTERVAL 1 DAY)
+							THEN total_price  ELSE 0 END) nearlyThirtyDaysTransactionAmount
+ 		from t_bussiness_order where shop_id = #{shopId,jdbcType=BIGINT}
+ 		]]>
+  </select>
+  
+  <select id="platformPendingProccessOrders" resultType="map" >
+  	select	count(CASE WHEN return_refund_type = 1 THEN return_refund_type END) as goodsCount,
+					count(CASE WHEN return_refund_type = 2 THEN return_refund_type END) as moneyCount
+	 	from t_bussiness_return_refund_order
+  </select>
+  
+  <select id="platformOperationData" resultType="map" >
+  	<![CDATA[ select	count(CASE WHEN  create_time like Concat(curdate(),'%') THEN create_time END) todayOrderNumber,
+				sum(CASE WHEN  create_time like Concat(curdate(),'%') THEN total_price  ELSE 0 END) todayTransactionAmount,
+				sum(CASE WHEN  create_time >= DATE_SUB(CURDATE() , INTERVAL 7 DAY) AND create_time < DATE_ADD(CURDATE() , INTERVAL 1 DAY)
+							THEN total_price  ELSE 0 END) nearlySevenDaysTransactionAmount,
+				sum(CASE WHEN  create_time >= DATE_SUB(CURDATE() , INTERVAL 30 DAY) AND create_time < DATE_ADD(CURDATE() , INTERVAL 1 DAY)
+							THEN total_price  ELSE 0 END) nearlyThirtyDaysTransactionAmount
+ 		from t_bussiness_order
+ 		]]>
+  </select>
+</mapper>

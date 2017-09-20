@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.payment.dao.UnionpayProcedureAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.payment.model.UnionpayProcedureAuto" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
+    <result column="txnTime" property="txntime" jdbcType="VARCHAR" />
+    <result column="accNo" property="accno" jdbcType="VARCHAR" />
+    <result column="txnAmt" property="txnamt" jdbcType="VARCHAR" />
+    <result column="billNo" property="billno" jdbcType="VARCHAR" />
+    <result column="customerInfo" property="customerinfo" jdbcType="VARCHAR" />
+    <result column="queryId" property="queryid" jdbcType="VARCHAR" />
+    <result column="traceNo" property="traceno" jdbcType="VARCHAR" />
+    <result column="traceTime" property="tracetime" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderId, txnTime, accNo, txnAmt, billNo, customerInfo, queryId, traceNo, traceTime, 
+    remark1, remark2, remark3, remark4, remark5, remark6
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.essential.payment.model.UnionpayProcedureAuto">
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_unionpay_procedure
+   where orderId = #{orderid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_unionpay_procedure
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.payment.model.UnionpayProcedureAuto" >
+    insert into t_bussiness_unionpay_procedure (id, orderId, txnTime, 
+      accNo, txnAmt, billNo, 
+      customerInfo, queryId, traceNo, 
+      traceTime, remark1, remark2, 
+      remark3, remark4, remark5, 
+      remark6)
+    values (#{id,jdbcType=BIGINT}, #{orderid,jdbcType=VARCHAR}, #{txntime,jdbcType=VARCHAR}, 
+      #{accno,jdbcType=VARCHAR}, #{txnamt,jdbcType=VARCHAR}, #{billno,jdbcType=VARCHAR}, 
+      #{customerinfo,jdbcType=VARCHAR}, #{queryid,jdbcType=VARCHAR}, #{traceno,jdbcType=VARCHAR}, 
+      #{tracetime,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, 
+      #{remark6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.payment.model.UnionpayProcedureAuto" >
+    insert into t_bussiness_unionpay_procedure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderid != null" >
+        orderId,
+      </if>
+      <if test="txntime != null" >
+        txnTime,
+      </if>
+      <if test="accno != null" >
+        accNo,
+      </if>
+      <if test="txnamt != null" >
+        txnAmt,
+      </if>
+      <if test="billno != null" >
+        billNo,
+      </if>
+      <if test="customerinfo != null" >
+        customerInfo,
+      </if>
+      <if test="queryid != null" >
+        queryId,
+      </if>
+      <if test="traceno != null" >
+        traceNo,
+      </if>
+      <if test="tracetime != null" >
+        traceTime,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="txntime != null" >
+        #{txntime,jdbcType=VARCHAR},
+      </if>
+      <if test="accno != null" >
+        #{accno,jdbcType=VARCHAR},
+      </if>
+      <if test="txnamt != null" >
+        #{txnamt,jdbcType=VARCHAR},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerinfo != null" >
+        #{customerinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="queryid != null" >
+        #{queryid,jdbcType=VARCHAR},
+      </if>
+      <if test="traceno != null" >
+        #{traceno,jdbcType=VARCHAR},
+      </if>
+      <if test="tracetime != null" >
+        #{tracetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.payment.model.UnionpayProcedureAuto" >
+    update t_bussiness_unionpay_procedure
+    <set >
+      <if test="orderid != null" >
+        orderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="txntime != null" >
+        txnTime = #{txntime,jdbcType=VARCHAR},
+      </if>
+      <if test="accno != null" >
+        accNo = #{accno,jdbcType=VARCHAR},
+      </if>
+      <if test="txnamt != null" >
+        txnAmt = #{txnamt,jdbcType=VARCHAR},
+      </if>
+      <if test="billno != null" >
+        billNo = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerinfo != null" >
+        customerInfo = #{customerinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="queryid != null" >
+        queryId = #{queryid,jdbcType=VARCHAR},
+      </if>
+      <if test="traceno != null" >
+        traceNo = #{traceno,jdbcType=VARCHAR},
+      </if>
+      <if test="tracetime != null" >
+        traceTime = #{tracetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.payment.model.UnionpayProcedureAuto" >
+    update t_bussiness_unionpay_procedure
+    set orderId = #{orderid,jdbcType=VARCHAR},
+      txnTime = #{txntime,jdbcType=VARCHAR},
+      accNo = #{accno,jdbcType=VARCHAR},
+      txnAmt = #{txnamt,jdbcType=VARCHAR},
+      billNo = #{billno,jdbcType=VARCHAR},
+      customerInfo = #{customerinfo,jdbcType=VARCHAR},
+      queryId = #{queryid,jdbcType=VARCHAR},
+      traceNo = #{traceno,jdbcType=VARCHAR},
+      traceTime = #{tracetime,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

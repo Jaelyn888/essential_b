@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.address.dao.DistrictAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.address.model.auto.DistrictAuto">
+		<id column="district_id" property="districtId" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		district_id, name, parent_id, is_delete, create_user_id, create_time, modify_user_id,
+		modify_time
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_district
+		where district_id = #{districtId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_district
+		where district_id = #{districtId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.address.model.auto.DistrictAuto">
+		insert into t_district (district_id, name, parent_id,
+		is_delete, create_user_id, create_time,
+		modify_user_id, modify_time)
+		values (#{districtId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT},
+		#{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR},
+		#{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.address.model.auto.DistrictAuto">
+		insert into t_district
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="districtId != null">
+				district_id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="districtId != null">
+				#{districtId,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.address.model.auto.DistrictAuto">
+		update t_district
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where district_id = #{districtId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.address.model.auto.DistrictAuto">
+		update t_district
+		set name = #{name,jdbcType=VARCHAR},
+		parent_id = #{parentId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR}
+		where district_id = #{districtId,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询vo -->
+	<select id="queryDistrictListByParentId"  resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from t_district
+		<where>
+			<if test="districtId != null">
+				and district_id = #{districtId,jdbcType=BIGINT}
+			</if>
+			<if test="name != null">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null">
+				and parent_id = #{parentId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper>

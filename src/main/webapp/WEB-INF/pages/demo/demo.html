@@ -1,0 +1,19 @@
+<form action="demoAbout/saveAbout">
+	content:<input type="text" name="aboutAutoList[0].createUserId"/>
+	content:<input type="text" name="aboutAutoList[1].createUserId"/>
+	<input type="button" id="test" value="submit"/>
+</form>
+<script>
+	$(document).ready(function(){
+		$("#test").click(function(){
+			var a = [];a[0]=111;a[1]=222;
+			$.ajax({
+				url:"shopCart/delete",
+				data:{"shopcartIds":"111,222"},
+				success:function(){
+					
+				}
+			})
+		})
+	})
+</script>

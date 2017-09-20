@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.order.dao.ReturnRefundOrderAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.order.model.auto.ReturnRefundOrderAuto" >
+    <id column="return_refund_order_id" property="returnRefundOrderId" jdbcType="BIGINT" />
+    <result column="return_refund_order_number" property="returnRefundOrderNumber" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="return_refund_latest_status" property="returnRefundLatestStatus" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="logistic" property="logistic" jdbcType="VARCHAR" />
+    <result column="logistic_number" property="logisticNumber" jdbcType="VARCHAR" />
+    <result column="return_pic" property="returnPic" jdbcType="VARCHAR" />
+    <result column="return_refund_reason" property="returnRefundReason" jdbcType="VARCHAR" />
+    <result column="return_refund_reject_reason" property="returnRefundRejectReason" jdbcType="VARCHAR" />
+    <result column="return_goods" property="returnGoods" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="mofify_user" property="mofifyUser" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="desired_result" property="desiredResult" jdbcType="VARCHAR" />
+    <result column="refund_instructions" property="refundInstructions" jdbcType="VARCHAR" />
+    <result column="pic_identity" property="picIdentity" jdbcType="INTEGER" />
+    <result column="refund_serial_number" property="refundSerialNumber" jdbcType="VARCHAR" />
+    <result column="refund_account" property="refundAccount" jdbcType="VARCHAR" />
+    <result column="refund_bank" property="refundBank" jdbcType="VARCHAR" />
+    <result column="refund_user" property="refundUser" jdbcType="VARCHAR" />
+    <result column="refund_total_money" property="refundTotalMoney" jdbcType="DECIMAL" />
+    <result column="refund_final_money" property="refundFinalMoney" jdbcType="DECIMAL" />
+    <result column="return_order_product_count" property="returnOrderProductCount" jdbcType="INTEGER" />
+    <result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="return_refund_type" property="returnRefundType" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="return_address" property="returnAddress" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+	<result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="ReturnRfundOrderProductVoResultMap" type="com.essential.bussiness.order.model.vo.ReturnRfundOrderProductVo" >
+    <result column="return_refund_order_id" property="returnRefundOrderId" jdbcType="BIGINT" />
+    <result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="return_refund_order_number" property="returnRefundOrderNumber" jdbcType="VARCHAR" />
+    <result column="return_refund_status_item_name" property="returnRefundStatusItemName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="return_refund_type" property="returnRefundType" jdbcType="INTEGER" />
+    <result column="refund_total_money" property="refundTotalMoney" jdbcType="DECIMAL" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="ReturnRefundOrderVoResultMap" type="com.essential.bussiness.order.model.vo.ReturnRefundOrderVo" >
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="pay_number" property="payNumber" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="buyer_note" property="buyerNote" jdbcType="VARCHAR" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="external_order_number" property="externalOrderNumber" jdbcType="VARCHAR" />
+    <result column="pay_serial_number" property="paySerialNumber" jdbcType="VARCHAR" />
+    <result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="final_price" property="finalPrice" jdbcType="DECIMAL" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="is_comment" property="isComment" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="DECIMAL" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="addresse" property="addresse" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+    <result column="return_refund_count" property="returnRefundCount" jdbcType="INTEGER" />
+    <result column="return_refund_identification" property="returnRefundIdentification" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="order_status_item_id" property="orderStatusItemId" jdbcType="INTEGER" />
+    <result column="order_status_item_name" property="orderStatusItemName" jdbcType="VARCHAR" />
+    <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="logo_path" property="logoPath" jdbcType="VARCHAR" />
+    <result column="order_product_count" property="orderProductCount" jdbcType="INTEGER" />
+    <result column="return_refund_order_id" property="returnRefundOrderId" jdbcType="BIGINT" />
+    <result column="return_refund_order_number" property="returnRefundOrderNumber" jdbcType="VARCHAR" />
+    <result column="return_refund_type" property="returnRefundType" jdbcType="INTEGER" />
+    <result column="refund_total_money" property="refundTotalMoney" jdbcType="DECIMAL" />
+    <result column="return_refund_status_item_name" property="returnRefundStatusItemName" jdbcType="VARCHAR" />
+    <result column="return_refund_latest_status" property="returnRefundLatestStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="return_refund_reason" property="returnRefundReason" jdbcType="VARCHAR" />
+    <result column="return_refund_reject_reason" property="returnRefundRejectReason" jdbcType="VARCHAR" />
+    <result column="logistic" property="logistic" jdbcType="VARCHAR" />
+    <result column="logistic_number" property="logisticNumber" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr1" property="returnRefundAttr1" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr2" property="returnRefundAttr2" jdbcType="VARCHAR" />
+    <result column="pic_identity" property="picIdentity" jdbcType="INTEGER" />
+  </resultMap>
+  
+  
+  <resultMap id="GenerateRefundOrderVoResultMap" extends="ReturnRefundOrderVoResultMap" type="com.essential.bussiness.order.model.vo.GenerateRefundOrderVo" >
+    <result column="return_address" property="returnAddress" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+	<result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr3" property="returnRefundAttr3" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr4" property="returnRefundAttr4" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr5" property="returnRefundAttr5" jdbcType="VARCHAR" />
+    <result column="returnRefundAttr6" property="returnRefundAttr6" jdbcType="VARCHAR" />
+    <result column="refund_final_money" property="refundFinalMoney" jdbcType="DECIMAL" />
+    <result column="refund_user" property="refundUser" jdbcType="VARCHAR" />
+    <result column="returnRefundModifyTime" property="returnRefundModifyTime" jdbcType="VARCHAR" />
+    <result column="refund_account" property="refundAccount" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    return_refund_order_id, return_refund_order_number, order_id, return_refund_latest_status, 
+    user_id, logistic, logistic_number, return_pic, return_refund_reason, return_refund_reject_reason, 
+    return_goods, create_time, modify_time, create_user, mofify_user, is_delete, desired_result, 
+    refund_instructions, pic_identity, refund_serial_number, refund_account, refund_bank, 
+    refund_user, refund_total_money, refund_final_money, return_order_product_count, 
+    order_product_id, return_refund_type, attr1, attr2, attr3, attr4, attr5, attr6, shop_id,
+    return_address, contact_person, phone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_bussiness_return_refund_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_return_refund_order
+    where return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_return_refund_order
+    where return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAutoExample" >
+    delete from t_bussiness_return_refund_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="returnRefundOrderId" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAuto" >
+    insert into t_bussiness_return_refund_order (return_refund_order_id, return_refund_order_number, 
+      order_id, return_refund_latest_status, user_id, 
+      logistic, logistic_number, return_pic, 
+      return_refund_reason, return_refund_reject_reason, 
+      return_goods, create_time, modify_time, 
+      create_user, mofify_user, is_delete, 
+      desired_result, refund_instructions, pic_identity, 
+      refund_serial_number, refund_account, refund_bank, 
+      refund_user, refund_total_money, refund_final_money, 
+      return_order_product_count, order_product_id, 
+      return_refund_type, attr1, attr2, 
+      attr3, attr4, attr5, 
+      attr6, shop_id, return_address, contact_person, phone)
+    values (#{returnRefundOrderId,jdbcType=BIGINT}, #{returnRefundOrderNumber,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=BIGINT}, #{returnRefundLatestStatus,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{logistic,jdbcType=VARCHAR}, #{logisticNumber,jdbcType=VARCHAR}, #{returnPic,jdbcType=VARCHAR}, 
+      #{returnRefundReason,jdbcType=VARCHAR}, #{returnRefundRejectReason,jdbcType=VARCHAR}, 
+      #{returnGoods,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=BIGINT}, #{mofifyUser,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, 
+      #{desiredResult,jdbcType=VARCHAR}, #{refundInstructions,jdbcType=VARCHAR}, #{picIdentity,jdbcType=INTEGER}, 
+      #{refundSerialNumber,jdbcType=VARCHAR}, #{refundAccount,jdbcType=VARCHAR}, #{refundBank,jdbcType=VARCHAR}, 
+      #{refundUser,jdbcType=VARCHAR}, #{refundTotalMoney,jdbcType=DECIMAL}, #{refundFinalMoney,jdbcType=DECIMAL}, 
+      #{returnOrderProductCount,jdbcType=INTEGER}, #{orderProductId,jdbcType=BIGINT}, 
+      #{returnRefundType,jdbcType=INTEGER}, #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR}, 
+      #{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, #{attr5,jdbcType=VARCHAR}, 
+      #{attr6,jdbcType=VARCHAR}, #{shopId,jdbcType=BIGINT}, #{returnAddress,jdbcType=VARCHAR}, 
+      #{contactPerson,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAuto" >
+    insert into t_bussiness_return_refund_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="returnRefundOrderId != null" >
+        return_refund_order_id,
+      </if>
+      <if test="returnRefundOrderNumber != null" >
+        return_refund_order_number,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="returnRefundLatestStatus != null" >
+        return_refund_latest_status,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="logistic != null" >
+        logistic,
+      </if>
+      <if test="logisticNumber != null" >
+        logistic_number,
+      </if>
+      <if test="returnPic != null" >
+        return_pic,
+      </if>
+      <if test="returnRefundReason != null" >
+        return_refund_reason,
+      </if>
+      <if test="returnRefundRejectReason != null" >
+        return_refund_reject_reason,
+      </if>
+      <if test="returnGoods != null" >
+        return_goods,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="mofifyUser != null" >
+        mofify_user,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="desiredResult != null" >
+        desired_result,
+      </if>
+      <if test="refundInstructions != null" >
+        refund_instructions,
+      </if>
+      <if test="picIdentity != null" >
+        pic_identity,
+      </if>
+      <if test="refundSerialNumber != null" >
+        refund_serial_number,
+      </if>
+      <if test="refundAccount != null" >
+        refund_account,
+      </if>
+      <if test="refundBank != null" >
+        refund_bank,
+      </if>
+      <if test="refundUser != null" >
+        refund_user,
+      </if>
+      <if test="refundTotalMoney != null" >
+        refund_total_money,
+      </if>
+      <if test="refundFinalMoney != null" >
+        refund_final_money,
+      </if>
+      <if test="returnOrderProductCount != null" >
+        return_order_product_count,
+      </if>
+      <if test="orderProductId != null" >
+        order_product_id,
+      </if>
+      <if test="returnRefundType != null" >
+        return_refund_type,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+      <if test="attr3 != null" >
+        attr3,
+      </if>
+      <if test="attr4 != null" >
+        attr4,
+      </if>
+      <if test="attr5 != null" >
+        attr5,
+      </if>
+      <if test="attr6 != null" >
+        attr6,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="returnAddress != null" >
+        return_address,
+      </if>
+      <if test="contactPerson != null" >
+        contact_person,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="returnRefundOrderId != null" >
+        #{returnRefundOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundOrderNumber != null" >
+        #{returnRefundOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundLatestStatus != null" >
+        #{returnRefundLatestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="logistic != null" >
+        #{logistic,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticNumber != null" >
+        #{logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="returnPic != null" >
+        #{returnPic,jdbcType=VARCHAR},
+      </if>
+      <if test="returnRefundReason != null" >
+        #{returnRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnRefundRejectReason != null" >
+        #{returnRefundRejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnGoods != null" >
+        #{returnGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="mofifyUser != null" >
+        #{mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="desiredResult != null" >
+        #{desiredResult,jdbcType=VARCHAR},
+      </if>
+      <if test="refundInstructions != null" >
+        #{refundInstructions,jdbcType=VARCHAR},
+      </if>
+      <if test="picIdentity != null" >
+        #{picIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="refundSerialNumber != null" >
+        #{refundSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccount != null" >
+        #{refundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="refundBank != null" >
+        #{refundBank,jdbcType=VARCHAR},
+      </if>
+      <if test="refundUser != null" >
+        #{refundUser,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTotalMoney != null" >
+        #{refundTotalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="refundFinalMoney != null" >
+        #{refundFinalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="returnOrderProductCount != null" >
+        #{returnOrderProductCount,jdbcType=INTEGER},
+      </if>
+      <if test="orderProductId != null" >
+        #{orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundType != null" >
+        #{returnRefundType,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="returnAddress != null" >
+        #{returnAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_bussiness_return_refund_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_bussiness_return_refund_order
+    <set >
+      <if test="record.returnRefundOrderId != null" >
+        return_refund_order_id = #{record.returnRefundOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnRefundOrderNumber != null" >
+        return_refund_order_number = #{record.returnRefundOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnRefundLatestStatus != null" >
+        return_refund_latest_status = #{record.returnRefundLatestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.logistic != null" >
+        logistic = #{record.logistic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticNumber != null" >
+        logistic_number = #{record.logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnPic != null" >
+        return_pic = #{record.returnPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnRefundReason != null" >
+        return_refund_reason = #{record.returnRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnRefundRejectReason != null" >
+        return_refund_reject_reason = #{record.returnRefundRejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnGoods != null" >
+        return_goods = #{record.returnGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.mofifyUser != null" >
+        mofify_user = #{record.mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.desiredResult != null" >
+        desired_result = #{record.desiredResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundInstructions != null" >
+        refund_instructions = #{record.refundInstructions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picIdentity != null" >
+        pic_identity = #{record.picIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.refundSerialNumber != null" >
+        refund_serial_number = #{record.refundSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundAccount != null" >
+        refund_account = #{record.refundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundBank != null" >
+        refund_bank = #{record.refundBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundUser != null" >
+        refund_user = #{record.refundUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundTotalMoney != null" >
+        refund_total_money = #{record.refundTotalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.refundFinalMoney != null" >
+        refund_final_money = #{record.refundFinalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.returnOrderProductCount != null" >
+        return_order_product_count = #{record.returnOrderProductCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderProductId != null" >
+        order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnRefundType != null" >
+        return_refund_type = #{record.returnRefundType,jdbcType=INTEGER},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null" >
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null" >
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr5 != null" >
+        attr5 = #{record.attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr6 != null" >
+        attr6 = #{record.attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnAddress != null" >
+        return_address = #{record.returnAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPerson != null" >
+        contact_person = #{record.contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_bussiness_return_refund_order
+    set return_refund_order_id = #{record.returnRefundOrderId,jdbcType=BIGINT},
+      return_refund_order_number = #{record.returnRefundOrderNumber,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      return_refund_latest_status = #{record.returnRefundLatestStatus,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      logistic = #{record.logistic,jdbcType=VARCHAR},
+      logistic_number = #{record.logisticNumber,jdbcType=VARCHAR},
+      return_pic = #{record.returnPic,jdbcType=VARCHAR},
+      return_refund_reason = #{record.returnRefundReason,jdbcType=VARCHAR},
+      return_refund_reject_reason = #{record.returnRefundRejectReason,jdbcType=VARCHAR},
+      return_goods = #{record.returnGoods,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=BIGINT},
+      mofify_user = #{record.mofifyUser,jdbcType=BIGINT},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      desired_result = #{record.desiredResult,jdbcType=VARCHAR},
+      refund_instructions = #{record.refundInstructions,jdbcType=VARCHAR},
+      pic_identity = #{record.picIdentity,jdbcType=INTEGER},
+      refund_serial_number = #{record.refundSerialNumber,jdbcType=VARCHAR},
+      refund_account = #{record.refundAccount,jdbcType=VARCHAR},
+      refund_bank = #{record.refundBank,jdbcType=VARCHAR},
+      refund_user = #{record.refundUser,jdbcType=VARCHAR},
+      refund_total_money = #{record.refundTotalMoney,jdbcType=DECIMAL},
+      refund_final_money = #{record.refundFinalMoney,jdbcType=DECIMAL},
+      return_order_product_count = #{record.returnOrderProductCount,jdbcType=INTEGER},
+      order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      return_refund_type = #{record.returnRefundType,jdbcType=INTEGER},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      attr5 = #{record.attr5,jdbcType=VARCHAR},
+      attr6 = #{record.attr6,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      return_address = #{record.returnAddress,jdbcType=VARCHAR},
+      contact_person = #{record.contactPerson,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAuto" >
+    update t_bussiness_return_refund_order
+    <set >
+      <if test="returnRefundOrderNumber != null" >
+        return_refund_order_number = #{returnRefundOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundLatestStatus != null" >
+        return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="logistic != null" >
+        logistic = #{logistic,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticNumber != null" >
+        logistic_number = #{logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="returnPic != null" >
+        return_pic = #{returnPic,jdbcType=VARCHAR},
+      </if>
+      <if test="returnRefundReason != null" >
+        return_refund_reason = #{returnRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnRefundRejectReason != null" >
+        return_refund_reject_reason = #{returnRefundRejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnGoods != null" >
+        return_goods = #{returnGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="mofifyUser != null" >
+        mofify_user = #{mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="desiredResult != null" >
+        desired_result = #{desiredResult,jdbcType=VARCHAR},
+      </if>
+      <if test="refundInstructions != null" >
+        refund_instructions = #{refundInstructions,jdbcType=VARCHAR},
+      </if>
+      <if test="picIdentity != null" >
+        pic_identity = #{picIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="refundSerialNumber != null" >
+        refund_serial_number = #{refundSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccount != null" >
+        refund_account = #{refundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="refundBank != null" >
+        refund_bank = #{refundBank,jdbcType=VARCHAR},
+      </if>
+      <if test="refundUser != null" >
+        refund_user = #{refundUser,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTotalMoney != null" >
+        refund_total_money = #{refundTotalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="refundFinalMoney != null" >
+        refund_final_money = #{refundFinalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="returnOrderProductCount != null" >
+        return_order_product_count = #{returnOrderProductCount,jdbcType=INTEGER},
+      </if>
+      <if test="orderProductId != null" >
+        order_product_id = #{orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="returnRefundType != null" >
+        return_refund_type = #{returnRefundType,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        attr3 = #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        attr4 = #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        attr5 = #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        attr6 = #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="returnAddress != null" >
+        return_address = #{returnAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.order.model.auto.ReturnRefundOrderAuto" >
+    update t_bussiness_return_refund_order
+    set return_refund_order_number = #{returnRefundOrderNumber,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=BIGINT},
+      return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      logistic = #{logistic,jdbcType=VARCHAR},
+      logistic_number = #{logisticNumber,jdbcType=VARCHAR},
+      return_pic = #{returnPic,jdbcType=VARCHAR},
+      return_refund_reason = #{returnRefundReason,jdbcType=VARCHAR},
+      return_refund_reject_reason = #{returnRefundRejectReason,jdbcType=VARCHAR},
+      return_goods = #{returnGoods,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      mofify_user = #{mofifyUser,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      desired_result = #{desiredResult,jdbcType=VARCHAR},
+      refund_instructions = #{refundInstructions,jdbcType=VARCHAR},
+      pic_identity = #{picIdentity,jdbcType=INTEGER},
+      refund_serial_number = #{refundSerialNumber,jdbcType=VARCHAR},
+      refund_account = #{refundAccount,jdbcType=VARCHAR},
+      refund_bank = #{refundBank,jdbcType=VARCHAR},
+      refund_user = #{refundUser,jdbcType=VARCHAR},
+      refund_total_money = #{refundTotalMoney,jdbcType=DECIMAL},
+      refund_final_money = #{refundFinalMoney,jdbcType=DECIMAL},
+      return_order_product_count = #{returnOrderProductCount,jdbcType=INTEGER},
+      order_product_id = #{orderProductId,jdbcType=BIGINT},
+      return_refund_type = #{returnRefundType,jdbcType=INTEGER},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR},
+      attr3 = #{attr3,jdbcType=VARCHAR},
+      attr4 = #{attr4,jdbcType=VARCHAR},
+      attr5 = #{attr5,jdbcType=VARCHAR},
+      attr6 = #{attr6,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      return_address = #{returnAddress,jdbcType=VARCHAR},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+  </update>
+  
+  <select  id="quertReturnRefundForList" parameterType="com.essential.bussiness.order.model.vo.ReturnRefundOrderVo" resultMap="ReturnRefundOrderVoResultMap">
+  	select b.return_refund_order_id,b.return_refund_order_number,b.attr1 as returnRefundAttr1,b.attr2 as returnRefundAttr2,b.order_id, b.return_refund_latest_status,b.order_product_id,b.logistic,b.logistic_number,
+				b.is_delete,b.return_refund_type,a.order_number, a.pay_number,a.order_status, a.buyer_note, a.total_price, a.external_order_number,
+				  a.pay_serial_number,a.shop_id, a.final_price,b.refund_total_money,b.create_time,b.return_refund_reason,b.return_refund_reject_reason,
+		  	 a.is_comment, a.user_id, a.pay_type, a.address, a.freight, a.zipcode, a.addresse,b.pic_identity,
+		  	a.user_phone, a.modify_time, a.modify_user_id, a.return_refund_count, a.return_refund_identification,
+		  	a.attr1, a.attr2, a.attr3, a.attr4, c.return_refund_status_item_name, 
+				u.user_nickname,s.`name`,s.logo_path,sum(op.product_count) as order_product_count
+    	from t_bussiness_return_refund_order b
+				LEFT JOIN t_bussiness_order a
+							on b.order_id = a.order_id
+				LEFT JOIN t_bussiness_return_refund_status_item c
+							on b.return_refund_latest_status = c.return_refund_status_item_id
+				LEFT JOIN t_user_userbaseinfo u
+							on b.user_id = u.user_id
+				LEFT JOIN t_bussiness_shop s
+							on a.shop_id = s.shop_id
+				LEFT JOIN t_bussiness_order_product op
+							on b.order_id = op.order_id
+		<where>
+			<if test="returnRefundOrderId != null and returnRefundOrderId != ''" >
+        		and b.return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+	      	</if>
+			<if test="returnRefundOrderNumber != null and returnRefundOrderNumber != ''" >
+        		and b.return_refund_order_number like #{returnRefundOrderNumber,jdbcType=BIGINT}"%"
+	      	</if>
+			<if test="userId != null and userId != ''">
+				and b.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null and isDelete != ''" >
+	        	and b.is_delete = #{isDelete,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundLatestStatus != null and returnRefundLatestStatus != ''" >
+        		and b.return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundType != null and returnRefundType != ''" >
+		       	and b.return_refund_type = #{returnRefundType,jdbcType=INTEGER}
+	     	</if>
+	      	<if test="modifyStartTime != null and modifyStartTime != ''" >
+	        	<![CDATA[ and b.create_time >= #{modifyStartTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+	      	<if test="modifyEndTime != null and modifyEndTime != ''" >
+	        	<![CDATA[ and b.create_time <= #{modifyEndTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+			<if test="orderNumber != null and orderNumber != ''" >
+        		and a.order_number like #{orderNumber,jdbcType=VARCHAR}"%"
+	      	</if>
+			<if test="shopId != null and shopId != ''">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+	      	<if test="orderStatus != null and orderStatus != ''" >
+	        	and a.order_status = #{orderStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="userNickname != null and userNickname != ''">
+	      		and u.user_nickname like #{userNickname,jdbcType=VARCHAR}"%"
+	      	</if>
+	      	<if test="payType != null and payType != ''" >
+		        and a.pay_type = #{payType,jdbcType=INTEGER}
+		    </if>
+		    <if test="orderProductId != null and orderProductId != ''" >
+		        and b.order_product_id = #{orderProductId,jdbcType=VARCHAR}
+		    </if>
+		    <if test="name != null and name != ''" >
+	        	and s.name = #{name,jdbcType=VARCHAR}
+	      	</if>
+	      	<if test="orderProducts != null and orderProducts != ''">
+	  			<foreach collection="orderProducts" item="orderProduct" separator=",">
+	  				<choose>
+	  					<when test="orderProduct.productName != null and orderProduct.productName != ''">
+	  						and op.product_name like #{orderProduct.productName,jdbcType=VARCHAR}"%"
+	  					</when>
+	  				</choose>
+	  			</foreach>
+	  		</if>
+		</where>
+	GROUP BY b.return_refund_order_id ORDER BY b.modify_time DESC
+	<if test="pageNo != null and pageCount != null">
+		LIMIT #{pageNo},#{pageCount}
+	</if>
+  </select>
+  
+  <select  id="quertReturnRefundForListCount" parameterType="com.essential.bussiness.order.model.vo.ReturnRefundOrderVo" resultType="java.lang.Integer">
+  	select count(DISTINCT b.return_refund_order_id)
+    	from t_bussiness_return_refund_order b
+				LEFT JOIN t_bussiness_order a
+							on b.order_id = a.order_id
+				LEFT JOIN t_bussiness_return_refund_status_item c
+							on b.return_refund_latest_status = c.return_refund_status_item_id
+				LEFT JOIN t_user_userbaseinfo u
+							on b.user_id = u.user_id
+				LEFT JOIN t_bussiness_shop s
+							on a.shop_id = s.shop_id
+				LEFT JOIN t_bussiness_order_product op
+							on b.order_id = op.order_id
+		<where>
+			<if test="returnRefundOrderNumber != null and returnRefundOrderNumber != ''" >
+        		and b.return_refund_order_number like #{returnRefundOrderNumber,jdbcType=BIGINT}"%"
+	      	</if>
+			<if test="userId != null">
+				and b.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null and isDelete != ''" >
+	        	and b.is_delete = #{isDelete,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundLatestStatus != null and returnRefundLatestStatus != ''" >
+        		and b.return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundType != null and returnRefundType != ''" >
+		       	and b.return_refund_type = #{returnRefundType,jdbcType=INTEGER}
+	     	</if>
+	      	<if test="modifyStartTime != null and modifyStartTime != ''" >
+	        	<![CDATA[ and b.create_time >= #{modifyStartTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+	      	<if test="modifyEndTime != null and modifyEndTime != ''" >
+	        	<![CDATA[ and b.create_time <= #{modifyEndTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+			<if test="orderNumber != null and orderNumber != ''" >
+        		and a.order_number like #{orderNumber,jdbcType=VARCHAR}"%"
+	      	</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+	      	<if test="orderStatus != null and orderStatus != ''" >
+	        	and a.order_status = #{orderStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="userNickname != null and userNickname != ''">
+	      		and u.user_nickname like #{userNickname,jdbcType=VARCHAR}"%"
+	      	</if>
+	      	<if test="payType != null and payType != ''" >
+	        	and a.pay_type = #{payType,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="name != null and name != ''" >
+        		and s.name = #{name,jdbcType=VARCHAR}
+      		</if>
+      		<if test="orderProducts != null and orderProducts != ''">
+	   			<foreach collection="orderProducts" item="orderProduct" separator=",">
+	   				<choose>
+	   					<when test="orderProduct.productName != null and orderProduct.productName != ''">
+	   						and op.product_name like #{orderProduct.productName,jdbcType=VARCHAR}"%"
+	   					</when>
+	   				</choose>
+	   			</foreach>
+	   		</if>
+		</where>
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <select  id="queryGenerateRefundOrderForList" parameterType="com.essential.bussiness.order.model.vo.GenerateRefundOrderVo" resultMap="GenerateRefundOrderVoResultMap">
+  	select b.return_refund_order_id,b.return_refund_order_number,b.attr1 as returnRefundAttr1,b.attr2 as returnRefundAttr2,b.order_id, b.return_refund_latest_status,b.order_product_id,b.logistic,b.logistic_number,
+				b.is_delete,b.return_refund_type,a.order_number, a.pay_number,a.order_status, a.buyer_note, a.total_price, a.external_order_number,b.refund_account,
+				  a.pay_serial_number,a.shop_id, a.final_price,b.refund_total_money,b.create_time,b.return_refund_reason,b.return_refund_reject_reason,b.return_address,b.contact_person,b.phone,
+		  	 a.is_comment, a.user_id, a.pay_type, a.address, a.freight, a.zipcode, a.addresse,b.pic_identity,b.modify_time as returnRefundModifyTime,b.refund_user,b.refund_final_money,b.attr3 as returnRefundAttr3,b.attr4 as returnRefundAttr4,b.attr5 as returnRefundAttr5,b.attr6 as returnRefundAttr6,
+		  	a.user_phone, a.modify_time, a.modify_user_id, a.return_refund_count, a.return_refund_identification,
+		  	a.attr1, a.attr2, a.attr3, a.attr4, c.return_refund_status_item_name, 
+				u.user_nickname,s.`name`,s.logo_path,sum(op.product_count) as order_product_count
+    	from t_bussiness_return_refund_order b
+				LEFT JOIN t_bussiness_order a
+							on b.order_id = a.order_id
+				LEFT JOIN t_bussiness_return_refund_status_item c
+							on b.return_refund_latest_status = c.return_refund_status_item_id
+				LEFT JOIN t_user_userbaseinfo u
+							on b.user_id = u.user_id
+				LEFT JOIN t_bussiness_shop s
+							on a.shop_id = s.shop_id
+				LEFT JOIN t_bussiness_order_product op
+							on b.order_id = op.order_id
+		<where>
+			<if test="returnRefundOrderId != null and returnRefundOrderId != ''" >
+        		and b.return_refund_order_id = #{returnRefundOrderId,jdbcType=BIGINT}
+	      	</if>
+			<if test="returnRefundOrderNumber != null and returnRefundOrderNumber != ''" >
+        		and b.return_refund_order_number like #{returnRefundOrderNumber,jdbcType=BIGINT}"%"
+	      	</if>
+			<if test="userId != null and userId != ''">
+				and b.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null and isDelete != ''" >
+	        	and b.is_delete = #{isDelete,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundLatestStatus != null and returnRefundLatestStatus != ''" >
+        		and b.return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundType != null and returnRefundType != ''" >
+		       	and b.return_refund_type = #{returnRefundType,jdbcType=INTEGER}
+	     	</if>
+	      	<if test="modifyStartTime != null and modifyStartTime != ''" >
+	        	<![CDATA[ and b.create_time >= #{modifyStartTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+	      	<if test="modifyEndTime != null and modifyEndTime != ''" >
+	        	<![CDATA[ and b.create_time <= #{modifyEndTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+			<if test="orderNumber != null and orderNumber != ''" >
+        		and a.order_number like #{orderNumber,jdbcType=VARCHAR}"%"
+	      	</if>
+			<if test="shopId != null and shopId != ''">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+	      	<if test="orderStatus != null and orderStatus != ''" >
+	        	and a.order_status = #{orderStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="userNickname != null and userNickname != ''">
+	      		and u.user_nickname like #{userNickname,jdbcType=VARCHAR}"%"
+	      	</if>
+	      	<if test="payType != null and payType != ''" >
+		        and a.pay_type = #{payType,jdbcType=INTEGER}
+		    </if>
+		    <if test="name != null and name != ''" >
+	        	and s.name = #{name,jdbcType=VARCHAR}
+	      	</if>
+	      	<if test="orderProducts != null and orderProducts != ''">
+	  			<foreach collection="orderProducts" item="orderProduct" separator=",">
+	  				<choose>
+	  					<when test="orderProduct.productName != null and orderProduct.productName != ''">
+	  						and op.product_name like #{orderProduct.productName,jdbcType=VARCHAR}"%"
+	  					</when>
+	  				</choose>
+	  			</foreach>
+	  		</if>
+		</where>
+	GROUP BY b.return_refund_order_id ORDER BY b.modify_time DESC
+	<if test="pageNo != null and pageCount != null">
+		LIMIT #{pageNo},#{pageCount}
+	</if>
+  </select>
+  
+  <select  id="queryGenerateRefundOrderForListCount" parameterType="com.essential.bussiness.order.model.vo.GenerateRefundOrderVo" resultType="java.lang.Integer">
+  	select count(DISTINCT b.return_refund_order_id)
+    	from t_bussiness_return_refund_order b
+				LEFT JOIN t_bussiness_order a
+							on b.order_id = a.order_id
+				LEFT JOIN t_bussiness_return_refund_status_item c
+							on b.return_refund_latest_status = c.return_refund_status_item_id
+				LEFT JOIN t_user_userbaseinfo u
+							on b.user_id = u.user_id
+				LEFT JOIN t_bussiness_shop s
+							on a.shop_id = s.shop_id
+				LEFT JOIN t_bussiness_order_product op
+							on b.order_id = op.order_id
+		<where>
+			<if test="returnRefundOrderNumber != null and returnRefundOrderNumber != ''" >
+        		and b.return_refund_order_number like #{returnRefundOrderNumber,jdbcType=BIGINT}"%"
+	      	</if>
+			<if test="userId != null">
+				and b.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null and isDelete != ''" >
+	        	and b.is_delete = #{isDelete,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundLatestStatus != null and returnRefundLatestStatus != ''" >
+        		and b.return_refund_latest_status = #{returnRefundLatestStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="returnRefundType != null and returnRefundType != ''" >
+		       	and b.return_refund_type = #{returnRefundType,jdbcType=INTEGER}
+	     	</if>
+	      	<if test="modifyStartTime != null and modifyStartTime != ''" >
+	        	<![CDATA[ and b.create_time >= #{modifyStartTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+	      	<if test="modifyEndTime != null and modifyEndTime != ''" >
+	        	<![CDATA[ and b.create_time <= #{modifyEndTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+			<if test="orderNumber != null and orderNumber != ''" >
+        		and a.order_number like #{orderNumber,jdbcType=VARCHAR}"%"
+	      	</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+	      	<if test="orderStatus != null and orderStatus != ''" >
+	        	and a.order_status = #{orderStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="userNickname != null and userNickname != ''">
+	      		and u.user_nickname like #{userNickname,jdbcType=VARCHAR}"%"
+	      	</if>
+	      	<if test="payType != null and payType != ''" >
+	        	and a.pay_type = #{payType,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="name != null and name != ''" >
+        		and s.name = #{name,jdbcType=VARCHAR}
+      		</if>
+      		<if test="orderProducts != null and orderProducts != ''">
+	   			<foreach collection="orderProducts" item="orderProduct" separator=",">
+	   				<choose>
+	   					<when test="orderProduct.productName != null and orderProduct.productName != ''">
+	   						and op.product_name like #{orderProduct.productName,jdbcType=VARCHAR}"%"
+	   					</when>
+	   				</choose>
+	   			</foreach>
+	   		</if>
+		</where>
+  </select>
+  <!-- <select id="quertReturnRefundForList" parameterType="com.essential.bussiness.order.model.vo.ReturnRfundOrderProductVo" resultMap="ReturnRfundOrderProductVoResultMap">
+  	select a.return_refund_order_id,a.return_refund_order_number,a.create_time,
+				a.return_refund_type,a.refund_total_money,a.attr1,a.attr2,a.order_product_id,
+				b.order_number,c.return_refund_status_item_name,d.user_nickname
+			from t_bussiness_return_refund_order a
+			left join t_bussiness_order b
+						on a.order_id = b.order_id
+			left join t_bussiness_return_refund_status_item c
+						on a.return_refund_latest_status = c.return_refund_status_item_id
+			left join t_user_userbaseinfo d
+						on a.user_id = d.user_id
+		<where>
+			<if test="userId != null">
+				and a.user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null" >
+	        	and a.is_delete = #{isDelete,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="modifyStartTime != null" >
+	        	<![CDATA[ and a.modify_time >= #{modifyStartTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+	      	<if test="modifyEndTime != null" >
+	        	<![CDATA[ and a.modify_time <= #{modifyEndTime,jdbcType=VARCHAR} ]]>
+	      	</if>
+			<if test="orderNumber != null" >
+        		and b.order_number like #{orderNumber,jdbcType=VARCHAR}"%"
+	      	</if>
+			<if test="shopId != null">
+				and b.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+	      	<if test="orderStatus != null" >
+	        	and a.order_status = #{orderStatus,jdbcType=INTEGER}
+	      	</if>
+	      	<if test="userNickname != null">
+	      		and d.user_nickname = #{userNickname,jdbcType=VARCHAR}
+	      	</if>
+		</where>
+  </select> -->
+</mapper>

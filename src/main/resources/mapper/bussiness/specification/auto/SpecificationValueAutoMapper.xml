@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.specification.dao.SpecificationValueAutoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		<id column="specification_valueid" property="specificationValueid"
+			jdbcType="BIGINT" />
+		<result column="value_name" property="valueName" jdbcType="VARCHAR" />
+		<result column="alias_name" property="aliasName" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+		<result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="key_id" property="keyId" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		specification_valueid, value_name, alias_name, type, image_path, is_deleted, create_time,
+		create_user, modify_time, modify_user, status, key_id
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue
+		where specification_valueid = #{specificationValueid,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_bussiness_specificationvalue
+		where specification_valueid = #{specificationValueid,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert"
+		parameterType="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		insert into t_bussiness_specificationvalue (specification_valueid,
+		value_name, alias_name,
+		type, image_path, is_deleted,
+		create_time, create_user, modify_time,
+		modify_user, status, key_id
+		)
+		values (#{specificationValueid,jdbcType=BIGINT},
+		#{valueName,jdbcType=VARCHAR}, #{aliasName,jdbcType=VARCHAR},
+		#{type,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR},
+		#{isDeleted,jdbcType=INTEGER},
+		#{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR},
+		#{modifyUser,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+		#{keyId,jdbcType=BIGINT}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		insert into t_bussiness_specificationvalue
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="specificationValueid != null">
+				specification_valueid,
+			</if>
+			<if test="valueName != null">
+				value_name,
+			</if>
+			<if test="aliasName != null">
+				alias_name,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="imagePath != null">
+				image_path,
+			</if>
+			<if test="isDeleted != null">
+				is_deleted,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="keyId != null">
+				key_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="specificationValueid != null">
+				#{specificationValueid,jdbcType=BIGINT},
+			</if>
+			<if test="valueName != null">
+				#{valueName,jdbcType=VARCHAR},
+			</if>
+			<if test="aliasName != null">
+				#{aliasName,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+			<if test="imagePath != null">
+				#{imagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="isDeleted != null">
+				#{isDeleted,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="keyId != null">
+				#{keyId,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		update t_bussiness_specificationvalue
+		<set>
+			<if test="valueName != null">
+				value_name = #{valueName,jdbcType=VARCHAR},
+			</if>
+			<if test="aliasName != null">
+				alias_name = #{aliasName,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="imagePath != null">
+				image_path = #{imagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="isDeleted != null">
+				is_deleted = #{isDeleted,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="keyId != null">
+				key_id = #{keyId,jdbcType=BIGINT},
+			</if>
+		</set>
+		where specification_valueid = #{specificationValueid,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		update t_bussiness_specificationvalue
+		set value_name = #{valueName,jdbcType=VARCHAR},
+		alias_name = #{aliasName,jdbcType=VARCHAR},
+		type = #{type,jdbcType=INTEGER},
+		image_path = #{imagePath,jdbcType=VARCHAR},
+		is_deleted = #{isDeleted,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		status = #{status,jdbcType=INTEGER},
+		key_id = #{keyId,jdbcType=BIGINT}
+		where specification_valueid = #{specificationValueid,jdbcType=BIGINT}
+	</update>
+
+	<select id="selectkey" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue b
+		<where>
+			<if test="specificationIds != null">
+				and b.specification_valueid in
+				<foreach item="item" index="index" collection="specificationIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		GROUP BY b.key_id
+
+	</select>
+
+	<select id="selectNameBykeyId" resultMap="BaseResultMap"
+		parameterType="map">
+
+
+
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue b
+		<where>
+			<if test="specificationIds != null">
+				and b.specification_valueid in
+				<foreach item="item" index="index" collection="specificationIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+
+			<if test="keyId != null">
+				and key_id = #{keyId,jdbcType=BIGINT}
+			</if>
+		</where>
+
+	</select>
+
+	
+
+
+
+	<select id="selectNameBykeyId2" resultMap="BaseResultMap"
+		parameterType="map">
+
+
+
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue b 
+		<where>
+			<if test="specificationIds != null">
+				and b.specification_valueid in
+				<foreach item="item" index="index" collection="specificationIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+			<if test="type != null">
+				and b.type= #{type,jdbcType=INTEGER}
+				group by key_id
+			</if>
+
+		</where>
+
+	</select>
+
+	<select id="selectNameBykeyId3" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue
+		<where>
+			<if test="specificationIds != null">
+				and specification_valueid in
+				<foreach item="item" index="index" collection="specificationIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+			<if test="type != null">
+				and type= #{type,jdbcType=INTEGER}
+				group by key_id
+			</if>
+
+		</where>
+
+	</select>
+	
+	<select id="selectNameBykeyId3unite" resultType="map" parameterType="map">
+
+
+		select b.value_name,b.key_id,c.keyname from
+		t_bussiness_specificationvalue b RIGHT JOIN
+		t_bussiness_specificationkey c on b.key_id=c.specification_id
+		<where>
+			<if test="specificationIds != null">
+				and b.specification_valueid in
+				<foreach item="item" index="index" collection="specificationIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+			<if test="type != null">
+				and b.type= #{type,jdbcType=INTEGER}
+				group by key_id
+			</if>
+
+		</where>
+
+	</select>
+	
+	
+	
+	<select id="selectNameValue" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue
+		<where>
+			<if test="ValueIds != null">
+				and specification_valueid in
+				<foreach item="item" index="index" collection="ValueIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+			
+			<if test="keyId != null">
+			and	key_id = #{keyId,jdbcType=BIGINT}
+			</if>
+
+		</where>
+
+	</select>
+	
+	
+	<select id="selectNameValueI3unite" resultType="map" parameterType="map">
+		select b.value_name,c.keyname,b.specification_valueid from
+		t_bussiness_specificationvalue b RIGHT JOIN
+		t_bussiness_specificationkey c on b.key_id=c.specification_id
+		<where>
+			<if test="ValueIds != null">
+				and b.specification_valueid in
+				<foreach item="item" index="index" collection="ValueIds"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+
+			</if>
+			<if test="type != null">
+				and b.type= #{type,jdbcType=INTEGER}
+				<!-- group by key_id -->
+			</if>
+
+		</where>
+
+	</select>
+	
+	
+	<update id="updateByKeyIds"
+		parameterType="com.essential.bussiness.specification.model.auto.SpecificationValueAuto">
+		update t_bussiness_specificationvalue
+		set value_name = #{valueName,jdbcType=VARCHAR},
+		alias_name = #{aliasName,jdbcType=VARCHAR},
+		type = #{type,jdbcType=INTEGER},
+		image_path = #{imagePath,jdbcType=VARCHAR},
+		is_deleted = #{isDeleted,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		status = #{status,jdbcType=INTEGER},
+		key_id = #{keyId,jdbcType=BIGINT}
+		where key_id = #{keyId,jdbcType=BIGINT}
+	</update>
+	
+	<select id="selectAllValues" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_specificationvalue
+		where key_id = #{specificationValueid,jdbcType=BIGINT}
+	</select>
+
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.SpecialActiviteSceneAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.find.model.auto.SpecialActiviteSceneAuto" >
+    <id column="activitescene_id" property="activitesceneId" jdbcType="BIGINT" />
+    <result column="special_id" property="specialId" jdbcType="BIGINT" />
+    <result column="activite_date" property="activiteDate" jdbcType="DATE" />
+    <result column="activite_period" property="activitePeriod" jdbcType="TIMESTAMP" />
+    <result column="maxjoin" property="maxjoin" jdbcType="INTEGER" />
+    <result column="currentjoin" property="currentjoin" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    activitescene_id, special_id, activite_date, activite_period, maxjoin, currentjoin, 
+    is_delete, create_user_id, create_time, modify_user_id, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_find_special_activitescene
+    where activitescene_id = #{activitesceneId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_find_special_activitescene
+    where activitescene_id = #{activitesceneId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.find.model.auto.SpecialActiviteSceneAuto" >
+    insert into t_find_special_activitescene (activitescene_id, special_id, activite_date, 
+      activite_period, maxjoin, currentjoin, 
+      is_delete, create_user_id, create_time, 
+      modify_user_id, modify_time)
+    values (#{activitesceneId,jdbcType=BIGINT}, #{specialId,jdbcType=BIGINT}, #{activiteDate,jdbcType=DATE}, 
+      #{activitePeriod,jdbcType=TIMESTAMP}, #{maxjoin,jdbcType=INTEGER}, #{currentjoin,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.find.model.auto.SpecialActiviteSceneAuto" >
+    insert into t_find_special_activitescene
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activitesceneId != null" >
+        activitescene_id,
+      </if>
+      <if test="specialId != null" >
+        special_id,
+      </if>
+      <if test="activiteDate != null" >
+        activite_date,
+      </if>
+      <if test="activitePeriod != null" >
+        activite_period,
+      </if>
+      <if test="maxjoin != null" >
+        maxjoin,
+      </if>
+      <if test="currentjoin != null" >
+        currentjoin,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activitesceneId != null" >
+        #{activitesceneId,jdbcType=BIGINT},
+      </if>
+      <if test="specialId != null" >
+        #{specialId,jdbcType=BIGINT},
+      </if>
+      <if test="activiteDate != null" >
+        #{activiteDate,jdbcType=DATE},
+      </if>
+      <if test="activitePeriod != null" >
+        #{activitePeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxjoin != null" >
+        #{maxjoin,jdbcType=INTEGER},
+      </if>
+      <if test="currentjoin != null" >
+        #{currentjoin,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.SpecialActiviteSceneAuto" >
+    update t_find_special_activitescene
+    <set >
+      <if test="specialId != null" >
+        special_id = #{specialId,jdbcType=BIGINT},
+      </if>
+      <if test="activiteDate != null" >
+        activite_date = #{activiteDate,jdbcType=DATE},
+      </if>
+      <if test="activitePeriod != null" >
+        activite_period = #{activitePeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxjoin != null" >
+        maxjoin = #{maxjoin,jdbcType=INTEGER},
+      </if>
+      <if test="currentjoin != null" >
+        currentjoin = #{currentjoin,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where activitescene_id = #{activitesceneId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.SpecialActiviteSceneAuto" >
+    update t_find_special_activitescene
+    set special_id = #{specialId,jdbcType=BIGINT},
+      activite_date = #{activiteDate,jdbcType=DATE},
+      activite_period = #{activitePeriod,jdbcType=TIMESTAMP},
+      maxjoin = #{maxjoin,jdbcType=INTEGER},
+      currentjoin = #{currentjoin,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where activitescene_id = #{activitesceneId,jdbcType=BIGINT}
+  </update>
+</mapper>

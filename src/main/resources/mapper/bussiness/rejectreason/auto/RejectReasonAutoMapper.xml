@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.rejectreason.dao.RejectReasonAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    <id column="reject_reason_id" property="rejectReasonId" jdbcType="BIGINT" />
+    <result column="reject_type" property="rejectType" jdbcType="INTEGER" />
+    <result column="reject_reason_content" property="rejectReasonContent" jdbcType="VARCHAR" />
+    <result column="reject_work_id" property="rejectWorkId" jdbcType="BIGINT" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="creat_time" property="creatTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="is_delelte" property="isDelelte" jdbcType="INTEGER" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+    <result column="remark7" property="remark7" jdbcType="VARCHAR" />
+    <result column="remark8" property="remark8" jdbcType="VARCHAR" />
+    <result column="remark9" property="remark9" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reject_reason_id, reject_type, reject_reason_content, reject_work_id, create_user, 
+    creat_time, modify_user, modify_time, is_delelte, remark1, remark2, remark3, remark4, 
+    remark5, remark6, remark7, remark8, remark9
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_reject_reason
+    where reject_reason_id = #{rejectReasonId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_reject_reason
+    where reject_reason_id = #{rejectReasonId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    insert into t_bussiness_reject_reason (reject_reason_id, reject_type, reject_reason_content, 
+      reject_work_id, create_user, creat_time, 
+      modify_user, modify_time, is_delelte, 
+      remark1, remark2, remark3, 
+      remark4, remark5, remark6, 
+      remark7, remark8, remark9
+      )
+    values (#{rejectReasonId,jdbcType=BIGINT}, #{rejectType,jdbcType=INTEGER}, #{rejectReasonContent,jdbcType=VARCHAR}, 
+      #{rejectWorkId,jdbcType=BIGINT}, #{createUser,jdbcType=BIGINT}, #{creatTime,jdbcType=VARCHAR}, 
+      #{modifyUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{isDelelte,jdbcType=INTEGER}, 
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, 
+      #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, #{remark6,jdbcType=VARCHAR}, 
+      #{remark7,jdbcType=VARCHAR}, #{remark8,jdbcType=VARCHAR}, #{remark9,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    insert into t_bussiness_reject_reason
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rejectReasonId != null" >
+        reject_reason_id,
+      </if>
+      <if test="rejectType != null" >
+        reject_type,
+      </if>
+      <if test="rejectReasonContent != null" >
+        reject_reason_content,
+      </if>
+      <if test="rejectWorkId != null" >
+        reject_work_id,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelelte != null" >
+        is_delelte,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+      <if test="remark7 != null" >
+        remark7,
+      </if>
+      <if test="remark8 != null" >
+        remark8,
+      </if>
+      <if test="remark9 != null" >
+        remark9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rejectReasonId != null" >
+        #{rejectReasonId,jdbcType=BIGINT},
+      </if>
+      <if test="rejectType != null" >
+        #{rejectType,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReasonContent != null" >
+        #{rejectReasonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectWorkId != null" >
+        #{rejectWorkId,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelelte != null" >
+        #{isDelelte,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        #{remark9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    update t_bussiness_reject_reason
+    <set >
+      <if test="rejectType != null" >
+        reject_type = #{rejectType,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReasonContent != null" >
+        reject_reason_content = #{rejectReasonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectWorkId != null" >
+        reject_work_id = #{rejectWorkId,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelelte != null" >
+        is_delelte = #{isDelelte,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reject_reason_id = #{rejectReasonId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    update t_bussiness_reject_reason
+    set reject_type = #{rejectType,jdbcType=INTEGER},
+      reject_reason_content = #{rejectReasonContent,jdbcType=VARCHAR},
+      reject_work_id = #{rejectWorkId,jdbcType=BIGINT},
+      create_user = #{createUser,jdbcType=BIGINT},
+      creat_time = #{creatTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      is_delelte = #{isDelelte,jdbcType=INTEGER},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR},
+      remark7 = #{remark7,jdbcType=VARCHAR},
+      remark8 = #{remark8,jdbcType=VARCHAR},
+      remark9 = #{remark9,jdbcType=VARCHAR}
+    where reject_reason_id = #{rejectReasonId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 根据事务Id查询原因内容 -->
+  <select id="queryByPrimaryKey" resultMap="BaseResultMap" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_reject_reason
+    <where>
+      <if test="rejectType != null" >
+        and reject_reason_id = #{rejectReasonId,jdbcType=BIGINT}
+      </if>
+      <if test="rejectType != null" >
+        and reject_type = #{rejectType,jdbcType=INTEGER}
+      </if>
+      <if test="rejectReasonContent != null" >
+        and reject_reason_content = #{rejectReasonContent,jdbcType=VARCHAR}
+      </if>
+      <if test="rejectWorkId != null" >
+        and reject_work_id = #{rejectWorkId,jdbcType=BIGINT}
+      </if>
+      <if test="createUser != null" >
+        and create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="creatTime != null" >
+        and creat_time = #{creatTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelelte != null" >
+        and is_delelte = #{isDelelte,jdbcType=INTEGER}
+      </if>
+      <if test="remark1 != null" >
+        and remark1 = #{remark1,jdbcType=VARCHAR}
+      </if>
+      <if test="remark2 != null" >
+        and remark2 = #{remark2,jdbcType=VARCHAR}
+      </if>
+      <if test="remark3 != null" >
+        and remark3 = #{remark3,jdbcType=VARCHAR}
+      </if>
+      <if test="remark4 != null" >
+        and remark4 = #{remark4,jdbcType=VARCHAR}
+      </if>
+      <if test="remark5 != null" >
+        and remark5 = #{remark5,jdbcType=VARCHAR}
+      </if>
+      <if test="remark6 != null" >
+        and remark6 = #{remark6,jdbcType=VARCHAR}
+      </if>
+      <if test="remark7 != null" >
+        and remark7 = #{remark7,jdbcType=VARCHAR}
+      </if>
+      <if test="remark8 != null" >
+        and remark8 = #{remark8,jdbcType=VARCHAR}
+      </if>
+      <if test="remark9 != null" >
+        and remark9 = #{remark9,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  
+  <!-- 根据商品ID进行逻辑删除 -->
+  <update id="updateByProductId" parameterType="com.essential.bussiness.rejectreason.model.auto.RejectReasonAuto" >
+    update t_bussiness_reject_reason
+    <set >
+      <if test="rejectType != null" >
+        reject_type = #{rejectType,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReasonContent != null" >
+        reject_reason_content = #{rejectReasonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectWorkId != null" >
+        reject_work_id = #{rejectWorkId,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelelte != null" >
+        is_delelte = #{isDelelte,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reject_work_id = #{rejectWorkId,jdbcType=BIGINT} and reject_type = #{rejectType,jdbcType=INTEGER}
+  </update>
+  
+  
+</mapper>

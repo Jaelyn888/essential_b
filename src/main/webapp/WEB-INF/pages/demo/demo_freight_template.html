@@ -1,0 +1,45 @@
+
+save
+<br/>
+<form action="freightTemplate/saveOrUpdateFreightTemplateAndGroup">
+	template name:<input type="text" name="freightGroupName" />
+	 <br />  <br /> 
+	 	shopId:<input type="text" name="shopId" value="1"/>  
+	addressJsonStr content:<input type="text" name="freightTemplateAutoList[0].addressStr" />
+	first:<input type="text" name="freightTemplateAutoList[0].startNum" />   
+	price:<input type="text" name="freightTemplateAutoList[0].startFreightCost" />  
+	next:<input type="text" name="freightTemplateAutoList[0].nextNum" />  
+	price:<input type="text" name="freightTemplateAutoList[0].nextFreightCost" />   
+		<br />
+	<br />	
+<!-- 	content:<input type="text" name="freightTemplateAutoList[1].addressStr" />
+	first:<input type="text" name="freightTemplateAutoList[1].startNum" />
+	price:<input type="text" name="freightTemplateAutoList[1].startFreightCost" />
+	next:<input type="text" name="freightTemplateAutoList[1].nextNum" />
+	price:<input type="text" name="freightTemplateAutoList[1].nextFreightCost" /> 
+	<br />
+	 <br />  -->
+	 <input type="submit" value="submit" />
+</form>
+
+<br/><br/>
+query
+<br/>
+<form action="freightTemplate/queryFreightTemplateList">
+	pageIndex:<input type="text" name="pageIndex" />  
+	<br/>
+	shopId:<input type="text" name="shopId" value="1"/>  
+	<br/>
+	 <input type="submit" value="queryList" />
+</form>
+
+<br/><br/>
+delete
+<br/>
+<form action="freightTemplate/deleteFreightGroupList">
+	freightGroupId:<input type="text" name="freightGroupId" />  
+	<br/>
+	shopId:<input type="text" name="shopId" value="1"/>  
+	<br/>
+	 <input type="submit" value="delete" />
+</form>

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.user.dao.UserReceiptAddressAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.user.model.auto.UserReceiptAddressAuto">
+		<id column="address_id" property="addressId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="province_id" property="provinceId" jdbcType="BIGINT" />
+		<result column="city_id" property="cityId" jdbcType="BIGINT" />
+		<result column="district_id" property="districtId" jdbcType="BIGINT" />
+		<result column="provinces_regions" property="provincesRegions" jdbcType="VARCHAR" />
+		<result column="detail" property="detail" jdbcType="VARCHAR" />
+		<result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+		<result column="isdefault" property="isdefault" jdbcType="INTEGER" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		address_id, user_id, consignee, phone, province_id, city_id, district_id, provinces_regions,detail,
+		consignee_address, isdefault, is_delete, create_user_id, create_time, modify_user_id,
+		modify_time
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		where address_id = #{addressId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_user_address
+		where address_id = #{addressId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto" useGeneratedKeys="true" keyProperty="addressId">
+		insert into t_user_address (address_id, user_id, consignee,
+		phone, province_id, city_id,
+		district_id,provinces_regions, detail, consignee_address,
+		isdefault, is_delete, create_user_id,
+		create_time, modify_user_id, modify_time
+		)
+		values (#{addressId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{consignee,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{provinceId,jdbcType=BIGINT}, #{cityId,jdbcType=BIGINT},
+		#{districtId,jdbcType=BIGINT},#{provincesRegions,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{consigneeAddress,jdbcType=VARCHAR},
+		#{isdefault,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT},
+		#{createTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto" useGeneratedKeys="true" keyProperty="addressId">
+		insert into t_user_address
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				address_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="consignee != null">
+				consignee,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="provinceId != null">
+				province_id,
+			</if>
+			<if test="cityId != null">
+				city_id,
+			</if>
+			<if test="districtId != null">
+				district_id,
+			</if>
+			<if test="provincesRegions">
+				provinces_regions,
+			</if>
+			<if test="detail != null">
+				detail,
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address,
+			</if>
+			<if test="isdefault != null">
+				isdefault,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				#{addressId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="consignee != null">
+				#{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="provinceId != null">
+				#{provinceId,jdbcType=BIGINT},
+			</if>
+			<if test="cityId != null">
+				#{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="districtId != null">
+				#{districtId,jdbcType=BIGINT},
+			</if>
+			<if test="provincesRegions!=null">
+				#{provincesRegions,jdbcType=VARCHAR},
+			</if>
+			<if test="detail != null">
+				#{detail,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				#{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="isdefault != null">
+				#{isdefault,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto">
+		update t_user_address
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="consignee != null">
+				consignee = #{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="provinceId != null">
+				province_id = #{provinceId,jdbcType=BIGINT},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="districtId != null">
+				district_id = #{districtId,jdbcType=BIGINT},
+			</if>
+			<if test="provincesRegions!=null">
+				provinces_regions=#{provincesRegions,jdbcType=VARCHAR},
+			</if>
+			<if test="detail != null">
+				detail = #{detail,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="isdefault != null">
+				isdefault = #{isdefault,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where address_id = #{addressId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto">
+		update t_user_address
+		set user_id = #{userId,jdbcType=BIGINT},
+		consignee = #{consignee,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		province_id = #{provinceId,jdbcType=BIGINT},
+		city_id = #{cityId,jdbcType=BIGINT},
+		district_id = #{districtId,jdbcType=BIGINT},
+		provinces_regions = #{provincesRegions,jdbcType=BIGINT},
+		detail = #{detail,jdbcType=VARCHAR},
+		consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+		isdefault = #{isdefault,jdbcType=INTEGER},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR}
+		where address_id = #{addressId,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询vo -->
+	<select id="queryAddressListByUserId" resultMap="BaseResultMap" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+			<if test="consignee != null">
+				and consignee = #{consignee,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null">
+				and phone = #{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="provinceId != null">
+				and province_id = #{provinceId,jdbcType=BIGINT}
+			</if>
+			<if test="cityId != null">
+				and city_id = #{cityId,jdbcType=BIGINT}
+			</if>
+			<if test="districtId != null">
+				and district_id = #{districtId,jdbcType=BIGINT}
+			</if>
+			<if test="provincesRegions!=null">
+				and provinces_regions=#{provincesRegions,jdbcType=VARCHAR},
+			</if>
+			<if test="detail != null">
+				and detail = #{detail,jdbcType=VARCHAR}
+			</if>
+			<if test="consigneeAddress != null">
+				and consignee_address = #{consigneeAddress,jdbcType=VARCHAR}
+			</if>
+			<if test="isdefault != null">
+				and isdefault = #{isdefault,jdbcType=INTEGER}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+		</where>
+		order by isdefault desc, modify_time desc
+	</select>
+
+	<!-- 查询默认地址 -->
+	<select id="queryDefaultAddress" resultMap="BaseResultMap" parameterType="com.essential.user.model.auto.UserReceiptAddressAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+
+			<if test="isdefault != null">
+				and isdefault = #{isdefault,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询第一条地址 -->
+	<select id="queryFirstAddress" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+		</where>
+		limit 1
+	</select>
+
+
+	<!-- 查询最新地址 -->
+	<select id="queryNewestAddress" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+		</where>
+		order by modify_time desc limit 1
+	</select>
+
+	<!-- 查询推荐地址 -->
+	<select id="queryRecommendAddress" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_address
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=BIGINT}
+			</if>
+		</where>
+		limit 1
+	</select>
+
+<!-- 取消默认收货地址 -->
+	<update id="cancelDefaultAddress">
+		update t_user_address
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="consignee != null">
+				consignee = #{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="provinceId != null">
+				province_id = #{provinceId,jdbcType=BIGINT},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="districtId != null">
+				district_id = #{districtId,jdbcType=BIGINT},
+			</if>
+			<if test="provincesRegions!=null">
+				provinces_regions=#{provincesRegions,jdbcType=VARCHAR},
+			</if>
+			<if test="detail != null">
+				detail = #{detail,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="isdefault != null">
+				isdefault = #{isdefault,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=BIGINT} and isdefault=1
+	</update>
+</mapper>

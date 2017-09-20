@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.recommend.dao.RecommendRelatedProductAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto" >
+    <id column="recommend_related_product_id" property="recommendRelatedProductId" jdbcType="BIGINT" />
+    <result column="recommend_id" property="recommendId" jdbcType="BIGINT" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="RecommendRelatedProductResultMap" type="com.essential.bussiness.recommend.model.vo.RecommendRelatedProductVo" >
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+	<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+	<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+	<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+	<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+	<result column="product_name" property="productName" jdbcType="VARCHAR" />
+	<result column="price" property="price" jdbcType="DECIMAL" />
+	<result column="keyword" property="keyword" jdbcType="VARCHAR" />
+	<result column="product_describe" property="productDescribe" jdbcType="VARCHAR" />
+	<result column="productIntro" property="productintro" jdbcType="VARCHAR" />
+	<result column="stock" property="stock" jdbcType="BIGINT" />
+	<result column="is_recommd" property="isRecommd" jdbcType="INTEGER" />
+	<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+	<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+	<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+	<result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+	<result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+	<result column="after_service" property="afterService" jdbcType="VARCHAR" />
+	<result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+	<result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+	<result column="check_statusId" property="checkStatusid" jdbcType="INTEGER" />
+	<result column="two_dimension_path" property="twoDimensionPath" jdbcType="VARCHAR" />
+	<result column="pncode" property="pncode" jdbcType="VARCHAR" />
+	<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+	<result column="is_link_product" property="isLinkProduct" jdbcType="INTEGER" />
+	<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+	<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+	<result column="total_store_num" property="totalStoreNum" jdbcType="BIGINT" />
+	<result column="book_store_num" property="bookStoreNum" jdbcType="BIGINT" />
+	<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+	<result column="product_detail_pics" property="productDetailPics" jdbcType="VARCHAR" />
+	<result column="point" property="point" jdbcType="VARCHAR" />
+	<result column="return_product_explain" property="returnProductExplain" jdbcType="VARCHAR" />
+	<result column="return_product_explain_pics" property="returnProductExplainPics" jdbcType="VARCHAR" />
+	<result column="words" property="words" jdbcType="VARCHAR" />
+	<result column="freight_type" property="freightType" jdbcType="INTEGER" />
+	<result column="freight_price" property="freightPrice" jdbcType="DECIMAL" />
+	<result column="freight_group_id" property="freightGroupId" jdbcType="BIGINT" />
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	<result column="create_user" property="createUser" jdbcType="BIGINT" />
+	<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+	<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+	<result column="status" property="status" jdbcType="INTEGER" />
+	<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+	<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+	<result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+	<result column="recommend_related_product_id" property="recommendRelatedProductId" jdbcType="BIGINT" />
+	<result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    recommend_related_product_id, recommend_id, product_id, shop_id, is_delete, create_time, 
+    modify_time, create_user, modify_user, attr1, attr2, attr3, attr4, attr5, attr6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_bussiness_recommend_related_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_recommend_related_product
+    where recommend_related_product_id = #{recommendRelatedProductId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_recommend_related_product
+    where recommend_related_product_id = #{recommendRelatedProductId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAutoExample" >
+    delete from t_bussiness_recommend_related_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto" >
+    insert into t_bussiness_recommend_related_product (recommend_related_product_id, recommend_id, 
+      product_id, shop_id, is_delete, 
+      create_time, modify_time, create_user, 
+      modify_user, attr1, attr2, 
+      attr3, attr4, attr5, 
+      attr6)
+    values (#{recommendRelatedProductId,jdbcType=BIGINT}, #{recommendId,jdbcType=BIGINT}, 
+      #{productId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{modifyUser,jdbcType=BIGINT}, #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR}, 
+      #{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, #{attr5,jdbcType=VARCHAR}, 
+      #{attr6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto" >
+    insert into t_bussiness_recommend_related_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recommendRelatedProductId != null" >
+        recommend_related_product_id,
+      </if>
+      <if test="recommendId != null" >
+        recommend_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+      <if test="attr3 != null" >
+        attr3,
+      </if>
+      <if test="attr4 != null" >
+        attr4,
+      </if>
+      <if test="attr5 != null" >
+        attr5,
+      </if>
+      <if test="attr6 != null" >
+        attr6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recommendRelatedProductId != null" >
+        #{recommendRelatedProductId,jdbcType=BIGINT},
+      </if>
+      <if test="recommendId != null" >
+        #{recommendId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        #{attr6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_bussiness_recommend_related_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_bussiness_recommend_related_product
+    <set >
+      <if test="record.recommendRelatedProductId != null" >
+        recommend_related_product_id = #{record.recommendRelatedProductId,jdbcType=BIGINT},
+      </if>
+      <if test="record.recommendId != null" >
+        recommend_id = #{record.recommendId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productId != null" >
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.modifyUser != null" >
+        modify_user = #{record.modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null" >
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null" >
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr5 != null" >
+        attr5 = #{record.attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr6 != null" >
+        attr6 = #{record.attr6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_bussiness_recommend_related_product
+    set recommend_related_product_id = #{record.recommendRelatedProductId,jdbcType=BIGINT},
+      recommend_id = #{record.recommendId,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      shop_id = #{record.shopId,jdbcType=BIGINT},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=BIGINT},
+      modify_user = #{record.modifyUser,jdbcType=BIGINT},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      attr5 = #{record.attr5,jdbcType=VARCHAR},
+      attr6 = #{record.attr6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto" >
+    update t_bussiness_recommend_related_product
+    <set >
+      <if test="recommendId != null" >
+        recommend_id = #{recommendId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        attr3 = #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        attr4 = #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        attr5 = #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        attr6 = #{attr6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where recommend_related_product_id = #{recommendRelatedProductId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto" >
+    update t_bussiness_recommend_related_product
+    set recommend_id = #{recommendId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR},
+      attr3 = #{attr3,jdbcType=VARCHAR},
+      attr4 = #{attr4,jdbcType=VARCHAR},
+      attr5 = #{attr5,jdbcType=VARCHAR},
+      attr6 = #{attr6,jdbcType=VARCHAR}
+    where recommend_related_product_id = #{recommendRelatedProductId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectRecommendRelatedProduct" resultMap="RecommendRelatedProductResultMap"  parameterType="com.essential.bussiness.recommend.model.vo.QueryRecommendRelatedProductVo">
+  	SELECT tbp.product_id, tbp.brand_id, tbp.category_id, tbp.product_type_id, tbp.shop_id, tbp.product_name, tbp.price,
+			tbp.keyword, tbp.product_describe, tbp.productIntro, tbp.stock, tbp.is_recommd, tbp.cost_price, tbp.market_price,
+			tbp.article_number, tbp.sales_name, tbp.packing_list, tbp.after_service, tbp.sale_num, tbp.delivery_time,
+			tbp.check_statusId, tbp.two_dimension_path, tbp.pncode, tbp.is_delete, tbp.is_link_product, tbp.link_url,
+			tbp.link_from, tbp.total_store_num, tbp.book_store_num, tbp.sale_status, tbp.product_detail_pics, tbp.point,
+			tbp.return_product_explain, tbp.return_product_explain_pics, tbp.words,tbp.freight_type,tbp.freight_price,
+			tbp.freight_group_id,tbp.create_time, tbp.create_user,tbp.modify_time, tbp.modify_user, tbp.status,
+			tbrrp.recommend_related_product_id,tbb.brand_name,tbs.`name` as shop_name,tbc.category_name,tbpp.path
+		FROM t_bussiness_recommend_related_product tbrrp
+					LEFT JOIN t_bussiness_product tbp
+						ON tbrrp.product_id = tbp.product_id
+					LEFT JOIN t_bussiness_productpic tbpp
+						ON tbp.product_id = tbpp.product_id
+						 AND tbpp.mainpic = 1 AND tbpp.STATUS = 0
+					LEFT JOIN t_bussiness_brand tbb
+						ON tbp.brand_id = tbb.brand_id
+					LEFT JOIN t_bussiness_shop tbs
+						ON tbp.shop_id = tbs.shop_id
+					LEFT JOIN t_bussiness_category tbc
+						ON tbp.category_id = tbc.category_id
+			<where>
+				<if test="recommendId != null" >
+		        	and tbrrp.recommend_id = #{recommendId,jdbcType=BIGINT}
+		      	</if>
+				<if test="isDelete != null" >
+		    	    and tbrrp.is_delete = #{isDelete,jdbcType=INTEGER}
+		        </if>
+			</where>
+			ORDER BY tbrrp.modify_time
+			<if test="pageNo != null and pageCount != null">
+				LIMIT #{pageNo},#{pageCount}
+			</if>
+  </select>
+  
+  <select id="selectRecommendRelatedProductCount" resultType="java.lang.Integer"  parameterType="com.essential.bussiness.recommend.model.auto.RecommendRelatedProductAuto">
+  	SELECT count(1)
+		FROM t_bussiness_recommend_related_product tbrrp
+					LEFT JOIN t_bussiness_product tbp
+						ON tbrrp.product_id = tbp.product_id
+					LEFT JOIN t_bussiness_brand tbb
+						ON tbp.brand_id = tbb.brand_id
+					LEFT JOIN t_bussiness_shop tbs
+						ON tbp.shop_id = tbs.shop_id
+					LEFT JOIN t_bussiness_category tbc
+						ON tbp.category_id = tbc.category_id
+			<where>
+				<if test="recommendId != null" >
+		        	and tbrrp.recommend_id = #{recommendId,jdbcType=BIGINT}
+		      	</if>
+				<if test="isDelete != null" >
+		    	    and tbrrp.is_delete = #{isDelete,jdbcType=INTEGER}
+		        </if>
+			</where>
+  </select>
+</mapper>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.ArticleProductAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.find.model.auto.ArticleProductAuto">
+		<id column="articleproduct_id" property="articleproductId" jdbcType="BIGINT" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="is_link_product" property="isLinkProduct" jdbcType="INTEGER" />
+		<result column="var1" property="var1" jdbcType="VARCHAR" />
+		<result column="var2" property="var2" jdbcType="VARCHAR" />
+		<result column="var3" property="var3" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		articleproduct_id, article_id, product_id, is_delete, create_user_id, create_time,
+		modify_user_id, modify_time, is_link_product, var1, var2, var3
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_find_article_product
+		where articleproduct_id = #{articleproductId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_find_article_product
+		where articleproduct_id = #{articleproductId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.find.model.auto.ArticleProductAuto">
+		insert into t_find_article_product (articleproduct_id, article_id, product_id,
+		is_delete, create_user_id, create_time,
+		modify_user_id, modify_time, is_link_product,
+		var1, var2, var3)
+		values (#{articleproductId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
+		#{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR},
+		#{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{isLinkProduct,jdbcType=INTEGER},
+		#{var1,jdbcType=VARCHAR}, #{var2,jdbcType=VARCHAR}, #{var3,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.find.model.auto.ArticleProductAuto">
+		insert into t_find_article_product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="articleproductId != null">
+				articleproduct_id,
+			</if>
+			<if test="articleId != null">
+				article_id,
+			</if>
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="isLinkProduct != null">
+				is_link_product,
+			</if>
+			<if test="var1 != null">
+				var1,
+			</if>
+			<if test="var2 != null">
+				var2,
+			</if>
+			<if test="var3 != null">
+				var3,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="articleproductId != null">
+				#{articleproductId,jdbcType=BIGINT},
+			</if>
+			<if test="articleId != null">
+				#{articleId,jdbcType=BIGINT},
+			</if>
+			<if test="productId != null">
+				#{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isLinkProduct != null">
+				#{isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="var1 != null">
+				#{var1,jdbcType=VARCHAR},
+			</if>
+			<if test="var2 != null">
+				#{var2,jdbcType=VARCHAR},
+			</if>
+			<if test="var3 != null">
+				#{var3,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.ArticleProductAuto">
+		update t_find_article_product
+		<set>
+			
+			<if test="productId != null">
+				product_id = #{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="isLinkProduct != null">
+				is_link_product = #{isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="var1 != null">
+				var1 = #{var1,jdbcType=VARCHAR},
+			</if>
+			<if test="var2 != null">
+				var2 = #{var2,jdbcType=VARCHAR},
+			</if>
+			<if test="var3 != null">
+				var3 = #{var3,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where article_id = #{articleId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.ArticleProductAuto">
+		update t_find_article_product
+		set article_id = #{articleId,jdbcType=BIGINT},
+		product_id = #{productId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		is_link_product = #{isLinkProduct,jdbcType=INTEGER},
+		var1 = #{var1,jdbcType=VARCHAR},
+		var2 = #{var2,jdbcType=VARCHAR},
+		var3 = #{var3,jdbcType=VARCHAR}
+		where articleproduct_id = #{articleproductId,jdbcType=BIGINT}
+	</update>
+
+	<!-- 批量插入相关商品 -->
+	<insert id="insertList" parameterType="com.essential.find.model.auto.ArticleAuto">
+		insert into t_find_article_product (articleproduct_id, article_id, product_id,
+		is_delete, create_user_id, create_time,
+		modify_user_id, modify_time, is_link_product,
+		var1, var2, var3)
+		values
+		<foreach collection="articleProductAutoList" item="item" index="" separator="," open="" close="">
+			(#{item.articleproductId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{item.productId,jdbcType=BIGINT},
+			#{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR},
+			#{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{item.isLinkProduct,jdbcType=INTEGER},
+			#{item.var1,jdbcType=VARCHAR}, #{item.var2,jdbcType=VARCHAR}, #{item.var3,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	<!-- 专栏文章的相关商品的信息 -->
+	<select id="queryRelationProductList" resultMap="BaseResultMap" parameterType="com.essential.find.model.auto.ArticleProductAuto">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM t_find_article_product 
+		<where>
+			<if test="articleId != null">
+				and article_id = #{articleId,jdbcType=BIGINT}
+			</if>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+			<if test="isLinkProduct != null">
+				and is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="var1 != null">
+				and var1 = #{var1,jdbcType=VARCHAR}
+			</if>
+			<if test="var2 != null">
+				and var2 = #{var2,jdbcType=VARCHAR}
+			</if>
+			<if test="var3 != null">
+				and var3 = #{var3,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+	</select>
+</mapper>

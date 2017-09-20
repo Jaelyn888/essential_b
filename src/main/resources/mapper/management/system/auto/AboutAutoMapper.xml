@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.management.system.dao.AboutAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.management.system.model.auto.AboutAuto" >
+    <id column="about_id" property="aboutId" jdbcType="BIGINT" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+    <result column="remark7" property="remark7" jdbcType="VARCHAR" />
+    <result column="remark8" property="remark8" jdbcType="VARCHAR" />
+    <result column="remark9" property="remark9" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    about_id, content, create_user, create_time, modify_user, modify_time, is_delete, 
+    remark1, remark2, remark3, remark4, remark5, remark6, remark7, remark8, remark9
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_about
+    where about_id = #{aboutId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_about
+    where about_id = #{aboutId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.management.system.model.auto.AboutAuto" >
+    insert into t_about (about_id, content, create_user, 
+      create_time, modify_user, modify_time, 
+      is_delete, remark1, remark2, 
+      remark3, remark4, remark5, 
+      remark6, remark7, remark8, 
+      remark9)
+    values (#{aboutId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=VARCHAR}, #{modifyUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=INTEGER}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, 
+      #{remark6,jdbcType=VARCHAR}, #{remark7,jdbcType=VARCHAR}, #{remark8,jdbcType=VARCHAR}, 
+      #{remark9,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.management.system.model.auto.AboutAuto" >
+    insert into t_about
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aboutId != null" >
+        about_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+      <if test="remark7 != null" >
+        remark7,
+      </if>
+      <if test="remark8 != null" >
+        remark8,
+      </if>
+      <if test="remark9 != null" >
+        remark9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aboutId != null" >
+        #{aboutId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        #{remark9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.management.system.model.auto.AboutAuto" >
+    update t_about
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        remark7 = #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        remark8 = #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        remark9 = #{remark9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where about_id = #{aboutId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.management.system.model.auto.AboutAuto" >
+    update t_about
+    set content = #{content,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR},
+      remark7 = #{remark7,jdbcType=VARCHAR},
+      remark8 = #{remark8,jdbcType=VARCHAR},
+      remark9 = #{remark9,jdbcType=VARCHAR}
+    where about_id = #{aboutId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="queryByPrimaryKey" resultMap="BaseResultMap" parameterType="com.essential.management.system.model.auto.AboutAuto" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_about
+    <where>
+      <if test="aboutId != null" >
+        and about_id = #{aboutId,jdbcType=BIGINT}
+      </if>
+      <if test="content != null" >
+        and content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="createUser != null" >
+        and create_user = #{createUser,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null" >
+        and create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="modifyUser != null" >
+        and modify_user = #{modifyUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifyTime != null" >
+        and modify_time = #{modifyTime,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null" >
+        and is_delete = #{isDelete,jdbcType=INTEGER}
+      </if>
+      <if test="remark1 != null" >
+        and remark1 = #{remark1,jdbcType=VARCHAR}
+      </if>
+      <if test="remark2 != null" >
+        and remark2 = #{remark2,jdbcType=VARCHAR}
+      </if>
+      <if test="remark3 != null" >
+        and remark3 = #{remark3,jdbcType=VARCHAR}
+      </if>
+      <if test="remark4 != null" >
+        and remark4 = #{remark4,jdbcType=VARCHAR}
+      </if>
+      <if test="remark5 != null" >
+        and remark5 = #{remark5,jdbcType=VARCHAR}
+      </if>
+      <if test="remark6 != null" >
+        and remark6 = #{remark6,jdbcType=VARCHAR}
+      </if>
+      <if test="remark7 != null" >
+        and remark7 = #{remark7,jdbcType=VARCHAR}
+      </if>
+      <if test="remark8 != null" >
+        and remark8 = #{remark8,jdbcType=VARCHAR}
+      </if>
+      <if test="remark9 != null" >
+        and remark9 = #{remark9,jdbcType=VARCHAR}
+      </if>
+    </where>
+   ORDER BY create_time DESC  limit 1 
+  </select>
+</mapper>

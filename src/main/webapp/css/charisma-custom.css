@@ -1,0 +1,726 @@
+/* here you can put your own css to customize and override the theme */
+.clear{clear: both;} 
+
+.float-right{float:right;}
+
+.float-left{float:left;}
+
+.mid-width{width:75%;display:inline;}
+
+.mid-three-width{width:70%;display:inline;}
+
+.head-bottom{margin-bottom: 0px;}
+
+.nowrap{white-space: nowrap;}
+
+.alert-nobottom{
+	border-radius: 2px;
+    padding: 10px;
+}
+
+.display{display:none !important}
+
+.red{color:red}
+
+.col_main {
+    background-color: #fff;
+    border-radius: 3px;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.col_mainInner {
+    height: 100%;
+    position: relative;
+}
+
+.contact_view {
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.tool_bar {
+    background: -moz-linear-gradient(center top , #f3f3f3, #eee) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #ccc;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+}
+
+.contact_box {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    height:500px;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+
+.tool_bar .toolbar_search_add_box {
+    border-right: 1px solid #ccc;
+    height: 44px;
+    padding-right: 10px;
+    width: 240px;
+}
+
+.tool_bar .bar_left {
+    float: left;
+}
+
+.tree_box {
+    background-color: #f8f8f8;
+    bottom: 0;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    width: 250px;
+}
+
+.tree_list {
+    background-color: #fff;
+    border-left: 1px solid #dedddf;
+    bottom: 0;
+    left: 250px;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+
+.organization_body {
+    bottom: 30px;
+    position: absolute;
+    top: 48px;
+    width: 97%;
+}
+
+.container_box {
+    padding-right: 20px;
+}
+
+.mod-tree-people__input {
+    margin: 20px 40px;
+}
+
+.mod-tree-people__input .token-input-list {
+    box-sizing: border-box;
+    width: 100% !important;
+}
+
+.dialog_content_sendTo .token-input-list {
+    max-height: 90px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 545px;
+}
+
+.mod-tree-people__input .token-input-list {
+    box-sizing: border-box;
+    width: 100% !important;
+}
+
+.dialog_content_sendTo .token-input-list {
+    max-height: 90px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 545px;
+}
+
+.token-input-list.input_text {
+    line-height: normal;
+    padding: 3px 5px 0;
+    max-height: 90px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 545px;
+}
+
+.input_text {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    height: auto;
+}
+
+li.token-input-selected-token {
+    background-color: #ccc;
+}
+
+li.token-input-input-token {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+li.token-input-selected-token span {
+    color: #333;
+}
+
+.input_group_add {
+    border: medium none;
+    color: #777;
+    cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    outline: 0 none;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.mod-tree-people__org-list {
+	border-right: 1px solid #e5e5e5;
+	height: 399px;
+    float: left;
+    overflow: auto;
+    width: 260px;
+}
+
+.mod-tree-people__box {
+    border-top: 1px solid #e5e5e5;
+    clear: both;
+}
+
+/* 閿欒鎻愮ず淇℃伅鐨勬牱寮� */
+.has-error .help-block,
+.has-error .control-label{
+	color: #b94a48;
+	margin-bottom: 0px;
+}
+
+/* 姝ｇ‘鎻愮ず淇℃伅鐨勬牱寮� */
+.has-success .help-block,
+.has-success .control-label {
+	color: #468847;
+}
+
+/* 灏忓睆骞曪紙骞虫澘锛屽ぇ浜庣瓑浜� 768px锛� */
+@media (min-width: 768px) { 
+	/* 涓瓑妯℃�佹 */
+	.modal-mid {
+		width: auto;
+	}
+	
+	/* 澶фā鎬佹 */
+	.modal-big {
+		width: auto;
+	}
+}
+
+/* 涓瓑灞忓箷锛堟闈㈡樉绀哄櫒锛屽ぇ浜庣瓑浜� 992px锛� */
+@media (min-width: 992px) { 
+	/* 涓瓑妯℃�佹 */
+	.modal-mid {
+		width: 800px;
+	}
+	
+	/* 澶фā鎬佹 */
+	.modal-big {
+		width: auto;
+	}
+}
+
+/* 澶у睆骞曪紙澶ф闈㈡樉绀哄櫒锛屽ぇ浜庣瓑浜� 1200px锛� */
+@media (min-width: 1200px) { 
+	/* 涓瓑妯℃�佹 */
+	.modal-mid {
+		width: 800px;
+	}
+	
+	/* 澶фā鎬佹 */
+	.modal-big {
+		width: 1400px;
+	}
+}
+
+.mod-tree-people__people-list {
+    margin-left: 260px;
+    height: 100%;
+    border-left: 1px solid #E5E5E5;
+    overflow-y: auto;
+}
+
+.overflow_auto{
+    overflow: auto;
+}
+
+.mod-tree-people__people-item {
+    line-height: 30px;
+    padding: 5px 15px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.mod-tree-people__people-avatar {
+    border-radius: 2px;
+    background-clip: padding-box;
+    border: 1px solid #E5E5E5;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.mod-tree-people__people-name {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.mod-tree-people__people-checkbox {
+    float: right;
+    margin: 10px 0px 0px !important;
+}
+
+.mod-lozenges__item {
+    background: none repeat scroll 0% 0% padding-box #EEE;
+    height: 24px;
+    display: inline-block;
+    color: #222;
+    vertical-align: top;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    font-size: 0px;
+    border-radius: 2px;
+}
+
+.mod-lozenges__icon {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
+.mod-lozenges__icon-avatar {
+    height: 24px;
+    width: 24px;
+    border-radius: 2px;
+    background-clip: padding-box;
+}
+
+.mod-lozenges__text {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: top;
+    margin: 0px 7px;
+    font-size: 14px;
+}
+
+.mod-lozenges__close {
+    display: inline-block;
+    width: 20px;
+    height: 24px;
+    vertical-align: top;
+    text-align: left;
+    margin-left: -5px;
+    margin-right: 2px;
+}
+
+.mod-lozenges__close-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    background-image: url("../images/organization/organ_icon.png");
+    background-position: -290px -157px;
+}
+
+.mod-lozenges__close-icon:hover {
+    background-image: url("../images/organization/organ_icon.png");
+    background-position: -270px -157px;
+}
+
+.dialog_choose_items_org {
+    overflow: auto;
+    height: 399px;
+}
+
+.hover_background {
+	background: #B4A7A7;
+}
+
+.ui-bfc__content {
+    display: table-cell;
+}
+
+@media (max-width: 2000px) { 
+	.mod-send-mode__basic {
+		margin-bottom: 10px; 
+		width: 650px;
+	    position: relative;
+	}
+}
+
+@media (max-width: 1000px) { 
+	.mod-send-mode__basic {
+		margin-bottom: 10px; 
+		width: 440px;
+	    position: relative;
+	}
+}
+
+@media (max-width: 550px) { 
+	.mod-send-mode__basic {
+		margin-bottom: 10px; 
+		width: 200px;
+	    position: relative;
+	}
+}
+
+.mod-send-mode__input-wrapper_block {
+    display: block;
+    height: auto !important;
+    min-height: 26px;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.mod-send-mode__basic-input-placeholder {
+    color: #75777A;
+    display: inline-block;
+}
+
+.ui-bfc {
+    clear: both;
+}
+
+.ui-bfc__left {
+    float: left;
+}
+
+.ui-mt-small {
+    margin-top: 5px;
+}
+
+.mod-send-mode__input-wrapper {
+    border: 1px solid #CCC;
+    height: 26px;
+    line-height: 29px;
+    padding: 2px 5px 0px;
+    border-radius: 4px;
+    background-clip: padding-box;
+    display: inline-block;
+}
+
+.mod-lozenges__icon-org {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    background-image: url("../images/organization/organ_icon.png");
+    background-position: -250px -133px;
+}
+
+.mid-btn{
+	padding: 3px 4px;
+	font-size: 12px;
+}
+
+/*   .modal{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1005;
+    display: none;
+    overflow: hidden;
+    outline: 0px none;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    background-color: #000;
+}  */ 
+
+.z-index_1005{
+z-index: 1005 !important;
+}
+
+.z-index_1000{
+	 z-index: 1000 !important;
+}
+/*鏃ュ巻input浠ュ強灏忓浘鏍囪嚜瀹氫箟鏍煎紡*/
+.input-group-addon {
+  padding: 6px 4px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-group[class*="col-"] {
+    float: none;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.form-control {
+    height: 34px;
+    padding: 6px 4px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.member_list, .tree_list .title_bar {
+    min-width: 800px;
+}
+
+.title_bar {
+    line-height: 32px;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.checkbox_node, .title .checkbox_node {
+    display: inline-block;
+    height: 30px;
+    min-width: 40px;
+    width: 6%;
+}
+
+.member_list li .checkbox, .title .checkbox {
+	min-height: 4px !important;
+    margin: 1px 0px 0px 20px;
+    vertical-align: middle;
+    outline: 0px none;
+	-moz-appearance: none;
+	line-height: 10px;
+	display: inline;
+}
+
+.title .title_link {
+    color: #777;
+    text-decoration: none;
+}
+
+.tree_list .name {
+    width: 16%;
+    min-width: 90px;
+}
+
+.tree_list .account {
+    width: 13%;
+    min-width: 80px;
+}
+
+.tree_list .position {
+    width: 13%;
+    min-width: 80px;
+}
+
+.tree_list .phone {
+	width: 13%;
+	min-width: 100px;
+}
+
+.tree_list .mail {
+	width: 13%;
+	min-width: 150px;
+}
+
+.tree_list .state {
+	min-width: 40px;
+	padding-right: 20px;
+	text-align: center;
+	width: 10%;
+}
+
+.tree_list .account, .tree_list .mail, .tree_list .name, .tree_list .phone, .tree_list .position, .tree_list .state {
+    display: inline-block;
+    padding-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.title .name {
+    margin-left: 44px;
+}
+
+fieldset, ol, p, ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.ztree li span.button.icon03 {
+    margin: 0px;
+    background-image: url("../images/organization/iconfont-xialati.png");
+    vertical-align: top;
+}
+
+.lihover{
+	background-color:#ddd
+}
+
+.jstree-contextmenu {
+    background: #FFF none repeat scroll 0% 0%;
+}
+
+.vakata-context, .vakata-context ul {
+    margin: 0px;
+    padding: 2px;
+    position: absolute;
+    background: #F5F5F5 none repeat scroll 0% 0%;
+    border: 1px solid #979797;
+    box-shadow: 2px 2px 2px #999;
+}
+
+.vakata-context li {
+    list-style: outside none none;
+    display: inline;
+}
+
+.vakata-context li > a {
+    display: block;
+    padding: 0px 2em;
+    text-decoration: none;
+    width: auto;
+    color: #000;
+    white-space: nowrap;
+    line-height: 2.4em;
+    text-shadow: 1px 1px 0px #FFF;
+    border-radius: 1px;
+}
+
+.vakata-context .vakata-context-separator a, .vakata-context .vakata-context-separator a:hover {
+    background: #FFF none repeat scroll 0% 0%;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid none none solid;
+    border-color: #E2E3E3 -moz-use-text-color -moz-use-text-color #E0E0E0;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    height: 1px;
+    min-height: 1px;
+    max-height: 1px;
+    padding: 0px;
+    margin: 0px 0px 0px 2.4em;
+    text-shadow: 0px 0px 0px transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border-radius: 0px;
+}
+
+.member_list {
+    overflow-y: auto;
+}
+
+.member_list, .tree_list .title_bar {
+    min-width: 800px;
+}
+
+fieldset, ol, p, ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.member_list li.pintop {
+    background-color: rgb(255, 255, 255);
+}
+
+.member_list li {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+}
+
+.member_list li {
+    position: relative;
+    vertical-align: middle;
+    line-height: 28px;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 5px 0px;
+    cursor: pointer;
+}
+
+.member_list li .checkbox, .title .checkbox {
+    margin: 1px 0px 0px 20px;
+    vertical-align: middle;
+}
+
+.member_list li .face {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0px 6px 0px 2px;
+    vertical-align: middle;
+    border: 1px solid #CDCDCD;
+    border-radius: 2px;
+}
+
+.dropdown-menus {
+    position: absolute;
+    z-index: 1000;
+    display: block;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0px;
+    margin: 2px 0px 0px;
+    font-size: 14px;
+    text-align: left;
+    list-style: outside none none;
+    background-color: #FFF;
+    border-radius: 4px;
+    background-clip: padding-box;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menus > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #222;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.sizeControl {
+  width: 8px;
+  height: 8px;
+  background: url(images/hendles.png) no-repeat 50% 50%;
+  position: absolute;
+}
+
+.tl, .br {
+  cursor: nw-resize;
+}
+
+.sizeControl.ui-draggable {
+  opacity: 0;
+}
+
+.btn-black{
+	color: #fff;
+	background-color: #000;
+	border-color: #000
+}
+
+.btn-black:hover{
+	color: #fff;
+}
+
+.mid-width {
+    display: inline;
+    width: 70%;
+}

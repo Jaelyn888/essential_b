@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.shop.dao.ShopToContactAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.shop.model.auto.ShopToContactAuto" >
+    <id column="contact_id" property="contactId" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="contact_email" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="contact_qq" property="contactQq" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="contact_carr_number" property="contactCarrNumber" jdbcType="VARCHAR" />
+    <result column="contact_position" property="contactPosition" jdbcType="VARCHAR" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="map_image" property="mapImage" jdbcType="VARCHAR" />
+    <result column="custom_service" property="customService" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    contact_id, shop_id, contact_email, contact_qq, contact_phone, contact_carr_number, contact_position, 
+    contact_name, map_image, custom_service, create_time, create_user, modify_time, modify_user, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_shop_tocontact
+    where contact_id = #{contactId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_shop_tocontact
+    where contact_id = #{contactId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.shop.model.auto.ShopToContactAuto" >
+    insert into t_bussiness_shop_tocontact (contact_id, shop_id, contact_email, contact_qq, 
+      contact_phone, contact_carr_number, contact_position, 
+      contact_name, map_image, custom_service, 
+      create_time, create_user, modify_time, 
+      modify_user, status)
+    values (#{contactId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{contactEmail,jdbcType=VARCHAR}, #{contactQq,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{contactCarrNumber,jdbcType=VARCHAR}, #{contactPosition,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{mapImage,jdbcType=VARCHAR}, #{customService,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, 
+      #{modifyUser,jdbcType=BIGINT}, #{status,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.shop.model.auto.ShopToContactAuto" >
+    insert into t_bussiness_shop_tocontact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="contactEmail != null" >
+        contact_email,
+      </if>
+      <if test="contactQq != null" >
+        contact_qq,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="contactCarrNumber != null" >
+        contact_carr_number,
+      </if>
+      <if test="contactPosition != null" >
+        contact_position,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="mapImage != null" >
+        map_image,
+      </if>
+      <if test="customService != null" >
+        custom_service,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contactId != null" >
+        #{contactId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null" >
+        #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCarrNumber != null" >
+        #{contactCarrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPosition != null" >
+        #{contactPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapImage != null" >
+        #{mapImage,jdbcType=VARCHAR},
+      </if>
+      <if test="customService != null" >
+        #{customService,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.shop.model.auto.ShopToContactAuto" >
+    update t_bussiness_shop_tocontact
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="contactEmail != null" >
+        contact_email = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null" >
+        contact_qq = #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCarrNumber != null" >
+        contact_carr_number = #{contactCarrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPosition != null" >
+        contact_position = #{contactPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapImage != null" >
+        map_image = #{mapImage,jdbcType=VARCHAR},
+      </if>
+      <if test="customService != null" >
+        custom_service = #{customService,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIGINT},
+      </if>
+    </set>
+    where contact_id = #{contactId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.shop.model.auto.ShopToContactAuto" >
+    update t_bussiness_shop_tocontact
+    set shop_id = #{shopId,jdbcType=BIGINT},
+      contact_email = #{contactEmail,jdbcType=VARCHAR},
+      contact_qq = #{contactQq,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      contact_carr_number = #{contactCarrNumber,jdbcType=VARCHAR},
+      contact_position = #{contactPosition,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      map_image = #{mapImage,jdbcType=VARCHAR},
+      custom_service = #{customService,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=BIGINT},
+      status = #{status,jdbcType=BIGINT}
+    where contact_id = #{contactId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="queryInfoByShopId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_shop_tocontact
+    where shop_id = #{shopId,jdbcType=BIGINT} and status = 0
+  </select>
+</mapper>

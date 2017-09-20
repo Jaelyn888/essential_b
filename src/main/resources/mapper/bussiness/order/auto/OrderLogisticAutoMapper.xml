@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.order.dao.OrderLogisticAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.order.model.auto.OrderLogisticAuto" >
+    <id column="order_logistic_id" property="orderLogisticId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="logistic_number" property="logisticNumber" jdbcType="VARCHAR" />
+    <result column="logistics_company" property="logisticsCompany" jdbcType="VARCHAR" />
+    <result column="order_logistic_goods" property="orderLogisticGoods" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="mofify_user" property="mofifyUser" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_logistic_id, order_id, logistic_number, logistics_company, order_logistic_goods, 
+    create_time, create_user, modify_time, mofify_user, is_delete, attr1, attr2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_logistic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_logistic
+    where order_logistic_id = #{orderLogisticId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_order_logistic
+    where order_logistic_id = #{orderLogisticId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAutoExample" >
+    delete from t_bussiness_order_logistic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAuto" >
+    insert into t_bussiness_order_logistic (order_logistic_id, order_id, logistic_number, 
+      logistics_company, order_logistic_goods, create_time, 
+      create_user, modify_time, mofify_user, 
+      is_delete, attr1, attr2
+      )
+    values (#{orderLogisticId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{logisticNumber,jdbcType=VARCHAR}, 
+      #{logisticsCompany,jdbcType=VARCHAR}, #{orderLogisticGoods,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{mofifyUser,jdbcType=BIGINT}, 
+      #{isDelete,jdbcType=INTEGER}, #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAuto" >
+    insert into t_bussiness_order_logistic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderLogisticId != null" >
+        order_logistic_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="logisticNumber != null" >
+        logistic_number,
+      </if>
+      <if test="logisticsCompany != null" >
+        logistics_company,
+      </if>
+      <if test="orderLogisticGoods != null" >
+        order_logistic_goods,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="mofifyUser != null" >
+        mofify_user,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderLogisticId != null" >
+        #{orderLogisticId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="logisticNumber != null" >
+        #{logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null" >
+        #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="orderLogisticGoods != null" >
+        #{orderLogisticGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="mofifyUser != null" >
+        #{mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_bussiness_order_logistic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_bussiness_order_logistic
+    <set >
+      <if test="record.orderLogisticId != null" >
+        order_logistic_id = #{record.orderLogisticId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.logisticNumber != null" >
+        logistic_number = #{record.logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsCompany != null" >
+        logistics_company = #{record.logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderLogisticGoods != null" >
+        order_logistic_goods = #{record.orderLogisticGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mofifyUser != null" >
+        mofify_user = #{record.mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_bussiness_order_logistic
+    set order_logistic_id = #{record.orderLogisticId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      logistic_number = #{record.logisticNumber,jdbcType=VARCHAR},
+      logistics_company = #{record.logisticsCompany,jdbcType=VARCHAR},
+      order_logistic_goods = #{record.orderLogisticGoods,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=BIGINT},
+      modify_time = #{record.modifyTime,jdbcType=VARCHAR},
+      mofify_user = #{record.mofifyUser,jdbcType=BIGINT},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAuto" >
+    update t_bussiness_order_logistic
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="logisticNumber != null" >
+        logistic_number = #{logisticNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null" >
+        logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="orderLogisticGoods != null" >
+        order_logistic_goods = #{orderLogisticGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="mofifyUser != null" >
+        mofify_user = #{mofifyUser,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_logistic_id = #{orderLogisticId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.order.model.auto.OrderLogisticAuto" >
+    update t_bussiness_order_logistic
+    set order_id = #{orderId,jdbcType=BIGINT},
+      logistic_number = #{logisticNumber,jdbcType=VARCHAR},
+      logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      order_logistic_goods = #{orderLogisticGoods,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      mofify_user = #{mofifyUser,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR}
+    where order_logistic_id = #{orderLogisticId,jdbcType=BIGINT}
+  </update>
+</mapper>

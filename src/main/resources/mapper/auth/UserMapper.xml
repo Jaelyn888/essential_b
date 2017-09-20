@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.essential.auth.dao.UserDao">
+		<resultMap type="com.essential.auth.model.UserVo" id="UserList">
+		    <id property="userId" column="USER_ID"/>
+		    <result property="userCode" column="USER_CODE"/>
+		    <result property="userName" column="USER_NAME"/>
+		    <result property="password" column="PASSWORD"/>
+		    <result property="employeeNo" column="EMPLOYEE_NO"/>
+		    <result property="sex" column="SEX"/>
+		    <result property="headImage" column="HEAD_IMAGE"/>
+		    <result property="status" column="STATUS"/>
+		    <result property="email" column="EMAIL"/>
+	    	<result property="temp" column="TEMP"/>
+		    <result property="celephone" column="CELLPHONE"/>
+		    <result property="telephone" column="TELEPHONE"/>
+		    <result property="isSysAdm" column="IS_SYSADM"/>
+		    <result property="attr1" column="ATTR1"/>
+		    <result property="attr2" column="ATTR2"/>
+		    <result property="attr3" column="ATTR3"/>
+		    <result property="attr4" column="ATTR4"/>
+		    <result property="createUser" column="CREATE_USER"/>
+		    <result property="createDate" column="CREATE_DATE"/>
+		    <result property="updateUser" column="UPDATE_USER"/>
+		    <result property="updateDate" column="UPDATE_DATE"/>
+		    <result property="enableFlag" column="ENABLE_FLAG"/>
+		    <result property="count" column="COUNT"/>
+		</resultMap>
+		
+        <insert id="saveUser" parameterType="com.essential.auth.model.User" >
+        	insert into t_auth_user (USER_ID,USER_CODE,USER_NAME,PASSWORD,EMPLOYEE_NO,SEX,HEAD_IMAGE,STATUS,EMAIL,CELLPHONE,TELEPHONE,IS_SYSADM,CREATE_USER,CREATE_DATE,UPDATE_USER,UPDATE_DATE,ENABLE_FLAG,ATTR1,ATTR2,ATTR3,ATTR4,TEMP) 
+     			   values ( #{userId}, #{userCode}, #{userName},#{password}, #{employeeNo}, #{sex},#{headImage}, #{status}, #{email}, #{celephone}, #{telephone},#{isSysAdm}, #{createUser},#{createDate},#{updateUser}, #{updateDate}, #{enableFlag}, #{attr1}, #{attr2},#{attr3},#{attr4},#{temp})
+        </insert>
+       
+        <update id="updateUser" parameterType="com.essential.auth.model.User" >
+        	update t_auth_user set USER_CODE = #{userCode},USER_NAME = #{userName},PASSWORD = #{password},EMPLOYEE_NO = #{employeeNo},SEX = #{sex},HEAD_IMAGE = #{headImage},STATUS= #{status},EMAIL = #{email},CELLPHONE = #{celephone},TELEPHONE = #{telephone},IS_SYSADM = #{isSysAdm},CREATE_USER = #{createUser},CREATE_DATE = #{createDate},UPDATE_USER = #{updateUser},UPDATE_DATE = #{updateDate},ENABLE_FLAG = #{enableFlag},ATTR1 = #{attr1},ATTR2 = #{attr2},ATTR3 = #{attr3},ATTR4 = #{attr4},TEMP = #{temp} where USER_ID = #{userId}
+        </update>
+         
+       <select id="findAllUser" resultMap="UserList" parameterType="java.util.Map" >
+			select t.*,(select count(1)  from t_auth_user  where enable_flag = '1' 
+			    <if test="userName != '' and userName != null "> 
+			  	and USER_NAME LIKE '%${userName}%'
+			   </if>
+			   <if test="userCode != '' and userCode != null "> 
+			  	and USER_CODE LIKE '%${userCode}%'
+			   </if>
+			   <if test="isSysAdm !='' and isSysAdm != null "> 
+			  	and IS_SYSADM LIKE '%${isSysAdm}%'
+			   </if>
+			   <if test="sex != '' and sex != null "> 
+			  	and SEX LIKE '%${sex}%'
+			   </if>
+			   <if test="status !='' and status != null "> 
+			  	and STATUS LIKE '%${status}%'
+			   </if>
+			    ) as COUNT from t_auth_user t where enable_flag = '1'
+			   <if test="userName != '' and userName != null "> 
+			  	and USER_NAME LIKE '%${userName}%'
+			   </if>
+			   <if test="userCode != '' and userCode != null "> 
+			  	and USER_CODE LIKE '%${userCode}%'
+			   </if>
+   			   <if test="isSysAdm !='' and isSysAdm != null "> 
+			  	and IS_SYSADM LIKE '%${isSysAdm}%'
+			   </if>
+			   <if test="sex != '' and sex != null "> 
+			  	and SEX LIKE '%${sex}%'
+			   </if>
+			   <if test="status !='' and status != null "> 
+			  	and STATUS LIKE '%${status}%'
+			   </if>
+			    <if test="orderField != '' and orderField != null "> 
+			    order by ${orderField} ${Sorting}  
+			    </if>
+			     <if test="length != '' and length != null "> 
+			    LIMIT #{start},#{length};
+			     </if>
+       </select> 
+       
+       <select id="findUserStrict" resultMap="UserList" parameterType="java.util.Map" >
+			select t.* from t_auth_user t where enable_flag = '1'
+			  <if test="userId != '' and userId != null "> 
+			  	and USER_ID = '${userId}'
+			   </if>
+			   <if test="email != '' and email != null "> 
+			  	and EMAIL = '${email}'
+			   </if>
+			   <if test="userCode != '' and userCode != null "> 
+			  	and USER_CODE = '${userCode}'
+			   </if>
+			   <if test="employeeNo !='' and employeeNo != null "> 
+			  	and EMPLOYEE_NO = ${employeeNo}
+			   </if>
+   			   <if test="userName !='' and userName != null "> 
+			  	and user_name = '${userName}'
+			   </if>
+       </select> 
+       
+ 	   <update id="deleteUser" parameterType="com.essential.auth.model.User" >
+           update t_auth_user set ENABLE_FLAG = '0' where USER_ID = #{userId}
+       </update>
+         
+       <select id="findLoginUser" resultMap="UserList" parameterType="com.essential.auth.model.User">
+       		select t.* from t_auth_user t where t.user_code=#{userCode} and t.password = #{password} and t.enable_flag='1'
+       </select>
+  
+       <select id="findUserByCode" resultMap="UserList" parameterType ="String">
+            select t.* from t_auth_user t where t.user_code=#{userCode} and t.enable_flag='1'
+       </select> 
+       
+       <select id="showUserFans" parameterType="String" resultMap="UserList" >  
+		    select * from t_auth_user where user_id in 
+			(
+				SELECT t.user_id FROM t_user_relation t  
+				where t.parent_id = #{user_id}
+			)
+	  </select> 
+</mapper>

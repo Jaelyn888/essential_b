@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- 使IE浏览器运行最新的渲染模式，禁用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 使部分国产浏览器默认采用高速模式（即 webkit 内核）渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <title>欢迎来到商城管理平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="">
+
+    <!-- The styles -->
+    <link href="charisma_ui_components/css/bootstrap-cerulean.min.css" rel="stylesheet" id="bs-css">
+
+    <link href="charisma_ui_components/css/charisma-app.css" rel="stylesheet">
+    <link href='charisma_ui_components/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='charisma_ui_components/css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="charisma_ui_components/bower_components/jquery/jquery-1.11.1.min.js"></script>
+    <!-- HTML5 shim ， Respond.js 使 IE8 支持HTML5 elements和media queries -->
+    <!-- 注意: Respond.js doesn't work if you view the page via file://  -->
+    <!--[if lt IE 9]>
+    	<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="charisma_ui_components/img/favicon.ico">
+    
+    <script type="text/javascript">
+		function login(){
+			var $userCode = $("#userCode").val();
+			var $password = $("#password").val();
+			if($userCode == "" && $password == ""){
+				var msgHtml = "<font >用户名和密码不可为空！</font>"
+				$("#errorPrompt").show();
+				$("#errorPrompt").text("");
+				$("#errorPrompt").append(msgHtml);
+			}else if($userCode ==""){
+				
+				var msgHtml2 = "<font >用户名不可为空！</font>"
+				$("#errorPrompt").show();
+				$("#errorPrompt").text("");
+				$("#errorPrompt").append(msgHtml2);
+			}else if($password == ""){
+				var msgHtml3 = "<font >密码不可为空！</font>"
+				$("#errorPrompt").show();
+				$("#errorPrompt").text("");
+				$("#errorPrompt").append(msgHtml3);
+			}else{
+				$("#loginForm").submit();
+			}
+		}   
+    </script>
+
+</head>
+
+<body>
+<div class="ch-container">
+    <div class="row">
+        
+    <div class="row">
+        <div class="col-md-12 center login-header">
+            <h2>欢迎来到商城后台</h2>
+        </div>
+        <!--/span-->
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="well col-md-5 center login-box">
+          	<#if message??> 
+             <div class="alert alert-danger">${message!}</div>
+             <#else>
+             <div class="alert alert-danger" id="errorPrompt" style="display:none;"></div>
+            </#if> 
+            <form class="form-horizontal" action="index" id="loginForm" method="post">
+                <fieldset>
+                <div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                        <input type="text" class="form-control" id="userCode" name="userCode" placeholder="用户名">
+                    </div>
+                </div>
+                    <div class="clearfix"></div><br>
+				<div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="密码">
+                    </div>
+                </div>
+                    <div class="clearfix"></div>
+
+                   <!--  <div class="input-prepend">
+                        <label class="remember" for="remember"><input type="checkbox" id="remember"> 记住密码</label>
+                    </div> -->
+                    <div class="clearfix"></div>
+
+                    <p class="center col-md-5">
+                        <button type="button" class="btn btn-primary" onclick="login()" id="loginBtn">登 录</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+        <!--/span-->
+    </div><!--/row-->
+</div><!--/fluid-row-->
+
+</div><!--/.fluid-container-->
+
+</body>
+</html>

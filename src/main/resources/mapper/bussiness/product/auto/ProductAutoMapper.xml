@@ -1,0 +1,2551 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.product.dao.ProductAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.product.model.vo.ProductAutoAddField">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+		<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
+		<result column="product_describe" property="productDescribe" jdbcType="VARCHAR" />
+		<result column="productIntro" property="productintro" jdbcType="VARCHAR" />
+		<result column="is_recommd" property="isRecommd" jdbcType="INTEGER" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+		<result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+		<result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+		<result column="after_service" property="afterService" jdbcType="VARCHAR" />
+		<result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+		<result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+		<result column="check_statusId" property="checkStatusid" jdbcType="INTEGER" />
+		<result column="two_dimension_path" property="twoDimensionPath" jdbcType="VARCHAR" />
+		<result column="pncode" property="pncode" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="is_link_product" property="isLinkProduct" jdbcType="INTEGER" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="total_store_num" property="totalStoreNum" jdbcType="BIGINT" />
+		<result column="book_store_num" property="bookStoreNum" jdbcType="BIGINT" />
+		<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+		<result column="product_detail_pics" property="productDetailPics" jdbcType="VARCHAR" />
+		<result column="point" property="point" jdbcType="VARCHAR" />
+		<result column="return_product_explain" property="returnProductExplain" jdbcType="VARCHAR" />
+		<result column="return_product_explain_pics" property="returnProductExplainPics" jdbcType="VARCHAR" />
+		<result column="words" property="words" jdbcType="VARCHAR" />
+		<result column="freight_type" property="freightType" jdbcType="INTEGER" />
+		<result column="freight_price" property="freightPrice" jdbcType="DECIMAL" />
+		<result column="freight_group_id" property="freightGroupId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<!-- 新加字段 -->
+		<result column="path" property="path" jdbcType="INTEGER" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<resultMap id="ProductAutoBaseResultMap" type="com.essential.bussiness.product.model.auto.ProductAuto">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+		<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
+		<result column="product_describe" property="productDescribe" jdbcType="VARCHAR" />
+		<result column="productIntro" property="productintro" jdbcType="VARCHAR" />
+		<result column="stock" property="stock" jdbcType="BIGINT" />
+		<result column="is_recommd" property="isRecommd" jdbcType="INTEGER" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+		<result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+		<result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+		<result column="after_service" property="afterService" jdbcType="VARCHAR" />
+		<result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+		<result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+		<result column="check_statusId" property="checkStatusid" jdbcType="INTEGER" />
+		<result column="two_dimension_path" property="twoDimensionPath" jdbcType="VARCHAR" />
+		<result column="pncode" property="pncode" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="is_link_product" property="isLinkProduct" jdbcType="INTEGER" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="total_store_num" property="totalStoreNum" jdbcType="BIGINT" />
+		<result column="book_store_num" property="bookStoreNum" jdbcType="BIGINT" />
+		<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+		<result column="product_detail_pics" property="productDetailPics" jdbcType="VARCHAR" />
+		<result column="point" property="point" jdbcType="VARCHAR" />
+		<result column="return_product_explain" property="returnProductExplain" jdbcType="VARCHAR" />
+		<result column="return_product_explain_pics" property="returnProductExplainPics" jdbcType="VARCHAR" />
+		<result column="words" property="words" jdbcType="VARCHAR" />
+		<result column="freight_type" property="freightType" jdbcType="INTEGER" />
+		<result column="freight_price" property="freightPrice" jdbcType="DECIMAL" />
+		<result column="freight_group_id" property="freightGroupId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 商品活动的列表 start-->
+	<resultMap id="ProductPromotionResultMap" type="com.essential.bussiness.product.model.vo.QueryProductPromotionVo">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="discount_percent" property="discountPercent" jdbcType="BIGINT" />
+		<result column="promotion_name" property="promotionName" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />		
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />	
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="active_price" property="activePrice" jdbcType="DECIMAL" />
+		
+		
+	</resultMap>
+	<!-- last商品列表 start-->
+	<resultMap id="lastProductListResultMap" type="com.essential.bussiness.product.model.vo.QueryProductListVO">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="discount_percent" property="discountPercent" jdbcType="BIGINT" />
+		<result column="promotion_name" property="promotionName" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />		
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL"/>
+		<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />	
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="active_price" property="activePrice" jdbcType="DECIMAL" />
+		
+		
+	</resultMap>
+	
+	
+	<!-- last商品的列表 end-->
+	
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		product_id, brand_id, category_id, product_type_id, shop_id, product_name, price,
+		keyword, product_describe, productIntro, stock, is_recommd, cost_price, market_price,
+		article_number, sales_name, packing_list, after_service, sale_num, delivery_time,
+		check_statusId, two_dimension_path, pncode, is_delete, is_link_product, link_url,
+		link_from, total_store_num, book_store_num, sale_status, product_detail_pics, point,
+		return_product_explain, return_product_explain_pics, words,freight_type,freight_price,
+		freight_group_id,create_time, create_user,modify_time, modify_user, status
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.product.model.auto.ProductAutoExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		'true' as QUERYID,
+		<include refid="Base_Column_List" />
+		from t_bussiness_product
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByProductId" resultMap="ProductAutoBaseResultMap" parameterType="java.lang.Long">
+		select <include refid="Base_Column_List" />
+			from t_bussiness_product
+		where product_id = #{productId,jdbcType=BIGINT}
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+
+		select a.*,b.path
+		from t_bussiness_product a LEFT JOIN t_bussiness_productpic b on a.product_id =b.product_id and a.is_delete = b.status
+		<!-- select <include refid="Base_Column_List" /> -->
+		<!-- from t_bussiness_product -->
+		where a.product_id = #{productId,jdbcType=BIGINT} and b.mainpic=1
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_bussiness_product
+		where product_id = #{productId,jdbcType=BIGINT}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.essential.bussiness.product.model.auto.ProductAutoExample">
+		delete from t_bussiness_product
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		insert into t_bussiness_product (product_id, brand_id, category_id,
+		product_type_id, shop_id, product_name,
+		price, keyword, product_describe,
+		productIntro, stock, is_recommd,
+		cost_price, market_price, article_number,
+		sales_name, packing_list, after_service,
+		sale_num, delivery_time, check_statusId,
+		two_dimension_path, pncode, is_delete,
+		is_link_product, link_url, link_from,
+		total_store_num, book_store_num, sale_status,
+		product_detail_pics, point, return_product_explain,
+		return_product_explain_pics, words,freight_type,
+		freight_price,freight_group_id,create_time,
+		create_user, modify_time, modify_user,
+		status)
+		values (#{productId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{categoryId,jdbcType=BIGINT},
+		#{productTypeId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR},
+		#{price,jdbcType=DECIMAL}, #{keyword,jdbcType=VARCHAR}, #{productDescribe,jdbcType=VARCHAR},
+		#{productintro,jdbcType=VARCHAR}, #{stock,jdbcType=BIGINT},
+		#{isRecommd,jdbcType=INTEGER},
+		#{costPrice,jdbcType=DECIMAL}, #{marketPrice,jdbcType=DECIMAL}, #{articleNumber,jdbcType=VARCHAR},
+		#{salesName,jdbcType=VARCHAR}, #{packingList,jdbcType=VARCHAR}, #{afterService,jdbcType=VARCHAR},
+		#{saleNum,jdbcType=BIGINT}, #{deliveryTime,jdbcType=TIMESTAMP}, #{checkStatusid,jdbcType=INTEGER},
+		#{twoDimensionPath,jdbcType=VARCHAR}, #{pncode,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER},
+		#{isLinkProduct,jdbcType=INTEGER}, #{linkUrl,jdbcType=VARCHAR}, #{linkFrom,jdbcType=VARCHAR},
+		#{totalStoreNum,jdbcType=BIGINT}, #{bookStoreNum,jdbcType=BIGINT}, #{saleStatus,jdbcType=INTEGER},
+		#{productDetailPics,jdbcType=VARCHAR}, #{point,jdbcType=VARCHAR}, #{returnProductExplain,jdbcType=VARCHAR},
+		#{returnProductExplainPics,jdbcType=VARCHAR}, #{words,jdbcType=VARCHAR},#{freightType,jdbcType=INTEGER},
+		#{freight_price,jdbcType=DECIMAL},#{freightGroupId,jdbcType=BIGINT},#{createTime,jdbcType=TIMESTAMP},
+		#{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=BIGINT},
+		#{status,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="productId" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		insert into t_bussiness_product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="brandId != null">
+				brand_id,
+			</if>
+			<if test="categoryId != null">
+				category_id,
+			</if>
+			<if test="productTypeId != null">
+				product_type_id,
+			</if>
+			<if test="shopId != null">
+				shop_id,
+			</if>
+			<if test="productName != null">
+				product_name,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="keyword != null">
+				keyword,
+			</if>
+			<if test="productDescribe != null">
+				product_describe,
+			</if>
+			<if test="productintro != null">
+				productIntro,
+			</if>
+			<if test="stock != null">
+				stock,
+			</if>
+			<if test="isRecommd != null">
+				is_recommd,
+			</if>
+			<if test="costPrice != null">
+				cost_price,
+			</if>
+			<if test="marketPrice != null">
+				market_price,
+			</if>
+			<if test="articleNumber != null">
+				article_number,
+			</if>
+			<if test="salesName != null">
+				sales_name,
+			</if>
+			<if test="packingList != null">
+				packing_list,
+			</if>
+			<if test="afterService != null">
+				after_service,
+			</if>
+			<if test="saleNum != null">
+				sale_num,
+			</if>
+			<if test="deliveryTime != null">
+				delivery_time,
+			</if>
+			<if test="checkStatusid != null">
+				check_statusId,
+			</if>
+			<if test="twoDimensionPath != null">
+				two_dimension_path,
+			</if>
+			<if test="pncode != null">
+				pncode,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="isLinkProduct != null">
+				is_link_product,
+			</if>
+			<if test="linkUrl != null">
+				link_url,
+			</if>
+			<if test="linkFrom != null">
+				link_from,
+			</if>
+			<if test="totalStoreNum != null">
+				total_store_num,
+			</if>
+			<if test="bookStoreNum != null">
+				book_store_num,
+			</if>
+			<if test="saleStatus != null">
+				sale_status,
+			</if>
+			<if test="productDetailPics != null">
+				product_detail_pics,
+			</if>
+			<if test="point != null">
+				point,
+			</if>
+			<if test="returnProductExplain != null">
+				return_product_explain,
+			</if>
+			<if test="returnProductExplainPics != null">
+				return_product_explain_pics,
+			</if>
+			<if test="words != null">
+				words,
+			</if>
+			<if test="freightType != null">
+				freight_type,
+			</if>
+			<if test="freightPrice != null">
+				freight_price,
+			</if>
+			<if test="freightGroupId != null">
+				freight_group_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="productId != null">
+				#{productId,jdbcType=BIGINT},
+			</if>
+			<if test="brandId != null">
+				#{brandId,jdbcType=BIGINT},
+			</if>
+			<if test="categoryId != null">
+				#{categoryId,jdbcType=BIGINT},
+			</if>
+			<if test="productTypeId != null">
+				#{productTypeId,jdbcType=BIGINT},
+			</if>
+			<if test="shopId != null">
+				#{shopId,jdbcType=BIGINT},
+			</if>
+			<if test="productName != null">
+				#{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="keyword != null">
+				#{keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="productDescribe != null">
+				#{productDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="productintro != null">
+				#{productintro,jdbcType=VARCHAR},
+			</if>
+			<if test="stock != null">
+				#{stock,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommd != null">
+				#{isRecommd,jdbcType=INTEGER},
+			</if>
+			<if test="costPrice != null">
+				#{costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="marketPrice != null">
+				#{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="articleNumber != null">
+				#{articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="salesName != null">
+				#{salesName,jdbcType=VARCHAR},
+			</if>
+			<if test="packingList != null">
+				#{packingList,jdbcType=VARCHAR},
+			</if>
+			<if test="afterService != null">
+				#{afterService,jdbcType=VARCHAR},
+			</if>
+			<if test="saleNum != null">
+				#{saleNum,jdbcType=BIGINT},
+			</if>
+			<if test="deliveryTime != null">
+				#{deliveryTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="checkStatusid != null">
+				#{checkStatusid,jdbcType=INTEGER},
+			</if>
+			<if test="twoDimensionPath != null">
+				#{twoDimensionPath,jdbcType=VARCHAR},
+			</if>
+			<if test="pncode != null">
+				#{pncode,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="isLinkProduct != null">
+				#{isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="linkUrl != null">
+				#{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="linkFrom != null">
+				#{linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="totalStoreNum != null">
+				#{totalStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="bookStoreNum != null">
+				#{bookStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="saleStatus != null">
+				#{saleStatus,jdbcType=INTEGER},
+			</if>
+			<if test="productDetailPics != null">
+				#{productDetailPics,jdbcType=VARCHAR},
+			</if>
+			<if test="point != null">
+				#{point,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplain != null">
+				#{returnProductExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplainPics != null">
+				#{returnProductExplainPics,jdbcType=VARCHAR},
+			</if>
+			<if test="words != null">
+				#{words,jdbcType=VARCHAR},
+			</if>
+			<if test="freightType != null">
+				#{freightType,jdbcType=INTEGER},
+			</if>
+			<if test="freightPrice != null">
+				#{freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="freightGroupId != null">
+				#{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.essential.bussiness.product.model.auto.ProductAutoExample" resultType="java.lang.Integer">
+		select count(*) from t_bussiness_product
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update t_bussiness_product
+		<set>
+			<if test="record.productId != null">
+				product_id = #{record.productId,jdbcType=BIGINT},
+			</if>
+			<if test="record.brandId != null">
+				brand_id = #{record.brandId,jdbcType=BIGINT},
+			</if>
+			<if test="record.categoryId != null">
+				category_id = #{record.categoryId,jdbcType=BIGINT},
+			</if>
+			<if test="record.productTypeId != null">
+				product_type_id = #{record.productTypeId,jdbcType=BIGINT},
+			</if>
+			<if test="record.shopId != null">
+				shop_id = #{record.shopId,jdbcType=BIGINT},
+			</if>
+			<if test="record.productName != null">
+				product_name = #{record.productName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.price != null">
+				price = #{record.price,jdbcType=DECIMAL},
+			</if>
+			<if test="record.keyword != null">
+				keyword = #{record.keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="record.productDescribe != null">
+				product_describe = #{record.productDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="record.productintro != null">
+				productIntro = #{record.productintro,jdbcType=VARCHAR},
+			</if>
+			<if test="record.stock != null">
+				stock = #{record.stock,jdbcType=BIGINT},
+			</if>
+			<if test="record.isRecommd != null">
+				is_recommd = #{record.isRecommd,jdbcType=INTEGER},
+			</if>
+			<if test="record.costPrice != null">
+				cost_price = #{record.costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="record.marketPrice != null">
+				market_price = #{record.marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="record.articleNumber != null">
+				article_number = #{record.articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="record.salesName != null">
+				sales_name = #{record.salesName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.packingList != null">
+				packing_list = #{record.packingList,jdbcType=VARCHAR},
+			</if>
+			<if test="record.afterService != null">
+				after_service = #{record.afterService,jdbcType=VARCHAR},
+			</if>
+			<if test="record.saleNum != null">
+				sale_num = #{record.saleNum,jdbcType=BIGINT},
+			</if>
+			<if test="record.deliveryTime != null">
+				delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.checkStatusid != null">
+				check_statusId = #{record.checkStatusid,jdbcType=INTEGER},
+			</if>
+			<if test="record.twoDimensionPath != null">
+				two_dimension_path = #{record.twoDimensionPath,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pncode != null">
+				pncode = #{record.pncode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.isDelete != null">
+				is_delete = #{record.isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="record.isLinkProduct != null">
+				is_link_product = #{record.isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="record.linkUrl != null">
+				link_url = #{record.linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="record.linkFrom != null">
+				link_from = #{record.linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="record.totalStoreNum != null">
+				total_store_num = #{record.totalStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="record.bookStoreNum != null">
+				book_store_num = #{record.bookStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="record.saleStatus != null">
+				sale_status = #{record.saleStatus,jdbcType=INTEGER},
+			</if>
+			<if test="record.productDetailPics != null">
+				product_detail_pics = #{record.productDetailPics,jdbcType=VARCHAR},
+			</if>
+			<if test="record.point != null">
+				point = #{record.point,jdbcType=VARCHAR},
+			</if>
+			<if test="record.returnProductExplain != null">
+				return_product_explain = #{record.returnProductExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="record.returnProductExplainPics != null">
+				return_product_explain_pics = #{record.returnProductExplainPics,jdbcType=VARCHAR},
+			</if>
+			<if test="record.words != null">
+				words = #{record.words,jdbcType=VARCHAR},
+			</if>
+			<if test="record.freightType != null">
+				freight_type = #{record.freightType,jdbcType=INTEGER},
+			</if>
+			<if test="record.freightPrice != null">
+				freight_price = #{record.freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="record.freightGroupId != null">
+				freight_group_id = #{record.freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="record.createTime != null">
+				create_time = #{record.createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.createUser != null">
+				create_user = #{record.createUser,jdbcType=BIGINT},
+			</if>
+			<if test="record.modifyTime != null">
+				modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.modifyUser != null">
+				modify_user = #{record.modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="record.status != null">
+				status = #{record.status,jdbcType=INTEGER},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update t_bussiness_product
+		set product_id = #{record.productId,jdbcType=BIGINT},
+		brand_id = #{record.brandId,jdbcType=BIGINT},
+		category_id = #{record.categoryId,jdbcType=BIGINT},
+		product_type_id = #{record.productTypeId,jdbcType=BIGINT},
+		shop_id = #{record.shopId,jdbcType=BIGINT},
+		product_name = #{record.productName,jdbcType=VARCHAR},
+		price = #{record.price,jdbcType=DECIMAL},
+		keyword = #{record.keyword,jdbcType=VARCHAR},
+		product_describe = #{record.productDescribe,jdbcType=VARCHAR},
+		productIntro = #{record.productintro,jdbcType=VARCHAR},
+		stock = #{record.stock,jdbcType=BIGINT},
+		is_recommd = #{record.isRecommd,jdbcType=INTEGER},
+		cost_price = #{record.costPrice,jdbcType=DECIMAL},
+		market_price = #{record.marketPrice,jdbcType=DECIMAL},
+		article_number = #{record.articleNumber,jdbcType=VARCHAR},
+		sales_name = #{record.salesName,jdbcType=VARCHAR},
+		packing_list = #{record.packingList,jdbcType=VARCHAR},
+		after_service = #{record.afterService,jdbcType=VARCHAR},
+		sale_num = #{record.saleNum,jdbcType=BIGINT},
+		delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+		check_statusId = #{record.checkStatusid,jdbcType=INTEGER},
+		two_dimension_path = #{record.twoDimensionPath,jdbcType=VARCHAR},
+		pncode = #{record.pncode,jdbcType=VARCHAR},
+		is_delete = #{record.isDelete,jdbcType=INTEGER},
+		is_link_product = #{record.isLinkProduct,jdbcType=INTEGER},
+		link_url = #{record.linkUrl,jdbcType=VARCHAR},
+		link_from = #{record.linkFrom,jdbcType=VARCHAR},
+		total_store_num = #{record.totalStoreNum,jdbcType=BIGINT},
+		book_store_num = #{record.bookStoreNum,jdbcType=BIGINT},
+		sale_status = #{record.saleStatus,jdbcType=INTEGER},
+		product_detail_pics = #{record.productDetailPics,jdbcType=VARCHAR},
+		point = #{record.point,jdbcType=VARCHAR},
+		return_product_explain = #{record.returnProductExplain,jdbcType=VARCHAR},
+		return_product_explain_pics = #{record.returnProductExplainPics,jdbcType=VARCHAR},
+		words = #{record.words,jdbcType=VARCHAR},
+		freight_type = #{record.freightType,jdbcType=INTEGER},
+		freight_price =
+		#{record.freightPrice,jdbcType=DECIMAL},
+		freight_group_id = #{record.freightGroupId,jdbcType=BIGINT},
+		create_time = #{record.createTime,jdbcType=TIMESTAMP},
+		create_user = #{record.createUser,jdbcType=BIGINT},
+		modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+		modify_user = #{record.modifyUser,jdbcType=BIGINT},
+		status = #{record.status,jdbcType=INTEGER}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		update t_bussiness_product
+		<set>
+			<if test="brandId != null">
+				brand_id = #{brandId,jdbcType=BIGINT},
+			</if>
+			<if test="categoryId != null">
+				category_id = #{categoryId,jdbcType=BIGINT},
+			</if>
+			<if test="productTypeId != null">
+				product_type_id = #{productTypeId,jdbcType=BIGINT},
+			</if>
+			<if test="shopId != null">
+				shop_id = #{shopId,jdbcType=BIGINT},
+			</if>
+			<if test="productName != null">
+				product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="keyword != null">
+				keyword = #{keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="productDescribe != null">
+				product_describe = #{productDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="productintro != null">
+				productIntro = #{productintro,jdbcType=VARCHAR},
+			</if>
+			<if test="stock != null">
+				stock = #{stock,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommd != null">
+				is_recommd = #{isRecommd,jdbcType=INTEGER},
+			</if>
+			<if test="costPrice != null">
+				cost_price = #{costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="marketPrice != null">
+				market_price = #{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="articleNumber != null">
+				article_number = #{articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="salesName != null">
+				sales_name = #{salesName,jdbcType=VARCHAR},
+			</if>
+			<if test="packingList != null">
+				packing_list = #{packingList,jdbcType=VARCHAR},
+			</if>
+			<if test="afterService != null">
+				after_service = #{afterService,jdbcType=VARCHAR},
+			</if>
+			<if test="saleNum != null">
+				sale_num = #{saleNum,jdbcType=BIGINT},
+			</if>
+			<if test="deliveryTime != null">
+				delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="checkStatusid != null">
+				check_statusId = #{checkStatusid,jdbcType=INTEGER},
+			</if>
+			<if test="twoDimensionPath != null">
+				two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR},
+			</if>
+			<if test="pncode != null">
+				pncode = #{pncode,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="isLinkProduct != null">
+				is_link_product = #{isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="linkUrl != null">
+				link_url = #{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="linkFrom != null">
+				link_from = #{linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="totalStoreNum != null">
+				total_store_num = #{totalStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="bookStoreNum != null">
+				book_store_num = #{bookStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="saleStatus != null">
+				sale_status = #{saleStatus,jdbcType=INTEGER},
+			</if>
+			<if test="productDetailPics != null">
+				product_detail_pics = #{productDetailPics,jdbcType=VARCHAR},
+			</if>
+			<if test="point != null">
+				point = #{point,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplain != null">
+				return_product_explain = #{returnProductExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplainPics != null">
+				return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR},
+			</if>
+			<if test="words != null">
+				words = #{words,jdbcType=VARCHAR},
+			</if>
+			<if test="freightType != null">
+				freight_type = #{freightType,jdbcType=INTEGER},
+			</if>
+			<if test="freightPrice != null">
+				freight_price = #{freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="freightGroupId != null">
+				freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+		</set>
+		where product_id = #{productId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		update t_bussiness_product
+		set brand_id = #{brandId,jdbcType=BIGINT},
+		category_id = #{categoryId,jdbcType=BIGINT},
+		product_type_id = #{productTypeId,jdbcType=BIGINT},
+		shop_id = #{shopId,jdbcType=BIGINT},
+		product_name = #{productName,jdbcType=VARCHAR},
+		price = #{price,jdbcType=DECIMAL},
+		keyword = #{keyword,jdbcType=VARCHAR},
+		product_describe = #{productDescribe,jdbcType=VARCHAR},
+		productIntro = #{productintro,jdbcType=VARCHAR},
+		stock = #{stock,jdbcType=BIGINT},
+		is_recommd = #{isRecommd,jdbcType=INTEGER},
+		cost_price = #{costPrice,jdbcType=DECIMAL},
+		market_price = #{marketPrice,jdbcType=DECIMAL},
+		article_number = #{articleNumber,jdbcType=VARCHAR},
+		sales_name = #{salesName,jdbcType=VARCHAR},
+		packing_list = #{packingList,jdbcType=VARCHAR},
+		after_service = #{afterService,jdbcType=VARCHAR},
+		sale_num = #{saleNum,jdbcType=BIGINT},
+		delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+		check_statusId = #{checkStatusid,jdbcType=INTEGER},
+		two_dimension_path =
+		#{twoDimensionPath,jdbcType=VARCHAR},
+		pncode = #{pncode,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		is_link_product = #{isLinkProduct,jdbcType=INTEGER},
+		link_url = #{linkUrl,jdbcType=VARCHAR},
+		link_from = #{linkFrom,jdbcType=VARCHAR},
+		total_store_num = #{totalStoreNum,jdbcType=BIGINT},
+		book_store_num = #{bookStoreNum,jdbcType=BIGINT},
+		sale_status = #{saleStatus,jdbcType=INTEGER},
+		product_detail_pics = #{productDetailPics,jdbcType=VARCHAR},
+		point = #{point,jdbcType=VARCHAR},
+		return_product_explain = #{returnProductExplain,jdbcType=VARCHAR},
+		return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR},
+		words = #{words,jdbcType=VARCHAR},
+		freight_type = #{freightType,jdbcType=INTEGER},
+		freight_price = #{freightPrice,jdbcType=DECIMAL},
+		freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		status = #{status,jdbcType=INTEGER}
+		where product_id = #{productId,jdbcType=BIGINT}
+	</update>
+
+	<select id="selectAll" parameterType="map" resultMap="BaseResultMap">
+
+
+		select a.*
+		<!-- <include refid="Base_Column_List"></include> -->
+		,b.path,c.brand_name
+		from t_bussiness_product a 
+		LEFT JOIN t_bussiness_productpic b on a.product_id =b.product_id  and a.is_delete = b.status
+		LEFT JOIN t_bussiness_brand c on a.brand_id=c.brand_id and c.status=1
+		<where>
+			and b.mainpic=1 and a.is_delete=0 and a.sale_status=1
+			<if test="productId != null">
+				and a.product_id=#{productId,jdbcType=BIGINT}
+			</if>
+			<if test="brandId != null">peng 
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and (a.product_name like "%"#{productName}"%"
+						or c.brand_name like "%"#{productName}"%")
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="costPrice != null">
+				and a.cost_price = #{costPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number = #{articleNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="saleStatus != null">
+				and a.sale_status = #{saleStatus,jdbcType=INTEGER}
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER},
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="brandIds != null">
+
+				and a.brand_id in
+				<foreach item="item" index="index" collection="brandIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="productTypeIds != null">
+				and a.product_type_id in
+
+				<foreach item="item" index="index" collection="productTypeIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			
+			<if test="own==10">
+			 and a.link_from =1
+			
+			</if>
+			
+			<if test="type==5">
+			 and a.link_url =1
+			
+			</if>
+			
+			<if test="type == 1">
+				order by a.cost_price asc
+			</if>
+			<if test="type == 2">
+				order by a.cost_price desc
+			</if>
+			<if test="type==3">
+			order by a.create_time desc
+			
+			</if>
+			
+			
+		</where>
+
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<!-- 相关商品 -->
+	<resultMap id="ProductRelatedGoodsMap" type="com.essential.bussiness.product.model.vo.ProductInfoWithPromotionVo">
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="create_time" jdbcType="VARCHAR" property="createTime" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="tag" property="tag" jdbcType="VARCHAR" />
+		<result column="promotion_name" property="promotionName" jdbcType="VARCHAR" />
+		<result column="start_time" property="startTime" jdbcType="VARCHAR" />
+		<result column="end_time" property="endTime" jdbcType="VARCHAR" />
+		<result column="is_validate" property="isValidate" jdbcType="INTEGER" />
+		<result column="promotion_type" property="promotionType" jdbcType="INTEGER" />
+		<result column="discount_percent" property="discountPercent" jdbcType="REAL" />
+		<result column="discount_money" property="discountMoney" jdbcType="DECIMAL" />
+		<result column="need_total_price" property="needTotalPrice" jdbcType="DECIMAL" />
+		<result column="is_multistage" property="isMultistage" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="queryProductRelatedGoods" parameterType="map" resultMap="ProductRelatedGoodsMap">
+		select product.create_time, product.product_id,product.product_name,product.cost_price,product.market_price,product.link_from,
+		brand.brand_id,brand.brand_name,pic.path,
+		promotion_product.promotion_type ,promotion_product.discount_percent,promotion_product.discount_money,
+		promotion_product.need_total_price, promotion_product.is_multistage ,promotion.tag,promotion.is_validate,
+		promotion.promotion_name,promotion.start_time,promotion.end_time
+		from  t_bussiness_product product
+		LEFT JOIN t_bussiness_brand brand ON product.brand_id = brand.brand_id and brand.status=1
+		LEFT JOIN t_bussiness_productpic pic ON product.product_id=pic.product_id AND pic.mainpic = '1' and product.is_delete = pic.status
+		LEFT JOIN t_bussiness_promotion_product promotion_product ON product.product_id=promotion_product.product_or_shop_id AND promotion_product.is_validate=0
+		LEFT JOIN t_bussiness_promotion promotion on promotion_product.promotion_id = promotion.promotion_id
+		
+		where product.product_type_id = (SELECT product_type_id FROM t_bussiness_product WHERE product_id = #{productId,jdbcType=BIGINT})
+		and product.product_id != #{productId,jdbcType=BIGINT} 
+		and product.sale_status=1
+		and product.is_delete = #{isDelete,jdbcType=INTEGER} 
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<!-- 根据店铺查找商品 -->
+	<select id="selectByBrandId" parameterType="map" resultMap="BaseResultMap">
+
+		select a.*,b.path,c.brand_name
+		from t_bussiness_product a 
+		LEFT JOIN t_bussiness_productpic b on a.product_id =b.product_id and b.status= a.is_delete
+		LEFT JOIN t_bussiness_brand c ON a.brand_id = c.brand_id and c.status = 1
+		<!-- select <include refid="Base_Column_List"></include> from t_bussiness_product -->
+		<where>
+			and b.mainpic=1 and a.is_delete=0 and a.sale_status=1
+			<if test="brandId != null">
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+
+		</where>
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<!-- 根据运费模板查找商品 -->
+	<select id="queryProductByFreightGroupId" parameterType="com.essential.bussiness.product.model.auto.ProductAuto" resultMap="BaseResultMap">
+		select product_id
+		from t_bussiness_product
+		<where>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="freightType != null">
+				and freight_type = #{freightType,jdbcType=INTEGER}
+			</if>
+			<if test="freightGroupId != null">
+				and freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+
+		</where>
+	</select>
+
+	<!-- 商品查询 -->
+	<resultMap id="ProductSerchInfoMap" type="com.essential.bussiness.product.model.vo.ProductSerchInfoVo">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="stock" property="stock" jdbcType="BIGINT" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+		<result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="total_store_num" property="totalStoreNum" jdbcType="BIGINT" />
+		<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="path" property="path" jdbcType="INTEGER" />
+		<result column="count" property="count" jdbcType="INTEGER" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<!-- 获取总条数 -->
+    <select id="queryProductByShopIdCount" parameterType="map" resultMap="ProductSerchInfoMap">
+		select COUNT(*) AS count
+		FROM t_bussiness_product a
+		LEFT JOIN t_bussiness_productpic b ON a.product_id = b.product_id AND b.status= a.is_delete
+		LEFT JOIN t_bussiness_brand c ON a.brand_id = c.brand_id AND c.status = 1
+		LEFT JOIN t_bussiness_category d ON a.category_id = d.category_id and a.is_delete = d.is_deleted
+		<where>
+			and b.mainpic=1
+			<if test="productId != null">
+				and a.product_id=#{productId,jdbcType=BIGINT}
+			</if>
+			<if test="firstPrice != null and secondPrice != null">
+				and a.cost_price between #{firstPrice,jdbcType=DECIMAL} and #{secondPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="brandId != null">
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and a.product_name LIKE "%"#{productName,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="saleStatus != null">
+				and a.sale_status = #{saleStatus,jdbcType=INTEGER}
+			</if>
+			<!-- 仓库中的商品 -->
+			<if test="type == 0 and saleStatus == null">
+				<!-- and a.stock = #{stock,jdbcType=BIGINT} -->
+				and (a.sale_status = 0 or a.sale_status = 2)
+			</if>
+			<!-- 已售罄的商品 -->
+			<if test="type == 1">
+				and a.stock = 0
+				and a.sale_status = 1
+			</if>
+			<!-- 出售中的商品 -->
+			<if test="type == 2">
+				and a.stock > 0
+				and a.sale_status = 1
+			</if>
+			<!-- 上架的商品 -->
+			<if test="type == 3">
+				and a.sale_status = 1
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number LIKE "%"#{articleNumber,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER}
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+	<select id="queryProductByShopId" parameterType="map" resultMap="ProductSerchInfoMap">
+		select 
+			a.product_id,
+			a.brand_id,
+			a.category_id,
+			a.article_number,
+			a.shop_id,
+			a.product_name,
+			a.stock,
+			a.cost_price,
+			a.market_price,
+			a.sale_num,
+			a.is_delete,
+			a.total_store_num,
+			a.sale_status,
+			a.create_time,
+			a.link_url,
+			a.link_from,
+			b.path,c.brand_name,d.category_name
+		FROM t_bussiness_product a
+		LEFT JOIN t_bussiness_productpic b ON a.product_id = b.product_id AND b.status= a.is_delete
+		LEFT JOIN t_bussiness_brand c ON a.brand_id = c.brand_id AND c.status = 1
+		LEFT JOIN t_bussiness_category d ON a.category_id = d.category_id and a.is_delete = d.is_deleted
+		<where>
+			and b.mainpic=1
+			<if test="productId != null">
+				and a.product_id=#{productId,jdbcType=BIGINT}
+			</if>
+			<if test="firstPrice != null and secondPrice != null">
+				and a.cost_price between #{firstPrice,jdbcType=DECIMAL} and #{secondPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="brandId != null">
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and a.product_name LIKE "%"#{productName,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="saleStatus != null">
+				and a.sale_status = #{saleStatus,jdbcType=INTEGER}
+			</if>
+			<!-- 仓库中的商品 -->
+			<if test="type == 0 and saleStatus == null">
+				<!-- and a.stock = #{stock,jdbcType=BIGINT} -->
+				and (a.sale_status = 0 or a.sale_status = 2)
+			</if>
+			<!-- 已售罄的商品 -->
+			<if test="type == 1">
+				and a.stock = 0
+				and a.sale_status = 1
+			</if>
+			<!-- 出售中的商品 -->
+			<if test="type == 2">
+				and a.stock > 0
+				and a.sale_status = 1
+			</if>
+			<!-- 上架的商品 -->
+			<if test="type == 3">
+				and a.sale_status = 1
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number LIKE "%"#{articleNumber,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER}
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+		</where>
+		order by a.create_time desc limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<!-- 查询商品详情信息  -->
+	<select id="queryByPrimaryKey" parameterType="com.essential.bussiness.product.model.auto.ProductAuto" resultMap="BaseResultMap">
+		select product_describe, return_product_explain
+		from t_bussiness_product
+		<where>
+			<if test="productId != null">
+				and product_id=#{productId, jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	<!-- 商品的基本信息 -->
+	<resultMap id="ProductBaseInfoMap" type="com.essential.bussiness.product.model.vo.ProductBaseInfoVo">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+
+	</resultMap>
+
+<!-- 根据商品id查询商品基本信息 -->
+	<select id="queryProductBaseInfoById" resultMap="ProductBaseInfoMap" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		SELECT product.product_id,product.product_name,product.market_price,product.cost_price,product.create_time,brand.brand_id,brand.brand_name,pic.path
+		FROM t_bussiness_product product
+		LEFT JOIN t_bussiness_brand brand ON product.brand_id=brand.brand_id and brand.status=1
+		LEFT JOIN t_bussiness_productpic pic ON product.product_id=pic.product_id and product.is_delete = pic.status
+		<where>
+			<if test="isDelete != null">
+				and product.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="productId != null">
+				and product.product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="brandId != null">
+				and product.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and product.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and product.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="shopId != null">
+				and product.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and product.product_name like "%"#{productName}"%"
+			</if>
+			<if test="price != null">
+				and product.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and product.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and product.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and product.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="stock != null">
+				and product.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="isRecommd != null">
+				and product.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			and pic.mainpic=1
+		</where>
+	</select>
+	<!-- 促销活动商品查询 -->
+	<resultMap id="QueryPromotionProductByShopIdMap" type="com.essential.bussiness.promotion.model.vo.PromotionProductVo">
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="stock" property="stock" jdbcType="BIGINT" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+    	<result column="promotion_id" property="promotionId" jdbcType="BIGINT" />
+    	<result column="discount_percent" property="discountPercent" jdbcType="REAL" />
+    	<result column="discount_money" property="discountMoney" jdbcType="DECIMAL" />
+    	<result column="is_validate" property="isValidate" jdbcType="INTEGER" />
+    	<result column="producte_status_name" property="producteStatusName" jdbcType="VARCHAR" />
+    	<result column="path" property="path" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryPromotionProductByShopId" parameterType="map" resultMap="QueryPromotionProductByShopIdMap">
+	SELECT
+	p.product_id,
+	p.product_name,
+	p.article_number,
+	p.cost_price,
+	p.stock,
+	b.path,
+	tpro.discount_money,
+	tpro.discount_percent,
+	tpro.is_validate,
+	tpro.promotion_id,
+	(
+		<if test="promotionId != null">
+		CASE
+		WHEN (
+			(
+				tpro.is_validate = 2
+				OR tpro.is_validate = 0
+			)
+			AND tpro.promotion_id = #{promotionId,jdbcType=BIGINT}
+		) THEN
+			'已参加'
+
+		WHEN (
+			tpro.is_validate = 0
+			AND <![CDATA[tpro.promotion_id <> #{promotionId,jdbcType=BIGINT}]]> 
+			AND UNIX_TIMESTAMP(tpro.end_time) > UNIX_TIMESTAMP(NOW())
+		) THEN
+			'该商品已参加其他活动'
+		END
+		</if>
+		<if test="promotionId == null">
+		CASE
+			WHEN (
+			tpro.is_validate = 0
+			AND UNIX_TIMESTAMP(tpro.end_time) > UNIX_TIMESTAMP(NOW())
+		) THEN
+			'该商品已参加其他活动'
+		END
+		</if>
+	) AS producte_status_name
+     FROM t_bussiness_product p 
+     LEFT JOIN t_bussiness_productpic b ON p.product_id = b.product_id AND b.status=0 and b.mainpic=1
+      LEFT JOIN (
+	    SELECT
+		  t.discount_money,
+		  t.discount_percent,
+		  t.is_validate,
+		  t.product_or_shop_id,
+		  t.promotion_id,
+		  tpm.start_time,
+		  tpm.end_time
+	      FROM t_bussiness_promotion_product t
+	      LEFT JOIN t_bussiness_promotion tpm ON t.promotion_id = tpm.promotion_id
+		  WHERE ( 
+		  <if test="promotionId != null">
+		  (t.is_validate = 2 AND t.promotion_id = #{promotionId,jdbcType=BIGINT})
+		   OR t.is_validate = 0 
+		  </if>
+		   <if test="promotionId == null">
+		   t.is_validate = 0 
+		   </if>
+		  ) ) tpro 
+		ON p.product_id = tpro.product_or_shop_id
+		<!-- WHERE p.shop_id = #{shopId,jdbcType=BIGINT} AND p.is_delete = 0 -->
+		<where>
+			AND p.is_delete = 0
+			<if test="shopId != null">
+				and p.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and p.product_name LIKE "%"#{productName,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="articleNumber != null">
+				and p.article_number LIKE "%"#{articleNumber,jdbcType=VARCHAR}"%"
+			</if>
+		</where>
+		order by p.create_time desc limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<resultMap id="QueryCountMap" type="com.essential.bussiness.promotion.model.vo.PromotionCount" >
+	   	<id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="count" property="count" jdbcType="INTEGER" />
+    </resultMap>
+	<select id="queryPromotionProductCount" parameterType="map" resultMap="QueryCountMap">
+		select COUNT(1) as count
+		     FROM t_bussiness_product p 
+		     LEFT JOIN t_bussiness_productpic b ON p.product_id = b.product_id AND b.status=0 and b.mainpic=1
+      LEFT JOIN (
+	    SELECT
+		  t.discount_money,
+		  t.discount_percent,
+		  t.is_validate,
+		  t.product_or_shop_id,
+		  t.promotion_id,
+		  tpm.start_time,
+		  tpm.end_time
+	      FROM t_bussiness_promotion_product t
+	      LEFT JOIN t_bussiness_promotion tpm ON t.promotion_id = tpm.promotion_id
+		  WHERE ( 
+		  <if test="promotionId != null">
+		  (t.is_validate = 2 AND t.promotion_id = #{promotionId,jdbcType=BIGINT})
+		   OR t.is_validate = 0 
+		  </if>
+		   <if test="promotionId == null">
+		   t.is_validate = 0 
+		   </if>
+		  ) ) tpro 
+		ON p.product_id = tpro.product_or_shop_id
+		WHERE p.shop_id = #{shopId,jdbcType=BIGINT} AND p.is_delete = 0
+	</select>
+	
+	<!-- 店铺商品统计 -->
+	<resultMap id="ProductOrShopCountMap" type="com.essential.bussiness.product.model.vo.ProductOrShopCountVo" >
+     <result column="productInSaleCount" property="productInSaleCount" jdbcType="INTEGER" />
+     <result column="productInStorehouseCount" property="productInStorehouseCount" jdbcType="INTEGER" />
+     <result column="productSaleOutCount" property="productSaleOutCount" jdbcType="INTEGER" />
+  	 <result column="shopCount" property="shopCount" jdbcType="INTEGER" />
+  	 <result column="userCount" property="userCount" jdbcType="INTEGER" />
+   </resultMap>
+	<select id="productCount" parameterType="map" resultMap="ProductOrShopCountMap">
+	  select count(CASE WHEN (sale_status = 0 or sale_status = 2) and stock > 0 THEN sale_status END) as productInStorehouseCount,
+            count(CASE WHEN sale_status = 1 and stock > 0 THEN sale_status END) as productInSaleCount,
+            count(CASE WHEN sale_status = 1 and stock = 0 THEN sale_status END) as productSaleOutCount
+      from t_bussiness_product
+      <where>
+      <!-- 0:商店KPI统计，1:平台KPI统计 -->
+      	<if test="type == 0">
+			and shop_id = #{shopId,jdbcType=INTEGER}
+		</if>
+		<if test="isDelete != null">
+			and is_delete = #{isDelete,jdbcType=INTEGER}
+		</if>
+      </where>
+	</select>
+	
+	<!-- 查询数据（数据转移使用） -->
+	<select id="queryInfo" resultMap="BaseResultMap" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		select 
+		<include refid="Base_Column_List" />
+		from t_bussiness_product
+		<where>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询数据 (平台) -->
+	<resultMap id="queryProductPlatformMap" type="com.essential.bussiness.product.model.vo.ProductPlatformVo">
+		<id column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+		<result column="product_type_id" property="productTypeId" jdbcType="BIGINT" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
+		<result column="product_describe" property="productDescribe" jdbcType="VARCHAR" />
+		<result column="productIntro" property="productintro" jdbcType="VARCHAR" />
+		<result column="stock" property="stock" jdbcType="BIGINT" />
+		<result column="is_recommd" property="isRecommd" jdbcType="INTEGER" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+		<result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+		<result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+		<result column="after_service" property="afterService" jdbcType="VARCHAR" />
+		<result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+		<result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+		<result column="check_statusId" property="checkStatusid" jdbcType="INTEGER" />
+		<result column="two_dimension_path" property="twoDimensionPath" jdbcType="VARCHAR" />
+		<result column="pncode" property="pncode" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="is_link_product" property="isLinkProduct" jdbcType="INTEGER" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="total_store_num" property="totalStoreNum" jdbcType="BIGINT" />
+		<result column="book_store_num" property="bookStoreNum" jdbcType="BIGINT" />
+		<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+		<result column="product_detail_pics" property="productDetailPics" jdbcType="VARCHAR" />
+		<result column="point" property="point" jdbcType="VARCHAR" />
+		<result column="return_product_explain" property="returnProductExplain" jdbcType="VARCHAR" />
+		<result column="return_product_explain_pics" property="returnProductExplainPics" jdbcType="VARCHAR" />
+		<result column="words" property="words" jdbcType="VARCHAR" />
+		<result column="freight_type" property="freightType" jdbcType="INTEGER" />
+		<result column="freight_price" property="freightPrice" jdbcType="DECIMAL" />
+		<result column="freight_group_id" property="freightGroupId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="path" property="path" jdbcType="INTEGER" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+		<result column="shopName" property="shopName" jdbcType="VARCHAR" />
+		<result column="selfName" property="selfName" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="firstPrice" property="firstPrice" jdbcType="DECIMAL" />
+		<result column="secondPrice" property="secondPrice" jdbcType="DECIMAL" />
+		<result column="productStatusName" property="productStatusName" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryProductPlatform" resultMap="queryProductPlatformMap" parameterType="com.essential.bussiness.product.model.vo.ProductPlatformVo">
+		select a.*,b.path,c.brand_name,d.category_name,e.name AS shopName
+		from t_bussiness_product a 
+		LEFT JOIN t_bussiness_productpic b ON a.product_id = b.product_id and a.is_delete = b.status and b.mainpic=1
+		LEFT JOIN t_bussiness_brand c ON a.brand_id = c.brand_id and c.status=1
+		LEFT JOIN t_bussiness_category d ON a.category_id = d.category_id and d.is_deleted = a.is_delete
+		LEFT JOIN t_bussiness_shop e ON a.shop_id = e.shop_id and a.is_delete = e.status
+		<where>
+			<if test="brandId != null">
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and a.product_name LIKE "%"#{productName,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="firstPrice != null and secondPrice != null">
+				and a.cost_price BETWEEN #{firstPrice,jdbcType=DECIMAL} AND #{secondPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number LIKE "%"#{articleNumber,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="type == 0">
+				and a.sale_status = 1
+			</if>
+			<if test="type == 1">
+				and a.sale_status = 2
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER}
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="shopName != null">
+				and e.name = #{shopName,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY a.create_time DESC LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	
+	<resultMap id="CountMap" type="com.essential.bussiness.product.model.vo.Count" >
+    	<result column="count" property="count" jdbcType="INTEGER" />
+  	</resultMap>
+   	<select id="queryCount" resultMap="CountMap" parameterType="com.essential.bussiness.product.model.vo.ProductPlatformVo" >
+    	select COUNT(*) as count
+		from t_bussiness_product a 
+		LEFT JOIN t_bussiness_productpic b ON a.product_id = b.product_id and a.is_delete = b.status
+		LEFT JOIN t_bussiness_brand c ON a.brand_id = c.brand_id and c.status=1
+		LEFT JOIN t_bussiness_category d ON a.category_id = d.category_id and d.is_deleted = a.is_delete
+		LEFT JOIN t_bussiness_shop e ON a.shop_id = e.shop_id and a.is_delete = e.status
+    	<where>
+    		and b.mainpic=1
+			<if test="brandId != null">
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and a.product_name LIKE "%"#{productName,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="firstPrice != null and secondPrice != null">
+				and a.cost_price BETWEEN #{firstPrice,jdbcType=DECIMAL} AND #{secondPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number LIKE "%"#{articleNumber,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="type == 0">
+				and a.sale_status = 1
+			</if>
+			<if test="type == 1">
+				and a.sale_status = 2
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER}
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="shopName != null">
+				and e.name = #{shopName,jdbcType=VARCHAR}
+			</if>
+    	</where>
+    </select>
+	<resultMap id="ProductDetaileInfoPlatformMap" type="com.essential.bussiness.product.model.vo.ProductDetaileInfoPlatformVo" extends="ProductAutoBaseResultMap">
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+		<result column="productype_name" property="productTypeName" jdbcType="VARCHAR" />
+		
+	</resultMap> 
+	<select id="queryProductDetaileInfo" resultMap="ProductDetaileInfoPlatformMap" parameterType="java.lang.Long">
+		SELECT
+			a.*, b.brand_name,c.category_name,d.productype_name
+		FROM t_bussiness_product a
+		LEFT JOIN t_bussiness_brand b ON a.brand_id = b.brand_id AND b. STATUS = 1
+		LEFT JOIN t_bussiness_category c ON a.category_id = c.category_id AND a.is_delete = c.is_deleted
+		LEFT JOIN t_bussiness_producttype d ON a.product_type_id = d.product_type_id AND a.is_delete = d.is_deleted
+		where a.product_id = #{productId,jdbcType=BIGINT} AND a.is_delete=0
+	</select>
+	
+	<!-- 通过shopID的更新商品状态 -->
+	<update id="updateProductStatusByShopId" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		update t_bussiness_product
+		<set>
+			<if test="brandId != null">
+				brand_id = #{brandId,jdbcType=BIGINT},
+			</if>
+			<if test="categoryId != null">
+				category_id = #{categoryId,jdbcType=BIGINT},
+			</if>
+			<if test="productTypeId != null">
+				product_type_id = #{productTypeId,jdbcType=BIGINT},
+			</if>
+			<if test="shopId != null">
+				shop_id = #{shopId,jdbcType=BIGINT},
+			</if>
+			<if test="productName != null">
+				product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="keyword != null">
+				keyword = #{keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="productDescribe != null">
+				product_describe = #{productDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="productintro != null">
+				productIntro = #{productintro,jdbcType=VARCHAR},
+			</if>
+			<if test="stock != null">
+				stock = #{stock,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommd != null">
+				is_recommd = #{isRecommd,jdbcType=INTEGER},
+			</if>
+			<if test="costPrice != null">
+				cost_price = #{costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="marketPrice != null">
+				market_price = #{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="articleNumber != null">
+				article_number = #{articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="salesName != null">
+				sales_name = #{salesName,jdbcType=VARCHAR},
+			</if>
+			<if test="packingList != null">
+				packing_list = #{packingList,jdbcType=VARCHAR},
+			</if>
+			<if test="afterService != null">
+				after_service = #{afterService,jdbcType=VARCHAR},
+			</if>
+			<if test="saleNum != null">
+				sale_num = #{saleNum,jdbcType=BIGINT},
+			</if>
+			<if test="deliveryTime != null">
+				delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="checkStatusid != null">
+				check_statusId = #{checkStatusid,jdbcType=INTEGER},
+			</if>
+			<if test="twoDimensionPath != null">
+				two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR},
+			</if>
+			<if test="pncode != null">
+				pncode = #{pncode,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="isLinkProduct != null">
+				is_link_product = #{isLinkProduct,jdbcType=INTEGER},
+			</if>
+			<if test="linkUrl != null">
+				link_url = #{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="linkFrom != null">
+				link_from = #{linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="totalStoreNum != null">
+				total_store_num = #{totalStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="bookStoreNum != null">
+				book_store_num = #{bookStoreNum,jdbcType=BIGINT},
+			</if>
+			<if test="saleStatus != null">
+				sale_status = #{saleStatus,jdbcType=INTEGER},
+			</if>
+			<if test="productDetailPics != null">
+				product_detail_pics = #{productDetailPics,jdbcType=VARCHAR},
+			</if>
+			<if test="point != null">
+				point = #{point,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplain != null">
+				return_product_explain = #{returnProductExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="returnProductExplainPics != null">
+				return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR},
+			</if>
+			<if test="words != null">
+				words = #{words,jdbcType=VARCHAR},
+			</if>
+			<if test="freightType != null">
+				freight_type = #{freightType,jdbcType=INTEGER},
+			</if>
+			<if test="freightPrice != null">
+				freight_price = #{freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="freightGroupId != null">
+				freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+		</set>
+		<where>
+			<if test="shopId != null">
+				and shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</update>
+	<!-- 通过shopId查询商品（平台） -->
+	<select id="queryProductList" resultMap="ProductAutoBaseResultMap" parameterType="com.essential.bussiness.product.model.auto.ProductAuto">
+		select <include refid="Base_Column_List" />
+		from t_bussiness_product
+		<where>
+			<if test="shopId != null">
+				and shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	
+
+	<select id="queryPromotionProductList"  parameterType="map" resultMap="ProductPromotionResultMap">
+
+select e.*,f.brand_name from (  select a.product_or_shop_id as 
+
+product_id,a.discount_percent,b.promotion_name,c.product_name,c.brand_id,c.cost_price,c.product_type_id,c.category_id,c.link_from,d.path,c.cost_price*(a.discount_percent/10) AS activePrice
+ from t_bussiness_promotion_product a LEFT JOIN  
+t_bussiness_promotion b on a.promotion_id=b.promotion_id and UNIX_TIMESTAMP(b.start_time)&lt;=UNIX_TIMESTAMP(NOW()) and UNIX_TIMESTAMP(b.end_time)&gt;=UNIX_TIMESTAMP(now()) 
+LEFT JOIN t_bussiness_product c on a.product_or_shop_id=c.product_id 
+LEFT JOIN t_bussiness_productpic d on a.product_or_shop_id=d.product_id
+    
+where a.is_validate=0 and b.is_validate=0 and c.is_delete=0 
+and c.sale_status=1 and d.mainpic= 1 and d.`status`=0 ) e LEFT JOIN
+ t_bussiness_brand f on e.brand_id=f.brand_id 
+  
+
+ <where>
+ and f.`status`=1
+ 
+ 
+ <if test="own==10">
+			 and e.link_from =1
+			</if>
+ <if test="categoryId != null">
+				and e.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and e.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			
+ <if test="brandIds != null">
+
+				and e.brand_id in
+				<foreach item="item" index="index" collection="brandIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			
+			<if test="productTypeIds != null">
+				and e.product_type_id in
+
+				<foreach item="item" index="index" collection="productTypeIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			
+			
+			<if test="discountPriceAsc == 35">
+				ORDER BY e.activePrice asc
+			</if>
+			<if test="discountPriceDesc == 36">
+				ORDER BY e.activePrice desc
+			</if>
+	 </where>
+	 	limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	 
+	</select>
+ 	<!-- 通过活动id查询参加活动商品(设置商品折扣) -->
+ 	<resultMap id="QueryByPromotionIdMap" type="com.essential.bussiness.product.model.vo.ProductPromotionVo" extends="BaseResultMap">
+		<result column="discount_percent" property="discountPercent" jdbcType="REAL" />
+		<result column="product_romotion_id" property="productRomotionId" jdbcType="BIGINT" />
+		<result column="promotion_type" property="promotionType" jdbcType="INTEGER" />
+		<result column="is_validate" property="isValidate" jdbcType="INTEGER" />
+		<result column="discount_money" property="discountMoney" jdbcType="DECIMAL" />
+	</resultMap> 
+	<select id="queryByPromotionId" resultMap="QueryByPromotionIdMap" parameterType="map">
+		SELECT p.*, pic.path,t.discount_percent,t.is_validate,t.promotion_type,t.discount_money
+		FROM t_bussiness_promotion_product t
+		LEFT JOIN t_bussiness_product p ON t.product_or_shop_id = p.product_id and p.is_delete=0
+		LEFT JOIN t_bussiness_productpic pic ON t.product_or_shop_id = pic.product_id and pic.mainpic=1 and pic.status=0
+		WHERE t.promotion_id = #{promotionId,jdbcType=BIGINT} and (t.is_validate=0 or t.is_validate=2)
+	</select>
+ 
+<select id="selectAllLast" parameterType="map" resultMap="lastProductListResultMap">
+
+		select a.product_id,a.link_from,a.brand_id,a.category_id,a.cost_price,a.shop_id,a.product_name,
+		b.path,c.brand_name,
+		CASE WHEN pv.promotion_id IS NOT NULL AND pv.promotion_type=0 THEN a.cost_price*(pv.discount_percent/10) 
+													WHEN pv.promotion_id IS NOT NULL AND pv.promotion_type=1 THEN a.cost_price-pv.discount_money ELSE a.cost_price	END as active_price
+													
+		from t_bussiness_product a 
+		LEFT JOIN t_bussiness_productpic b on a.product_id =b.product_id  and a.is_delete = b.status
+		LEFT JOIN t_bussiness_brand c on a.brand_id=c.brand_id and c.status=1
+		LEFT JOIN (select tbpp.promotion_type,tbpp.promotion_id,tbpp.discount_percent,tbpp.discount_money,tbpp.product_or_shop_id from t_bussiness_promotion_product tbpp, t_bussiness_promotion tbpo
+						WHERE tbpp.promotion_id = tbpo.promotion_id AND tbpp.is_validate=0 AND tbpo.is_validate=0 AND tbpo.is_delelte=0
+																										AND UNIX_TIMESTAMP(tbpo.start_time)&lt;= UNIX_TIMESTAMP(NOW()) 
+																										AND UNIX_TIMESTAMP(tbpo.end_time)&gt;= UNIX_TIMESTAMP(NOW()) 
+			) pv
+		ON a.product_id = pv.product_or_shop_id 
+		<where>
+			and b.mainpic=1 and a.is_delete=0 and a.sale_status=1
+			<if test="productId != null">
+				and a.product_id=#{productId,jdbcType=BIGINT}
+			</if>
+			<if test="brandId != null">peng 
+				and a.brand_id = #{brandId,jdbcType=BIGINT}
+			</if>
+			<if test="categoryId != null">
+				and a.category_id = #{categoryId,jdbcType=BIGINT}
+			</if>
+			<if test="productTypeId != null">
+				and a.product_type_id = #{productTypeId,jdbcType=BIGINT}
+			</if>
+			<if test="shopId != null">
+				and a.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="productName != null">
+				and (a.product_name like "%"#{productName}"%"
+						or c.brand_name like "%"#{productName}"%")
+			</if>
+			<if test="price != null">
+				and a.price = #{price,jdbcType=DECIMAL}
+			</if>
+			<if test="keyword != null">
+				and a.keyword = #{keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="productDescribe != null">
+				and a.product_describe = #{productDescribe,jdbcType=VARCHAR}
+			</if>
+			<if test="productintro != null">
+				and a.productIntro = #{productintro,jdbcType=VARCHAR}
+			</if>
+			<if test="stock != null">
+				and a.stock = #{stock,jdbcType=BIGINT}
+			</if>
+			<if test="isRecommd != null">
+				and a.is_recommd = #{isRecommd,jdbcType=INTEGER}
+			</if>
+			<if test="costPrice != null">
+				and a.cost_price = #{costPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="marketPrice != null">
+				and a.market_price = #{marketPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="articleNumber != null">
+				and a.article_number = #{articleNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="salesName != null">
+				and a.sales_name = #{salesName,jdbcType=VARCHAR}
+			</if>
+			<if test="packingList != null">
+				and a.packing_list = #{packingList,jdbcType=VARCHAR}
+			</if>
+			<if test="afterService != null">
+				and a.after_service = #{afterService,jdbcType=VARCHAR}
+			</if>
+			<if test="saleNum != null">
+				and a.sale_num = #{saleNum,jdbcType=BIGINT}
+			</if>
+			<if test="deliveryTime != null">
+				and a.delivery_time = #{deliveryTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatusid != null">
+				and a.check_statusId = #{checkStatusid,jdbcType=INTEGER}
+			</if>
+			<if test="twoDimensionPath != null">
+				and a.two_dimension_path = #{twoDimensionPath,jdbcType=VARCHAR}
+			</if>
+			<if test="pncode != null">
+				and a.pncode = #{pncode,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and a.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="isLinkProduct != null">
+				and a.is_link_product = #{isLinkProduct,jdbcType=INTEGER}
+			</if>
+			<if test="linkUrl != null">
+				and a.link_url = #{linkUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="linkFrom != null">
+				and a.link_from = #{linkFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="totalStoreNum != null">
+				and a.total_store_num = #{totalStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="bookStoreNum != null">
+				and a.book_store_num = #{bookStoreNum,jdbcType=BIGINT}
+			</if>
+			<if test="saleStatus != null">
+				and a.sale_status = #{saleStatus,jdbcType=INTEGER}
+			</if>
+			<if test="productDetailPics != null">
+				and a.product_detail_pics = #{productDetailPics,jdbcType=VARCHAR}
+			</if>
+			<if test="point != null">
+				and a.point = #{point,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplain != null">
+				and a.return_product_explain = #{returnProductExplain,jdbcType=VARCHAR}
+			</if>
+			<if test="returnProductExplainPics != null">
+				and a.return_product_explain_pics = #{returnProductExplainPics,jdbcType=VARCHAR}
+			</if>
+			<if test="words != null">
+				and a.words = #{words,jdbcType=VARCHAR}
+			</if>
+			<if test="freightType != null">
+				and a.freight_type = #{freightType,jdbcType=INTEGER},
+			</if>
+			<if test="freightPrice != null">
+				and a.freight_price = #{freightPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="freightGroupId != null">
+				and a.freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and a.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and a.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyUser != null">
+				and a.modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="status != null">
+				and a.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="brandIds != null">
+
+				and a.brand_id in
+				<foreach item="item" index="index" collection="brandIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="productTypeIds != null">
+				and a.product_type_id in
+
+				<foreach item="item" index="index" collection="productTypeIds" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			
+			<if test="own==10">
+			 and a.link_from =1
+			
+			</if>
+			
+			<if test="type==5">
+			 and a.link_url =1
+			
+			</if>
+			
+			<if test="type == 1">
+				ORDER BY active_price asc
+			</if>
+			<if test="type == 2">
+				ORDER BY active_price desc
+			</if>
+			
+			<if test="type==3">
+			order by a.create_time desc
+			
+			</if>
+			
+			
+		</where>
+
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.order.dao.OrderProductPromotionAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.order.model.auto.OrderProductPromotionAuto" >
+    <id column="order_promotion_id" property="orderPromotionId" jdbcType="BIGINT" />
+    <result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="order_promotion_name" property="orderPromotionName" jdbcType="VARCHAR" />
+    <result column="promotion_money_or_discount" property="promotionMoneyOrDiscount" jdbcType="VARCHAR" />
+    <result column="promotion_type" property="promotionType" jdbcType="INTEGER" />
+    <result column="promotion_id" property="promotionId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_promotion_id, order_product_id, order_promotion_name, promotion_money_or_discount, 
+    promotion_type, promotion_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAutoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_product_promotion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_order_product_promotion
+    where order_promotion_id = #{orderPromotionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_order_product_promotion
+    where order_promotion_id = #{orderPromotionId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAutoExample" >
+    delete from t_bussiness_order_product_promotion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAuto" >
+    insert into t_bussiness_order_product_promotion (order_promotion_id, order_product_id, order_promotion_name, 
+      promotion_money_or_discount, promotion_type, 
+      promotion_id)
+    values (#{orderPromotionId,jdbcType=BIGINT}, #{orderProductId,jdbcType=BIGINT}, #{orderPromotionName,jdbcType=VARCHAR}, 
+      #{promotionMoneyOrDiscount,jdbcType=VARCHAR}, #{promotionType,jdbcType=INTEGER}, 
+      #{promotionId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAuto" >
+    insert into t_bussiness_order_product_promotion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderPromotionId != null" >
+        order_promotion_id,
+      </if>
+      <if test="orderProductId != null" >
+        order_product_id,
+      </if>
+      <if test="orderPromotionName != null" >
+        order_promotion_name,
+      </if>
+      <if test="promotionMoneyOrDiscount != null" >
+        promotion_money_or_discount,
+      </if>
+      <if test="promotionType != null" >
+        promotion_type,
+      </if>
+      <if test="promotionId != null" >
+        promotion_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderPromotionId != null" >
+        #{orderPromotionId,jdbcType=BIGINT},
+      </if>
+      <if test="orderProductId != null" >
+        #{orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPromotionName != null" >
+        #{orderPromotionName,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionMoneyOrDiscount != null" >
+        #{promotionMoneyOrDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionType != null" >
+        #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="promotionId != null" >
+        #{promotionId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAutoExample" resultType="java.lang.Integer" >
+    select count(*) from t_bussiness_order_product_promotion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_bussiness_order_product_promotion
+    <set >
+      <if test="record.orderPromotionId != null" >
+        order_promotion_id = #{record.orderPromotionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderProductId != null" >
+        order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderPromotionName != null" >
+        order_promotion_name = #{record.orderPromotionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotionMoneyOrDiscount != null" >
+        promotion_money_or_discount = #{record.promotionMoneyOrDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotionType != null" >
+        promotion_type = #{record.promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.promotionId != null" >
+        promotion_id = #{record.promotionId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_bussiness_order_product_promotion
+    set order_promotion_id = #{record.orderPromotionId,jdbcType=BIGINT},
+      order_product_id = #{record.orderProductId,jdbcType=BIGINT},
+      order_promotion_name = #{record.orderPromotionName,jdbcType=VARCHAR},
+      promotion_money_or_discount = #{record.promotionMoneyOrDiscount,jdbcType=VARCHAR},
+      promotion_type = #{record.promotionType,jdbcType=INTEGER},
+      promotion_id = #{record.promotionId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAuto" >
+    update t_bussiness_order_product_promotion
+    <set >
+      <if test="orderProductId != null" >
+        order_product_id = #{orderProductId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPromotionName != null" >
+        order_promotion_name = #{orderPromotionName,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionMoneyOrDiscount != null" >
+        promotion_money_or_discount = #{promotionMoneyOrDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionType != null" >
+        promotion_type = #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="promotionId != null" >
+        promotion_id = #{promotionId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where order_promotion_id = #{orderPromotionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.order.model.auto.OrderProductPromotionAuto" >
+    update t_bussiness_order_product_promotion
+    set order_product_id = #{orderProductId,jdbcType=BIGINT},
+      order_promotion_name = #{orderPromotionName,jdbcType=VARCHAR},
+      promotion_money_or_discount = #{promotionMoneyOrDiscount,jdbcType=VARCHAR},
+      promotion_type = #{promotionType,jdbcType=INTEGER},
+      promotion_id = #{promotionId,jdbcType=BIGINT}
+    where order_promotion_id = #{orderPromotionId,jdbcType=BIGINT}
+  </update>
+</mapper>

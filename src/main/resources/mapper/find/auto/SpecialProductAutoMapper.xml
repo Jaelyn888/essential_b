@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.SpecialProductAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.find.model.auto.SpecialProductAuto" >
+    <id column="specialproduct_id" property="specialproductId" jdbcType="BIGINT" />
+    <result column="special_id" property="specialId" jdbcType="BIGINT" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    specialproduct_id, special_id, product_id, create_user_id, create_time, modify_user_id, 
+    modify_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_find_special_product
+    where specialproduct_id = #{specialproductId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_find_special_product
+    where specialproduct_id = #{specialproductId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.find.model.auto.SpecialProductAuto" >
+    insert into t_find_special_product (specialproduct_id, special_id, product_id, 
+      create_user_id, create_time, modify_user_id, 
+      modify_time, is_delete)
+    values (#{specialproductId,jdbcType=BIGINT}, #{specialId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, 
+      #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=BIGINT}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.find.model.auto.SpecialProductAuto" >
+    insert into t_find_special_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specialproductId != null" >
+        specialproduct_id,
+      </if>
+      <if test="specialId != null" >
+        special_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specialproductId != null" >
+        #{specialproductId,jdbcType=BIGINT},
+      </if>
+      <if test="specialId != null" >
+        #{specialId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.SpecialProductAuto" >
+    update t_find_special_product
+    <set >
+      <if test="specialId != null" >
+        special_id = #{specialId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where specialproduct_id = #{specialproductId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.SpecialProductAuto" >
+    update t_find_special_product
+    set special_id = #{specialId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where specialproduct_id = #{specialproductId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:conf/spring.xml;
+			classpath:conf/spring-mybatis.xml;
+			classpath:conf/spring-shiro.xml
+		</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>essential.root</param-value>
+  </context-param>
+   <filter>
+        <filter-name>Cache Filter</filter-name>
+        <filter-class>com.essential.common.cache.CacheFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Cache Filter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+  <filter>
+  
+    <filter-name>shiroFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>shiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>SpringEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SpringEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:conf/log4j.properties</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4jRefreshInterval</param-name>
+    <param-value>6000</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>coreServlet</servlet-name>
+    <servlet-class>
+           com.essential.wechat.web.servlet.CoreServlet 
+        </servlet-class>
+    <init-param>
+      <param-name>serviceName</param-name>
+      <param-value>coreService</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>coreServlet</servlet-name>
+    <url-pattern>/coreServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DruidStatView</servlet-name>
+    <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DruidStatView</servlet-name>
+    <url-pattern>/druid/*</url-pattern>
+  </servlet-mapping>
+  
+<!--   银联的tn号start -->
+  <servlet>
+    <servlet-name>form05_6_2_AppConsume</servlet-name>
+    <servlet-class>com.essential.payment.unionpay.Form05_6_2_AppConsume</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>form05_6_2_AppConsume</servlet-name>
+    <url-pattern>/form05_6_2_AppConsume</url-pattern>
+  </servlet-mapping>
+  <!--   银联的tn号end -->
+  
+  
+  <!--   银联的自启动加载证书start -->
+   <servlet>
+    <servlet-name>autoLoadServlet</servlet-name>
+    <servlet-class>com.essential.payment.unionpay.web.AutoLoadServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>autoLoadServlet</servlet-name>
+    <url-pattern>/autoLoadServlet</url-pattern>
+  </servlet-mapping>
+  <!--   银联的自启动加载证书end -->
+   <!--   银联的回调start -->
+   <servlet>
+    <servlet-name>BackRcvResponse</servlet-name>
+    <servlet-class>com.essential.payment.unionpay.BackRcvResponse</servlet-class>
+  
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BackRcvResponse</servlet-name>
+    <url-pattern>/BackRcvResponse</url-pattern>
+  </servlet-mapping>
+  <!--   银联的回调end -->
+  
+  <servlet>
+    <servlet-name>spring</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:conf/spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>spring</servlet-name>
+    <url-pattern>/</url-pattern>
+    <url-pattern>/welcomeIndex</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/charisma_ui_components/*</url-pattern>
+    <url-pattern>/js/*</url-pattern>
+    <url-pattern>/plugins/*</url-pattern>
+    <url-pattern>/css/*</url-pattern>
+    <url-pattern>/flatlab/*</url-pattern>
+    <url-pattern>/images/*</url-pattern>
+    <url-pattern>/common/*</url-pattern>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>welcomeIndex</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errorpage/error_404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>405</error-code>
+    <location>/errorpage/405.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/errorpage/500.jsp</location>
+  </error-page>
+</web-app>

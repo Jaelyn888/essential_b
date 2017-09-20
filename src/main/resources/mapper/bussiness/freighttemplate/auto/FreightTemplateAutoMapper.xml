@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.freighttemplate.dao.FreightTemplateAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		<id column="freight_id" property="freightId" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="freight_group_id" property="freightGroupId" jdbcType="BIGINT" />
+		<result column="start_num" property="startNum" jdbcType="INTEGER" />
+		<result column="start_freight_cost" property="startFreightCost" jdbcType="DECIMAL" />
+		<result column="next_num" property="nextNum" jdbcType="INTEGER" />
+		<result column="next_freight_cost" property="nextFreightCost" jdbcType="DECIMAL" />
+		<result column="address_str" property="addressStr" jdbcType="VARCHAR" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		freight_id, name, freight_group_id, start_num, start_freight_cost, next_num, next_freight_cost,
+		address_str, shop_id, create_time, create_user, modify_time, modify_user, is_delete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_freight_template
+		where freight_id = #{freightId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_freight_template
+		where freight_id = #{freightId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		insert into t_freight_template (freight_id, name, freight_group_id,
+		start_num, start_freight_cost, next_num,
+		next_freight_cost, address_str, shop_id,
+		create_time, create_user, modify_time,
+		modify_user, is_delete)
+		values (#{freightId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{freightGroupId,jdbcType=BIGINT},
+		#{startNum,jdbcType=INTEGER}, #{startFreightCost,jdbcType=DECIMAL}, #{nextNum,jdbcType=INTEGER},
+		#{nextFreightCost,jdbcType=DECIMAL}, #{addressStr,jdbcType=VARCHAR}, #{shopId,jdbcType=BIGINT},
+		#{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR},
+		#{modifyUser,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		insert into t_freight_template
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="freightId != null">
+				freight_id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="freightGroupId != null">
+				freight_group_id,
+			</if>
+			<if test="startNum != null">
+				start_num,
+			</if>
+			<if test="startFreightCost != null">
+				start_freight_cost,
+			</if>
+			<if test="nextNum != null">
+				next_num,
+			</if>
+			<if test="nextFreightCost != null">
+				next_freight_cost,
+			</if>
+			<if test="addressStr != null">
+				address_str,
+			</if>
+			<if test="shopId != null">
+				shop_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="freightId != null">
+				#{freightId,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="freightGroupId != null">
+				#{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="startNum != null">
+				#{startNum,jdbcType=INTEGER},
+			</if>
+			<if test="startFreightCost != null">
+				#{startFreightCost,jdbcType=DECIMAL},
+			</if>
+			<if test="nextNum != null">
+				#{nextNum,jdbcType=INTEGER},
+			</if>
+			<if test="nextFreightCost != null">
+				#{nextFreightCost,jdbcType=DECIMAL},
+			</if>
+			<if test="addressStr != null">
+				#{addressStr,jdbcType=VARCHAR},
+			</if>
+			<if test="shopId != null">
+				#{shopId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		update t_freight_template
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="freightGroupId != null">
+				freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+			</if>
+			<if test="startNum != null">
+				start_num = #{startNum,jdbcType=INTEGER},
+			</if>
+			<if test="startFreightCost != null">
+				start_freight_cost = #{startFreightCost,jdbcType=DECIMAL},
+			</if>
+			<if test="nextNum != null">
+				next_num = #{nextNum,jdbcType=INTEGER},
+			</if>
+			<if test="nextFreightCost != null">
+				next_freight_cost = #{nextFreightCost,jdbcType=DECIMAL},
+			</if>
+			<if test="addressStr != null">
+				address_str = #{addressStr,jdbcType=VARCHAR},
+			</if>
+			<if test="shopId != null">
+				shop_id = #{shopId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+		</set>
+		where freight_id = #{freightId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		update t_freight_template
+		set name = #{name,jdbcType=VARCHAR},
+		freight_group_id = #{freightGroupId,jdbcType=BIGINT},
+		start_num = #{startNum,jdbcType=INTEGER},
+		start_freight_cost = #{startFreightCost,jdbcType=DECIMAL},
+		next_num = #{nextNum,jdbcType=INTEGER},
+		next_freight_cost = #{nextFreightCost,jdbcType=DECIMAL},
+		address_str = #{addressStr,jdbcType=VARCHAR},
+		shop_id = #{shopId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER}
+		where freight_id = #{freightId,jdbcType=BIGINT}
+	</update>
+
+	<select id="queryFreightTemplateList" resultMap="BaseResultMap" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightTemplateAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_freight_template
+		<where>
+			<if test="name != null">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="freightGroupId != null">
+				and freight_group_id = #{freightGroupId,jdbcType=BIGINT}
+			</if>
+			<if test="startNum != null">
+				and start_num = #{startNum,jdbcType=INTEGER}
+			</if>
+			<if test="startFreightCost != null">
+				and start_freight_cost = #{startFreightCost,jdbcType=DECIMAL}
+			</if>
+			<if test="nextNum != null">
+				and next_num = #{nextNum,jdbcType=INTEGER}
+			</if>
+			<if test="nextFreightCost != null">
+				and next_freight_cost = #{nextFreightCost,jdbcType=DECIMAL}
+			</if>
+			<if test="addressStr != null">
+				and address_str = #{addressStr,jdbcType=VARCHAR}
+			</if>
+			<if test="shopId != null">
+				and shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="createUser != null">
+				and create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUser != null">
+				and modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+	<!-- 批量插入运费模板 -->
+	<insert id="insertSelectiveList" parameterType="com.essential.bussiness.freighttemplate.model.auto.FreightGroupNameAuto">
+		insert into t_freight_template (freight_id, name, freight_group_id,
+		start_num, start_freight_cost, next_num,
+		next_freight_cost, address_str, shop_id,
+		create_time, create_user, modify_time,
+		modify_user, is_delete)
+		values
+		<foreach collection="freightTemplateAutoList" item="item" index="" separator="," open="" close="">
+			(#{item.freightId,jdbcType=BIGINT}, #{freightGroupName,jdbcType=VARCHAR}, #{freightGroupId,jdbcType=BIGINT},
+			#{item.startNum,jdbcType=INTEGER}, #{item.startFreightCost,jdbcType=DECIMAL}, #{item.nextNum,jdbcType=INTEGER},
+			#{item.nextFreightCost,jdbcType=DECIMAL}, #{item.addressStr,jdbcType=VARCHAR}, #{shopId,jdbcType=BIGINT},
+			#{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR},
+			#{modifyUser,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER})
+		</foreach>
+
+	</insert>
+</mapper>

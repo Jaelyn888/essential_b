@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.user.dao.PushMsgAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.user.model.auto.PushMsgAuto">
+		<id column="msg_id" property="msgId" jdbcType="BIGINT" />
+		<result column="msg_title" property="msgTitle" jdbcType="VARCHAR" />
+		<result column="msg_content" property="msgContent" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="push_time" property="pushTime" jdbcType="VARCHAR" />
+		<result column="push_type_id" property="pushTypeId" jdbcType="INTEGER" />
+		<result column="main_id" property="mainId" jdbcType="VARCHAR" />
+		<result column="second_id" property="secondId" jdbcType="VARCHAR" />
+		<result column="three_id" property="threeId" jdbcType="VARCHAR" />
+		<result column="push_strategy" property="pushStrategy" jdbcType="INTEGER" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="attr1" property="attr1" jdbcType="VARCHAR" />
+		<result column="attr2" property="attr2" jdbcType="VARCHAR" />
+		<result column="attr3" property="attr3" jdbcType="VARCHAR" />
+		<result column="attr4" property="attr4" jdbcType="VARCHAR" />
+		<result column="attr5" property="attr5" jdbcType="VARCHAR" />
+		<result column="attr6" property="attr6" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		msg_id, msg_title, msg_content, create_time, modify_time, push_time, push_type_id,
+		main_id, second_id, three_id, push_strategy, create_user_id, modify_user_id, is_delete,attr1, attr2, attr3, attr4, attr5, attr6
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_push_msg
+		where msg_id = #{msgId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_push_msg
+		where msg_id = #{msgId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.user.model.auto.PushMsgAuto" useGeneratedKeys="true" keyProperty="msgId">
+		insert into t_push_msg (msg_id, msg_title, msg_content,
+		create_time, modify_time, push_time,
+		push_type_id, main_id, second_id,
+		three_id, push_strategy, create_user_id,
+		modify_user_id, is_delete,attr1, attr2, attr3, attr4, attr5, attr6)
+		values (#{msgId,jdbcType=BIGINT}, #{msgTitle,jdbcType=VARCHAR}, #{msgContent,jdbcType=VARCHAR},
+		#{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR}, #{pushTime,jdbcType=VARCHAR},
+		#{pushTypeId,jdbcType=INTEGER}, #{mainId,jdbcType=VARCHAR}, #{secondId,jdbcType=VARCHAR},
+		#{threeId,jdbcType=VARCHAR}, #{pushStrategy,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT},
+		#{modifyUserId,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR},
+		#{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, #{attr5,jdbcType=VARCHAR},
+		#{attr6,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.user.model.auto.PushMsgAuto" useGeneratedKeys="true" keyProperty="msgId">
+		insert into t_push_msg
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				msg_id,
+			</if>
+			<if test="msgTitle != null">
+				msg_title,
+			</if>
+			<if test="msgContent != null">
+				msg_content,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="pushTime != null">
+				push_time,
+			</if>
+			<if test="pushTypeId != null">
+				push_type_id,
+			</if>
+			<if test="mainId != null">
+				main_id,
+			</if>
+			<if test="secondId != null">
+				second_id,
+			</if>
+			<if test="threeId != null">
+				three_id,
+			</if>
+			<if test="pushStrategy != null">
+				push_strategy,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="attr1 != null">
+				attr1,
+			</if>
+			<if test="attr2 != null">
+				attr2,
+			</if>
+			<if test="attr3 != null">
+				attr3,
+			</if>
+			<if test="attr4 != null">
+				attr4,
+			</if>
+			<if test="attr5 != null">
+				attr5,
+			</if>
+			<if test="attr6 != null">
+				attr6,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				#{msgId,jdbcType=BIGINT},
+			</if>
+			<if test="msgTitle != null">
+				#{msgTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="msgContent != null">
+				#{msgContent,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pushTime != null">
+				#{pushTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pushTypeId != null">
+				#{pushTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="mainId != null">
+				#{mainId,jdbcType=VARCHAR},
+			</if>
+			<if test="secondId != null">
+				#{secondId,jdbcType=VARCHAR},
+			</if>
+			<if test="threeId != null">
+				#{threeId,jdbcType=VARCHAR},
+			</if>
+			<if test="pushStrategy != null">
+				#{pushStrategy,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="attr1 != null">
+				#{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				#{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				#{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				#{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				#{attr5,jdbcType=VARCHAR},
+			</if>
+			<if test="attr6 != null">
+				#{attr6,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.user.model.auto.PushMsgAuto">
+		update t_push_msg
+		<set>
+			<if test="msgTitle != null">
+				msg_title = #{msgTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="msgContent != null">
+				msg_content = #{msgContent,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pushTime != null">
+				push_time = #{pushTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pushTypeId != null">
+				push_type_id = #{pushTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="mainId != null">
+				main_id = #{mainId,jdbcType=VARCHAR},
+			</if>
+			<if test="secondId != null">
+				second_id = #{secondId,jdbcType=VARCHAR},
+			</if>
+			<if test="threeId != null">
+				three_id = #{threeId,jdbcType=VARCHAR},
+			</if>
+			<if test="pushStrategy != null">
+				push_strategy = #{pushStrategy,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="attr1 != null">
+				attr1 = #{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				attr2 = #{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				attr3 = #{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				attr4 = #{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				attr5 = #{attr5,jdbcType=VARCHAR},
+			</if>
+			<if test="attr6 != null">
+				attr6 = #{attr6,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where msg_id = #{msgId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.user.model.auto.PushMsgAuto">
+		update t_push_msg
+		set msg_title = #{msgTitle,jdbcType=VARCHAR},
+		msg_content = #{msgContent,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		push_time = #{pushTime,jdbcType=VARCHAR},
+		push_type_id = #{pushTypeId,jdbcType=INTEGER},
+		main_id = #{mainId,jdbcType=VARCHAR},
+		second_id = #{secondId,jdbcType=VARCHAR},
+		three_id = #{threeId,jdbcType=VARCHAR},
+		push_strategy = #{pushStrategy,jdbcType=INTEGER},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		attr1 = #{attr1,jdbcType=VARCHAR},
+		attr2 = #{attr2,jdbcType=VARCHAR},
+		attr3 = #{attr3,jdbcType=VARCHAR},
+		attr4 = #{attr4,jdbcType=VARCHAR},
+		attr5 = #{attr5,jdbcType=VARCHAR},
+		attr6 = #{attr6,jdbcType=VARCHAR}
+		where msg_id = #{msgId,jdbcType=BIGINT}
+	</update>
+
+	<resultMap id="PushMsgVoBaseResultMap" type="com.essential.user.model.vo.PushMsgVo">
+		<id column="msg_id" property="msgId" jdbcType="BIGINT" />
+		<result column="msg_title" property="msgTitle" jdbcType="VARCHAR" />
+		<result column="msg_content" property="msgContent" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="push_type_id" property="pushTypeId" jdbcType="INTEGER" />
+		<result column="main_id" property="mainId" jdbcType="VARCHAR" />
+		<result column="second_id" property="secondId" jdbcType="VARCHAR" />
+		<result column="three_id" property="threeId" jdbcType="VARCHAR" />
+		<result column="isread" property="isread" jdbcType="INTEGER" />
+		<result column="attr1" property="attr1" jdbcType="VARCHAR" />
+		<result column="attr2" property="attr2" jdbcType="VARCHAR" />
+		<result column="attr3" property="attr3" jdbcType="VARCHAR" />
+		<result column="attr4" property="attr4" jdbcType="VARCHAR" />
+		<result column="attr5" property="attr5" jdbcType="VARCHAR" />
+		<result column="attr6" property="attr6" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryTotlePushNumber" resultType="java.lang.Long" parameterType="com.essential.user.model.auto.PushMsgAuto">
+		select count(1)	from t_push_msg
+		<where>
+			<if test="msgTitle != null and msgTitle != ''">
+				and msg_title like "%"#{msgTitle,jdbcType=VARCHAR}"%" 
+			</if>
+			<if test="msgContent != null and msgContent != ''">
+				and msg_content like "%"#{msgContent,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="startTime != null and startTime != ''">
+				<![CDATA[and create_time >=#{startTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="endTime != null and endTime != ''">
+				<![CDATA[and create_time <=#{endTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="pushTime != null and pushTime != ''">
+				and push_time = #{pushTime,jdbcType=VARCHAR}
+			</if>
+			<if test="pushTypeId != null">
+				and push_type_id = #{pushTypeId,jdbcType=INTEGER}
+			</if>
+			<if test="mainId != null">
+				and main_id = #{mainId,jdbcType=VARCHAR}
+			</if>
+			<if test="secondId != null">
+				and second_id = #{secondId,jdbcType=VARCHAR}
+			</if>
+			<if test="threeId != null">
+				and three_id = #{threeId,jdbcType=VARCHAR}
+			</if>
+			<if test="pushStrategy != null">
+				and push_strategy = #{pushStrategy,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="attr1 != null and attr1 != ''">
+				and attr1 like "%"#{attr1,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="attr2 != null">
+				and attr2 = #{attr2,jdbcType=VARCHAR}
+			</if>
+			<if test="attr3 != null">
+				and attr3 = #{attr3,jdbcType=VARCHAR}
+			</if>
+			<if test="attr4 != null">
+				and attr4 = #{attr4,jdbcType=VARCHAR}
+			</if>
+			<if test="attr5 != null">
+				and attr5 = #{attr5,jdbcType=VARCHAR}
+			</if>
+			<if test="attr6 != null">
+				and attr6 = #{attr6,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询平台退送记录 -->
+	<select id="queryPlatformPushMsg" resultMap="BaseResultMap" parameterType="com.essential.user.model.vo.PlatformPushMsgRequestVo">
+		select
+		<include refid="Base_Column_List" />
+		from t_push_msg
+		<where>
+			<if test="msgTitle != null and msgTitle != ''">
+				and msg_title like "%"#{msgTitle,jdbcType=VARCHAR}"%" 
+			</if>
+			<if test="msgContent != null and msgContent != ''">
+				and msg_content like "%"#{msgContent,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="startTime != null and startTime != ''">
+				<![CDATA[and create_time >=#{startTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="endTime != null and endTime != ''">
+				<![CDATA[and create_time <=#{endTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="pushTime != null and pushTime != ''">
+				and push_time = #{pushTime,jdbcType=VARCHAR}
+			</if>
+			<if test="pushTypeId != null">
+				and push_type_id = #{pushTypeId,jdbcType=INTEGER}
+			</if>
+			<if test="mainId != null">
+				and main_id = #{mainId,jdbcType=VARCHAR}
+			</if>
+			<if test="secondId != null">
+				and second_id = #{secondId,jdbcType=VARCHAR}
+			</if>
+			<if test="threeId != null">
+				and three_id = #{threeId,jdbcType=VARCHAR}
+			</if>
+			<if test="pushStrategy != null">
+				and push_strategy = #{pushStrategy,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="attr1 != null and attr1 != ''">
+				and attr1 like "%"#{attr1,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="attr2 != null">
+				and attr2 = #{attr2,jdbcType=VARCHAR}
+			</if>
+			<if test="attr3 != null">
+				and attr3 = #{attr3,jdbcType=VARCHAR}
+			</if>
+			<if test="attr4 != null">
+				and attr4 = #{attr4,jdbcType=VARCHAR}
+			</if>
+			<if test="attr5 != null">
+				and attr5 = #{attr5,jdbcType=VARCHAR}
+			</if>
+			<if test="attr6 != null">
+				and attr6 = #{attr6,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+		<if test="pageIndex!=null">
+			<if test="pageSize != null">
+				limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+			</if>
+			<if test="pageSize == null">
+				limit #{pageIndex,jdbcType=INTEGER},10
+			</if>
+		</if>
+
+	</select>
+
+
+	<!-- 查询用户系统消息 -->
+	<select id="queryUserPushMsg" resultMap="PushMsgVoBaseResultMap" parameterType="com.essential.user.model.auto.PushMsgAuto">
+		select
+		msg.*,user.user_id,user.is_read
+		from t_push_msg_user user LEFT JOIN t_push_msg msg ON user.msg_id=msg.msg_id
+		<where>
+			<!-- 第一次请求 -->
+			<!-- <if test="requestType == '0'.toString()"> </if> -->
+			<!-- 刷新 -->
+			<if test="requestType == '1'.toString() and createTime != null">
+				<![CDATA[and msg.create_time > #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="requestType == '2'.toString() and createTime != null">
+			<![CDATA[and msg.create_time < #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<if test="userId != null">
+				and user.user_id = #{userId,jdbcType=INTEGER}
+			</if>
+			<if test="pushTypeId != null">
+				and msg.push_type_id = #{pushTypeId,jdbcType=INTEGER}
+			</if>
+
+			<if test="pushStrategy != null">
+				and msg.push_strategy = #{pushStrategy,jdbcType=INTEGER}
+			</if>
+
+			<if test="isDelete != null">
+				and user.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+		<if test="pageSize != null">
+			limit #{pageSize,jdbcType=INTEGER}
+		</if>
+		<if test="pageSize == null">
+			limit 10
+		</if>
+
+	</select>
+
+
+
+</mapper>

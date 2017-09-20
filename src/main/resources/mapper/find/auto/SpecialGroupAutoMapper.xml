@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.find.dao.SpecialGroupAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.find.model.auto.SpecialGroupAuto" >
+    <id column="special_group_id" property="specialGroupId" jdbcType="BIGINT" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="sort_level" property="sortLevel" jdbcType="INTEGER" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    special_group_id, group_name, is_delete, sort_level, create_user_id, create_time, modify_user_id, 
+    modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_find_special_group
+    where special_group_id = #{specialGroupId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_find_special_group
+    where special_group_id = #{specialGroupId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.find.model.auto.SpecialGroupAuto" >
+    insert into t_find_special_group (special_group_id, group_name, is_delete, 
+      sort_level, create_user_id, create_time, 
+      modify_user_id, modify_time)
+    values (#{specialGroupId,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, 
+      #{sortLevel,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.find.model.auto.SpecialGroupAuto" >
+    insert into t_find_special_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specialGroupId != null" >
+        special_group_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="sortLevel != null" >
+        sort_level,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specialGroupId != null" >
+        #{specialGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="sortLevel != null" >
+        #{sortLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.find.model.auto.SpecialGroupAuto" >
+    update t_find_special_group
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="sortLevel != null" >
+        sort_level = #{sortLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where special_group_id = #{specialGroupId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.find.model.auto.SpecialGroupAuto" >
+    update t_find_special_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      sort_level = #{sortLevel,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where special_group_id = #{specialGroupId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAllSpecialGroup" resultMap="BaseResultMap">
+  	select * from t_find_special_group where is_delete=0 order by sort_level asc
+  </select>
+  
+</mapper>

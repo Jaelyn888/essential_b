@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.product.dao.ProductCommentAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		<id column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="order_id" property="orderId" jdbcType="BIGINT" />
+		<result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+		<result column="product_specification" property="productSpecification" jdbcType="VARCHAR" />
+		<result column="grade" property="grade" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="create_user" property="createUser" jdbcType="BIGINT" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="is_recommand" property="isRecommand" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+	</resultMap>
+	
+	<resultMap id="BusinessProductCommentResultMap" type="com.essential.bussiness.product.model.vo.BusinessProductCommentVo">
+		<result column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="product_specification" property="productSpecification" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="product_pic" property="productPic" jdbcType="VARCHAR" />
+		<result column="article_number" property="articleNumber" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+		<result column="is_recommand" property="isRecommand" jdbcType="INTEGER" />
+		<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+	</resultMap>
+	
+	<resultMap id="OrderCommentResultMap" type="com.essential.bussiness.order.model.vo.OrderCommentVo">
+		<result column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="order_id" property="orderId" jdbcType="BIGINT" />
+		<result column="shop_id" property="shopId" jdbcType="BIGINT" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="product_count" property="productCount" jdbcType="INTEGER" />
+		<result column="product_pic" property="productPic" jdbcType="VARCHAR" />
+		<result column="product_specification" property="productSpecification" jdbcType="VARCHAR" />
+			<result column="product_id" property="productId" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		comment_id, comment_content, product_id,order_id,order_product_id,product_specification, grade, create_time, modify_time, create_user,
+		modify_user, is_recommand, status, is_delete, shop_id
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_product_comment
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_bussiness_product_comment
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" useGeneratedKeys="true" keyProperty="comment_id">
+		insert into t_bussiness_product_comment (comment_id, comment_content, product_id,order_id,order_product_id,product_specification,
+		grade, create_time, modify_time,
+		create_user, modify_user, is_recommand,
+		status, is_delete, shop_id)
+		values (#{commentId,jdbcType=BIGINT}, #{commentContent,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT},#{orderId,jdbcType=BIGINT},#{orderProductId,jdbcType=BIGINT},#{productSpecification,jdbcType=BIGINT},
+		#{grade,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{modifyTime,jdbcType=VARCHAR},
+		#{createUser,jdbcType=BIGINT}, #{modifyUser,jdbcType=BIGINT}, #{isRecommand,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{shopId,jdbcType=BIGINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" useGeneratedKeys="true" keyProperty="comment_id">
+		insert into t_bussiness_product_comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="commentId != null">
+				comment_id,
+			</if>
+			<if test="commentContent != null">
+				comment_content,
+			</if>
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="orderProductId != null">
+				order_product_id,
+			</if>
+			<if test="productSpecification != null">
+				product_specification,
+			</if>
+			<if test="grade != null">
+				grade,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="isRecommand != null">
+				is_recommand,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="shopId != null" >
+        		shop_id,
+      		</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="commentId != null">
+				#{commentId,jdbcType=BIGINT},
+			</if>
+			<if test="commentContent != null">
+				#{commentContent,jdbcType=VARCHAR},
+			</if>
+			<if test="productId != null">
+				#{productId,jdbcType=BIGINT},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=BIGINT},
+			</if>
+			<if test="orderProductId != null">
+				#{orderProductId,jdbcType=BIGINT},
+			</if>
+			<if test="productSpecification != null">
+				#{productSpecification,jdbcType=BIGINT},
+			</if>
+			<if test="grade != null">
+				#{grade,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommand != null">
+				#{isRecommand,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="shopId != null" >
+        		#{shopId,jdbcType=BIGINT},
+      		</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		update t_bussiness_product_comment
+		<set>
+			<if test="commentContent != null">
+				comment_content = #{commentContent,jdbcType=VARCHAR},
+			</if>
+			<if test="productId != null">
+				product_id = #{productId,jdbcType=BIGINT},
+			</if>
+			<if test="orderId != null">
+				order_id=#{orderId,jdbcType=BIGINT},
+			</if>
+			<if test="orderProductId != null">
+				order_product_id=#{orderProductId,jdbcType=BIGINT},
+			</if>
+			<if test="productSpecification != null">
+				product_specification=#{productSpecification,jdbcType=BIGINT},
+			</if>
+			<if test="grade != null">
+				grade = #{grade,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommand != null">
+				is_recommand = #{isRecommand,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="shopId != null" >
+        		shop_id = #{shopId,jdbcType=BIGINT},
+      		</if>
+		</set>
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		update t_bussiness_product_comment
+		set comment_content = #{commentContent,jdbcType=VARCHAR},
+		product_id = #{productId,jdbcType=BIGINT},
+		product_specification=#{productSpecification,jdbcType=BIGINT},
+
+		order_id=#{orderId,jdbcType=BIGINT},
+		order_product_id=#{orderProductId,jdbcType=BIGINT},
+
+		grade = #{grade,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		create_user = #{createUser,jdbcType=BIGINT},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		is_recommand = #{isRecommand,jdbcType=INTEGER},
+		status = #{status,jdbcType=INTEGER},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+   		shop_id = #{shopId,jdbcType=BIGINT}
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
+
+
+	<resultMap id="ProductCommentVoMap" type="com.essential.bussiness.product.model.vo.ProductCommentVo">
+		<id column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_icon" property="userIcon" jdbcType="VARCHAR" />
+		<result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+		<result column="user_level_id" property="userLevelId" jdbcType="BIGINT" />
+		<result column="is_recommand" property="isRecommand" jdbcType="INTEGER" />
+		<result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="product_specification" property="productSpecification" jdbcType="VARCHAR" />
+		<result column="grade" property="grade" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+
+	<!-- 查找推荐 -->
+	<select id="queryRecommendComment" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" resultMap="ProductCommentVoMap">
+		select
+		comm.comment_id,comm.comment_content,comm.product_specification,comm.grade,comm.create_time,comm.is_recommand,comm.`status`,
+		userinfo.user_id, userinfo.user_name, userinfo.user_icon, userinfo.user_nickname,userinfo.user_level_id
+		from t_bussiness_product_comment comm
+		LEFT JOIN t_user_userbaseinfo userinfo
+		ON comm.create_user=userinfo.user_id
+		<where>
+
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="productSpecification != null">
+				and product_specification=#{productSpecification,jdbcType=BIGINT}
+			</if>
+			<if test="grade != null">
+				and comm.grade = #{grade,jdbcType=INTEGER}
+			</if>
+			<if test="isRecommand != null">
+				and is_recommand = #{isRecommand,jdbcType=INTEGER}
+			</if>
+			<if test="status != null">
+				and comm.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="isDelete != null">
+				and comm.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+		ORDER BY comm.grade DESC,comm.modify_time DESC limit 1
+	</select>
+	<!-- 查询第一条数据 -->
+	<select id="queryFirstComment" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" resultMap="ProductCommentVoMap">
+		select
+		comm.comment_id,comm.comment_content,comm.product_specification,comm.grade,comm.create_time,comm.is_recommand,comm.`status`,userinfo.user_id, userinfo.user_name, userinfo.user_icon, userinfo.user_nickname,userinfo.user_level_id
+		from t_bussiness_product_comment comm
+		LEFT JOIN t_user_userbaseinfo userinfo
+		ON comm.create_user=userinfo.user_id
+		<where>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+
+			<if test="grade != null">
+				and comm.grade = #{grade,jdbcType=INTEGER}
+			</if>
+
+			<if test="status != null">
+				and comm.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="isDelete != null">
+				and comm.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+		ORDER BY comm.grade DESC,comm.create_time DESC limit 1
+	</select>
+
+
+	<select id="queryCommentList" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" resultMap="ProductCommentVoMap">
+		select
+		comm.comment_id,comm.comment_content,comm.product_specification,comm.grade,comm.create_time,comm.is_recommand,comm.`status`,userinfo.user_id, userinfo.user_name, userinfo.user_icon, userinfo.user_nickname,userinfo.user_level_id
+		from t_bussiness_product_comment comm
+		LEFT JOIN t_user_userbaseinfo userinfo
+		ON comm.create_user=userinfo.user_id
+		<where>
+			<!-- 第一次请求 -->
+			<!-- <if test="requestType == '0'.toString()"> </if> -->
+			<!-- 刷新 -->
+			<if test="requestType == '1'.toString() and createTime != null">
+				<![CDATA[and comm.create_time > #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+			<!-- 加载 -->
+			<if test="requestType == '2'.toString() and createTime != null">
+			<![CDATA[and comm.create_time < #{createTime,jdbcType=VARCHAR}]]>
+			</if>
+
+			<if test="commentContent != null">
+				and comment_content = #{commentContent,jdbcType=VARCHAR}
+			</if>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="productSpecification != null">
+				and product_specification=#{productSpecification,jdbcType=BIGINT}
+			</if>
+			<if test="grade != null">
+				and comm.grade = #{grade,jdbcType=INTEGER}
+			</if>
+
+			<if test="createUser != null">
+				and comm.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUser != null">
+				and comm.modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="isRecommand != null">
+				and comm.is_recommand = #{isRecommand,jdbcType=INTEGER}
+			</if>
+			<if test="status != null">
+				and comm.status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="isDelete != null">
+				and comm.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+
+		</where>
+		ORDER BY comm.create_time DESC
+		<choose>
+			<when test="pageIndex==null">
+				<if test="pageSize != null">
+					limit #{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit 10
+				</if>
+			</when>
+			<otherwise>
+				<if test="pageSize != null">
+					limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+				</if>
+				<if test="pageSize == null">
+					limit #{pageIndex,jdbcType=INTEGER},10
+				</if>
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 查询数量 -->
+	<select id="queryCommentCount" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" resultType="java.lang.Integer">
+		select count(1) from t_bussiness_product_comment
+		<where>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="grade != null">
+				and grade = #{grade,jdbcType=INTEGER}
+			</if>
+			<if test="isRecommand != null">
+				and is_recommand = #{isRecommand,jdbcType=INTEGER}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryBusinessProductCommentVoForList" resultMap="BusinessProductCommentResultMap" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		select tbpc.comment_id,tbpc.comment_content,tbpc.product_specification,tbpc.create_time,tbpc.is_recommand,tbpc.product_id,tbp.product_name,
+				tbpp.path as product_pic,tbps.article_number,tbb.brand_name,tuubi.user_nickname,tbo.order_number from t_bussiness_product_comment tbpc
+					LEFT JOIN t_bussiness_order_product tbop
+								ON tbpc.order_product_id = tbop.order_product_id
+					LEFT JOIN t_bussiness_order tbo
+								ON tbpc.order_id = tbo.order_id
+					LEFT JOIN t_bussiness_productsku tbps
+								ON tbop.productsku_id = tbps.productsku_id
+					LEFT JOIN t_bussiness_product tbp
+								ON tbpc.product_id = tbp.product_id
+					LEFT JOIN t_bussiness_productpic tbpp
+								ON tbp.product_id = tbpp.product_id and tbpp.mainpic = 1
+					LEFT JOIN t_bussiness_brand tbb
+								ON tbp.brand_id = tbb.brand_id
+					LEFT JOIN t_user_userbaseinfo tuubi
+								ON tbpc.create_user = tuubi.user_id
+		<where>
+			<if test="shopId != null and shopId != ''">
+				tbpc.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and tbpc.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+		<if test="pageIndex != null">
+			limit #{pageIndex},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="queryBusinessProductCommentVoForListCount" resultType="java.lang.Integer" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		select count(1) from t_bussiness_product_comment tbpc
+					LEFT JOIN t_bussiness_order_product tbop
+								ON tbpc.order_product_id = tbop.order_product_id
+					LEFT JOIN t_bussiness_productsku tbps
+								ON tbop.productsku_id = tbps.productsku_id
+					LEFT JOIN t_bussiness_product tbp
+								ON tbpc.product_id = tbp.product_id
+					LEFT JOIN t_bussiness_productpic tbpp
+								ON tbp.product_id = tbpp.product_id and tbpp.mainpic = 1
+					LEFT JOIN t_bussiness_brand tbb
+								ON tbp.brand_id = tbb.brand_id
+					LEFT JOIN t_user_userbaseinfo tuubi
+								ON tbpc.create_user = tuubi.user_id
+		<where>
+			<if test="shopId != null and shopId != ''">
+				tbpc.shop_id = #{shopId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and tbpc.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	<update id="updateByProductIdSelective" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto">
+		update t_bussiness_product_comment
+		<set>
+			<if test="commentContent != null">
+				comment_content = #{commentContent,jdbcType=VARCHAR},
+			</if>
+			<if test="orderId != null">
+				order_id=#{orderId,jdbcType=BIGINT},
+			</if>
+			<if test="orderProductId != null">
+				order_product_id=#{orderProductId,jdbcType=BIGINT},
+			</if>
+			<if test="productSpecification != null">
+				product_specification=#{productSpecification,jdbcType=BIGINT},
+			</if>
+			<if test="grade != null">
+				grade = #{grade,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="isRecommand != null">
+				is_recommand = #{isRecommand,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="shopId != null" >
+        		shop_id = #{shopId,jdbcType=BIGINT},
+      		</if>
+		</set>
+		where product_id = #{productId,jdbcType=BIGINT} and is_delete = 0
+	</update>
+	
+	<!-- 查询订单评价 -->
+	<select id="queryOrderCommentForList" parameterType="com.essential.bussiness.product.model.auto.ProductCommentAuto" resultMap="OrderCommentResultMap">
+		select tbpc.comment_id,tbpc.comment_content,tbpc.create_time,tbpc.order_id,tbpc.shop_id,tbpc.product_id,tbop.product_name,
+				tbop.product_count,tbop.product_pic,tbop.product_specification
+			from t_bussiness_product_comment tbpc
+				LEFT JOIN t_bussiness_order_product tbop
+							ON tbpc.order_product_id = tbop.order_product_id
+		<where>
+			<if test="createUser != null">
+				and tbpc.create_user = #{createUser,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and tbpc.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="orderId != null">
+				and tbpc.order_id=#{orderId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.product.dao.LinkProductAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.product.model.auto.LinkProductAuto">
+		<id column="link_id" property="linkId" jdbcType="BIGINT" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+		<result column="var1" property="var1" jdbcType="VARCHAR" />
+		<result column="var2" property="var2" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		link_id, link_from, product_name, brand_name, path, market_price, price, link_url,
+		create_time, create_user_id, modify_time, modify_user_id, is_delete, cost_price,
+		var1, var2
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_link_product
+		where link_id = #{linkId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_link_product
+		where link_id = #{linkId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.product.model.auto.LinkProductAuto" useGeneratedKeys="true" keyProperty="linkId">
+		insert into t_link_product (link_id, link_from, product_name,
+		brand_name, path, market_price,
+		price, link_url, create_time,
+		create_user_id, modify_time, modify_user_id,
+		is_delete, cost_price, var1,
+		var2)
+		values (#{linkId,jdbcType=BIGINT}, #{linkFrom,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
+		#{brandName,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DECIMAL},
+		#{price,jdbcType=DECIMAL}, #{linkUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+		#{createUserId,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=BIGINT},
+		#{isDelete,jdbcType=INTEGER}, #{costPrice,jdbcType=DECIMAL}, #{var1,jdbcType=VARCHAR},
+		#{var2,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.product.model.auto.LinkProductAuto" useGeneratedKeys="true" keyProperty="linkId">
+		insert into t_link_product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="linkId != null">
+				link_id,
+			</if>
+			<if test="linkFrom != null">
+				link_from,
+			</if>
+			<if test="productName != null">
+				product_name,
+			</if>
+			<if test="brandName != null">
+				brand_name,
+			</if>
+			<if test="path != null">
+				path,
+			</if>
+			<if test="marketPrice != null">
+				market_price,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="linkUrl != null">
+				link_url,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="costPrice != null">
+				cost_price,
+			</if>
+			<if test="var1 != null">
+				var1,
+			</if>
+			<if test="var2 != null">
+				var2,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="linkId != null">
+				#{linkId,jdbcType=BIGINT},
+			</if>
+			<if test="linkFrom != null">
+				#{linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="productName != null">
+				#{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="brandName != null">
+				#{brandName,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="marketPrice != null">
+				#{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="linkUrl != null">
+				#{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="costPrice != null">
+				#{costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="var1 != null">
+				#{var1,jdbcType=VARCHAR},
+			</if>
+			<if test="var2 != null">
+				#{var2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.product.model.auto.LinkProductAuto">
+		update t_link_product
+		<set>
+			<if test="linkFrom != null">
+				link_from = #{linkFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="productName != null">
+				product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="brandName != null">
+				brand_name = #{brandName,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="marketPrice != null">
+				market_price = #{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="linkUrl != null">
+				link_url = #{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="costPrice != null">
+				cost_price = #{costPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="var1 != null">
+				var1 = #{var1,jdbcType=VARCHAR},
+			</if>
+			<if test="var2 != null">
+				var2 = #{var2,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where link_id = #{linkId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.product.model.auto.LinkProductAuto">
+		update t_link_product
+		set link_from = #{linkFrom,jdbcType=VARCHAR},
+		product_name = #{productName,jdbcType=VARCHAR},
+		brand_name = #{brandName,jdbcType=VARCHAR},
+		path = #{path,jdbcType=VARCHAR},
+		market_price = #{marketPrice,jdbcType=DECIMAL},
+		price = #{price,jdbcType=DECIMAL},
+		link_url = #{linkUrl,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		cost_price = #{costPrice,jdbcType=DECIMAL},
+		var1 = #{var1,jdbcType=VARCHAR},
+		var2 = #{var2,jdbcType=VARCHAR}
+		where link_id = #{linkId,jdbcType=BIGINT}
+	</update>
+
+	<resultMap id="BaseLinkProductInfoMap" type="com.essential.bussiness.product.model.vo.LinkProductInfo">
+		<id column="link_id" property="linkId" jdbcType="BIGINT" />
+		<result column="link_from" property="linkFrom" jdbcType="VARCHAR" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<!-- 根据id查询信息 -->
+	<select id="queryProductInfo" parameterType="com.essential.bussiness.product.model.auto.LinkProductAuto" resultMap="BaseLinkProductInfoMap">
+		SELECT link_id,link_from,product_name,brand_name,path,market_price,cost_price,link_url,create_time
+		from t_link_product
+		<where>
+			<if test="linkId != null">
+				and link_id=#{linkId,jdbcType=BIGINT}
+			</if>
+			<if test="linkFrom != null">
+				and link_from=#{linkFrom,jdbcType=VARCHAR}
+			</if>	
+			<if test="linkUrl != null">
+				and link_url=#{linkUrl,jdbcType=VARCHAR}
+			</if>
+			
+			<if test="isDelete != null">
+				and is_delete=#{isDelete,jdbcType=INTEGER}
+			</if>			
+
+		</where>
+		limit 1
+	</select>
+
+</mapper>

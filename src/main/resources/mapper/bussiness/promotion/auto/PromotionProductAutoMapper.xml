@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.promotion.dao.PromotionProductAutoMapper" >
+  <resultMap id="BaseResultMap" type="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    <id column="product_romotion_id" property="productRomotionId" jdbcType="BIGINT" />
+    <result column="promotion_id" property="promotionId" jdbcType="BIGINT" />
+    <result column="promotion_type" property="promotionType" jdbcType="INTEGER" />
+    <result column="product_or_shop_id" property="productOrShopId" jdbcType="BIGINT" />
+    <result column="discount_percent" property="discountPercent" jdbcType="REAL" />
+    <result column="discount_money" property="discountMoney" jdbcType="DECIMAL" />
+    <result column="need_total_price" property="needTotalPrice" jdbcType="DECIMAL" />
+    <result column="is_multistage" property="isMultistage" jdbcType="INTEGER" />
+    <result column="is_validate" property="isValidate" jdbcType="INTEGER" />
+    <result column="promotion_status" property="promotionStatus" jdbcType="INTEGER" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    product_romotion_id, promotion_id, promotion_type, product_or_shop_id, discount_percent, 
+    discount_money, need_total_price, is_multistage, is_validate, promotion_status, remark1, 
+    remark2, remark3, remark4, remark5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_promotion_product
+    where product_romotion_id = #{productRomotionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bussiness_promotion_product
+    where product_romotion_id = #{productRomotionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    insert into t_bussiness_promotion_product (product_romotion_id, promotion_id, promotion_type, 
+      product_or_shop_id, discount_percent, discount_money, 
+      need_total_price, is_multistage, is_validate, 
+      promotion_status, remark1, remark2, 
+      remark3, remark4, remark5
+      )
+    values (#{productRomotionId,jdbcType=BIGINT}, #{promotionId,jdbcType=BIGINT}, #{promotionType,jdbcType=INTEGER}, 
+      #{productOrShopId,jdbcType=BIGINT}, #{discountPercent,jdbcType=REAL}, #{discountMoney,jdbcType=DECIMAL}, 
+      #{needTotalPrice,jdbcType=DECIMAL}, #{isMultistage,jdbcType=INTEGER}, #{isValidate,jdbcType=INTEGER}, 
+      #{promotionStatus,jdbcType=INTEGER}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    insert into t_bussiness_promotion_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productRomotionId != null" >
+        product_romotion_id,
+      </if>
+      <if test="promotionId != null" >
+        promotion_id,
+      </if>
+      <if test="promotionType != null" >
+        promotion_type,
+      </if>
+      <if test="productOrShopId != null" >
+        product_or_shop_id,
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent,
+      </if>
+      <if test="discountMoney != null" >
+        discount_money,
+      </if>
+      <if test="needTotalPrice != null" >
+        need_total_price,
+      </if>
+      <if test="isMultistage != null" >
+        is_multistage,
+      </if>
+      <if test="isValidate != null" >
+        is_validate,
+      </if>
+      <if test="promotionStatus != null" >
+        promotion_status,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productRomotionId != null" >
+        #{productRomotionId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionId != null" >
+        #{promotionId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionType != null" >
+        #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="productOrShopId != null" >
+        #{productOrShopId,jdbcType=BIGINT},
+      </if>
+      <if test="discountPercent != null" >
+        #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="needTotalPrice != null" >
+        #{needTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isMultistage != null" >
+        #{isMultistage,jdbcType=INTEGER},
+      </if>
+      <if test="isValidate != null" >
+        #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="promotionStatus != null" >
+        #{promotionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+    <set >
+      <if test="promotionId != null" >
+        promotion_id = #{promotionId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionType != null" >
+        promotion_type = #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="productOrShopId != null" >
+        product_or_shop_id = #{productOrShopId,jdbcType=BIGINT},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        discount_money = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="needTotalPrice != null" >
+        need_total_price = #{needTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isMultistage != null" >
+        is_multistage = #{isMultistage,jdbcType=INTEGER},
+      </if>
+      <if test="isValidate != null" >
+        is_validate = #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="promotionStatus != null" >
+        promotion_status = #{promotionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_romotion_id = #{productRomotionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+    set promotion_id = #{promotionId,jdbcType=BIGINT},
+      promotion_type = #{promotionType,jdbcType=INTEGER},
+      product_or_shop_id = #{productOrShopId,jdbcType=BIGINT},
+      discount_percent = #{discountPercent,jdbcType=REAL},
+      discount_money = #{discountMoney,jdbcType=DECIMAL},
+      need_total_price = #{needTotalPrice,jdbcType=DECIMAL},
+      is_multistage = #{isMultistage,jdbcType=INTEGER},
+      is_validate = #{isValidate,jdbcType=INTEGER},
+      promotion_status = #{promotionStatus,jdbcType=INTEGER},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR}
+    where product_romotion_id = #{productRomotionId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 更新促销活动 -->
+  <update id="updateByPromotionPrimary" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+    <set >
+      <if test="promotionId != null" >
+        promotion_id = #{promotionId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionType != null" >
+        promotion_type = #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="productOrShopId != null" >
+        product_or_shop_id = #{productOrShopId,jdbcType=BIGINT},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        discount_money = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="needTotalPrice != null" >
+        need_total_price = #{needTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isMultistage != null" >
+        is_multistage = #{isMultistage,jdbcType=INTEGER},
+      </if>
+      <if test="isValidate != null" >
+        is_validate = #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="promotionStatus != null" >
+        promotion_status = #{promotionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where promotion_id = #{promotionId,jdbcType=BIGINT} 
+    and product_or_shop_id = #{productOrShopId,jdbcType=BIGINT}
+    and is_validate = #{isValidate,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 逻辑删除，更改是否有效状态 -->
+  <update id="updateIsValidate" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+	  update t_bussiness_promotion_product
+	  set is_validate = #{isValidate,jdbcType=INTEGER}
+	  where promotion_id = #{promotionId,jdbcType=BIGINT}
+  </update>
+
+  <!-- 查询商品是否参加活动 -->
+  <select id="queryByPrimaryKey" resultMap="BaseResultMap" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    select a.*
+    from t_bussiness_promotion_product a ,t_bussiness_promotion b 
+  	where a.promotion_id = b.promotion_id and a.is_validate = b.is_validate and b.is_delelte=0
+		and UNIX_TIMESTAMP(b.end_time)>= UNIX_TIMESTAMP(NOW())
+    	and a.product_or_shop_id = #{productOrShopId,jdbcType=BIGINT} and a.is_validate = #{isValidate,jdbcType=INTEGER}
+  </select>
+
+  <!-- 查询商品参加的促销活动 -->
+  <resultMap id="ProuctPromotionResultMap" type="com.essential.bussiness.promotion.model.vo.PromotionProductInfoVo" >
+    <result column="promotion_id" property="promotionId" jdbcType="BIGINT" />
+    <result column="promotion_name" property="promotionName" jdbcType="VARCHAR" />
+    <result column="promotion_type" property="promotionType" jdbcType="INTEGER" />
+    <result column="product_or_shop_id" property="productOrShopId" jdbcType="BIGINT" />
+    <result column="discount_percent" property="discountPercent" jdbcType="REAL" />
+    <result column="discount_money" property="discountMoney" jdbcType="DECIMAL" />
+    <result column="need_total_price" property="needTotalPrice" jdbcType="DECIMAL" />
+    <result column="is_multistage" property="isMultistage" jdbcType="INTEGER" />
+    <result column="is_validate" property="isValidate" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryProuctPromotion" resultMap="ProuctPromotionResultMap" parameterType="com.essential.bussiness.promotion.model.vo.PromotionProductInfoVo" >
+	select a.promotion_id,a.promotion_type,a.product_or_shop_id ,a.discount_percent,a.discount_money,a.need_total_price,
+		a.is_multistage ,a.is_validate,b.tag ,b.start_time,b.end_time,b.promotion_name
+	from t_bussiness_promotion_product a ,t_bussiness_promotion b 
+  	where a.promotion_id = b.promotion_id and a.is_validate = b.is_validate and b.is_delelte=0
+		and <![CDATA[UNIX_TIMESTAMP(b.start_time)<= UNIX_TIMESTAMP(NOW())]]> and UNIX_TIMESTAMP(b.end_time)>= UNIX_TIMESTAMP(NOW())
+    	and a.product_or_shop_id = #{productOrShopId,jdbcType=BIGINT} and a.is_validate = #{isValidate,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据活动Id查询商品 -->
+  <select id="queryProduct" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussiness_promotion_product
+    where promotion_id = #{promotionId,jdbcType=BIGINT} and is_validate = 0
+  </select>
+
+  <!-- 查询商品 -->
+  <select id="queryByProductId" resultMap="BaseResultMap" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    SELECT t.* FROM t_bussiness_promotion_product t 
+	WHERE t.product_or_shop_id = #{productOrShopId,jdbcType=BIGINT} and  (t.is_validate=0 OR (t.is_validate=2))
+  </select>
+  
+  <update id="updateByProductId" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+	set is_validate = 1
+    where product_or_shop_id = #{productOrShopId,jdbcType=BIGINT} and (is_validate = 0 OR is_validate = 2)
+  </update>
+  
+  <update id="updateByProductIdAndPromotionId" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+	<set >
+	  <if test="isValidate != null" >
+        is_validate = #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        discount_money = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+	</set>
+    where product_or_shop_id = #{productOrShopId,jdbcType=BIGINT}
+     	and promotion_id = #{promotionId,jdbcType=BIGINT}
+     	and (is_validate = 0 OR is_validate = 2)
+  </update>
+  
+ <update id="updateIsValidateByProductIdAndPromotionId" parameterType="map" >
+    update t_bussiness_promotion_product
+	<set >
+	  <if test="isValidate != null" >
+        is_validate = #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        discount_money = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+	</set>
+	<where>
+      and product_or_shop_id in 
+    	<foreach item="item" index="index" collection="productOrShopIds" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+    <!-- (#{productOrShopId,jdbcType=BIGINT}) -->
+     	and promotion_id = #{promotionId,jdbcType=BIGINT}
+     	and (is_validate = 0 OR is_validate = 2)
+	</where>
+  </update>
+  
+  <update id="updateByPromtionId" parameterType="com.essential.bussiness.promotion.model.auto.PromotionProductAuto" >
+    update t_bussiness_promotion_product
+    <set >
+      <if test="promotionId != null" >
+        promotion_id = #{promotionId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionType != null" >
+        promotion_type = #{promotionType,jdbcType=INTEGER},
+      </if>
+      <if test="productOrShopId != null" >
+        product_or_shop_id = #{productOrShopId,jdbcType=BIGINT},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=REAL},
+      </if>
+      <if test="discountMoney != null" >
+        discount_money = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="needTotalPrice != null" >
+        need_total_price = #{needTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isMultistage != null" >
+        is_multistage = #{isMultistage,jdbcType=INTEGER},
+      </if>
+      <if test="isValidate != null" >
+        is_validate = #{isValidate,jdbcType=INTEGER},
+      </if>
+      <if test="promotionStatus != null" >
+        promotion_status = #{promotionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where promotion_id = #{promotionId,jdbcType=BIGINT}
+    AND (
+		is_validate = 0
+		OR is_validate = 2
+	)
+  </update>
+  
+</mapper>

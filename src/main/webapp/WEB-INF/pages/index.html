@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<#assign ctxPath=rc.contextPath/>
+
+<html lang="en">
+<head>
+	
+	
+    <meta charset="utf-8">
+    <!-- 使IE浏览器运行最新的渲染模式，禁用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 使部分国产浏览器默认采用高速模式（即 webkit 内核）渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <title>欢迎来到商城管理平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="">
+
+    <!-- The styles -->
+    <link href="${ctxPath}/charisma_ui_components/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" id="bs-css">
+
+    <link href="${ctxPath}/charisma_ui_components/css/charisma-app.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/chosen/chosen.min.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/colorbox/example3/colorbox.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/responsive-tables/responsive-tables.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/jquery.noty.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/noty_theme_default.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/elfinder.min.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/elfinder.theme.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/jquery.iphone.toggle.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/uploadify.css" rel="stylesheet">
+    <link href="${ctxPath}/charisma_ui_components/css/animate.min.css" rel="stylesheet">
+    <link href="${ctxPath}/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="${ctxPath}/css/charisma-custom.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="${ctxPath}/charisma_ui_components/bower_components/jquery/jquery-1.11.1.min.js"></script>
+    <script src="${ctxPath}/js/common/systemSetting.js"></script>
+    <!-- 定义全局ctxPath变量 -->
+    <script type="text/javascript">var ctxPath = "${ctxPath}";</script>
+
+    <!-- HTML5 shim ， Respond.js 使 IE8 支持HTML5 elements和media queries -->
+    <!-- 注意: Respond.js doesn't work if you view the page via file://  -->
+    <!--[if lt IE 9]>
+    	<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link href="${ctxPath}/charisma_ui_components/img/favicon.ico" rel="shortcut icon">
+    
+    <script>
+        
+	$(document).ready(function() {
+		$(".accordion").click(function(){
+			var self = $(this).find("a:first").find("span").html();
+			$(".accordion active,.accordion").each(function(){
+				var other = $(this).find("a:first").find("span").html();
+				if(self!=other){
+					$(this).find("li[class='active']").attr("class","");
+					$(this).attr("class","accordion");
+					$(this).find("ul").css("display","none");
+				}
+			}); 
+		});
+		
+		$(".accordion li").click(function(){
+			var self = $(this).parents("li[class='accordion']").find("a:first").find("span").html();
+			$("li[class='accordion']").each(function(){
+				var other = $(this).find("a:first").find("span").html();
+				if(self!=other){
+					$(this).attr("class","accordion");
+					$(this).find("ul").css("display","none");
+				}
+			}); 
+		});
+	});
+	
+	</script>
+</head>
+
+
+<body>
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index"> <img alt="Charisma Logo" src="${ctxPath}/charisma_ui_components/img/logo20.png" class="hidden-xs"/>
+                <span>商城管理后台</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${userName!}</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="/essential/logout">退出</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+            <!-- theme selector starts -->
+            <div class="btn-group pull-right theme-container animated tada">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-tint"></i><span
+                        class="hidden-sm hidden-xs"> 切换主题</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="themes">
+                    <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                    <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
+                    <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
+                    <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
+                    <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                    <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
+                    <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                    <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
+                    <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                </ul>
+            </div>
+            
+            <!-- theme selector ends -->
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header"> 菜单</li>
+                        <li>
+                        	<a class="ajax-link" href="home" id="home">
+                        		<i class="glyphicon glyphicon-home"></i><span> 主页</span>
+                       		</a>
+                        </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 用户管理</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                          		<li><a class="ajax-link" href="user/userManager"><i class="glyphicon glyphicon-user"></i><span> 用户管理 </span></a></li>
+                            </ul>
+                        </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> Demo</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                          		<li><a class="ajax-link" href="demoAbout/index"><i class="glyphicon glyphicon-user"></i><span> Demo </span></a></li>
+                            </ul>
+                        </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span>freight_template</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                          		<li><a class="ajax-link" href="freightTemplate/index"><i class="glyphicon glyphicon-user"></i><span> freight_template </span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+        
+            <!-- 这里加载内容 -->
+            
+        </div>
+        
+	</div><!--/fluid-row-->
+
+    <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">关 闭</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">保 存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="row">
+    </footer>
+
+</div><!--/.fluid-container-->
+
+<!-- external javascript -->
+
+<script src="${ctxPath}/charisma_ui_components/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src="${ctxPath}/charisma_ui_components/bower_components/moment/min/moment.min.js"></script>
+<script src="${ctxPath}/charisma_ui_components/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<!-- datatables表格插件 -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.dataTables.min.js"></script>
+
+<!-- select or dropdown enhancer -->
+<script src="${ctxPath}/charisma_ui_components/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="${ctxPath}/charisma_ui_components/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- 通知插件 -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="${ctxPath}/charisma_ui_components/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="${ctxPath}/charisma_ui_components/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="${ctxPath}/charisma_ui_components/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="${ctxPath}/charisma_ui_components/js/charisma.js"></script>
+<!-- 对datatables进行封装 -->
+<script src="${ctxPath}/js/datatable.js"></script>
+<!-- ajaxFrom插件 -->
+<script src="${ctxPath}/plugins/jquery.form.js"></script>
+<!-- jquery validate校验插件 -->
+<script src="${ctxPath}/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="${ctxPath}/plugins/jquery-validation/jquery.validate.extend.js"></script>
+<script src="${ctxPath}/plugins/jquery-validation/jquery.validate.messages_cn.js"></script>
+<!-- 日历插件 -->
+<script src="${ctxPath}/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="${ctxPath}/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!-- 一些常用的公用方法 -->
+<script src="${ctxPath}/js/common.js"></script>
+<!-- 富文本ueditor插件  -->
+<script type="text/javascript" charset="utf-8" src="${ctxPath}/plugins/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctxPath}/plugins/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="${ctxPath}/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctxPath}/plugins/ueditor/ueditor.parse.js"></script>
+<script src="${ctxPath}/js/upload/player.js" type="text/javascript" ></script>
+<script src="${ctxPath}/js/upload/ajaxfileupload.js"  type="text/javascript"></script>
+<script src="${ctxPath}/js/upload/photo.js"  type="text/javascript"></script>
+<script src="${ctxPath}/js/upload/jquery.form.js"  type="text/javascript"></script>
+<script src="${ctxPath}/js/upload/jquery.Jcrop.js"  type="text/javascript"></script>
+
+<script>
+	jQuery(document).ready(function() {  
+		$("#home").click() // 加载首页
+		sessionStorage.setItem('times',1);
+		sessionStorage.setItem('room',1);
+		sessionStorage.setItem('goods',1);
+		sessionStorage.setItem('food',1);
+	});
+</script>
+
+</body>
+</html>

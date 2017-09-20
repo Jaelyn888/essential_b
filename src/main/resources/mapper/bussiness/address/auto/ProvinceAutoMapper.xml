@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.address.dao.ProvinceAutoMapper">
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.address.model.auto.ProvinceAuto">
+		<id column="province_id" property="provinceId" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="AddressList" type="com.essential.bussiness.address.model.vo.ProvinceVo">
+		<id column="p_province_id" property="provinceId" jdbcType="BIGINT" />
+		<result column="province_name" property="name" jdbcType="VARCHAR" />
+		<collection property="cityList" javaType="java.util.List" resultMap="CityList" />
+	</resultMap>
+
+	<resultMap id="CityList" type="com.essential.bussiness.address.model.vo.CityVo">
+		<id column="c_city_id" property="cityId" jdbcType="BIGINT" />
+		<result column="city_name" property="name" jdbcType="VARCHAR" />
+		<result column="c_parent_id" property="parentId" jdbcType="BIGINT" />
+		<collection property="districtVoList" javaType="java.util.List" resultMap="DistrictVoList" />
+	</resultMap>
+
+	<resultMap id="DistrictVoList" type="com.essential.bussiness.address.model.vo.DistrictVo">
+		<id column="d_district_id" property="districtId" jdbcType="BIGINT" />
+		<result column="district_name" property="name" jdbcType="VARCHAR" />
+		<result column="d_parent_id" property="parentId" jdbcType="BIGINT" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		province_id, name, is_delete, create_user_id, create_time, modify_user_id, modify_time
+	</sql>
+	<!-- vo查询 -->
+	<sql id="Base_Vo_Column_List">
+		province_id, name
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_province
+		where province_id = #{provinceId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_province
+		where province_id = #{provinceId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.essential.bussiness.address.model.auto.ProvinceAuto">
+		insert into t_province (province_id, name, is_delete,
+		create_user_id, create_time, modify_user_id,
+		modify_time)
+		values (#{provinceId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER},
+		#{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=BIGINT},
+		#{modifyTime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.essential.bussiness.address.model.auto.ProvinceAuto">
+		insert into t_province
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="provinceId != null">
+				province_id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="provinceId != null">
+				#{provinceId,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				#{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.essential.bussiness.address.model.auto.ProvinceAuto">
+		update t_province
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createUserId != null">
+				create_user_id = #{createUserId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where province_id = #{provinceId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.essential.bussiness.address.model.auto.ProvinceAuto">
+		update t_province
+		set name = #{name,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		create_user_id = #{createUserId,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR}
+		where province_id = #{provinceId,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询vo -->
+	<select id="queryProvinceList" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from t_province
+		<where>
+			<if test="provinceId != null">
+				and #{provinceId,jdbcType=BIGINT}
+			</if>
+			<if test="name != null">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createUserId != null">
+				and create_user_id = #{createUserId,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="modifyUserId != null">
+				and modify_user_id = #{modifyUserId,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有省市区 -->
+	<select id="queryAreaList" resultMap="AddressList" parameterType="map">
+		select p.name as province_name,p.province_id as p_province_id,c.city_id as c_city_id,c.name as city_name,c.parent_id as c_parent_id,d.district_id as d_district_id,d.name as district_name,d.parent_id as d_parent_id from t_province p
+		LEFT JOIN t_city c on p.province_id = c.parent_id
+		JOIN t_district d on d.parent_id = c.city_id
+		<where>
+			<if test="isDelete != null">
+				and p.is_delete = #{isDelete,jdbcType=INTEGER} and c.is_delete = #{isDelete,jdbcType=INTEGER} and d.is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+</mapper>

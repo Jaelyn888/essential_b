@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.product.dao.ProductSkuAutoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		<id column="productsku_id" property="productskuId" jdbcType="BIGINT" />
+		<result column="specificationid1" property="specificationid1"
+			jdbcType="BIGINT" />
+		<result column="specificationid2" property="specificationid2"
+			jdbcType="BIGINT" />
+		<result column="specificationid3" property="specificationid3"
+			jdbcType="BIGINT" />
+		<result column="specificationid4" property="specificationid4"
+			jdbcType="BIGINT" />
+		<result column="productsku_count" property="productskuCount"
+			jdbcType="BIGINT" />
+		<result column="article_number" property="articleNumber"
+			jdbcType="VARCHAR" />
+		<result column="prices" property="prices" jdbcType="DECIMAL" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_iser" property="createIser" jdbcType="BIGINT" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="specification_type" property="specificationType"
+			jdbcType="INTEGER" />
+	</resultMap>
+
+	<resultMap id="ProductSkuVoResultMap"
+		type="com.essential.bussiness.shopcart.model.vo.ShopCartProductSkuVo">
+		<result column="productsku_id" property="productskuId"
+			jdbcType="BIGINT" />
+		<result column="specificationid1" property="specificationid1"
+			jdbcType="BIGINT" />
+		<result column="specificationid2" property="specificationid2"
+			jdbcType="BIGINT" />
+		<result column="specificationid3" property="specificationid3"
+			jdbcType="BIGINT" />
+		<result column="specificationid4" property="specificationid4"
+			jdbcType="BIGINT" />
+		<result column="productsku_count" property="productskuCount"
+			jdbcType="BIGINT" />
+		<result column="article_number" property="articleNumber"
+			jdbcType="VARCHAR" />
+		<result column="prices" property="prices" jdbcType="DECIMAL" />
+		<result column="product_id" property="productId" jdbcType="BIGINT" />
+		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_iser" property="createIser" jdbcType="BIGINT" />
+		<result column="modify_user" property="modifyUser" jdbcType="BIGINT" />
+		<result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="specification_type" property="specificationType"
+			jdbcType="INTEGER" />
+		<result column="sale_status" property="saleStatus" jdbcType="INTEGER" />
+		<result column="category_id" property="categoryId" jdbcType="BIGINT" />
+		<result column="category_name" property="categoryName"
+			jdbcType="VARCHAR" />
+		<result column="product_type_id" property="productTypeId"
+			jdbcType="BIGINT" />
+		<result column="productype_name" property="productTypeName"
+			jdbcType="VARCHAR" />
+		<result column="brand_id" property="brandId" jdbcType="BIGINT" />
+		<result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		productsku_id, specificationid1, specificationid2, specificationid3,
+		specificationid4,
+		productsku_count, article_number, prices, product_id, is_delete, create_time,
+		create_iser,
+		modify_user, modify_time, status, specification_type
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_productsku
+		where productsku_id = #{productskuId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_bussiness_productsku
+		where productsku_id = #{productskuId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		insert into t_bussiness_productsku (productsku_id, specificationid1,
+		specificationid2,
+		specificationid3, specificationid4, productsku_count,
+		article_number, prices, product_id,
+		is_delete, create_time, create_iser,
+		modify_user, modify_time, status,
+		specification_type)
+		values (#{productskuId,jdbcType=BIGINT},
+		#{specificationid1,jdbcType=BIGINT},
+		#{specificationid2,jdbcType=BIGINT},
+		#{specificationid3,jdbcType=BIGINT},
+		#{specificationid4,jdbcType=BIGINT},
+		#{productskuCount,jdbcType=BIGINT},
+		#{articleNumber,jdbcType=VARCHAR}, #{prices,jdbcType=DECIMAL}, #{productId,jdbcType=BIGINT},
+		#{isDelete,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR},
+		#{createIser,jdbcType=BIGINT},
+		#{modifyUser,jdbcType=BIGINT}, #{modifyTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+		#{specificationType,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="productskuId"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		insert into t_bussiness_productsku
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="productskuId != null">
+				productsku_id,
+			</if>
+			<if test="specificationid1 != null">
+				specificationid1,
+			</if>
+			<if test="specificationid2 != null">
+				specificationid2,
+			</if>
+			<if test="specificationid3 != null">
+				specificationid3,
+			</if>
+			<if test="specificationid4 != null">
+				specificationid4,
+			</if>
+			<if test="productskuCount != null">
+				productsku_count,
+			</if>
+			<if test="articleNumber != null">
+				article_number,
+			</if>
+			<if test="prices != null">
+				prices,
+			</if>
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createIser != null">
+				create_iser,
+			</if>
+			<if test="modifyUser != null">
+				modify_user,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="specificationType != null">
+				specification_type,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="productskuId != null">
+				#{productskuId,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid1 != null">
+				#{specificationid1,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid2 != null">
+				#{specificationid2,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid3 != null">
+				#{specificationid3,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid4 != null">
+				#{specificationid4,jdbcType=BIGINT},
+			</if>
+			<if test="productskuCount != null">
+				#{productskuCount,jdbcType=BIGINT},
+			</if>
+			<if test="articleNumber != null">
+				#{articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="prices != null">
+				#{prices,jdbcType=DECIMAL},
+			</if>
+			<if test="productId != null">
+				#{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createIser != null">
+				#{createIser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				#{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="specificationType != null">
+				#{specificationType,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		update t_bussiness_productsku
+		<set>
+			<if test="specificationid1 != null">
+				specificationid1 = #{specificationid1,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid2 != null">
+				specificationid2 = #{specificationid2,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid3 != null">
+				specificationid3 = #{specificationid3,jdbcType=BIGINT},
+			</if>
+			<if test="specificationid4 != null">
+				specificationid4 = #{specificationid4,jdbcType=BIGINT},
+			</if>
+			<if test="productskuCount != null">
+				productsku_count = #{productskuCount,jdbcType=BIGINT},
+			</if>
+			<if test="articleNumber != null">
+				article_number = #{articleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="prices != null">
+				prices = #{prices,jdbcType=DECIMAL},
+			</if>
+			<if test="productId != null">
+				product_id = #{productId,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="createIser != null">
+				create_iser = #{createIser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyUser != null">
+				modify_user = #{modifyUser,jdbcType=BIGINT},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="specificationType != null">
+				specification_type = #{specificationType,jdbcType=INTEGER},
+			</if>
+		</set>
+		where productsku_id = #{productskuId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		update t_bussiness_productsku
+		set specificationid1 = #{specificationid1,jdbcType=BIGINT},
+		specificationid2 = #{specificationid2,jdbcType=BIGINT},
+		specificationid3 = #{specificationid3,jdbcType=BIGINT},
+		specificationid4 = #{specificationid4,jdbcType=BIGINT},
+		productsku_count = #{productskuCount,jdbcType=BIGINT},
+		article_number = #{articleNumber,jdbcType=VARCHAR},
+		prices = #{prices,jdbcType=DECIMAL},
+		product_id = #{productId,jdbcType=BIGINT},
+		is_delete = #{isDelete,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=VARCHAR},
+		create_iser = #{createIser,jdbcType=BIGINT},
+		modify_user = #{modifyUser,jdbcType=BIGINT},
+		modify_time = #{modifyTime,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		specification_type = #{specificationType,jdbcType=INTEGER}
+		where productsku_id = #{productskuId,jdbcType=BIGINT}
+	</update>
+
+	<select id="queryAll" parameterType="map" resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_productsku
+		<where>
+			<if test="specificationid1 != null">
+				and specificationid1 = #{specificationid1,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid2 != null">
+				and specificationid2 = #{specificationid2,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid3 != null">
+				and specificationid3 = #{specificationid3,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid4 != null">
+				and specificationid4 = #{specificationid4,jdbcType=BIGINT}
+			</if>
+			<if test="productskuCount != null">
+				and productsku_count = #{productskuCount,jdbcType=BIGINT}
+			</if>
+			<if test="articleNumber != null">
+				and article_number = #{articleNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="prices != null">
+				and prices = #{prices,jdbcType=DECIMAL}
+			</if>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createIser != null">
+				and create_iser = #{createIser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUser != null">
+				and modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="specificationType != null">
+				and specification_type = #{specificationType,jdbcType=INTEGER}
+			</if>
+		</where>
+
+		limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<select id="selectByProductId" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_productsku
+		where product_id = #{productId,jdbcType=BIGINT}
+	</select>
+
+	<select id="querySkuByProductId" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_productsku
+		where product_id = #{productId,jdbcType=BIGINT} and is_delete=0
+	</select>
+
+	<select id="selectSkuIdByProductId" resultType="Long"
+		parameterType="java.lang.Long">
+		select productsku_id
+		from t_bussiness_productsku
+		where product_id = #{productId,jdbcType=BIGINT} and is_delete=0
+	</select>
+
+	<select id="selectSpuStock" resultType="Long" parameterType="java.lang.Long">
+		select SUM(a.productsku_count) as spuStock from t_bussiness_productsku
+		a
+
+		where a.product_id = #{productId,jdbcType=BIGINT} and is_delete=0
+	</select>
+
+
+	<select id="selectProductSkuVoByPrimaryKey" resultMap="ProductSkuVoResultMap"
+		parameterType="java.lang.Long">
+		select a.productsku_id, a.specificationid1, a.specificationid2,
+		a.specificationid3, a.specificationid4,
+		a.productsku_count, a.article_number, a.prices, a.product_id, a.is_delete, a.create_time,
+		a.create_iser, a.modify_user, a.modify_time, a.status,
+		a.specification_type, b.sale_status,
+		tbb.brand_id, tbb.brand_name, tbc.category_id, tbc.category_name,
+		tbp.product_type_id, tbp.productype_name
+		from t_bussiness_productsku a
+		left join t_bussiness_product b on a.product_id = b.product_id
+		LEFT JOIN
+		t_bussiness_brand tbb on b.brand_id = tbb.brand_id
+		LEFT JOIN
+		t_bussiness_category tbc on b.category_id = tbc.category_id
+		LEFT JOIN
+		t_bussiness_producttype tbp on b.product_type_id = tbp.product_type_id
+		where a.productsku_id = #{productskuId,jdbcType=BIGINT}
+	</select>
+
+	<!-- <select id="selectByProductIdFor2" resultType="java.util.arrays" parameterType="java.lang.Long" 
+		> select specificationid1, specificationid2, specificationid3 from t_bussiness_productsku 
+		where product_id = #{productId,jdbcType=BIGINT} and specification_type=2 
+		</select> -->
+
+	<!-- 逻辑删除 -->
+	<update id="updateByProductIdPrimaryKey"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		update t_bussiness_productsku
+		set
+		<if test="modifyUser != null">
+			modify_user = #{modifyUser,jdbcType=BIGINT},
+		</if>
+		<if test="modifyTime != null">
+			modify_time = #{modifyTime,jdbcType=VARCHAR},
+		</if>
+		is_delete = 1
+		where product_id = #{productId,jdbcType=BIGINT} and is_delete =
+		#{isDelete,jdbcType=INTEGER}
+	</update>
+
+	<!-- 通过商品Id查询SKU -->
+	<select id="queryByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="com.essential.bussiness.product.model.auto.ProductSkuAuto">
+		select
+		<include refid="Base_Column_List" />
+		from t_bussiness_productsku
+		<where>
+			<if test="specificationid1 != null">
+				and specificationid1 = #{specificationid1,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid2 != null">
+				and specificationid2 = #{specificationid2,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid3 != null">
+				and specificationid3 = #{specificationid3,jdbcType=BIGINT}
+			</if>
+			<if test="specificationid4 != null">
+				and specificationid4 = #{specificationid4,jdbcType=BIGINT}
+			</if>
+			<if test="productskuCount != null">
+				and productsku_count = #{productskuCount,jdbcType=BIGINT}
+			</if>
+			<if test="articleNumber != null">
+				and article_number = #{articleNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="prices != null">
+				and prices = #{prices,jdbcType=DECIMAL}
+			</if>
+			<if test="productId != null">
+				and product_id = #{productId,jdbcType=BIGINT}
+			</if>
+			<if test="isDelete != null">
+				and is_delete = #{isDelete,jdbcType=INTEGER}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=VARCHAR}
+			</if>
+			<if test="createIser != null">
+				and create_iser = #{createIser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyUser != null">
+				and modify_user = #{modifyUser,jdbcType=BIGINT}
+			</if>
+			<if test="modifyTime != null">
+				and modify_time = #{modifyTime,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="specificationType != null">
+				and specification_type = #{specificationType,jdbcType=INTEGER}
+			</if>
+			<if test="productskuId != null">
+				and productsku_id = #{productskuId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+	<!-- 通过商品id查询最大值和最小值 -->
+	<select id="selectMaxMinPrice" resultType="map" parameterType="java.lang.Long">
+	
+	select MAX(k.active_price) as maxPrice,MIN(k.active_price) as minPrice from (
+select b.*, CASE WHEN c.promotion_id  IS NOT NULL AND c.promotion_type&lt;=0 and c.is_validate=0 and UNIX_TIMESTAMP(d.start_time)= UNIX_TIMESTAMP(NOW()) and UNIX_TIMESTAMP(d.end_time)&gt;= UNIX_TIMESTAMP(NOW())THEN 
+b.prices*(c.discount_percent/10) WHEN c.promotion_id is not null  and c.promotion_type=1 and c.is_validate=0 and UNIX_TIMESTAMP(d.start_time)&lt;= UNIX_TIMESTAMP(NOW()) and UNIX_TIMESTAMP(d.end_time)&gt;= UNIX_TIMESTAMP(NOW()) then
+ b.prices-c.discount_money else b.prices  end as active_price
+  from t_bussiness_product a 
+LEFT JOIN t_bussiness_productsku b on a.product_id=b.product_id
+ LEFT JOIN t_bussiness_promotion_product c on a.product_id=c.product_or_shop_id
+LEFT JOIN t_bussiness_promotion d on c.promotion_id=d.promotion_id
+
+<where>
+
+and  a.is_delete=0 and b.is_delete=0 
+
+				and a.product_id=#{productId,jdbcType=BIGINT}
+</where>
+
+ ) k
+
+	
+	</select>
+	<!-- 通过商品id查询最大值和最小值 -->
+	<select id="selectMaxMinPriceOrigin" resultType="map" parameterType="java.lang.Long">
+	select MAX(a.prices) as originMaxPrices,MIN(a.prices) as originMinPrices from t_bussiness_productsku a where a.is_delete=0 and  a.product_id=#{productId,jdbcType=BIGINT}
+	
+	</select>
+
+</mapper>

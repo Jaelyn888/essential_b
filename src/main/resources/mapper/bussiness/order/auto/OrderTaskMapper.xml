@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.essential.bussiness.order.dao.OrderTaskMapper" >
+	<resultMap id="BaseResultMap" type="com.essential.bussiness.order.model.auto.OrderAuto" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="pay_number" property="payNumber" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="buyer_note" property="buyerNote" jdbcType="VARCHAR" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="external_order_number" property="externalOrderNumber" jdbcType="VARCHAR" />
+    <result column="pay_serial_number" property="paySerialNumber" jdbcType="VARCHAR" />
+    <result column="order_product_id" property="orderProductId" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="final_price" property="finalPrice" jdbcType="DECIMAL" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="is_comment" property="isComment" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="DECIMAL" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="addresse" property="addresse" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="BIGINT" />
+    <result column="return_refund_count" property="returnRefundCount" jdbcType="INTEGER" />
+    <result column="return_refund_identification" property="returnRefundIdentification" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="coupon_amount" property="couponAmount" jdbcType="DECIMAL" />
+    <result column="main_order_amount" property="mainOrderAmount" jdbcType="DECIMAL" />
+    <result column="coupon_flag" property="couponFlag" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="OrderTaskQueryOrderVoResultMap" extends="BaseResultMap" type="com.essential.bussiness.order.model.vo.OrderTaskQueryOrderVo" >
+    <result column="dbNowDateTime" property="dbNowDateTime" jdbcType="VARCHAR" />
+    <result column="updateOrderStatus1" property="updateOrderStatus1" jdbcType="INTEGER" />
+    <result column="updateOrderStatusStr1" property="updateOrderStatusStr1" jdbcType="VARCHAR" />
+    <result column="updateOrderStatus2" property="updateOrderStatus2" jdbcType="INTEGER" />
+    <result column="updateOrderStatusStr2" property="updateOrderStatusStr2" jdbcType="VARCHAR" />
+    <result column="updateOrderStatus3" property="updateOrderStatus3" jdbcType="INTEGER" />
+    <result column="updateOrderStatusStr3" property="updateOrderStatusStr3" jdbcType="VARCHAR" />
+    <result column="queryOrderStatus1" property="queryOrderStatus1" jdbcType="INTEGER" />
+    <result column="queryOrderStatus2" property="queryOrderStatus2" jdbcType="INTEGER" />
+    <result column="queryOrderStatus3" property="queryOrderStatus3" jdbcType="INTEGER" />
+    <result column="limitDateTime" property="limitDateTime" jdbcType="INTEGER" />
+    <result column="subDateTime" property="subDateTime" jdbcType="INTEGER" />
+    <result column="queryField" property="queryField" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="ReturnRefundOrderTaskQueryOrderVoResultMap" type="com.essential.bussiness.order.model.vo.ReturnRefundOrderTaskQueryOrderVo" >
+    <result column="return_refund_order_id" property="returnRefundOrderId" jdbcType="BIGINT" />
+    <result column="return_refund_order_number" property="returnRefundOrderNumber" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="return_refund_latest_status" property="returnRefundLatestStatus" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="logistic" property="logistic" jdbcType="VARCHAR" />
+    <result column="logistic_number" property="logisticNumber" jdbcType="VARCHAR" />
+    <result column="return_pic" property="returnPic" jdbcType="VARCHAR" />
+    <result column="return_refund_reason" property="returnRefundReason" jdbcType="VARCHAR" />
+    <result column="return_refund_reject_reason" property="returnRefundRejectReason" jdbcType="VARCHAR" />
+    <result column="return_goods" property="returnGoods" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="BIGINT" />
+    <result column="mofify_user" property="mofifyUser" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="desired_result" property="desiredResult" jdbcType="VARCHAR" />
+    <result column="refund_instructions" property="refundInstructions" jdbcType="VARCHAR" />
+    <result column="pic_identity" property="picIdentity" jdbcType="INTEGER" />
+    <result column="refund_serial_number" property="refundSerialNumber" jdbcType="VARCHAR" />
+    <result column="refund_account" property="refundAccount" jdbcType="VARCHAR" />
+    <result column="refund_bank" property="refundBank" jdbcType="VARCHAR" />
+    <result column="refund_user" property="refundUser" jdbcType="VARCHAR" />
+    <result column="refund_total_money" property="refundTotalMoney" jdbcType="DECIMAL" />
+    <result column="refund_final_money" property="refundFinalMoney" jdbcType="DECIMAL" />
+    <result column="return_order_product_count" property="returnOrderProductCount" jdbcType="INTEGER" />
+    <result column="order_product_id" property="orderProductId" jdbcType="BIGINT" />
+    <result column="return_refund_type" property="returnRefundType" jdbcType="INTEGER" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="return_address" property="returnAddress" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+	<result column="phone" property="phone" jdbcType="VARCHAR" />
+	
+	<result column="dbNowDateTime" property="dbNowDateTime" jdbcType="VARCHAR" />
+    <result column="updateReturnRefundOrderStatus1" property="updateReturnRefundOrderStatus1" jdbcType="INTEGER" />
+    <result column="updateReturnRefundOrderStatusStr1" property="updateReturnRefundOrderStatusStr1" jdbcType="VARCHAR" />
+    <result column="updateReturnRefundOrderStatus2" property="updateReturnRefundOrderStatus2" jdbcType="INTEGER" />
+    <result column="updateReturnRefundOrderStatusStr2" property="updateReturnRefundOrderStatusStr2" jdbcType="VARCHAR" />
+    <result column="updateReturnRefundOrderStatus3" property="updateReturnRefundOrderStatus3" jdbcType="INTEGER" />
+    <result column="updateReturnRefundOrderStatusStr3" property="updateReturnRefundOrderStatusStr3" jdbcType="VARCHAR" />
+    <result column="queryReturnRefundOrderStatus1" property="queryReturnRefundOrderStatus1" jdbcType="INTEGER" />
+    <result column="queryReturnRefundOrderStatus2" property="queryReturnRefundOrderStatus2" jdbcType="INTEGER" />
+    <result column="queryReturnRefundOrderStatus3" property="queryReturnRefundOrderStatus3" jdbcType="INTEGER" />
+    <result column="limitDateTime" property="limitDateTime" jdbcType="INTEGER" />
+    <result column="subDateTime" property="subDateTime" jdbcType="INTEGER" />
+    <result column="queryField" property="queryField" jdbcType="VARCHAR" />
+    <result column="returnRefundTimes" property="returnRefundTimes" jdbcType="INTEGER" />
+  </resultMap>
+
+  <!-- 根据条件查询订单信息 -->
+  <select id="selectOrderAccordingToTheConditions" parameterType="com.essential.bussiness.order.model.vo.OrderTaskQueryOrderVo" resultMap="OrderTaskQueryOrderVoResultMap">
+  	<![CDATA[ 
+	  	SELECT *,NOW() as dbNowDateTime,#{updateOrderStatus1,jdbcType=INTEGER} as updateOrderStatus1 FROM
+			t_bussiness_order
+		WHERE
+			order_status = #{queryOrderStatus1, jdbcType=INTEGER}
+		AND (
+			UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(${queryField})
+		) / #{subDateTime, jdbcType=INTEGER} > #{limitDateTime, jdbcType=INTEGER}
+	]]> 
+  </select>
+  
+  <!-- 恢复订单Sku商品的库存 未支付 超过72小时取消订单 -->
+  <update id="updateOrderToAddProductCountWhereMoreThanSeventyTwoHour" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	UPDATE t_bussiness_productsku tbps,
+			(SELECT productsku_id,product_count FROM t_bussiness_order_product 
+			<where>
+				and order_id in
+		  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+					<choose>
+						<when test="orderTaskQueryOrderVos.orderId != null">
+							#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+						</when>
+					</choose>
+				</foreach>
+		  	</where>
+			) tbop
+		SET tbps.productsku_count = (tbps.productsku_count+tbop.product_count),
+			tbps.modify_time = CURRENT_TIMESTAMP(3)
+		WHERE tbps.productsku_id = tbop.productsku_id
+  </update>
+  
+  
+  <!-- 恢复订单Spu商品的库存 未支付 超过72小时取消订单 -->
+  <update id="updateProductCountWhereMoreThanSeventyTwoHour" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	UPDATE t_bussiness_product tbp,
+			(SELECT product_id,SUM(product_count) as product_count FROM t_bussiness_order_product 
+			<where>
+				and order_id in
+		  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+					<choose>
+						<when test="orderTaskQueryOrderVos.orderId != null">
+							#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+						</when>
+					</choose>
+				</foreach>
+				
+		  	</where>
+			GROUP BY product_id) tbop
+		SET tbp.stock = (tbp.stock+tbop.product_count),
+			tbp.modify_time = CURRENT_TIMESTAMP(3)
+		WHERE tbp.product_id = tbop.product_id
+  </update>
+  
+  <!-- 更新订单状态 未支付 超过72小时取消订单 -->
+  <update id="updateOrderToCancleStatusWhereMoreThanSeventyTwoHour" keyProperty="updateOrderStatus1" useGeneratedKeys="true" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	UPDATE t_bussiness_order SET order_status = 0, modify_time = CURRENT_TIMESTAMP(3)
+  	<where>
+  		and order_id in
+  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+			<choose>
+				<when test="orderTaskQueryOrderVos.orderId != null">
+					#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+				</when>
+			</choose>
+		</foreach>
+  	</where>
+  </update>
+  
+  <!-- 订单流水表新增一条订单状态改变记录 -->
+  <insert id="insertOrderStatus" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  		INSERT INTO t_bussiness_order_status(
+			  		order_id,order_status_time,operator,order_status_item_id) 
+		  		VALUES 
+  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator=",">
+			<choose>
+				<when test="orderTaskQueryOrderVos.orderId != null">
+				(#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT},
+		  				#{orderTaskQueryOrderVos.dbNowDateTime,jdbcType=VARCHAR},
+		  				000,
+		  				#{orderTaskQueryOrderVos.updateOrderStatus1,jdbcType=INTEGER})
+				</when>
+			</choose>
+		</foreach>
+  </insert>
+  
+  <!-- 商家发货之后10天 自动确认收货 订单完成 -->
+  <update id="updateOrderToCompleteStatusWhereMoreThanTenDay" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	<![CDATA[ 
+	  	UPDATE t_bussiness_order SET order_status = 4, modify_time = CURRENT_TIMESTAMP(3)
+	]]> 
+	<where>
+  		and order_id in
+  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+			<choose>
+				<when test="orderTaskQueryOrderVos.orderId != null">
+					#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+				</when>
+			</choose>
+		</foreach>
+  	</where>
+  </update>
+  
+  <!-- 查询买家确认收货 之后15天 不可售后-->
+  <select id="selectOrderProductToCannotAfterSaleWhereMoreThanTentyFiveDay" resultType="java.lang.Long" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	<![CDATA[ 
+	  	SELECT order_product_id FROM t_bussiness_order_product
+	]]> 
+	<where>
+  		and order_id in
+  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+			<choose>
+				<when test="orderTaskQueryOrderVos.orderId != null">
+					#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+				</when>
+			</choose>
+		</foreach>
+		AND return_refund_status IN (0,12,22,32,42,15,25,35,45,16,26,36,46,19,29,39,49)
+  	</where>
+  </select>
+  
+  <!-- 更新买家确认收货 之后15天 不可售后-->
+  <update id="updateOrderProductToCannotAfterSaleWhereMoreThanTentyFiveDay" parameterType="com.essential.bussiness.order.model.vo.QueryOrderAccordingToTheConditionsVo">
+  	<![CDATA[ 
+	  	UPDATE t_bussiness_order_product SET return_refund_status = 999 
+	]]> 
+	<where>
+  		and order_id in
+  		<foreach collection="orderTaskQueryOrderVos" item="orderTaskQueryOrderVos" separator="," open="(" close=")">
+			<choose>
+				<when test="orderTaskQueryOrderVos.orderId != null">
+					#{orderTaskQueryOrderVos.orderId,jdbcType=BIGINT}
+				</when>
+			</choose>
+		</foreach>
+		AND return_refund_status IN (0,12,22,32,42,15,25,35,45,16,26,36,46,19,29,39,49)
+  	</where>
+  </update>
+  
+  
+  <!-- 需要商家的处理动作超过10天的退货退款订单 自动同意 -->
+  <select id="selectReturnRefundOrderAccordingToTheConditions" resultMap="ReturnRefundOrderTaskQueryOrderVoResultMap" parameterType="com.essential.bussiness.order.model.vo.ReturnRefundOrderTaskQueryOrderVo">
+	  <![CDATA[	SELECT tbrro.return_refund_order_id,tbrro.return_refund_latest_status,tbrro.return_refund_type,tbrro.order_product_id,tbop.return_refund_status,NOW() as dbNowDateTime,
+				(CASE WHEN tbrro.return_refund_type = 1 AND tbrro.return_refund_latest_status = 1 THEN 7
+							WHEN (tbrro.return_refund_type = 2 AND tbrro.return_refund_latest_status = 1) 
+										OR tbrro.return_refund_latest_status = 8 THEN 3 END) AS updateReturnRefundOrderStatus1,
+				(CASE WHEN tbop.return_refund_status > 10 AND tbop.return_refund_status < 20 THEN 10
+							WHEN tbop.return_refund_status > 20 AND tbop.return_refund_status < 30 THEN 20
+							WHEN tbop.return_refund_status > 30 AND tbop.return_refund_status < 40 THEN 30
+							WHEN tbop.return_refund_status > 40 AND tbop.return_refund_status < 50 THEN 40 END) AS returnRefundTimes FROM
+					t_bussiness_return_refund_order tbrro
+				LEFT JOIN t_bussiness_order_product tbop
+					ON tbrro.order_product_id = tbop.order_product_id
+			WHERE
+				return_refund_latest_status IN (#{queryReturnRefundOrderStatus1, jdbcType=INTEGER},
+												#{queryReturnRefundOrderStatus2, jdbcType=INTEGER})
+			AND (
+				UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(tbrro.${queryField})
+			) / #{subDateTime, jdbcType=INTEGER} > #{limitDateTime, jdbcType=INTEGER}
+	  	]]> 
+  </select>
+  
+  <!-- 需要商家处理的动作超过10天的退货退款订单 自动同意 -->
+  <update id="updateAgreeWhereBusinessNoCheckThanTenDay" parameterType="com.essential.bussiness.order.model.vo.QueryReturnRefundOrderAccordingToTheConditionsVo">
+	  	insert into t_bussiness_return_refund_order (return_refund_order_id,modify_time,return_refund_latest_status) values
+	  	<foreach collection="returnRefundOrderTaskQueryOrderVos" item="returnRefundOrderTaskQueryOrderVos" separator=",">
+			<if test="returnRefundOrderTaskQueryOrderVos.returnRefundOrderId != null">
+				  (#{returnRefundOrderTaskQueryOrderVos.returnRefundOrderId,jdbcType=BIGINT},
+				  #{returnRefundOrderTaskQueryOrderVos.dbNowDateTime,jdbcType=VARCHAR},
+				   #{returnRefundOrderTaskQueryOrderVos.updateReturnRefundOrderStatus1,jdbcType=INTEGER})
+				<!-- UPDATE t_bussiness_return_refund_order SET return_refund_latest_status = #{returnRefundOrderTaskQueryOrderVos.updateReturnRefundOrderStatus1,jdbcType=INTEGER}
+					where return_refund_order_id = #{returnRefundOrderTaskQueryOrderVos.returnRefundOrderId,jdbcType=BIGINT} -->
+			</if>
+	  	</foreach>
+	  	on duplicate key update return_refund_latest_status=values(return_refund_latest_status),modify_time=values(modify_time)
+  </update>
+  
+  <!-- 更新需要商家处理的动作超过10天的退货退款订单商品的退货退款状态 -->
+  <update id="updateOrderProductReturnRefundStatus" parameterType="com.essential.bussiness.order.model.vo.QueryReturnRefundOrderAccordingToTheConditionsVo">
+  	insert into t_bussiness_order_product (order_product_id,return_refund_status) values
+  	<foreach collection="returnRefundOrderTaskQueryOrderVos" item="returnRefundOrderTaskQueryOrderVos" separator=",">
+		<if test="returnRefundOrderTaskQueryOrderVos.orderProductId != null">
+			(#{returnRefundOrderTaskQueryOrderVos.orderProductId,jdbcType=BIGINT},
+				   #{returnRefundOrderTaskQueryOrderVos.updateReturnRefundOrderStatus1,jdbcType=INTEGER}+#{returnRefundOrderTaskQueryOrderVos.returnRefundTimes,jdbcType=INTEGER})
+				<!-- UPDATE t_bussiness_order_product SET return_refund_status = #{returnRefundOrderTaskQueryOrderVos.updateReturnRefundOrderStatus1,jdbcType=INTEGER}
+				where order_product_id = #{returnRefundOrderTaskQueryOrderVos.orderProductId,jdbcType=BIGINT} -->
+		</if>
+  	</foreach>
+  	on duplicate key update return_refund_status=values(return_refund_status)
+  </update>
+  
+  <!-- 退货退款订单流水表新增一条订单状态改变记录 -->
+  <insert id="insertReturnRefundOrderStatus" parameterType="com.essential.bussiness.order.model.vo.QueryReturnRefundOrderAccordingToTheConditionsVo">
+  		INSERT INTO t_bussiness_return_refund_status(
+			  		return_refund_order_id,return_refund_status_time,operator,return_refund_status_item_id,
+			  		create_time,modify_time,create_user,mofify_user,is_delete) 
+		  		VALUES 
+  		<foreach collection="returnRefundOrderTaskQueryOrderVos" item="returnRefundOrderTaskQueryOrderVos" separator=",">
+			<choose>
+				<when test="returnRefundOrderTaskQueryOrderVos.returnRefundOrderId != null">
+				(#{returnRefundOrderTaskQueryOrderVos.returnRefundOrderId,jdbcType=BIGINT},
+		  				#{returnRefundOrderTaskQueryOrderVos.dbNowDateTime,jdbcType=VARCHAR},
+		  				000,
+		  				#{returnRefundOrderTaskQueryOrderVos.updateReturnRefundOrderStatus1,jdbcType=INTEGER},
+		  				#{returnRefundOrderTaskQueryOrderVos.dbNowDateTime,jdbcType=VARCHAR},
+		  				#{returnRefundOrderTaskQueryOrderVos.dbNowDateTime,jdbcType=VARCHAR},
+		  				000,000,0)
+				</when>
+			</choose>
+		</foreach>
+  </insert>
+</mapper>
